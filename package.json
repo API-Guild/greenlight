@@ -15,8 +15,13 @@
   },
   "dependencies": {
     "gatsby": "^3.2.1",
+    "gatsby-plugin-typography": "^3.2.0",
     "react": "^17.0.1",
-    "react-dom": "^17.0.1"
+    "react-dom": "^17.0.1",
+    "react-typography": "^0.16.19",
+    "typography": "^0.16.19",
+    "typography-theme-fairy-gates": "^0.16.19",
+    "typography-theme-ocean-beach": "^0.16.19"
   },
   "devDependencies": {
     "prettier": "2.2.1"
