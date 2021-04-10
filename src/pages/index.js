@@ -1,25 +1,25 @@
 import React from "react"
-import "../styles/global.scss"
-import Layout from "../components/layout"
+import "./global.scss"
+import Layout from "../components/layout/layout"
 
 export default function Home() {
   return (
     <Layout>
-      <section class="hero">
-        <div class="hero-body">
-          <p class="title">
+      <section className="hero">
+        <div className="hero-body">
+          <p className="title">
             Greenlight
           </p>
-          <p class="subtitle">
+          <p className="subtitle">
             A guerrilla <strong>data portal</strong> for people with deadlines.
           </p>
         </div>
       </section>
-      <section class="section">
-        <div class="container">
-          <div class="notification is-primary">
-            <h1 class="title">Section</h1>
-            <h2 class="subtitle">
+      <section className="section">
+        <div className="container">
+          <div className="notification is-primary">
+            <h1 className="title">Section</h1>
+            <h2 className="subtitle">
               A simple container to divide your page into <strong>sections</strong>, like the one you're currently reading.
             </h2>
           </div>
