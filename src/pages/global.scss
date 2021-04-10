@@ -1,12 +1,15 @@
 @charset "utf-8";
 
+@import "~bulma/sass/utilities/initial-variables";
+
 // colors use hsl to allow Bulma to optimize their values for readability
 // for more info see: https://bulma.io/documentation/overview/functions/#the-code-findcolorinvert-code-function
 
 // color palette
-$greenlight: hsl(167,97%,64%);
+$greenlight: hsl(167,90%,50%);
 $milk: hsl(210,50%,99%);
-$dark: hsl(0,0%,5%);
+$overcast: hsl(240,4,95);
+$night: hsl(0,0%,5%);
 $canary: hsl(55,79%,53%);
 $tulip: hsl(350,78%,75%);
 $masago: hsl(28,97%,49%);
@@ -15,17 +18,33 @@ $salmon: hsl(8,89%,65%);
 $nori: hsl(32,32%,10%);
 
 // brand color scheme
-$darkTheme: $dark;
+$darkTheme: $night;
 $lightTheme: $milk;
 $accentMain: $greenlight;
 
 ///////////// ** MODIFY STYLES HERE! ** /////////////
 // variables declared before importing Bulma to override their values (set to one of the above variables or add your own)
-$black: $lightTheme;
-$white: $darkTheme;
+$black: $accentMain;
+$black-ter: findLightColor($accentMain);
+$white: $milk;
+$white-ter: findLightColor($white);
+$white-bis: findDarkColor($white);
+$light: $overcast;
+
+$text: $light;
+$text-strong: $white-bis;
+
 $background: $darkTheme; 
 $scheme-main: $darkTheme;
 $scheme-main-bis: $darkTheme;
-$scheme-main-ter: $darkTheme;
 
-@import "~bulma/bulma.sass"
+$primary: $accentMain;
+$link: $accentMain;
+
+$navbar-divider-background-color: $grey-dark;
+
+@import "~bulma/bulma.sass";
+
+.navbar-dropdown {
+  border-top-color: $grey-dark;
+}

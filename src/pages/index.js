@@ -5,8 +5,10 @@ import Layout from "../components/layout/layout"
 export default function Home() {
   return (
     <Layout>
-      <section className="hero">
-        <div className="hero-body">
+      <br></br>
+      {/* Title */}
+      <section className="section">
+        <div className="container is-justify-content-flex-start">
           <p className="title">
             Greenlight
           </p>
@@ -15,6 +17,7 @@ export default function Home() {
           </p>
         </div>
       </section>
+      
       <section className="section">
         <div className="container">
           <div className="notification is-primary">
