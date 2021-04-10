@@ -1,4 +1,5 @@
 import React from "react"
+import "../../pages/global.scss"
 
 export default function Header() {
   return (

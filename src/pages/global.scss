@@ -19,7 +19,13 @@ $darkTheme: $dark;
 $lightTheme: $milk;
 $accentMain: $greenlight;
 
+///////////// ** MODIFY STYLES HERE! ** /////////////
 // variables declared before importing Bulma to override their values (set to one of the above variables or add your own)
-$background: $darkTheme;
+$black: $lightTheme;
+$white: $darkTheme;
+$background: $darkTheme; 
+$scheme-main: $darkTheme;
+$scheme-main-bis: $darkTheme;
+$scheme-main-ter: $darkTheme;
 
 @import "~bulma/bulma.sass"
