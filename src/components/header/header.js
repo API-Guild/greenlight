@@ -1,6 +1,13 @@
 import React from "react"
 
 export default function Header() {
+
+
+  const showMenu = (event) => {
+    const target = event.target;
+    console.log(target);
+  };
+
   return (
     <nav className="navbar" role="navigation" aria-label="main navigation">
       <div className="navbar-brand">
@@ -8,21 +15,21 @@ export default function Header() {
           <img src="https://bulma.io/images/bulma-logo.png" width="112" height="28" alt="logo"></img>
         </a>
 
-        <span role="button" className="navbar-burger" aria-label="menu" aria-expanded="false" data-target="navbarCollapse">
-          <span aria-hidden="true"></span>
-          <span aria-hidden="true"></span>
-          <span aria-hidden="true"></span>
+        <span role="button" className="navbar-burger" aria-label="menu" aria-expanded="false" data-target="navMenu" onClick={showMenu}>
+          <span aria-hidden="true" data-target="navMenu"></span>
+          <span aria-hidden="true" data-target="navMenu"></span>
+          <span aria-hidden="true" data-target="navMenu"></span>
         </span>
       </div>
 
-      <div id="navbarCollapse" className="navbar-menu">
+      <div id="navMenu" className="navbar-menu">
         <div className="navbar-start">
           <a className="navbar-item" href="/">About</a>
           <a className="navbar-item" href="/">Contact</a>
 
           <div className="navbar-item has-dropdown is-hoverable">
             <a className="navbar-link" href="/">Reports</a>
-            
+
             <div className="navbar-dropdown">
               <a className="navbar-item" href="/">Financials</a>
               <a className="navbar-item" href="/">Supply Chain</a>
