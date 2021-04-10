@@ -8,7 +8,7 @@ export default function Home() {
       {/* Title */}
       <section className="section">
         <div className="container is-justify-content-flex-start">
-          <p className="title">
+          <p className="title has-text-primary">
             Greenlight
           </p>
           <p className="subtitle">
