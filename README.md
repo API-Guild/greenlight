@@ -4,4 +4,4 @@
 
 <br>
 
-![greenlight](./public/images/greenlight.jpeg)
+![greenlight](./docs/images/greenlight.jpeg)
