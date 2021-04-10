@@ -1,5 +1,4 @@
 import React from "react"
-import "./global.scss"
 import Layout from "../components/layout/layout"
 
 export default function Home() {
@@ -17,7 +16,7 @@ export default function Home() {
           </p>
         </div>
       </section>
-      
+
       <section className="section">
         <div className="container">
           <div className="notification is-primary">

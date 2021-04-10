@@ -1,6 +1,6 @@
 import React from "react"
-import "../../pages/global.scss"
 import Header from "../header/header"
+import Footer from "../footer/footer"
 
 
 export default function Layout({ children }) {
@@ -8,6 +8,7 @@ export default function Layout({ children }) {
     <div>
       <Header/>
       {children}
+      <Footer/>
     </div>
   )
 }
