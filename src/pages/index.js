@@ -1,9 +1,10 @@
 import React from "react"
 import "../styles/global.scss"
+import Layout from "../components/layout"
 
 export default function Home() {
   return (
-    <div>
+    <Layout>
       <section class="hero">
         <div class="hero-body">
           <p class="title">
@@ -24,6 +25,6 @@ export default function Home() {
           </div>
         </div>
       </section>
-    </div>
+    </Layout>
   )
 }
