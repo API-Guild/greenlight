@@ -18,7 +18,7 @@ module.exports = {
         purgeOnly : ['global.scss'], // Purge only these files/folders ex. ['components/', '/main.css', 'bootstrap/']
         purgeCSSOptions: {
           // https://purgecss.com/configuration.html#options
-          // safelist: ['safelist'], // Don't remove this selector
+          safelist: ['is-active'], // Don't remove this selector
         },
       },
     },

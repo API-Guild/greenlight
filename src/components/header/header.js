@@ -3,9 +3,12 @@ import React from "react"
 export default function Header() {
 
 
-  const showMenu = (event) => {
-    const target = event.target;
-    console.log(target);
+  const showMenu = () => {
+    const menu = document.getElementById('navMenu');
+    const burger = document.getElementById('burger');
+
+    menu.classList.toggle('is-active');
+    burger.classList.toggle('is-active');
   };
 
   return (
@@ -15,7 +18,7 @@ export default function Header() {
           <img src="https://bulma.io/images/bulma-logo.png" width="112" height="28" alt="logo"></img>
         </a>
 
-        <span role="button" className="navbar-burger" aria-label="menu" aria-expanded="false" data-target="navMenu" onClick={showMenu}>
+        <span id='burger' role="button" className="navbar-burger" aria-label="menu" aria-expanded="false" data-target="navMenu" onClick={showMenu}>
           <span aria-hidden="true" data-target="navMenu"></span>
           <span aria-hidden="true" data-target="navMenu"></span>
           <span aria-hidden="true" data-target="navMenu"></span>
