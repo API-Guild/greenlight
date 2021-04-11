@@ -1,23 +1,13 @@
 import React from "react"
 import Layout from "../components/layout/layout"
+import Hero from "../components/hero/hero"
 import lightTheFire from "../assets/svg/undraw_light_the_fire_gt58.svg"
 
 export default function Home() {
   return (
     <Layout>
       <br/>
-      {/* Title */}
-      <section className="section">
-        <div className="container is-justify-content-flex-start">
-          <p className="title has-text-primary">
-            Greenlight
-          </p>
-          <p className="subtitle">
-            A guerrilla <strong>data portal</strong> for people with deadlines.
-          </p>
-        </div>
-      </section>
-
+      <Hero/>
       <div className="container is-fluid">
         <figure className="image">
           <img className="cartoon-home" src={lightTheFire} alt="logo"/>
