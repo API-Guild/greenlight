@@ -18,7 +18,8 @@ export default function Header() {
           <img src="https://bulma.io/images/bulma-logo.png" width="112" height="28" alt="logo"></img>
         </a>
 
-        <span id='burger' role="button" className="navbar-burger" aria-label="menu" aria-expanded="false" data-target="navMenu" onClick={showMenu}>
+        <span id='burger' role="button" className="navbar-burger" aria-label="menu" aria-expanded="false" 
+        data-target="navMenu" onClick={showMenu} onKeyUp={showMenu} tabIndex={0}>
           <span aria-hidden="true" data-target="navMenu"></span>
           <span aria-hidden="true" data-target="navMenu"></span>
           <span aria-hidden="true" data-target="navMenu"></span>

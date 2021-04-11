@@ -12,7 +12,7 @@ module.exports = {
       resolve: `gatsby-plugin-purgecss`,
       options: {
         printRejected: false, // Print removed selectors and processed file names
-        develop: true, // Enable while using `gatsby develop`
+        develop: false, // Enable while using `gatsby develop`
         // tailwind: true, // Enable tailwindcss support
         // ignore: ['/ignored.css', 'prismjs/', 'docsearch.js/'], // Ignore files/folders
         purgeOnly : ['global.scss'], // Purge only these files/folders ex. ['components/', '/main.css', 'bootstrap/']
