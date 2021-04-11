@@ -1,5 +1,6 @@
 @charset "utf-8";
 
+// Import variables to be used below
 @import "~bulma/sass/utilities/initial-variables";
 
 // colors use hsl to allow Bulma to optimize their values for readability
@@ -43,6 +44,7 @@ $link: $accentMain;
 
 $navbar-divider-background-color: $grey-dark;
 
+// importing Bulma below the variables to allow for users to override them
 @import "~bulma/bulma.sass";
 
 .navbar-dropdown {
