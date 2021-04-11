@@ -13,7 +13,7 @@ export default function Home() {
             Greenlight
           </p>
           <p className="subtitle">
-            A guerrilla <strong>data portal</strong> for people with deadlines.
+            A guerrilla <strong>data portal</strong> for analysts with deadlines.
           </p>
         </div>
       </section>
