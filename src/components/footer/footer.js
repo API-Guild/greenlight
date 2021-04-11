@@ -2,7 +2,6 @@ import React from "react"
 
 export default function Footer() {
   return (
-    <section className="section">
       <footer className="footer">
         <div className="container">
           <div className="content has-text-centered">
@@ -14,6 +13,5 @@ export default function Footer() {
           </div>
         </div>
       </footer>
-    </section>
   )
 }

@@ -6,7 +6,7 @@ export default function Contact() {
   return (
     <Layout>
       <Hero/>
-      <section>
+      <section className="section">
         <div className="container">
           <h1>If you have any questions or suggestions regarding this data portal, contact us via the following email:</h1>
           <p>
