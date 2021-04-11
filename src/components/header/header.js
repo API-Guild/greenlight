@@ -28,8 +28,8 @@ export default function Header() {
 
       <div id="navMenu" className="navbar-menu">
         <div className="navbar-start">
-          <a className="navbar-item" href="/">About</a>
-          <a className="navbar-item" href="/">Contact</a>
+          <a className="navbar-item" href="/about">About</a>
+          <a className="navbar-item" href="/contact">Contact</a>
 
           <div className="navbar-item has-dropdown is-hoverable">
             <a className="navbar-link" href="/">Reports</a>
