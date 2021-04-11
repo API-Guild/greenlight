@@ -2,7 +2,6 @@ import React from "react"
 
 export default function Header() {
 
-
   const showMenu = () => {
     const menu = document.getElementById('navMenu');
     const burger = document.getElementById('burger');
@@ -32,7 +31,7 @@ export default function Header() {
           <a className="navbar-item" href="/contact">Contact</a>
 
           <div className="navbar-item has-dropdown is-hoverable">
-            <a className="navbar-link" href="/">Reports</a>
+            <a className="navbar-link" href="/reports">Reports</a>
 
             <div className="navbar-dropdown">
               <a className="navbar-item" href="/">Financials</a>
