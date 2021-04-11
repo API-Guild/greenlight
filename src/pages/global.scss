@@ -5,6 +5,8 @@
 // colors use hsl to allow Bulma to optimize their values for readability
 // for more info see: https://bulma.io/documentation/overview/functions/#the-code-findcolorinvert-code-function
 
+///////////// ** MODIFY STYLES HERE! ** /////////////
+
 // color palette
 $greenlight: hsl(167,90%,50%);
 $milk: hsl(210,50%,99%);
@@ -22,7 +24,8 @@ $darkTheme: $night;
 $lightTheme: $milk;
 $accentMain: $greenlight;
 
-///////////// ** MODIFY STYLES HERE! ** /////////////
+///////////// ** THEMING ENDS HERE! ** /////////////
+
 // variables declared before importing Bulma to override their values (set to one of the above variables or add your own)
 $black: $accentMain;
 $black-ter: findLightColor($accentMain);

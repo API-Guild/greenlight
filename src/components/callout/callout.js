@@ -1,6 +1,15 @@
 import React from "react"
 
-export default function Notification(props) {
+export default function Callout(props) {
+
+  let calloutType = "primary";
+
+  switch (props.type) {
+    case "primary":
+    calloutType = "primary";
+    break;
+  }
+
   return (
     <div className="container">
       <div className="notification is-primary">
