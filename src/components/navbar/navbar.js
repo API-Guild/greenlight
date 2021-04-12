@@ -15,7 +15,7 @@ export default function Header() {
     <nav className="navbar" role="navigation" aria-label="main navigation">
       <div className="navbar-brand">
         <a className="navbar-item" href="/">
-          <img className="logo" src={greenlight} alt="logo"/>
+          <img className="logo-navbar" src={greenlight} alt="logo"/>
           Greenlight
         </a>
 

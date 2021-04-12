@@ -45,6 +45,7 @@ $scheme-main-bis: $darkTheme;
 $primary: $accentMain;
 $link: $accentMain;
 $link-hover: $grey-light;
+$link-visited: $grey-light;
 
 $navbar-divider-background-color: $grey-dark;
 
@@ -74,17 +75,16 @@ main.main {
   border-top-color: $grey-dark;
 }
 
-img.logo {
+img.logo-navbar {
   height: 1.5em;
   margin-left: 1.5em;
   margin-right: 0.5em;
 }
 
-img.hero {
-  height: 0.75em;
-  margin-left: 1.5em;
-  margin-right: 0.5em;
-}
+// img.logo-footer {
+//   height: 1.25rem;
+//   margin-right: 1rem;
+// }
 
 img.cartoon-pages {
   width: 25rem;
