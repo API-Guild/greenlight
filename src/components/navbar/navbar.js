@@ -1,7 +1,7 @@
 import React from "react"
+import greenlight from "../../assets/svg/greenlight.svg"
 
 export default function Header() {
-
 
   const showMenu = () => {
     const menu = document.getElementById('navMenu');
@@ -14,8 +14,9 @@ export default function Header() {
   return (
     <nav className="navbar" role="navigation" aria-label="main navigation">
       <div className="navbar-brand">
-        <a className="navbar-item" href="https://bulma.io">
-          <img src="https://bulma.io/images/bulma-logo.png" width="112" height="28" alt="logo"></img>
+        <a className="navbar-item" href="/">
+          <img className="logo" src={greenlight} alt="logo"/>
+          Greenlight
         </a>
 
         <span id='burger' role="button" className="navbar-burger" aria-label="menu" aria-expanded="false" 
@@ -32,7 +33,7 @@ export default function Header() {
           <a className="navbar-item" href="/contact">Contact</a>
 
           <div className="navbar-item has-dropdown is-hoverable">
-            <a className="navbar-link" href="/">Reports</a>
+            <a className="navbar-link" href="/reports">Reports</a>
 
             <div className="navbar-dropdown">
               <a className="navbar-item" href="/">Financials</a>
@@ -42,7 +43,7 @@ export default function Header() {
               <a className="navbar-item" href="/">Marketing</a>
               <a className="navbar-item" href="/">Human Resources</a>
               <hr className="navbar-divider"></hr>
-              <a className="navbar-item" href="/">Report an issue</a>
+              <a className="navbar-item" href="/">Explore</a>
             </div>
           </div>
         </div>
