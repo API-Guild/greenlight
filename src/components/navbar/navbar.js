@@ -1,4 +1,5 @@
 import React from "react"
+import greenlight from "../../assets/svg/greenlight.svg"
 
 export default function Header() {
 
@@ -14,7 +15,8 @@ export default function Header() {
     <nav className="navbar" role="navigation" aria-label="main navigation">
       <div className="navbar-brand">
         <a className="navbar-item" href="/">
-          <img src="https://bulma.io/images/bulma-logo.png" width="112" height="28" alt="logo"></img>
+          <img className="logo" src={greenlight} alt="logo"/>
+          Greenlight
         </a>
 
         <span id='burger' role="button" className="navbar-burger" aria-label="menu" aria-expanded="false" 
