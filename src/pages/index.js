@@ -12,10 +12,11 @@ export default function Home() {
       <Hero/>
       <Cartoon svg={lightTheFire}/>
       <section className="section">
-        <Callout 
-          title={"Primary Callout"} 
+        <Callout
+          type={"primary"} 
+          title={"Callout"} 
           subtitle={<div>A simple container to make <strong>callouts</strong>, 
-          using the primary color used for the theme.</div>}
+          using styles as defined for the component.</div>}
         />
       </section>
     </Layout>
