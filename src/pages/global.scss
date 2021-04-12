@@ -48,6 +48,26 @@ $navbar-divider-background-color: $grey-dark;
 
 @import "~bulma/bulma.sass";
 
+html {
+  height: 100%;
+}
+
+body {
+  height: 100%;
+}
+
+// Sets the display to flex so we can implement a sticky footer by allowing main to expand as needed
+div.site {
+  display: flex;
+  min-height: 100vh;
+  flex-direction: column;
+}
+
+// Lets main expand as needed with flex-grow
+main.main {
+  flex-grow: 1;
+}
+
 .navbar-dropdown {
   border-top-color: $grey-dark;
 }

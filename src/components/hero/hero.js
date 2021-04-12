@@ -8,7 +8,7 @@ export default function Hero() {
           Greenlight
         </p>
         <p className="subtitle is-4">
-          A guerrilla <strong>data portal</strong> for people with deadlines.
+          A guerrilla <strong>data portal</strong> for analysts with deadlines.
         </p>
       </div>
     </section>
