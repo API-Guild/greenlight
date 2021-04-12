@@ -3,13 +3,13 @@ import Layout from "../components/layout/layout"
 import Hero from "../components/hero/hero"
 import Cartoon from "../components/cartoon/cartoon"
 import Callout from "../components/callout/callout"
-import lightTheFire from "../assets/svg/undraw_light_the_fire_gt58.svg"
+import vizBuilders from "../assets/svg/undraw_Data_re_80ws.svg"
 
 export default function Home() {
   return (
     <Layout>
       <Hero/>
-      <Cartoon svg={lightTheFire}/>
+      <Cartoon svg={vizBuilders}/>
       <section className="section">
         <Callout
           type={"primary"} 

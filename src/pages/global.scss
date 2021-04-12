@@ -5,10 +5,9 @@
 // colors use hsl to allow Bulma to optimize their values for readability
 // for more info see: https://bulma.io/documentation/overview/functions/#the-code-findcolorinvert-code-function
 
-///////////// ** MODIFY STYLES HERE! ** /////////////
+///////////// ** MODIFY COLOR PALETTE HERE! ** /////////////
 
-// color palette
-$greenlight: hsl(167,90%,50%);
+$greenlight: hsl(167,90%,50%); // equivalent to #0DF2C1
 $milk: hsl(210,50%,99%);
 $overcast: hsl(240,4%,95%);
 $night: hsl(0,0%,5%);
@@ -19,12 +18,14 @@ $avocado: hsl(68,90%,43%);
 $salmon: hsl(8,89%,65%);
 $nori: hsl(32,32%,10%);
 
+///////////// ** MODIFY SITE THEMES HERE! ** /////////////
+
 // brand color scheme
 $darkTheme: $night;
 $lightTheme: $milk;
 $accentMain: $greenlight;
 
-///////////// ** THEMING ENDS HERE! ** /////////////
+///////////// ** SITE THEMING ENDS HERE! ** /////////////
 
 // variables declared before importing Bulma to override their values (set to one of the above variables or add your own)
 $black: $accentMain;
@@ -73,5 +74,5 @@ main.main {
 }
 
 img.cartoon-pages {
-  width: 30rem;
+  width: 25rem;
 }

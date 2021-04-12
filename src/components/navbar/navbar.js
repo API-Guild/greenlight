@@ -41,7 +41,7 @@ export default function Header() {
               <a className="navbar-item" href="/">Marketing</a>
               <a className="navbar-item" href="/">Human Resources</a>
               <hr className="navbar-divider"></hr>
-              <a className="navbar-item" href="/">Report an issue</a>
+              <a className="navbar-item" href="/">Explore</a>
             </div>
           </div>
         </div>
