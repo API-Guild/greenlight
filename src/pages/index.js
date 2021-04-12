@@ -8,7 +8,6 @@ import lightTheFire from "../assets/svg/undraw_light_the_fire_gt58.svg"
 export default function Home() {
   return (
     <Layout>
-      <br/>
       <Hero/>
       <Cartoon svg={lightTheFire}/>
       <section className="section">
