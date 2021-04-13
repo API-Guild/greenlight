@@ -8,16 +8,41 @@ import vizBuilders from "../assets/svg/undraw_Data_re_80ws.svg"
 export default function Home() {
   return (
     <Layout>
-      <Hero/>
-      <Cartoon svg={vizBuilders}/>
+      <Hero />
+      <Cartoon svg={vizBuilders} />
       <section className="section">
         <Callout
-          type={"primary"} 
-          title={"Callout"} 
-          subtitle={<div>A simple container to make <strong>callouts</strong>, 
-          using styles as defined for the component.</div>}
+          type={"primary"}
+          title={"Callout"}
+          subtitle={
+            <div>
+              A simple container to make <strong>callouts</strong>, using styles
+              as defined for the component.
+            </div>
+          }
         />
       </section>
     </Layout>
   )
 }
+
+// export const query = graphql`
+//   query {
+//     allMarkdownRemark(sort: { fields: [frontmatter___date], order: DESC }) {
+//       totalCount
+//       edges {
+//         node {
+//           id
+//           frontmatter {
+//             title
+//             date(formatString: "DD MMMM, YYYY")
+//           }
+//           fields {
+//             slug
+//           }
+//           excerpt
+//         }
+//       }
+//     }
+//   }
+// `
