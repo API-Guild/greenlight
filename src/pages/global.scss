@@ -1,5 +1,6 @@
 @charset "utf-8";
 
+// Importing Bulma variables so they may be used or be overwritten before building css
 @import "~bulma/sass/utilities/initial-variables";
 
 // colors use hsl to allow Bulma to optimize their values for readability
@@ -50,11 +51,7 @@ $navbar-divider-background-color: $grey-dark;
 
 @import "~bulma/bulma.sass";
 
-html {
-  height: 100%;
-}
-
-body {
+html, body {
   height: 100%;
 }
 
