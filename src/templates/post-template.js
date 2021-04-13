@@ -2,13 +2,14 @@ import React from "react"
 import { graphql } from "gatsby"
 import Layout from "../components/layout/layout"
 import Hero from "../components/hero/hero"
-import "../pages/global.scss"
 
 export default function BlogPost({ data }) {
-  const post = data.markdownRemark
+  const post = data.markdownRemark;
+  const frontmatter = post.frontmatter;
+
   return (
     <Layout>
-      <Hero title={post.frontmatter.title} subtitle={post.frontmatter.description} date={post.frontmatter.date} />
+      <Hero title={frontmatter.title} subtitle={frontmatter.description} date={frontmatter.date} />
         <div className="container is-fluid">
           <div dangerouslySetInnerHTML={{ __html: post.html }} />
         </div>
