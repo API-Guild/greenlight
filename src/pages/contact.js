@@ -7,7 +7,7 @@ import newIdea from "../assets/svg/undraw_new_ideas_jdea.svg"
 export default function Contact() {
   return (
     <Layout>
-      <Hero/>
+      <Hero title="Greenlight" subtitle={<span>A guerrilla <strong>data portal</strong> for analysts with deadlines.</span>} />
       <Cartoon svg={newIdea}/>
       <section className="section">
         <div className="container">

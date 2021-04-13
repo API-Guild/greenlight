@@ -8,7 +8,7 @@ import vizBuilders from "../assets/svg/undraw_Data_re_80ws.svg"
 export default function Home() {
   return (
     <Layout>
-      <Hero />
+      <Hero title="Greenlight" subtitle={<span>A guerrilla <strong>data portal</strong> for analysts with deadlines.</span>} />
       <Cartoon svg={vizBuilders} />
       <section className="section">
         <Callout
