@@ -69,8 +69,8 @@ export default function Header() {
           </a>
 
           <div className="navbar-item has-dropdown is-hoverable">
-            <a className="navbar-link" href="/reports">
-              Reports
+            <a className="navbar-link" href="/dashboards">
+              Dashboards
             </a>
 
             <div className="navbar-dropdown">

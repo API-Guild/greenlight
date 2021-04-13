@@ -2,16 +2,29 @@ const { createFilePath } = require(`gatsby-source-filesystem`)
 const path = require(`path`)
 
 exports.onCreateNode = ({ node, getNode, actions }) => {
-  const { createNodeField } = actions
+  const { createNodeField } = actions;
+  // Ensures we are processing only markdown files
   if (node.internal.type === `MarkdownRemark`) {
-    const slug = createFilePath({ node, getNode })
+    // Use `createFilePath` to turn markdown files in our `content/blog/` directory into `/dashboards/`
+    const relativeFilePath = createFilePath({
+      node,
+      getNode,
+      basePath: "content/blog/",
+    });
+
+    // removes the folder name from the slug as obtained from relativeFilePath
+    // new content must always be added in the format of folder > .md file
+    // so that folders may organize other post assets such as images
+    const modifiedPath = relativeFilePath.substr(relativeFilePath.indexOf("/", relativeFilePath.indexOf("/") + 1));
+
+    // Creates new queryable field with name of 'slug'
     createNodeField({
       node,
-      name: `slug`,
-      value: slug,
+      name: "slug",
+      value: `/dashboards${modifiedPath}`,
     })
   }
-}
+};
 
 exports.createPages = async ({ graphql, actions, reporter }) => {
   const { createPage } = actions
@@ -42,7 +55,7 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
   result.data.allMarkdownRemark.edges.forEach(({ node }) => {
     createPage({
       path: node.fields.slug,
-      component: path.resolve(`./src/templates/data-table-post.js`),
+      component: path.resolve(`./src/templates/post-template.js`),
       context: {
         // Data passed to context is available
         // in page queries as GraphQL variables.
