@@ -1,17 +1,18 @@
 import React from "react"
-import Layout from "../components/layout/layout"
 import { graphql } from "gatsby"
+import Layout from "../components/layout/layout"
+import Hero from "../components/hero/hero"
 
 export default function BlogPost({ data }) {
-  const post = data.markdownRemark
+  const post = data.markdownRemark;
+  const frontmatter = post.frontmatter;
+
   return (
     <Layout>
-      <section className="section">
+      <Hero title={frontmatter.title} subtitle={frontmatter.description} date={frontmatter.date} />
         <div className="container is-fluid">
-          <h1>{post.frontmatter.title}</h1>
           <div dangerouslySetInnerHTML={{ __html: post.html }} />
         </div>
-      </section>
     </Layout>
   )
 }
@@ -21,7 +22,9 @@ export const query = graphql`
     markdownRemark(fields: { slug: { eq: $slug } }) {
       html
       frontmatter {
-        title
+        title,
+        description,
+        date
       }
     }
   }

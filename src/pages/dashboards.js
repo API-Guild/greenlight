@@ -7,7 +7,7 @@ import analytics from "../assets/svg/undraw_predictive_analytics_kf9n.svg"
 export default function Reports() {
   return (
     <Layout>
-      <Hero/>
+      <Hero title="Greenlight" subtitle={<span>A guerrilla <strong>data portal</strong> for analysts with deadlines.</span>} />
       <Cartoon svg={analytics}/>
     </Layout>
   )

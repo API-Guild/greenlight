@@ -29,6 +29,9 @@ $accentMain: $greenlight;
 ///////////// ** SITE THEMING ENDS HERE! ** /////////////
 
 // variables declared before importing Bulma to override their values (set to one of the above variables or add your own)
+
+$gap: 64px;
+
 $black: $accentMain;
 $black-ter: findLightColor($accentMain);
 $white: $milk;
@@ -85,4 +88,8 @@ img.hero {
 
 img.cartoon-pages {
   width: 25rem;
+}
+
+p.subtitle.date {
+  margin-top: -1.25rem;
 }

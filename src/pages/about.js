@@ -7,7 +7,7 @@ import stakeholder from "../assets/svg/undraw_design_data_khdb.svg"
 export default function About() {
   return (
     <Layout>
-      <Hero/>
+      <Hero title="Greenlight" subtitle={<span>A guerrilla <strong>data portal</strong> for analysts with deadlines.</span>} />
       <Cartoon svg={stakeholder}/>
     </Layout>
   )
