@@ -51,11 +51,7 @@ $navbar-divider-background-color: $grey-dark;
 
 @import "~bulma/bulma.sass";
 
-html {
-  height: 100%;
-}
-
-body {
+html, body {
   height: 100%;
 }
 
