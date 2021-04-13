@@ -10,6 +10,10 @@ export default function Hero(props) {
         <p className="subtitle is-4">
           {props.subtitle}
         </p>
+        {/* Used for dates on blog posts */}
+        <p className="subtitle date is-7"> 
+          {props.date}
+        </p>
       </div>
     </section>
   )

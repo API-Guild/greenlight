@@ -8,12 +8,10 @@ export default function BlogPost({ data }) {
   const post = data.markdownRemark
   return (
     <Layout>
-      <Hero title={post.frontmatter.title} subtitle={post.frontmatter.description} />
-      <section className="section">
+      <Hero title={post.frontmatter.title} subtitle={post.frontmatter.description} date={post.frontmatter.date} />
         <div className="container is-fluid">
           <div dangerouslySetInnerHTML={{ __html: post.html }} />
         </div>
-      </section>
     </Layout>
   )
 }
@@ -24,7 +22,8 @@ export const query = graphql`
       html
       frontmatter {
         title,
-        description
+        description,
+        date
       }
     }
   }
