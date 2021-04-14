@@ -5,6 +5,28 @@
  */
 
 module.exports = {
+  /* Site Metadata */
+  siteMetadata: {
+    title: `Greenlight`,
+    author: [
+      {
+        name: `Stephen Price`,
+        summary: `Fullstack Web Developer from Ecuador`,
+        github: `https://github.com/stephenlprice`,
+        portfolio: `https://stephenlprice.github.io/portfolio/index.html`
+      },
+      {
+        name: `Trevor Smith`,
+        summary: `Fullstack Web Developer and Grammy nominated Musician`,
+        github: `https://github.com/trevorsmithbanjo`,
+        portfolio: `https://trevorsmithbanjo.github.io/#/`
+      },
+    ],
+    description: `A guerrilla data portal for analysts with deadlines.`,
+    siteUrl: `http://localhost:8000`,
+    image: `/static/greenlight-a77dbefffbe88458b1591453d8476397.svg`,
+    siteLanguage: `en`
+  },
   /* Your site config here */
   plugins: [
     `gatsby-plugin-sass`,
@@ -30,5 +52,6 @@ module.exports = {
       },
     },
     `gatsby-transformer-remark`,
+    `gatsby-plugin-react-helmet`,
   ],
 }
