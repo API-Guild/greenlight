@@ -3,6 +3,8 @@ import PropTypes from "prop-types"
 import { Helmet } from "react-helmet"
 import { useLocation } from "@reach/router"
 import { useStaticQuery, graphql } from "gatsby"
+import faviconSvg from "../../assets/svg/greenlight.svg"
+import faviconIco from "../../assets/ico/greenlight.ico"
 
 // Implementation reference available at: https://www.gatsbyjs.com/docs/add-seo-component/
 
@@ -33,8 +35,15 @@ const SEO = ({ title, description, image, article, siteLanguage }) => {
   return (
     <Helmet title={seo.title}>
       <html lang={seo.lang} />
+      {/* svg files need an alternative ico file in case client browser lacks support */}
+      <link rel="icon" type="image/svg+xml" href={faviconSvg} />
+      <link rel="alternate icon" href={faviconIco} />
+      <link rel="mask-icon" href={faviconSvg} color="#ff8a01" />
+    
       <meta name="description" content={seo.description} />
       <meta name="image" content={seo.image} />
+
+      {/* Insert schema.org (facebook) and twitter data conditionally */}
       {seo.url && <meta property="og:url" content={seo.url} />}
       {(article ? true : null) && <meta property="og:type" content="article" />}
       {seo.title && <meta property="og:title" content={seo.title} />}
