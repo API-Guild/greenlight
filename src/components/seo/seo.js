@@ -84,6 +84,7 @@ SEO.defaultProps = {
   url: null,
 };
 
+// Query data found in gatsby-config.js (change the siteUrl value once starter is deployed in production)
 const query = graphql`
   query SEO {
     site {

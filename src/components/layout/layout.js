@@ -7,7 +7,7 @@ import Seo from "../seo/seo"
 export default function Layout({ children }) {
   return (
     <>
-      <Seo />
+      <Seo/>
       <div className="site">
         <Navbar/>
         <main className="main">
