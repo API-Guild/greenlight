@@ -1,5 +1,5 @@
 import React from "react"
-import Helmet from 'react-helmet'
+import Helmet from "react-helmet"
 import { graphql } from "gatsby"
 import Layout from "../components/layout/layout"
 import Hero from "../components/hero/hero"
@@ -7,9 +7,10 @@ import Hero from "../components/hero/hero"
 
 export default function BlogPost({ data }) {
   const post = data.markdownRemark;
-  const frontmatter = post.frontmatter;
+  const meta = post.frontmatter;
   const pathSegment = "/javascripts/api/";
-  const fullPath = frontmatter.tableauServer + pathSegment + frontmatter.tableauVersion;
+  const fullPath = meta.tableauServer + pathSegment + meta.tableauVersion;
+  const viz = meta.viz;
 
   return (
     <>
@@ -18,9 +19,9 @@ export default function BlogPost({ data }) {
       </Helmet>
       <Layout>
         <Hero
-          title={frontmatter.title}
-          subtitle={frontmatter.description}
-          date={frontmatter.date}
+          title={meta.title}
+          subtitle={meta.description}
+          date={meta.date}
         />
         <div className="container is-fluid content">
           <div dangerouslySetInnerHTML={{ __html: post.html }} />
@@ -40,6 +41,7 @@ export const query = graphql`
         date
         tableauServer
         tableauVersion
+        viz
       }
     }
   }
