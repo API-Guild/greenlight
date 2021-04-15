@@ -1,4 +1,4 @@
-import React from "react"
+import React, { useState, useEffect } from "react"
 import Helmet from "react-helmet"
 
 
@@ -6,25 +6,24 @@ export default function TableauApi(props) {
 
   const pathSegment = "/javascripts/api/";
   const fullPath = props.server + pathSegment + props.version;
-  const vizUrl = props.viz;
-  const vizOptions = props.options;
 
-  const initViz = () => {
-    const vizContainer = document.getElementById("vizContainer");
+  useEffect(() => {
+    const initViz = () => {
+      const vizContainer = document.getElementById("vizContainer");
+  
+      // If a previous viz object exists, delete it.
+      // if (vizObj) { vizObj.dispose() }
+  
+      // Create a viz object and embed it in the container div.
+      // const vizObj = new tableau.Viz(vizContainer, props.viz, props.options);
+    };
 
-    // If a previous viz object exists, delete it.
-    // if (vizObj) { vizObj.dispose() }
-
-    // Create a viz object and embed it in the container div.
-    // const vizObj = new tableau.Viz(vizContainer, vizUrl, vizOptions);
-  };
-
-  // Only run the embed script once the page body has loaded
-  document.body.onLoad = () => {
-    initViz()
-    console.log('body loaded!')
-    console.log(fullPath);
-  };
+    // Wait until the component mounts or updates to run initViz()
+    setTimeout(initViz(), 1000)
+    console.log('document loaded!', document)
+    console.log(fullPath)
+    console.log('vizContainer loaded!')
+  });
 
   return (
     <>
