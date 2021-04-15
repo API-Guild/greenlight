@@ -53,7 +53,9 @@ $link-hover: $grey-light;
 $link-visited: $grey-lighter;
 $code: $masago;
 
-$navbar-divider-background-color: $grey-dark;
+$navbar-divider-background-color: $grey-darker;
+
+$hr-background-color: $grey-dark;
 
 @import "~bulma/bulma.sass";
 
