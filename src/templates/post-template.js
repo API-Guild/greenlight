@@ -15,7 +15,9 @@ export default function BlogPost({ data }) {
   return (
     <>
       <Helmet>
-        <script type="text/javascript" src={fullPath} />
+        {meta.tableauServer && meta.tableauVersion ? (
+          <script type="text/javascript" src={fullPath} />
+        ) : (null)}
       </Helmet>
       <Layout>
         <Hero
