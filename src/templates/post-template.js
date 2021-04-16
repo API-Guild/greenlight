@@ -1,37 +1,35 @@
 import React from "react"
+import Helmet from "react-helmet"
 import { graphql } from "gatsby"
 import Layout from "../components/layout/layout"
 import Hero from "../components/hero/hero"
-import rehypeReact from "rehype-react"
+
 
 export default function BlogPost({ data }) {
-  const post = data.markdownRemark
-  const frontmatter = post.frontmatter
-
-  // const renderAst = new rehypeReact({
-  //   createElement: React.createElement,
-  //   components: {
-  //     h1: isSize1,
-  //     h2: isSize2,
-  //     h3: isSize3,
-  //     h4: isSize4,
-  //     h5: isSize5,
-  //     h6: isSize6,
-  //   },
-  // }).Compiler
+  const post = data.markdownRemark;
+  const meta = post.frontmatter;
+  const pathSegment = "/javascripts/api/";
+  const fullPath = meta.tableauServer + pathSegment + meta.tableauVersion;
+  const viz = meta.viz;
 
   return (
-    <Layout>
-      <Hero
-        title={frontmatter.title}
-        subtitle={frontmatter.description}
-        date={frontmatter.date}
-      />
-      <div className="container is-fluid content">
-        <div dangerouslySetInnerHTML={{ __html: post.html }} />
-        {/* {renderAst(post.htmlAst)} */}
-      </div>
-    </Layout>
+    <>
+      <Helmet>
+        {meta.tableauServer && meta.tableauVersion ? (
+          <script type="text/javascript" src={fullPath} />
+        ) : (null)}
+      </Helmet>
+      <Layout>
+        <Hero
+          title={meta.title}
+          subtitle={meta.description}
+          date={meta.date}
+        />
+        <div className="container is-fluid content">
+          <div dangerouslySetInnerHTML={{ __html: post.html }} />
+        </div>
+      </Layout>
+    </>
   )
 }
 
@@ -43,6 +41,9 @@ export const query = graphql`
         title
         description
         date
+        tableauServer
+        tableauVersion
+        viz
       }
     }
   }
