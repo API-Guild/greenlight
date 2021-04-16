@@ -8,31 +8,34 @@ export default function TableauApi(props) {
   const fullPath = props.server + pathSegment + props.version;
 
   useEffect(() => {
-    const initViz = () => {
-      const vizContainer = document.getElementById("vizContainer");
-  
-      // If a previous viz object exists, delete it.
-      // if (vizObj) { vizObj.dispose() }
-  
-      // Create a viz object and embed it in the container div.
-      // const vizObj = new tableau.Viz(vizContainer, props.viz, props.options);
-    };
-
     // Wait until the component mounts or updates to run initViz()
-    setTimeout(initViz(), 1000)
-    console.log('document loaded!', document)
-    console.log(fullPath)
-    console.log('vizContainer loaded!')
+    initViz();
   });
+
+  const initViz = () => {
+    const vizContainer = document.getElementById("vizContainer");
+
+    // If a previous viz object exists, delete it.
+    if (vizObj) { vizObj.dispose() }
+
+    // Create a viz object and embed it in the container div.
+    // eslint-disable-next-line
+    const vizObj = new tableau.Viz(vizContainer, props.viz, props.options);
+  };
+
+  const styleObj = {
+    height: props.height,
+    width: props.width
+  }
 
   return (
     <>
       <Helmet>
         {props.server && props.version ? (
           <script type="text/javascript" src={fullPath} />
-        ) : (null)}
+        ) : (console.error('Error: tableau server and version not found!'))}
       </Helmet>
-      <div id="vizContainer" />
+      <div id="vizContainer" style={styleObj} />
     </>
   )
 }
