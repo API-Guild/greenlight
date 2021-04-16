@@ -28,7 +28,9 @@ export default function TableauApi(props) {
   return (
     <>
       <Helmet>
-        <script type="text/javascript" src={fullPath} />
+        {props.server && props.version ? (
+          <script type="text/javascript" src={fullPath} />
+        ) : (null)}
       </Helmet>
       <div id="vizContainer" />
     </>
