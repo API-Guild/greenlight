@@ -3,25 +3,26 @@ import Helmet from "react-helmet"
 import { graphql } from "gatsby"
 import Layout from "../components/layout/layout"
 import Hero from "../components/hero/hero"
-
+import { MDXRenderer } from "gatsby-plugin-mdx"
 
 export default function BlogPost({ data }) {
-  const post = data.markdownRemark;
-  const meta = post.frontmatter;
-  const pathSegment = "/javascripts/api/";
-  const fullPath = meta.tableauServer + pathSegment + meta.tableauVersion;
-  const viz = meta.viz;
+  const post = data.mdx
+  const meta = post.frontmatter
+  const pathSegment = "/javascripts/api/"
+  const fullPath = meta.tableauServer + pathSegment + meta.tableauVersion
+  const viz = meta.viz
 
   return (
     <>
+      <Helmet>
+        {meta.tableauServer && meta.tableauVersion ? (
+          <script type="text/javascript" src={fullPath} />
+        ) : null}
+      </Helmet>
       <Layout>
-        <Hero
-          title={meta.title}
-          subtitle={meta.description}
-          date={meta.date}
-        />
+        <Hero title={meta.title} subtitle={meta.description} date={meta.date} />
         <div className="container is-fluid content">
-          <div dangerouslySetInnerHTML={{ __html: post.html }} />
+          <MDXRenderer>{post.body}</MDXRenderer>
         </div>
       </Layout>
     </>
@@ -30,8 +31,8 @@ export default function BlogPost({ data }) {
 
 export const query = graphql`
   query($slug: String!) {
-    markdownRemark(fields: { slug: { eq: $slug } }) {
-      html
+    mdx(fields: { slug: { eq: $slug } }) {
+      body
       frontmatter {
         title
         description
