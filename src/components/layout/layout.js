@@ -2,18 +2,21 @@ import React from "react"
 import Navbar from "../navbar/navbar"
 import Footer from "../footer/footer"
 import Seo from "../seo/seo"
+import Callout from "../callout/callout"
+import { MDXProvider } from "@mdx-js/react"
 
+const shortcodes = { Callout }
 
 export default function Layout({ children }) {
   return (
     <>
-      <Seo/>
+      <Seo />
       <div className="site">
-        <Navbar/>
+        <Navbar />
         <main className="main">
-          {children}
+          <MDXProvider components={shortcodes}>{children}</MDXProvider>
         </main>
-        <Footer/>
+        <Footer />
       </div>
     </>
   )

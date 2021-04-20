@@ -3,21 +3,20 @@ import greenlight from "../../assets/svg/greenlight.svg"
 import { graphql, Link, useStaticQuery } from "gatsby"
 
 export default function Header() {
-  
   // Toggles the dropdown menu upon hamburger clicks from tablet devices and smaller
   const showMenu = () => {
-    const menu = document.getElementById("navMenu");
-    const burger = document.getElementById("burger");
+    const menu = document.getElementById("navMenu")
+    const burger = document.getElementById("burger")
 
     menu.classList.toggle("is-active")
     burger.classList.toggle("is-active")
-  };
+  }
 
   // Gatsby hook for graphql queries that aren't page components
   const data = useStaticQuery(
     graphql`
       query {
-        allMarkdownRemark(sort: { fields: [frontmatter___date], order: DESC }) {
+        allMdx(sort: { fields: [frontmatter___date], order: DESC }) {
           edges {
             node {
               id
@@ -32,7 +31,8 @@ export default function Header() {
         }
       }
     `
-  );
+  )
+  console.log(data.allMdx)
 
   return (
     <nav className="navbar" role="navigation" aria-label="main navigation">
@@ -80,8 +80,12 @@ export default function Header() {
               <a className="navbar-item" href="/">QA/QC</a>
               <a className="navbar-item" href="/">Marketing</a>
               <a className="navbar-item" href="/">Human Resources</a> */}
-              {data.allMarkdownRemark.edges.map(({ node }) => (
-                <Link to={node.fields.slug} className="navbar-item" key={node.id}>
+              {data.allMdx.edges.map(({ node }) => (
+                <Link
+                  to={node.fields.slug}
+                  className="navbar-item"
+                  key={node.id}
+                >
                   {node.frontmatter.title}
                 </Link>
               ))}
