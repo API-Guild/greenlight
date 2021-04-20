@@ -16,11 +16,11 @@ export default function TableauApi(props) {
     const vizContainer = document.getElementById("vizContainer");
 
     // If a previous viz object exists, delete it.
-    if (vizObj) { vizObj.dispose() }
+    // if (vizObj) { vizObj.dispose() }
 
     // Create a viz object and embed it in the container div.
     // eslint-disable-next-line
-    const vizObj = new tableau.Viz(vizContainer, props.viz, props.options);
+    // const vizObj = new tableau.Viz(vizContainer, props.viz, props.options);
   };
 
   const styleObj = {
