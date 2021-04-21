@@ -8,7 +8,6 @@ import { MDXRenderer } from "gatsby-plugin-mdx"
 export default function BlogPost({ data }) {
   const post = data.mdx;
   const meta = post.frontmatter;
-  const viz = meta.viz;
   const [tableauApi, setTableauApi] = useState("https://public.tableau.com/javascripts/api/tableau-2.7.0.min.js");
 
   return (
