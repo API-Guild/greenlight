@@ -1,13 +1,13 @@
 {
   "name": "greenlight",
   "private": true,
-  "description": "A simplified bare-bones starter for Gatsby",
+  "description": "A guerrilla data portal for analysts with deadlines",
   "version": "0.1.0",
   "license": "0BSD",
   "scripts": {
     "build": "gatsby build",
     "develop": "gatsby develop",
-    "format": "prettier --write \"**/*.{js,jsx,ts,tsx,json,md}\"",
+    "format": "prettier --write \"**/*.{js,jsx,ts,tsx,json,md,mdx}\"",
     "start": "npm run develop",
     "serve": "gatsby serve",
     "clean": "gatsby clean",

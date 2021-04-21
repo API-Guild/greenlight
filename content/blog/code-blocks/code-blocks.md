@@ -5,7 +5,7 @@ description: "This is where we will test some code blocks."
 ---
 
 # This is where we will test some code blocks.
-<hr>
+<hr/>
 
 #### JS code block
 ```js
@@ -26,5 +26,3 @@ gatsby develop
 #### Only back ticks
 - `code goes` here in this line
 - **bold** goes here
-
-
