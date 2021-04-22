@@ -13,6 +13,10 @@ import {
   isSize5,
   isSize6,
   isSize7,
+  table,
+  paragraph,
+  ul,
+  blockquote,
 } from "../components/bulmaElements/bulmaElements"
 
 export default function BlogPost({ data }) {
@@ -31,6 +35,10 @@ export default function BlogPost({ data }) {
     h5: isSize5,
     h6: isSize6,
     h7: isSize7,
+    table: table,
+    p: paragraph,
+    ul: ul,
+    blockquote: blockquote,
   }
 
   return (
