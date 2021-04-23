@@ -42,7 +42,7 @@ export default function BlogPost({ data }) {
   }
 
   return (
-    <h1>
+    <>
       <Helmet>
         {meta.tableauServer && meta.tableauVersion ? (
           <script type="text/javascript" src={fullPath} />
@@ -56,7 +56,7 @@ export default function BlogPost({ data }) {
           </MDXProvider>
         </div>
       </Layout>
-    </h1>
+    </>
   )
 }
 

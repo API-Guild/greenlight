@@ -5,7 +5,7 @@ description: "This is where we will test some code blocks."
 ---
 
 # This is where we will test some code blocks.
-<hr>
+<hr/>
 
 #### JS code block
 ```js
