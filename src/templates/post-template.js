@@ -17,7 +17,7 @@ export default function BlogPost({ data }) {
       </Helmet>
       <Layout>
         <Hero title={meta.title} subtitle={meta.description} date={meta.date} />
-        <div className="container is-fluid content">
+        <div className="container is-fluid">
           <MDXRenderer>{post.body}</MDXRenderer>
         </div>
       </Layout>

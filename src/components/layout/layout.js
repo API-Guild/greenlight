@@ -6,7 +6,7 @@ import Callout from "../callout/callout"
 import Tableau from "../tableau/tableau"
 import { MDXProvider } from "@mdx-js/react"
 
-const shortcodes = { Callout, Tableau }
+const shortcodes = { Callout, Tableau };
 
 export default function Layout({ children }) {
   return (
