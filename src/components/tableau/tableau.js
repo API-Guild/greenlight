@@ -25,6 +25,6 @@ export default function TableauApi(props) {
   }
 
   return (
-    <div id="vizContainer" className="container" />
+    <div id="vizContainer" className="container" style={styleObj} />
   )
 }
