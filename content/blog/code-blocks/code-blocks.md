@@ -26,5 +26,3 @@ gatsby develop
 #### Only back ticks
 - `code goes` here in this line
 - **bold** goes here
-
-

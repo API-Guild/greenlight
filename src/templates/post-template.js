@@ -1,5 +1,4 @@
 import React from "react"
-import Helmet from "react-helmet"
 import { graphql } from "gatsby"
 import Layout from "../components/layout/layout"
 import Hero from "../components/hero/hero"
@@ -20,11 +19,8 @@ import {
 } from "../components/bulmaElements/bulmaElements"
 
 export default function BlogPost({ data }) {
-  const post = data.mdx
-  const meta = post.frontmatter
-  const pathSegment = "/javascripts/api/"
-  const fullPath = meta.tableauServer + pathSegment + meta.tableauVersion
-  const viz = meta.viz
+  const post = data.mdx;
+  const meta = post.frontmatter;
 
   // const isSize1 = props => <h1 className="is-size-1" {...props} />
   const components = {
@@ -43,11 +39,6 @@ export default function BlogPost({ data }) {
 
   return (
     <>
-      <Helmet>
-        {meta.tableauServer && meta.tableauVersion ? (
-          <script type="text/javascript" src={fullPath} />
-        ) : null}
-      </Helmet>
       <Layout>
         <Hero title={meta.title} subtitle={meta.description} date={meta.date} />
         <div className="container is-fluid">

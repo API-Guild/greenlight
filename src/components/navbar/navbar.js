@@ -2,7 +2,7 @@ import React from "react"
 import greenlight from "../../assets/svg/greenlight.svg"
 import { graphql, Link, useStaticQuery } from "gatsby"
 
-export default function Header() {
+export default function Navbar() {
   // Toggles the dropdown menu upon hamburger clicks from tablet devices and smaller
   const showMenu = () => {
     const menu = document.getElementById("navMenu")
@@ -32,7 +32,6 @@ export default function Header() {
       }
     `
   )
-  console.log(data.allMdx)
 
   return (
     <nav className="navbar" role="navigation" aria-label="main navigation">
@@ -74,12 +73,6 @@ export default function Header() {
             </a>
 
             <div className="navbar-dropdown">
-              {/* <a className="navbar-item" href="/">Financials</a>
-              <a className="navbar-item" href="/">Supply Chain</a>
-              <a className="navbar-item" href="/">Sales</a>
-              <a className="navbar-item" href="/">QA/QC</a>
-              <a className="navbar-item" href="/">Marketing</a>
-              <a className="navbar-item" href="/">Human Resources</a> */}
               {data.allMdx.edges.map(({ node }) => (
                 <Link
                   to={node.fields.slug}

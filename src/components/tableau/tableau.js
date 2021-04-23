@@ -1,36 +1,30 @@
-import React, { useState, useEffect } from "react"
-import Helmet from "react-helmet"
-
+import React, { useEffect } from "react"
+import "./tableau.css"
 
 export default function TableauApi(props) {
 
-  const pathSegment = "/javascripts/api/";
-  const fullPath = props.server + pathSegment + props.version;
-
   useEffect(() => {
-    const initViz = () => {
-      const vizContainer = document.getElementById("vizContainer");
-  
-      // If a previous viz object exists, delete it.
-      // if (vizObj) { vizObj.dispose() }
-  
-      // Create a viz object and embed it in the container div.
-      // const vizObj = new tableau.Viz(vizContainer, props.viz, props.options);
-    };
-
     // Wait until the component mounts or updates to run initViz()
-    setTimeout(initViz(), 1000)
-    console.log('document loaded!', document)
-    console.log(fullPath)
-    console.log('vizContainer loaded!')
+    initViz();
   });
 
+  const initViz = () => {
+    const vizContainer = document.getElementById("vizContainer");
+
+    // If a previous viz object exists, delete it.
+    if (vizObj) { vizObj.dispose() }
+
+    // Create a viz object and embed it in the container div.
+    // eslint-disable-next-line
+    const vizObj = new tableau.Viz(vizContainer, props.viz, props.options);
+  };
+
+  const styleObj = {
+    height: props.options.height,
+    width: "100%"
+  }
+
   return (
-    <>
-      <Helmet>
-        <script type="text/javascript" src={fullPath} />
-      </Helmet>
-      <div id="vizContainer" />
-    </>
+    <div id="vizContainer" className="container" style={styleObj} />
   )
 }
