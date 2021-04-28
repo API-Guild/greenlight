@@ -1,10 +1,7 @@
 ---
-title: Hello World
-date: "2021-04-13"
-description: "This is my first post on my new fake blog! How exciting!"
-tableauServer: "https://public.tableau.com"
-tableauVersion: "tableau-2.7.0.min.js"
-viz: "https://public.tableau.com/views/FormStackExamples/SurveyResults"
+title: Elements
+date: "2021-04-19"
+description: "A reference displaying all of the Markdown content that Greenlight supports"
 ---
 
 I'm sure I'll write a lot more interesting things in the future.
