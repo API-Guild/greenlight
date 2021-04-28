@@ -10,7 +10,7 @@ import Greenlight from "./greenlight_image_copy.jpg"
 
 ## Getting Started With Greenlight
 
-Greenlight is a starter template for deploying a very fast and slick website for posting Data Visualizations. For example in this starter we use Tableau for our example tables.
+Greenlight is a starter template for deploying a very fast and slick website for posting Data Visualizations. For example in this starter we use Tableau for our sample tables.
 
 The starter accomplishes this by using Gatsby as the framework. However you don’t
 need to be an expert on Gatsby or React to use this starter but if you would like
@@ -59,4 +59,40 @@ When you open http://localhost:8000 you will see this sample site. Take a minute
    <br />
 4. Inside your `my-first-post` folder make a file called `my-first-post.mdx`.
    <br />
-5. Inside this file you first need to add your title
+5. Inside this file you first need to add your title, description and date of the post in the format below.
+
+```
+---
+title: Quick Start
+date: "2021-04-27"
+description: "A quick start guide on using Greenlight starter."
+---
+```
+
+6. For the most part you can write your post using normal Markdown syntax as you would any normal blog post. Where MDX comes into play is bringing in your data visualizations. For this example we are using our Tableau component which comes with Greenlight.
+
+```
+<Tableau
+  viz="https://public.tableau.com/views/Greenlight/GreenlightProfitDashboard"
+  options={{
+    width: 896,
+    height: 1250
+  }}
+/>
+```
+
+Using the `viz={your-url}` you can plug in your own URL's.
+
+#### When it renders it will look like this.
+
+<Tableau
+  viz="https://public.tableau.com/views/Greenlight/GreenlightProfitDashboard"
+  options={{
+    width: 896,
+    height: 1250,
+  }}
+/>
+
+## Conclusion
+
+I hope this quick start guide is able to help you see the ease of which you can have a very fast webesite to host your data up and running in no time.
