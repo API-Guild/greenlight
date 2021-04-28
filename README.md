@@ -20,6 +20,10 @@ The mission of this project is to provide a way for people who want to host thei
 ## Table of Contents
 
 1. [Installation](#Installation)
+2. [Usage](#Usage)
+3. [Contributions](#Contributions)
+4. [LICENSE](#LICENSE)
+5. [Maintainers](#Maintainers)
 
 ## Installation
 
@@ -68,3 +72,29 @@ Here is a diagram of the basic file structure of Greenlight.
 |-package.json
 |-README.md
 ```
+
+## Contributions
+
+We gladly welcome any contributions whether it is fixing bugs, documentation, or adding features. You can request an issue, fork the repo, work on the issue and then submit a pull request.
+
+## LICENSE
+
+The BSD Zero Clause License (0BSD)
+
+Copyright (c) 2020 Gatsby Inc.
+
+Permission to use, copy, modify, and/or distribute this software for any
+purpose with or without fee is hereby granted.
+
+THE SOFTWARE IS PROVIDED "AS IS" AND THE AUTHOR DISCLAIMS ALL WARRANTIES WITH
+REGARD TO THIS SOFTWARE INCLUDING ALL IMPLIED WARRANTIES OF MERCHANTABILITY
+AND FITNESS. IN NO EVENT SHALL THE AUTHOR BE LIABLE FOR ANY SPECIAL, DIRECT,
+INDIRECT, OR CONSEQUENTIAL DAMAGES OR ANY DAMAGES WHATSOEVER RESULTING FROM
+LOSS OF USE, DATA OR PROFITS, WHETHER IN AN ACTION OF CONTRACT, NEGLIGENCE OR
+OTHER TORTIOUS ACTION, ARISING OUT OF OR IN CONNECTION WITH THE USE OR
+PERFORMANCE OF THIS SOFTWARE.
+
+## Maintainers
+
+[Stephen Price](https://github.com/stephenlprice) <br>
+[Trevor Smith](https://github.com/trevorsmithbanjo)
