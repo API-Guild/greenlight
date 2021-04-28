@@ -1,0 +1,56 @@
+---
+title: Quick Start
+date: "2021-04-27"
+description: "A quick start guide on using Greenlight starter."
+---
+
+import Greenlight from "./greenlight_image_copy.jpg"
+
+<img src={Greenlight} alt="Greenlight" Width="400px" />
+
+## Getting Started With Greenlight
+
+Greenlight is a starter template for deploying a very fast and slick website for posting Data Visualizations. For example in this starter we use Tableau for our example tables.
+
+The starter accomplishes this by using Gatsby as the framework. However you don’t
+need to be an expert on Gatsby or React to use this starter but if you would like
+to learn more you can find info on Gatsby [here](https://www.gatsbyjs.com/).
+
+You can write started posts using markdown files but to accomplish embedding Tableau
+tables you have to use MDX files. MDX files are simply Markdown files that also support
+the use of Javascript within them. Similar to with Gatsby you don’t need to be an
+expert on MDX but you can find out more [here](https://mdxjs.com/).
+
+<br />
+
+## First Steps
+
+1. If you don't already have the Gatsby CLI installed then you can do so by using this command to install it globally to your machine.
+
+   ```
+   npm install -g gatsby-cli
+   ```
+
+2. Next you will install the Greenlight Gatsby Starter.
+
+   ```
+   gatsby new {your-project-name} https://github.com/API-Guild/greenlight
+   ```
+
+3. Then start the site in `develop` mode.
+
+   - First `cd your-project-name`.
+   - Then run `gatsby develop` in the command line.
+
+4. Open your site in the browser at `http://localhost:8000`
+   <br />
+
+## Lets break it down further.
+
+When you open http://localhost:8000 you will see this sample site. Take a minute to navigate around and get a feel for the site. This is your template that you can change as little or as much as you would like to. If you just want to move on to posting a blog post or some data visualizations we’ll go over those steps now.
+
+### Making a post
+
+1. There are many files and folders in the directory but to make a post you only need to use the `/content/blog` directory.
+2. Once you have navigated to the `/content/blog` directory make a new folder called `my-first-post`
+3. Inside that folder you can make a file that will be your post. You can use either Markdown or MDX files but for this example we will use MDX.
