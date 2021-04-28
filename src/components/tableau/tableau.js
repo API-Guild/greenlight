@@ -8,8 +8,8 @@ export default function Tableau(props) {
     onFirstVizSizeKnown: () => {
       onVizSize()
     },
-    width: "960px",
-    height: "850px"
+    width: props.options.width,
+    height: props.options.height
   };
   let viz;
 

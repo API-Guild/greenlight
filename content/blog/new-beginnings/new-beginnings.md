@@ -1,21 +1,19 @@
 ---
 title: New Beginnings
-date: "2021-04-12"
-description: "This is where you can post your data visualizations and your desciptions about them."
+date: "2021-04-20"
+description: "Hello World! I am so excited to start blogging...I'm sure my team will love my data visualizations"
 ---
 
-# This is where you can post your data visualizations and your desciptions about them.
+Far far away, behind the word mountains, far from the countries Vokalia and
+Consonantia, there live the blind texts. Separated they live in Bookmarksgrove
+right at the coast of the Semantics, a large language ocean. A small river named
+Duden flows by their place and supplies it with the necessary regelialia.
 
 | Number | Title                                    | Year |
 | :----- | :--------------------------------------- | ---: |
 | 1      | Harry Potter and the Philosopher’s Stone | 2001 |
 | 2      | Harry Potter and the Chamber of Secrets  | 2002 |
 | 3      | Harry Potter and the Prisoner of Azkaban | 2004 |
-
-Far far away, behind the word mountains, far from the countries Vokalia and
-Consonantia, there live the blind texts. Separated they live in Bookmarksgrove
-right at the coast of the Semantics, a large language ocean. A small river named
-Duden flows by their place and supplies it with the necessary regelialia.
 
 ## On deer horse aboard tritely yikes and much
 
