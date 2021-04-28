@@ -29,6 +29,12 @@ module.exports = {
   },
   /* Your site config here */
   plugins: [
+    {
+      resolve: `gatsby-source-filesystem`,
+      options: {
+        path: `${__dirname}/content/blog/`,
+      },
+    },
     `gatsby-plugin-sass`,
     {
       resolve: `gatsby-plugin-purgecss`,
@@ -51,18 +57,38 @@ module.exports = {
         path: `${__dirname}/content/blog/`,
       },
     },
+    `gatsby-plugin-react-helmet`,
+    `gatsby-plugin-sharp`,
+    `gatsby-remark-images`,
     {
       resolve: `gatsby-plugin-mdx`,
-
       options: {
         extensions: [`.mdx`, `.md`],
         gatsbyRemarkPlugins: [
           {
             resolve: `gatsby-remark-prismjs`,
+            resolve: `gatsby-remark-images`,
+            options: {
+              // It's important to specify the maxWidth (in pixels) of
+              // the content container as this plugin uses this as the
+              // base for generating different widths of each image.
+              maxWidth: 1408,
+              backgroundColor: "none",
+            },
           },
         ],
       },
     },
-    `gatsby-plugin-react-helmet`,
+    // {
+    //   resolve: `gatsby-plugin-mdx`,
+    //   options: {
+    //     extensions: [`.mdx`, `.md`],
+    //     gatsbyRemarkPlugins: [
+    //       {
+    //         resolve: `gatsby-remark-prismjs`,
+    //       },
+    //     ],
+    //   },
+    // },
   ],
 }
