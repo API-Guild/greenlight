@@ -4,9 +4,7 @@ date: "2021-04-27"
 description: "A guide on using the Greenlight Gatsby Starter."
 ---
 
-import Greenlight from "./greenlight_image_copy.jpg"
-
-<img src={Greenlight} alt="Greenlight" Width="400px" />
+![Greenlight](./greenlight.jpg)
 
 ## Getting Started With Greenlight
 
@@ -28,13 +26,13 @@ You don’t need to be an expert on MDX either, you can learn more about it [her
 
 1. If you don't already have the Gatsby CLI installed then you can do so by using this command to install it globally to your machine.
 
-   ```
+   ```bash
    npm install -g gatsby-cli
    ```
 
 2. Next you will install the Greenlight Gatsby Starter.
 
-   ```
+   ```bash
    gatsby new {your-project-name} https://github.com/API-Guild/greenlight
    ```
 
@@ -48,7 +46,7 @@ You don’t need to be an expert on MDX either, you can learn more about it [her
 
 ## Lets break it down further.
 
-When you open http://localhost:8000 you will see this sample site. Take a minute to navigate around and get a feel for the site. This is your template that you can change as little or as much as you would like to. If you just want to move on to posting a blog post or some data visualizations we’ll go over those steps now.
+When you open `http://localhost:8000` you will see this sample site. Take a minute to navigate around and get a feel for the site. This is your template that you can change as little or as much as you would like to. If you just want to move on to posting a blog post or some data visualizations we’ll go over those steps now.
 
 ### Making a post
 
@@ -62,7 +60,7 @@ When you open http://localhost:8000 you will see this sample site. Take a minute
    <br />
 5. Inside this file you first need to add your title, description and date of the post in the format below.
 
-```
+```yaml
 ---
 title: Quick Start
 date: "2021-04-27"
@@ -72,7 +70,7 @@ description: "A quick start guide on using Greenlight starter."
 
 6. For the most part you can write your post using normal Markdown syntax as you would any normal blog post. Where MDX comes into play is bringing in your data visualizations. For this example we are using our Tableau component which comes with Greenlight.
 
-```
+```javascript
 <Tableau
   viz="https://public.tableau.com/views/Greenlight/GreenlightProfitDashboard"
   options={{
