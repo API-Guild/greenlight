@@ -36,10 +36,10 @@ export default function Navbar() {
   return (
     <nav className="navbar" role="navigation" aria-label="main navigation">
       <div className="navbar-brand">
-        <a className="navbar-item" href="/">
+        <Link className="navbar-item" to="/">
           <img className="logo" src={greenlight} alt="logo" />
           Greenlight
-        </a>
+        </Link>
 
         <span
           id="burger"
@@ -60,17 +60,17 @@ export default function Navbar() {
 
       <div id="navMenu" className="navbar-menu">
         <div className="navbar-start">
-          <a className="navbar-item" href="/about">
+          <Link className="navbar-item" to="/about">
             About
-          </a>
-          <a className="navbar-item" href="/contact">
+          </Link>
+          <Link className="navbar-item" to="/contact">
             Contact
-          </a>
+          </Link>
 
           <div className="navbar-item has-dropdown is-hoverable">
-            <a className="navbar-link" href="/dashboards">
+            <Link className="navbar-item" to="/dashboards">
               Dashboards
-            </a>
+            </Link>
 
             <div className="navbar-dropdown">
               {data.allMdx.edges.map(({ node }) => (
@@ -83,9 +83,9 @@ export default function Navbar() {
                 </Link>
               ))}
               <hr className="navbar-divider"></hr>
-              <a className="navbar-item" href="/">
+              <Link className="navbar-item" to="/dashboards">
                 Explore
-              </a>
+              </Link>
             </div>
           </div>
         </div>
