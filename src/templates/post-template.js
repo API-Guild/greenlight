@@ -16,13 +16,14 @@ import {
   paragraph,
   ul,
   blockquote,
+  ol,
 } from "../components/bulmaElements/bulmaElements"
 
 export default function BlogPost({ data }) {
-  const post = data.mdx;
-  const meta = post.frontmatter;
+  const post = data.mdx
+  const meta = post.frontmatter
 
-  // const isSize1 = props => <h1 className="is-size-1" {...props} />
+  // Applying Bulma classes to markup generated from markdown
   const components = {
     h1: isSize1,
     h2: isSize2,
@@ -35,6 +36,7 @@ export default function BlogPost({ data }) {
     p: paragraph,
     ul: ul,
     blockquote: blockquote,
+    ol: ol,
   }
 
   return (
@@ -59,9 +61,6 @@ export const query = graphql`
         title
         description
         date
-        tableauServer
-        tableauVersion
-        viz
       }
     }
   }
