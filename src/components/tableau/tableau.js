@@ -5,13 +5,15 @@ export default function Tableau(props) {
 
   const [loaded, setLoaded] = useState(false);
   const vizOptions = {
+    width: props.options.width,
+    height: props.options.height,
     onFirstVizSizeKnown: () => {
       onVizSize()
     },
-    width: props.options.width,
-    height: props.options.height
+    onFirstInteractive: () => {
+    }
   };
-  let viz;
+  let vizObj;
 
   useEffect(() => {
     loadAPI()
@@ -22,7 +24,7 @@ export default function Tableau(props) {
     // Wait until the component mounts or updates to run initViz()
     console.log('options', props.options)
     initViz()
-    console.log('viz', viz)
+    console.log('viz', vizObj)
     vizEvents()
   }, [loaded]);
 
@@ -41,20 +43,18 @@ export default function Tableau(props) {
     const vizContainer = document.getElementById("vizContainer");
 
     // If a previous viz object exists, delete it.
-    if (viz) { viz.dispose() }
+    if (vizObj) { vizObj.dispose() }
 
     // Create a viz object and embed it in the container div.
     // eslint-disable-next-line
-    viz = new tableau.Viz(vizContainer, props.viz, vizOptions);
+    vizObj = new tableau.Viz(vizContainer, props.viz, vizOptions);
   };
 
   const onVizSize = (VizResizeEvent) => {
-    console.log('resize', viz.getVizSize())
+    console.log('resize', vizObj.getVizSize())
   };
 
   const vizEvents = () => {
-    // eslint-disable-next-line
-    viz.addEventListener(tableau.TableauEventName.VIZ_RESIZE, onVizSize);
   };
 
   return (
