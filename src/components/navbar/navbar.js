@@ -14,6 +14,12 @@ export default function Navbar() {
     burger.classList.toggle("is-active")
   };
 
+  const showDropdown = () => {
+    const dropdown = document.getElementById("dashboardDropdown");
+
+    dropdown.classList.toggle("is-active")
+  };
+
   // Gatsby hook for graphql queries that aren't page components
   const data = useStaticQuery(
     graphql`
@@ -43,7 +49,7 @@ export default function Navbar() {
           Greenlight
         </Link>
 
-        <span
+        <a
           id="burger"
           role="button"
           className="navbar-burger"
@@ -57,7 +63,7 @@ export default function Navbar() {
           <span aria-hidden="true" data-target="navMenu"></span>
           <span aria-hidden="true" data-target="navMenu"></span>
           <span aria-hidden="true" data-target="navMenu"></span>
-        </span>
+        </a>
       </div>
 
       <div id="navMenu" className="navbar-menu">
@@ -70,11 +76,11 @@ export default function Navbar() {
           </Link>
 
           <div className="navbar-item has-dropdown is-hoverable">
-            <Link className="navbar-link" to="/dashboards">
+            <Link className="navbar-link" to="/dashboards" onClick={showDropdown}>
               Dashboards
             </Link>
 
-            <div className="navbar-dropdown">
+            <div id="dashboardDropdown" className="navbar-dropdown">
               {data.allMdx.edges.map(({ node }) => (
                 <Link
                   to={node.fields.slug}
