@@ -1,22 +1,17 @@
 import React from "react"
 import { graphql, Link, useStaticQuery } from "gatsby"
 import greenlight from "../../assets/svg/greenlight.svg"
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faSearch } from '@fortawesome/free-solid-svg-icons'
+import Search from "../search/search"
 
 
 export default function Navbar() {
   // Toggles the dropdown menu upon hamburger clicks from tablet devices and smaller
   const showMenu = () => {
-    const menu = document.getElementById("navMenu")
-    const burger = document.getElementById("burger")
+    const menu = document.getElementById("navMenu");
+    const burger = document.getElementById("burger");
 
     menu.classList.toggle("is-active")
     burger.classList.toggle("is-active")
-  };
-
-  const clearExplore = () => {
-    document.getElementById("exploreInput").value = "";
   };
 
   // Gatsby hook for graphql queries that aren't page components
@@ -90,16 +85,8 @@ export default function Navbar() {
                 </Link>
               ))}
               <hr className="navbar-divider"></hr>
-              <div id="exploreSearch" className="field">
-                <p className="control has-icons-left has-icons-right">
-                  <input id="exploreInput" className="input" type="text" placeholder="Explore" role="searchbox"/>
-                  <span className="icon is-small is-left">
-                    <FontAwesomeIcon icon={faSearch}/>
-                  </span>
-                  <span className="icon is-small is-right" onClick={clearExplore} onKeyPress={clearExplore} role="button" tabIndex={0}>
-                    <button className="delete is-small" aria-label="clear explore"/>
-                  </span>
-                </p>
+              <div id="exploreSearch">
+                <Search/>
               </div>
             </div>
           </div>
