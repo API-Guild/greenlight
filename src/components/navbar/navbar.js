@@ -2,6 +2,7 @@ import React from "react"
 import { graphql, Link, useStaticQuery } from "gatsby"
 import greenlight from "../../assets/svg/greenlight.svg"
 import Search from "../search/search"
+import Dropdown from "../dropdown/dropdown"
 
 
 export default function Navbar() {
@@ -12,12 +13,6 @@ export default function Navbar() {
 
     menu.classList.toggle("is-active")
     burger.classList.toggle("is-active")
-  };
-
-  const showDropdown = () => {
-    const dropdown = document.getElementById("dashboardDropdown");
-
-    dropdown.classList.toggle("is-active")
   };
 
   // Gatsby hook for graphql queries that aren't page components
@@ -49,7 +44,7 @@ export default function Navbar() {
           Greenlight
         </Link>
 
-        <a
+        <span
           id="burger"
           role="button"
           className="navbar-burger"
@@ -63,7 +58,7 @@ export default function Navbar() {
           <span aria-hidden="true" data-target="navMenu"></span>
           <span aria-hidden="true" data-target="navMenu"></span>
           <span aria-hidden="true" data-target="navMenu"></span>
-        </a>
+        </span>
       </div>
 
       <div id="navMenu" className="navbar-menu">
@@ -75,27 +70,21 @@ export default function Navbar() {
             Contact
           </Link>
 
-          <div className="navbar-item has-dropdown is-hoverable">
-            <Link className="navbar-link" to="/dashboards" onClick={showDropdown}>
-              Dashboards
-            </Link>
-
-            <div id="dashboardDropdown" className="navbar-dropdown">
-              {data.allMdx.edges.map(({ node }) => (
-                <Link
-                  to={node.fields.slug}
-                  className="navbar-item"
-                  key={node.id}
-                >
-                  {node.frontmatter.title}
-                </Link>
-              ))}
-              <hr className="navbar-divider"></hr>
-              <div id="exploreSearch">
-                <Search/>
-              </div>
+          <Dropdown title="Dashboards" to="/dashboards">
+            {data.allMdx.edges.map(({ node }) => (
+              <Link
+                to={node.fields.slug}
+                className="navbar-item"
+                key={node.id}
+              >
+                {node.frontmatter.title}
+              </Link>
+            ))}
+            <hr className="navbar-divider"></hr>
+            <div id="exploreSearch">
+              <Search/>
             </div>
-          </div>
+          </Dropdown>
         </div>
 
         <div className="navbar-end">
