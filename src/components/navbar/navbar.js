@@ -83,6 +83,7 @@ export default function Navbar() {
             </Link>
             <hr className="navbar-divider"></hr>
             
+            {/* nodes obtained from the content/blog folder */}
             {data.allMdx.edges.map(({ node }) => (
               <Link
                 to={node.fields.slug}

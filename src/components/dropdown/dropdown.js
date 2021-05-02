@@ -11,7 +11,7 @@ export default function Dropdown(props) {
 
   return (
     <div className="navbar-item has-dropdown is-hoverable">
-      <span class="navbar-link" onClick={showDropdown}>
+      <span className="navbar-link" onClick={showDropdown} onKeyPress={showDropdown} role="button" tabIndex={0}>
         {props.title}
       </span>
       
