@@ -80,10 +80,11 @@ main.main {
 }
 
 div#exploreSearch {
-  padding: 0rem 0.5rem;
+  padding: 0.5rem 0.5rem 0rem 0.5rem;
 }
 
 .navbar-dropdown {
+  border-top: 1px solid;
   border-top-color: $grey-dark;
 }
 

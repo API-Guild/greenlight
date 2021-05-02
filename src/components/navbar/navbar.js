@@ -1,5 +1,7 @@
 import React from "react"
 import { graphql, Link, useStaticQuery } from "gatsby"
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faListUl } from '@fortawesome/free-solid-svg-icons'
 import greenlight from "../../assets/svg/greenlight.svg"
 import Search from "../search/search"
 import Dropdown from "../dropdown/dropdown"
@@ -69,8 +71,18 @@ export default function Navbar() {
           <Link className="navbar-item" to="/contact">
             Contact
           </Link>
-
-          <Dropdown title="Dashboards" to="/dashboards">
+          
+          <Dropdown title="Dashboards">
+            <Link to="/explore" className="navbar-item">
+              <span className="icon-text has-text-weight-bold">
+                <span className="icon">
+                  <FontAwesomeIcon icon={faListUl}/>
+                </span>
+                <span>Explore</span>
+              </span>
+            </Link>
+            <hr className="navbar-divider"></hr>
+            
             {data.allMdx.edges.map(({ node }) => (
               <Link
                 to={node.fields.slug}
@@ -80,7 +92,6 @@ export default function Navbar() {
                 {node.frontmatter.title}
               </Link>
             ))}
-            <hr className="navbar-divider"></hr>
             <div id="exploreSearch">
               <Search/>
             </div>

@@ -12,12 +12,12 @@ export default function Search() {
   return (
     <div className="field">
       <p className="control has-icons-left has-icons-right">
-        <input id={compId} className="input" type="text" placeholder="Explore" role="searchbox"/>
+        <input id={compId} className="input" type="text" placeholder="Search" role="searchbox"/>
         <span className="icon is-small is-left">
           <FontAwesomeIcon icon={faSearch}/>
         </span>
         <span className="icon is-small is-right" onClick={clearExplore} onKeyPress={clearExplore} role="button" tabIndex={0}>
-          <button className="delete is-small" aria-label="clear explore"/>
+          <button className="delete is-small" aria-label="clear search"/>
         </span>
       </p>
     </div>
