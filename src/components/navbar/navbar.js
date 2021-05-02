@@ -5,6 +5,7 @@ import { faListUl } from '@fortawesome/free-solid-svg-icons'
 import greenlight from "../../assets/svg/greenlight.svg"
 import Search from "../search/search"
 import Dropdown from "../dropdown/dropdown"
+import Auth from "../auth/auth"
 
 
 export default function Navbar() {
@@ -101,12 +102,7 @@ export default function Navbar() {
 
         <div className="navbar-end">
           <div className="navbar-item">
-            <div className="buttons">
-              <button className="button is-primary">
-                <strong>Sign up</strong>
-              </button>
-              <button className="button is-light">Log in</button>
-            </div>
+            <Auth/>
           </div>
         </div>
       </div>
