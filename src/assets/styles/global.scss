@@ -84,6 +84,10 @@ div#exploreSearch {
   padding: 0.5rem 0.5rem 0rem 0.5rem;
 }
 
+span#burger:focus {
+  outline-style: none;
+}
+
 .navbar-link:focus {
   outline-style: none;
 }
