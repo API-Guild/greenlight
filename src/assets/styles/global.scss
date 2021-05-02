@@ -52,6 +52,7 @@ $link: $accentMain;
 $link-hover: $grey-light;
 $link-visited: $grey-lighter;
 $code: $masago;
+$link-focus-border: $accentMain;
 
 $input-color: $white;
 $input-icon-color: $white;
@@ -81,6 +82,10 @@ main.main {
 
 div#exploreSearch {
   padding: 0.5rem 0.5rem 0rem 0.5rem;
+}
+
+.navbar-link:focus {
+  outline-style: none;
 }
 
 .navbar-dropdown {
