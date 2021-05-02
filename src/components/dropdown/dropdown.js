@@ -1,5 +1,4 @@
 import React from "react"
-import { Link } from "gatsby"
 
 export default function Dropdown(props) {
   const compId = Math.random().toString(36).substr(2, 9);
@@ -12,10 +11,10 @@ export default function Dropdown(props) {
 
   return (
     <div className="navbar-item has-dropdown is-hoverable">
-      <Link className="navbar-link" to={props.to} onClick={showDropdown}>
+      <span className="navbar-link" onClick={showDropdown} onKeyPress={showDropdown} role="button" tabIndex={0}>
         {props.title}
-      </Link>
-
+      </span>
+      
       <div id={compId} className="navbar-dropdown">
         {props.children}
       </div>
