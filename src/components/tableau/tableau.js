@@ -6,7 +6,8 @@ export default function Tableau(props) {
   // used to delay initializing the Tableau viz until the external JS API file has been loaded
   const [loaded, setLoaded] = useState(false);
   let vizObj;
-  const apiID = "tableauAPI-" + Math.random().toString(36).substr(2, 9);
+  const apiID = "tableauAPI-" + Math.random().toString(36).substr(2, 10);
+  const vizID = "vizID-" + Math.random().toString(36).substr(2, 10);
   const vizOptions = {
     width: props.options.width,
     height: props.options.height,
@@ -32,10 +33,22 @@ export default function Tableau(props) {
   }, [loaded]);
 
   const loadAPI = () => {
+    // creates an HTMLCollection of Tableau API script tags to avoid duplicating them
+    const tableauScripts = document.getElementsByClassName("tableauAPI");
+    if (tableauScripts.length > 0) {
+      for (let i = 0; i < tableauScripts.length; i++ ) {
+        console.log('tableauScripts: ' + i,tableauScripts[i]);
+        if (tableauScripts[i].src === "https://public.tableau.com/javascripts/api/tableau-2.7.0.min.js") {
+          return initViz()
+        }
+      }
+    }
+
     if (document.getElementById(apiID)) return initViz()
 
     const tableauAPI = document.createElement('script');
     tableauAPI.id = apiID;
+    tableauAPI.className = "tableauAPI";
     tableauAPI.type = "text/javascript";
     tableauAPI.src = "https://public.tableau.com/javascripts/api/tableau-2.7.0.min.js";
     tableauAPI.defer = true;
