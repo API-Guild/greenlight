@@ -36,7 +36,7 @@ export const isSize7 = props => (
   </h7>
 )
 export const table = props => (
-  <table className="table" {...props}>
+  <table className="table is-striped is-hoverable is-fullwidth" {...props}>
     {props.children}
   </table>
 )

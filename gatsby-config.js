@@ -22,9 +22,10 @@ module.exports = {
         portfolio: `https://trevorsmithbanjo.github.io/#/`,
       },
     ],
-    description: `A guerrilla data portal for analysts with deadlines.`,
-    siteUrl: `http://localhost:8000`,
-    image: `/static/greenlight-a77dbefffbe88458b1591453d8476397.svg`,
+    description: `A guerrilla data portal for analysts with deadlines. 
+    Built with Gatsby and Tableau.`,
+    siteUrl: `https://api-guild.github.io/greenlight/`,
+    image: `/svg/greenlight.svg`,
     siteLanguage: `en`,
   },
   pathPrefix: "/greenlight",
