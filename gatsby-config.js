@@ -27,6 +27,7 @@ module.exports = {
     image: `/static/greenlight-a77dbefffbe88458b1591453d8476397.svg`,
     siteLanguage: `en`,
   },
+  pathPrefix: "/greenlight",
   /* Your site config here */
   plugins: [
     {
