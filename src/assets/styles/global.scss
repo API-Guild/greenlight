@@ -29,9 +29,13 @@ $accentMain: $greenlight;
 ///////////// ** SITE THEMING ENDS HERE! ** /////////////
 
 // variables declared before importing Bulma to override their values (set to one of the above variables or add your own)
+// full list of Bulma variables are described here: https://bulma.io/documentation/customize/variables/
 
+// Left & Right gap on the app
 $gap: 64px;
 
+// Main Color Schemes
+$primary: $accentMain;
 $black: $accentMain;
 $black-ter: findLightColor($accentMain);
 $white: $milk;
@@ -39,34 +43,45 @@ $white-ter: findLightColor($white);
 $white-bis: findDarkColor($white);
 $light: $overcast;
 
-$text: $light;
-$text-strong: $white-bis;
-
+// Background Colors
 $background: $darkTheme; 
 $scheme-main: $darkTheme;
 $scheme-main-bis: $darkTheme;
+
+// Text
+$text: $light;
+$text-strong: $white-bis;
+
+// Code Blocks
+$code: $masago;
 $code-background: $nori;
 
-$primary: $accentMain;
+// Links
 $link: $accentMain;
 $link-hover: $grey-light;
 $link-visited: $grey-lighter;
-$code: $masago;
 $link-focus-border: $accentMain;
 
+// Inputs (for forms and search bars)
 $input-color: $white;
 $input-icon-color: $white;
 $input-border-color: $grey;
 
+// Navbar
 $navbar-divider-background-color: $grey-darker;
 
+// Horizontal Rules (thematic breaklines)
 $hr-background-color: $grey-dark;
 
+// Tables
 $table-row-hover-background-color: $grey-dark;
 $table-striped-row-even-background-color: $grey-darker;
 $table-striped-row-even-hover-background-color: $grey-dark;
+$table-cell-heading-color: $accentMain;
 
 @import "~bulma/bulma.sass";
+
+// Local CSS classes
 
 html, body {
   height: 100%;
