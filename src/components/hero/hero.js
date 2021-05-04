@@ -1,14 +1,18 @@
 import React from "react"
 
-export default function Hero() {
+export default function Hero(props) {
   return (
     <section className="section">
       <div className="container is-justify-content-flex-start">
         <p className="title has-text-primary is-1">
-          Greenlight
+          {props.title}
         </p>
         <p className="subtitle is-4">
-          A guerrilla <strong>data portal</strong> for analysts with deadlines.
+          {props.subtitle}
+        </p>
+        {/* Used for dates on blog posts */}
+        <p className="subtitle date is-7"> 
+          {props.date}
         </p>
       </div>
     </section>

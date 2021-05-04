@@ -8,14 +8,18 @@ import vizBuilders from "../assets/svg/undraw_Data_re_80ws.svg"
 export default function Home() {
   return (
     <Layout>
-      <Hero/>
-      <Cartoon svg={vizBuilders}/>
+      <Hero title="Greenlight" subtitle={<span>A guerrilla <strong>data portal</strong> for analysts with deadlines.</span>} />
+      <Cartoon svg={vizBuilders} />
       <section className="section">
         <Callout
-          type={"primary"} 
-          title={"Callout"} 
-          subtitle={<div>A simple container to make <strong>callouts</strong>, 
-          using styles as defined for the component.</div>}
+          type={"primary"}
+          title={"Callout"}
+          subtitle={
+            <div>
+              A simple container to make <strong>callouts</strong>, using styles
+              as defined for the component.
+            </div>
+          }
         />
       </section>
     </Layout>

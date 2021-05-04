@@ -1,1 +1,3 @@
-import "./src/pages/global.scss"
+import "./src/assets/styles/global.scss"
+
+require("prismjs/themes/prism-tomorrow.css")

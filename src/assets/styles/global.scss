@@ -1,0 +1,172 @@
+@charset "utf-8";
+
+// Importing Bulma variables so they may be used or be overwritten before building css
+@import "~bulma/sass/utilities/initial-variables";
+
+// colors use hsl to allow Bulma to optimize their values for readability
+// for more info see: https://bulma.io/documentation/overview/functions/#the-code-findcolorinvert-code-function
+
+///////////// ** MODIFY COLOR PALETTE HERE! ** /////////////
+
+$greenlight: hsl(167,90%,50%); // equivalent to #0DF2C1
+$milk: hsl(210,50%,99%); //equivalent to #FBFCFE
+$overcast: hsl(240,4%,95%);
+$night: hsl(0,0%,5%); // equivalent to #0D0D0D
+$canary: hsl(55,79%,53%);
+$tulip: hsl(350,78%,75%);
+$masago: hsl(28,97%,49%);
+$avocado: hsl(68,90%,43%);
+$salmon: hsl(8,89%,65%);
+$nori: hsl(32,32%,10%);
+
+///////////// ** MODIFY SITE THEMES HERE! ** /////////////
+
+// brand color scheme
+$darkTheme: $night;
+$lightTheme: $milk;
+$accentMain: $greenlight;
+
+///////////// ** SITE THEMING ENDS HERE! ** /////////////
+
+// variables declared before importing Bulma to override their values (set to one of the above variables or add your own)
+// full list of Bulma variables are described here: https://bulma.io/documentation/customize/variables/
+
+// Left & Right gap on the app
+$gap: 48px;
+
+// Main Color Schemes
+$primary: $accentMain;
+$black: $accentMain;
+$black-ter: findLightColor($accentMain);
+$white: $milk;
+$white-ter: findLightColor($white);
+$white-bis: findDarkColor($white);
+$light: $overcast;
+
+// Background Colors
+$background: $darkTheme; 
+$scheme-main: $darkTheme;
+$scheme-main-bis: $darkTheme;
+
+// Text
+$text: $light;
+$text-strong: $white-bis;
+
+// Code Blocks
+$code: $masago;
+$code-background: $nori;
+
+// Links
+$link: $accentMain;
+$link-hover: $grey-light;
+$link-visited: $grey-lighter;
+$link-focus-border: $accentMain;
+
+// Inputs (for forms and search bars)
+$input-color: $white;
+$input-icon-color: $white;
+$input-border-color: $grey;
+
+// Navbar
+$navbar-divider-background-color: $grey-darker;
+
+// Horizontal Rules (thematic breaklines)
+$hr-background-color: $grey-dark;
+
+// Tables
+$table-row-hover-background-color: $grey-dark;
+$table-striped-row-even-background-color: $grey-darker;
+$table-striped-row-even-hover-background-color: $grey-dark;
+$table-cell-heading-color: $accentMain;
+
+// Panels
+$panel-block-color: $white;
+$panel-icon-color: $white;
+$panel-block-hover-background-color: $grey-darker;
+$panel-block-active-color: $accentMain;
+$panel-block-active-icon-color: $accentMain;
+$panel-block-active-border-left-color: $accentMain;
+$panel-tab-active-color: $white;
+$panel-item-border: $grey-darker;
+
+// Content <p>, <h1>...<h6>, <ul>, <ol>, <blockquote>, <table>, <strong>
+$content-blockquote-background-color: $grey-darker;
+
+@import "~bulma/bulma.sass";
+
+// Local CSS classes
+
+html, body {
+  height: 100%;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  margin: 1rem 0rem;
+}
+
+// Sets the display to flex so we can implement a sticky footer by allowing main to expand as needed
+div.site {
+  display: flex;
+  min-height: 100vh;
+  flex-direction: column;
+}
+
+// Lets main expand as needed with flex-grow
+main.main {
+  flex-grow: 1;
+}
+
+div#exploreSearch {
+  padding: 0.5rem 0.5rem 0rem 0.5rem;
+}
+
+span#burger:focus {
+  outline-style: none;
+}
+
+.navbar-link:focus {
+  outline-style: none;
+}
+
+.navbar-dropdown {
+  border-top: 1px solid;
+  border-top-color: $grey-dark;
+}
+
+@media screen and (max-width: 1024px) {
+  .navbar-dropdown .is-active {
+    display: block;
+  }
+  .navbar-dropdown:not(.is-active) {
+    display: none;
+  }
+}
+
+.panel {
+  margin: 2rem 2rem;
+}
+
+.contentIndexArticle {
+  margin: 0rem 0.5rem;
+  word-break: break-all;
+}
+
+img.logo {
+  height: 1.5em;
+  margin-left: 1.5em;
+  margin-right: 0.5em;
+}
+
+img.hero {
+  height: 0.75em;
+  margin-left: 1.5em;
+  margin-right: 0.5em;
+}
+
+img.cartoon-pages {
+  width: 25rem;
+}
+
+p.subtitle.date {
+  margin-top: -1.25rem;
+}
