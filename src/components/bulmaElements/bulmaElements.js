@@ -30,6 +30,11 @@ export const isSize6 = props => (
     {props.children}
   </h6>
 )
+export const isSize7 = props => (
+  <h6 className="is-size-7-tablet" {...props}>
+    {props.children}
+  </h6>
+)
 export const table = props => (
   <table className="table is-bordered is-striped is-hoverable is-fullwidth" {...props}>
     {props.children}

@@ -79,6 +79,16 @@ $table-striped-row-even-background-color: $grey-darker;
 $table-striped-row-even-hover-background-color: $grey-dark;
 $table-cell-heading-color: $accentMain;
 
+// Panels
+$panel-block-color: $white;
+$panel-icon-color: $white;
+$panel-block-hover-background-color: $grey-darker;
+$panel-block-active-color: $accentMain;
+$panel-block-active-icon-color: $accentMain;
+$panel-block-active-border-left-color: $accentMain;
+$panel-tab-active-color: $white;
+$panel-item-border: $grey-darker;
+
 // Content <p>, <h1>...<h6>, <ul>, <ol>, <blockquote>, <table>, <strong>
 $content-blockquote-background-color: $grey-darker;
 
@@ -130,6 +140,10 @@ span#burger:focus {
   .navbar-dropdown:not(.is-active) {
     display: none;
   }
+}
+
+.panel {
+  margin: 2rem 2rem;
 }
 
 img.logo {

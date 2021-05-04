@@ -10,7 +10,6 @@ export default function Search() {
   };
 
   return (
-    <div className="field">
       <p className="control has-icons-left has-icons-right">
         <input id={compId} className="input" type="text" placeholder="Search" role="searchbox"/>
         <span className="icon is-small is-left">
@@ -20,6 +19,5 @@ export default function Search() {
           <button className="delete is-small" aria-label="clear search"/>
         </span>
       </p>
-    </div>
   )
 }
