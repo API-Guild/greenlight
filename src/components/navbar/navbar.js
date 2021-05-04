@@ -73,7 +73,7 @@ export default function Navbar() {
             Contact
           </Link>
           
-          <Dropdown title="Dashboards">
+          <Dropdown title="Blog">
             <Link to="/explore" className="navbar-item">
               <span className="icon-text has-text-weight-bold">
                 <span className="icon">
