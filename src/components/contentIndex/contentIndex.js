@@ -8,11 +8,6 @@ import Search from "../search/search"
 // Creates an index component listing posts on pages such as Explore
 export default function ContentIndex(props) {
 
-  console.log('content', props.content)
-
-  const makeActive = (event) => {
-    event.target.classList.toggle("is-active")
-  }
 
   return (
     <div className="container is-max-desktop">
@@ -32,17 +27,27 @@ export default function ContentIndex(props) {
         </div>
 
         {props.content.map((item) => (
-          <Link
-            to={item.fields.slug}
-            className="panel-block contentIndexArticle has-text-weight-medium"
-            onClick={makeActive}
-            key={Math.random().toString(36).substr(2, 10)}
-          >
-            <span className="panel-icon">
-              <FontAwesomeIcon icon={faFileInvoice}/>
-            </span>
-            {item.frontmatter.title}
-          </Link>
+          <span>
+            <Link
+              to={item.fields.slug}
+              className="panel-block contentIndexArticle is-active"
+              key={Math.random().toString(36).substr(2, 10)}
+            >
+              <span className="panel-icon is-flex-shrink-0">
+                <FontAwesomeIcon icon={faFileInvoice}/>
+              </span>
+              <span className="has-text-weight-medium is-flex-grow-1">
+                {item.frontmatter.title}
+              </span>
+              <span className="has-text-weight-light is-flex-shrink-0">
+                {item.frontmatter.date}
+              </span>
+            </Link>
+              <p className="contentIndexDesc has-text-weight-light has-text-left">
+                {item.frontmatter.description}
+              </p>
+              <br/>
+          </span>
         ))}
 
         <div className="panel-block">
@@ -53,7 +58,6 @@ export default function ContentIndex(props) {
             <span>Reset all filters</span>
           </button>
         </div>
-
       </nav>
     </div>
   )
