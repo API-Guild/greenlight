@@ -1,1 +1,1 @@
-{"data":{"site":{"siteMetadata":{"defaultTitle":"Greenlight","defaultDescription":"A guerrilla data portal for analysts with deadlines.","siteUrl":"http://localhost:8000","defaultImage":"/static/greenlight-a77dbefffbe88458b1591453d8476397.svg","defaultLanguage":"en"}}}}
+{"data":{"site":{"siteMetadata":{"defaultTitle":"Greenlight","defaultDescription":"A guerrilla data portal for analysts with deadlines. \n    Built with Gatsby and Tableau.","siteUrl":"https://api-guild.github.io/greenlight","defaultImage":"/svg/greenlight.svg","defaultLanguage":"en"}}}}
