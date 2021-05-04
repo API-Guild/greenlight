@@ -1,5 +1,4 @@
 import React from "react"
-import greenlight from "../../assets/svg/greenlight.svg"
 
 export default function Footer() {
   return (

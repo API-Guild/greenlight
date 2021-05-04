@@ -1,4 +1,5 @@
 import React from "react"
+import { Link } from "gatsby"
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faFileInvoice, faUndoAlt, faListUl  } from '@fortawesome/free-solid-svg-icons'
 import Search from "../search/search"
@@ -31,14 +32,17 @@ export default function ContentIndex(props) {
         </div>
 
         {props.content.map((item) => (
-          <a className="panel-block contentIndexArticle has-text-weight-medium" 
-            href={item.fields.slug} onClick={makeActive} key={Math.random().toString(36).substr(2, 10)}
+          <Link
+            to={item.fields.slug}
+            className="panel-block contentIndexArticle has-text-weight-medium"
+            onClick={makeActive}
+            key={Math.random().toString(36).substr(2, 10)}
           >
             <span className="panel-icon">
               <FontAwesomeIcon icon={faFileInvoice}/>
             </span>
             {item.frontmatter.title}
-          </a>
+          </Link>
         ))}
 
         <div className="panel-block">
