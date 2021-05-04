@@ -1,50 +1,59 @@
 import React from "react"
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faFileInvoice } from '@fortawesome/free-solid-svg-icons'
-import { faUndoAlt } from '@fortawesome/free-solid-svg-icons'
+import { faFileInvoice, faUndoAlt, faListUl  } from '@fortawesome/free-solid-svg-icons'
 import Search from "../search/search"
 
 
 // Creates an index component listing posts on pages such as Explore
 export default function ContentIndex(props) {
 
+  const makeActive = (event) => {
+    event.target.classList.toggle("is-active")
+  }
+
   return (
-    <div className="container">
+    <div className="container is-max-desktop">
       <nav className="panel is-primary">
+        
         <p className="panel-heading">
-          {props.title}
+          <span className="icon-text has-text-weight-bold">
+            <span className="icon">
+              <FontAwesomeIcon icon={faListUl}/>
+            </span>
+            <span>{props.title}</span>
+          </span>
         </p>
+
         <div className="panel-block">
           <Search/>
         </div>
-        <a className="panel-block is-active">
+
+        <a className="panel-block contentIndexArticle has-text-weight-medium" href="/explore" onClick={makeActive}>
           <span className="panel-icon">
             <FontAwesomeIcon icon={faFileInvoice}/>
           </span>
-          bulma
+          Article 1
         </a>
-        <a className="panel-block">
+
+        <a className="panel-block contentIndexArticle has-text-weight-medium" href="/explore" onClick={makeActive}>
           <span className="panel-icon">
             <FontAwesomeIcon icon={faFileInvoice}/>
           </span>
-          marksheet
+          Article 2
         </a>
-        <a className="panel-block">
+
+        <a className="panel-block contentIndexArticle has-text-weight-medium" href="/explore" onClick={makeActive}>
           <span className="panel-icon">
             <FontAwesomeIcon icon={faFileInvoice}/>
           </span>
-          minireset.css
+          Article 3
         </a>
-        <a className="panel-block">
-          <span className="panel-icon">
-            <FontAwesomeIcon icon={faFileInvoice}/>
-          </span>
-          jgthms.github.io
-        </a>
+
         <label className="panel-block">
           <input type="checkbox"/>
           remember me
         </label>
+
         <div className="panel-block">
           <button className="button is-primary is-outlined is-fullwidth">
             <span className="icon">
@@ -53,6 +62,7 @@ export default function ContentIndex(props) {
             <span>Reset all filters</span>
           </button>
         </div>
+
       </nav>
     </div>
   )
