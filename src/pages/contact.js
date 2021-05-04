@@ -3,6 +3,7 @@ import Layout from "../components/layout/layout"
 import Hero from "../components/hero/hero"
 import Cartoon from "../components/cartoon/cartoon"
 import newIdea from "../assets/svg/undraw_new_ideas_jdea.svg"
+import ContactForm from "../components/contactForm/contactForm"
 
 export default function Contact() {
   return (
@@ -18,20 +19,14 @@ export default function Contact() {
       <div className="container">
         <div className="columns">
           <div className="column">
-            <Cartoon svg={newIdea}/>
+            <ContactForm/>
           </div>
           <div className="column">
+            <br/>
+            <Cartoon svg={newIdea}/>
           </div>
         </div>
       </div>
-      <section className="section">
-        <div className="container">
-          <h1>If you have any questions or suggestions regarding this data portal, contact us via the following email:</h1>
-          <p>
-            <a href="mailto:me@example.com">me@example.com</a>
-          </p>
-        </div>
-      </section>
     </Layout>
   )
 }

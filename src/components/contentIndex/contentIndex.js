@@ -27,11 +27,10 @@ export default function ContentIndex(props) {
         </div>
 
         {props.content.map((item) => (
-          <span>
+          <span key={Math.random().toString(36).substr(2, 10)}>
             <Link
               to={item.fields.slug}
               className="panel-block contentIndexArticle is-active"
-              key={Math.random().toString(36).substr(2, 10)}
             >
               <span className="panel-icon is-flex-shrink-0">
                 <FontAwesomeIcon icon={faFileInvoice}/>
@@ -43,7 +42,7 @@ export default function ContentIndex(props) {
                 {item.frontmatter.date}
               </span>
             </Link>
-              <p className="contentIndexDesc has-text-weight-light has-text-left">
+              <p className="contentIndexDesc has-text-weight-light has-text-left has-text-grey-lighter">
                 {item.frontmatter.description}
               </p>
               <br/>
