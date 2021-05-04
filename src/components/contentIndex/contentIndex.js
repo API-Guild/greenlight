@@ -7,6 +7,8 @@ import Search from "../search/search"
 // Creates an index component listing posts on pages such as Explore
 export default function ContentIndex(props) {
 
+  console.log('content', props.content)
+
   const makeActive = (event) => {
     event.target.classList.toggle("is-active")
   }
@@ -28,31 +30,16 @@ export default function ContentIndex(props) {
           <Search/>
         </div>
 
-        <a className="panel-block contentIndexArticle has-text-weight-medium" href="/explore" onClick={makeActive}>
-          <span className="panel-icon">
-            <FontAwesomeIcon icon={faFileInvoice}/>
-          </span>
-          Article 1
-        </a>
-
-        <a className="panel-block contentIndexArticle has-text-weight-medium" href="/explore" onClick={makeActive}>
-          <span className="panel-icon">
-            <FontAwesomeIcon icon={faFileInvoice}/>
-          </span>
-          Article 2
-        </a>
-
-        <a className="panel-block contentIndexArticle has-text-weight-medium" href="/explore" onClick={makeActive}>
-          <span className="panel-icon">
-            <FontAwesomeIcon icon={faFileInvoice}/>
-          </span>
-          Article 3
-        </a>
-
-        <label className="panel-block">
-          <input type="checkbox"/>
-          remember me
-        </label>
+        {props.content.map((item) => (
+          <a className="panel-block contentIndexArticle has-text-weight-medium" 
+            href={item.fields.slug} onClick={makeActive} key={Math.random().toString(36).substr(2, 10)}
+          >
+            <span className="panel-icon">
+              <FontAwesomeIcon icon={faFileInvoice}/>
+            </span>
+            {item.frontmatter.title}
+          </a>
+        ))}
 
         <div className="panel-block">
           <button className="button is-primary is-outlined is-fullwidth">
