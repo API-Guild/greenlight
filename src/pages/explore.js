@@ -19,11 +19,19 @@ export default function Reports({ data }) {
           </span>
         } 
       />
-      <Cartoon svg={analytics}/>
-      <ContentIndex
-        title="Articles"
-        content={blog}
-      />
+      <div className="container">
+        <div className="columns">
+          <div className="column">
+            <ContentIndex
+              title="Articles"
+              content={blog}
+            />
+          </div>
+          <div className="column">
+            <Cartoon svg={analytics}/>
+          </div>
+        </div>
+      </div>
     </Layout>
   )
 }
