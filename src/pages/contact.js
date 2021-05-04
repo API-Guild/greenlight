@@ -7,8 +7,23 @@ import newIdea from "../assets/svg/undraw_new_ideas_jdea.svg"
 export default function Contact() {
   return (
     <Layout>
-      <Hero title="Greenlight" subtitle={<span>A guerrilla <strong>data portal</strong> for analysts with deadlines.</span>} />
-      <Cartoon svg={newIdea}/>
+      <Hero 
+        title="Contact" 
+        subtitle={
+          <span>
+            Ask <strong>questions</strong>, make <strong>requests</strong> or share <strong>feedback</strong> with us
+          </span>
+        } 
+      />
+      <div className="container">
+        <div className="columns">
+          <div className="column">
+            <Cartoon svg={newIdea}/>
+          </div>
+          <div className="column">
+          </div>
+        </div>
+      </div>
       <section className="section">
         <div className="container">
           <h1>If you have any questions or suggestions regarding this data portal, contact us via the following email:</h1>
