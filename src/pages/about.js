@@ -69,7 +69,7 @@ export default function About() {
           <p>
             This may sound complex at first, but we built this starter template for you. If you want, you can keep most of the complexity safely under the hood 
             so you can focus on writing captivating content and embedding engaging visual analytics. Check out the 
-            <Link to="/dashboards/quick-start"> Quick Start</Link> guide. You will have a working site in no time.
+            <Link to="/blog/quick-start"> Quick Start</Link> guide. You will have a working site in no time.
           </p>
         </div>
       </div>

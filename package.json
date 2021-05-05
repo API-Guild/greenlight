@@ -9,7 +9,7 @@
     "develop": "gatsby develop",
     "format": "prettier --write \"**/*.{js,jsx,ts,tsx,json,md,mdx}\"",
     "start": "npm run develop",
-    "serve": "gatsby serve",
+    "serve": "gatsby serve --prefix-paths",
     "clean": "gatsby clean",
     "test": "echo \"Write tests! -> https://gatsby.dev/unit-testing\" && exit 1",
     "deploy": "gatsby build --prefix-paths && gh-pages -d public"
@@ -26,7 +26,6 @@
     "gatsby": "^3.2.1",
     "gatsby-plugin-mdx": "^2.3.0",
     "gatsby-plugin-page-creator": "^3.3.0",
-    "gatsby-plugin-purgecss": "^6.0.0",
     "gatsby-plugin-react-helmet": "^4.3.0",
     "gatsby-plugin-sass": "^4.2.0",
     "gatsby-plugin-sharp": "^3.4.0",
