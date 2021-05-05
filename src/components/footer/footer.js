@@ -13,7 +13,7 @@ export default function Footer() {
               and <a href="https://trevorsmithbanjo.github.io/#/" target="_blank" rel="noreferrer"> Trevor Smith</a>. 
               <br/>
               The source code is licensed <a href="https://opensource.org/licenses/0BSD" target="_blank" rel="noreferrer"> 0BSD</a>.
-              Visit us on <a className="has-text-primary" href="https://github.com/API-Guild/greenlight" target="_blank" rel="noreferrer">
+              Visit us on <a href="https://github.com/API-Guild/greenlight" target="_blank" rel="noreferrer">
                 <FontAwesomeIcon icon={faGithub}/> Github
               </a> 
               .
