@@ -100,8 +100,8 @@ export default function ContactForm(props) {
         <label className="label has-text-primary" htmlFor="subjectControl">Subject</label>
         <div id="subjectControl" className="control">
           <div className="select">
-            <select>
-              <option selected disabled hidden>Select</option>
+            <select defaultValue="Select">
+              <option defaultValue disabled hidden>Select</option>
               <option>Dashboard Request</option>
               <option>Datasource Access</option>
               <option>Question</option>
