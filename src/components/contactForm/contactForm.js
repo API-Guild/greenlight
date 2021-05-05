@@ -101,7 +101,7 @@ export default function ContactForm(props) {
         <div id="subjectControl" className="control">
           <div className="select">
             <select defaultValue="Select">
-              <option defaultValue disabled hidden>Select</option>
+              <option disabled hidden>Select</option>
               <option>Dashboard Request</option>
               <option>Datasource Access</option>
               <option>Question</option>

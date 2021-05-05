@@ -104,6 +104,10 @@ h1, h2, h3, h4, h5, h6 {
   margin: 1rem 0rem;
 }
 
+blockquote {
+  font-style: italic;
+}
+
 // Sets the display to flex so we can implement a sticky footer by allowing main to expand as needed
 div.site {
   display: flex;
