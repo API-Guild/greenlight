@@ -51,8 +51,8 @@ export default function About() {
           <br/>
           <p>
             This application has been designed with <a href="https://jamstack.org/" target="_blank" rel="noreferrer"> JAMstack </a> 
-            development patterns built with the <a className="has-text-gatsby" href="https://www.gatsbyjs.com/" target="_blank" rel="noreferrer">Gatsby </a> 
-            frontend framework. It relies on component-based views built with <a className="has-text-react" href="https://reactjs.org/" target="_blank" rel="noreferrer">React </a> 
+            development patterns and built with the <a className="has-text-gatsby" href="https://www.gatsbyjs.com/" target="_blank" rel="noreferrer">Gatsby </a> 
+            frontend framework. It relies on a component-based UI built with <a className="has-text-react" href="https://reactjs.org/" target="_blank" rel="noreferrer">React </a> 
             and generates blazing-fast static files with <a className="has-text-node" href="https://nodejs.dev/" target="_blank" rel="noreferrer">Node</a> on build time. 
             <a className="has-text-graphql" href="https://graphql.org/" target="_blank" rel="noreferrer"> GraphQL</a> is used to query data and
             styles are applied with <a className="has-text-bulma" href="https://bulma.io/" target="_blank" rel="noreferrer">Bulma</a>.
