@@ -1,5 +1,5 @@
 <p align="center">
-  <a href="https://www.gatsbyjs.com">
+  <a href="https://api-guild.github.io/greenlight/">
     <img alt="Gatsby" src="./static/images/greenlight.png" height="45" />
   </a>
 </p>
