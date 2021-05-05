@@ -104,6 +104,10 @@ h1, h2, h3, h4, h5, h6 {
   margin: 1rem 0rem;
 }
 
+blockquote {
+  font-style: italic;
+}
+
 // Sets the display to flex so we can implement a sticky footer by allowing main to expand as needed
 div.site {
   display: flex;
@@ -142,13 +146,49 @@ span#burger:focus {
   }
 }
 
+.has-text-gatsby {
+  color: #a385c2
+}
+
+.has-text-tableau {
+  color: #ff6d02
+}
+
+.has-text-react {
+  color: #61dafb;
+}
+
+.has-text-node {
+  color: #84ba64
+}
+
+.has-text-graphql {
+  color: #e10098;
+}
+
+.has-text-bulma {
+  color: #00d1b2;
+}
+
+.has-text-mdx {
+  color: #fcb42d;
+}
+
+.has-text-md {
+  color: #499bea;
+}
+
 .panel {
   margin: 2rem 2rem;
 }
 
 .contentIndexArticle {
   margin: 0rem 0.5rem;
-  word-break: break-all;
+  word-break: normal;
+}
+
+.contentIndexDesc {
+  margin: 0rem 1rem;
 }
 
 img.logo {

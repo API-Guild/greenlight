@@ -46,16 +46,6 @@ This is a paragraph.
 
 ## Header 2
 
-    Header 1
-    ========
-
-    Header 2
-    --------
-
-# Header 1
-
-## Header 2
-
 ### Header 3
 
 #### Header 4
@@ -71,25 +61,6 @@ This is a paragraph.
     ##### Header 5
     ###### Header 6
 
-# Header 1
-
-## Header 2
-
-### Header 3
-
-#### Header 4
-
-##### Header 5
-
-###### Header 6
-
-    # Header 1 #
-    ## Header 2 ##
-    ### Header 3 ###
-    #### Header 4 ####
-    ##### Header 5 #####
-    ###### Header 6 ######
-
 > Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aliquam hendrerit mi posuere lectus. Vestibulum enim wisi, viverra nec, fringilla in, laoreet vitae, risus.
 
     > Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aliquam hendrerit mi posuere lectus. Vestibulum enim wisi, viverra nec, fringilla in, laoreet vitae, risus.
@@ -101,7 +72,7 @@ This is a paragraph.
 >
 > Here's some example code:
 >
->     Markdown.generate();
+>       Markdown.generate();
 
     > ## This is a header.
     > 1. This is the first list item.
@@ -109,7 +80,7 @@ This is a paragraph.
     >
     > Here's some example code:
     >
-    >     Markdown.generate();
+    >       Markdown.generate();
 
 - Red
 - Green
@@ -146,8 +117,8 @@ This is a paragraph.
 ```
 
 1. Buy flour and salt
-1. Mix together with water
-1. Bake
+2. Mix together with water
+3. Bake
 
 ```markdown
 1. Buy flour and salt
@@ -228,7 +199,3 @@ _single underscores_
 This paragraph has some `code` in it.
 
     This paragraph has some `code` in it.
-
-![Alt Text](http://placehold.it/200x50 "Image Title")
-
-    ![Alt Text](http://placehold.it/200x50 "Image Title")

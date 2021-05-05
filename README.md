@@ -1,17 +1,20 @@
-# Greenlight
-
-<img src="./docs/images/greenlight_image.png" width=400>
-
-<br>
-
-### guerrilla data for analysts with deadlines.
+<p align="center">
+  <a href="https://api-guild.github.io/greenlight/">
+    <img alt="Gatsby" src="./static/images/greenlight.png" height="45" />
+  </a>
+</p>
+<h1 align="center" style="color: #0DF2C1">
+  Greenlight
+</h1>
+<p align="center">
+   guerrilla data for analysts with deadlines.
+</p>
 
 <br>
 
 > _"Gatsby believed in the green light, the orgiastic future that year by year recedes before us. It eluded us then, but that’s no matter—tomorrow we will run faster, stretch out our arms farther…. And one fine morning— So we beat on, boats against the current, borne back ceaselessly into the past."_
 
 <br>
-<hr>
 
 ## What is Greenlight?
 
@@ -19,30 +22,37 @@ The mission of this project is to provide a way for people who want to host thei
 
 ## Table of Contents
 
-1. [Installation](#Installation)
-2. [Usage](#Usage)
-3. [Contributions](#Contributions)
-4. [LICENSE](#LICENSE)
-5. [Maintainers](#Maintainers)
+- [What is Greenlight?](#what-is-greenlight)
+- [Table of Contents](#table-of-contents)
+- [Installation](#installation)
+- [Usage](#usage)
+- [Contributions](#contributions)
+- [LICENSE](#license)
+- [Maintainers](#maintainers)
 
 ## Installation
 
 1. Install the Gatsby CLI
 
-   ```
+   ```bash
+   # install the Gatsby CLI from NPM
    npm install -g gatsby-cli
    ```
 
 2. Install Greenlight Starter
 
-   ```
+   ```bash
+   # create a new Gatsby site using the Greenlight starter
    gatsby new {your-project-name} https://github.com/API-Guild/greenlight
    ```
 
 3. Start the site in `develop` mode.
-
-   - First `cd your-project-name`.
-   - Then run `gatsby develop` in the command line.
+   
+   ```bash
+   # start the develop server from your new project
+   cd {your-project-name}
+   gatsby develop
+   ```
 
 4. Open your site in the browser at `http://localhost:8000`
 
@@ -56,7 +66,6 @@ Here is a diagram of the basic file structure of Greenlight.
 .
 |-.cache
 |-content/blog/{your-files-here}
-|-docs
 |-node_modules
 |-public
 |-src
@@ -77,6 +86,8 @@ Here is a diagram of the basic file structure of Greenlight.
 
 We gladly welcome any contributions whether it is fixing bugs, documentation, or adding features. You can request an issue, fork the repo, work on the issue and then submit a pull request.
 
+<br>
+
 ## LICENSE
 
 The BSD Zero Clause License (0BSD)
@@ -93,6 +104,8 @@ INDIRECT, OR CONSEQUENTIAL DAMAGES OR ANY DAMAGES WHATSOEVER RESULTING FROM
 LOSS OF USE, DATA OR PROFITS, WHETHER IN AN ACTION OF CONTRACT, NEGLIGENCE OR
 OTHER TORTIOUS ACTION, ARISING OUT OF OR IN CONNECTION WITH THE USE OR
 PERFORMANCE OF THIS SOFTWARE.
+
+<br>
 
 ## Maintainers
 

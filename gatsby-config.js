@@ -25,7 +25,7 @@ module.exports = {
     description: `A guerrilla data portal for analysts with deadlines. 
     Built with Gatsby and Tableau.`,
     siteUrl: `https://api-guild.github.io/greenlight/`,
-    image: `/svg/greenlight.svg`,
+    image: `/images/greenlight-sideways.png`,
     siteLanguage: `en`,
   },
   pathPrefix: "/greenlight",
@@ -61,21 +61,28 @@ module.exports = {
     },
     `gatsby-plugin-react-helmet`,
     `gatsby-plugin-sharp`,
-    `gatsby-remark-images`,
+    {
+      resolve: `gatsby-remark-images`,
+      // Known issue with .png files requires this plugin to be described twice
+      // https://github.com/gatsbyjs/gatsby/issues/25272#issuecomment-649571274
+      options: {
+        maxWidth: 700,
+        backgroundColor: `transparent`,
+      },
+    },
     {
       resolve: `gatsby-plugin-mdx`,
       options: {
         extensions: [`.mdx`, `.md`],
         gatsbyRemarkPlugins: [
           {
-            resolve: `gatsby-remark-prismjs`,
             resolve: `gatsby-remark-images`,
             options: {
+              backgroundColor: `transparent`,
               // It's important to specify the maxWidth (in pixels) of
               // the content container as this plugin uses this as the
               // base for generating different widths of each image.
-              maxWidth: 700,
-              backgroundColor: "none",
+              maxWidth: 700,            
             },
           },
         ],

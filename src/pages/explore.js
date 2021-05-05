@@ -15,7 +15,7 @@ export default function Reports({ data }) {
         title="Explore" 
         subtitle={
           <span>
-            Search <strong>articles</strong> and <strong>dashboards</strong> published to this site
+            Search <strong>articles</strong> and <strong>dashboards</strong> published on this site
           </span>
         } 
       />
