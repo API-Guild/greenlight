@@ -28,8 +28,8 @@ $accentMain: $greenlight;
 $background: $night;
 $accentSecondary: $milk;
 $text: $overcast;
-$lightLines: $grey-dark;
-$darkLines: $grey-darker;
+$accentLight: $grey-dark;
+$accentDark: $grey-darker;
 
 ///////////// ** SITE THEMING ENDS HERE! ** /////////////
 
@@ -73,29 +73,29 @@ $input-icon-color: $accentSecondary;
 $input-border-color: $grey;
 
 // Navbar
-$navbar-divider-background-color: $darkLines;
+$navbar-divider-background-color: $accentDark;
 
 // Horizontal Rules (thematic breaklines)
-$hr-background-color: $lightLines;
+$hr-background-color: $accentLight;
 
 // Tables
-$table-row-hover-background-color: $lightLines;
-$table-striped-row-even-background-color: $darkLines;
-$table-striped-row-even-hover-background-color: $lightLines;
+$table-row-hover-background-color: $accentLight;
+$table-striped-row-even-background-color: $accentDark;
+$table-striped-row-even-hover-background-color: $accentLight;
 $table-cell-heading-color: $accentMain;
 
 // Panels
 $panel-block-color: $accentSecondary;
 $panel-icon-color: $accentSecondary;
-$panel-block-hover-background-color: $darkLines;
+$panel-block-hover-background-color: $accentDark;
 $panel-block-active-color: $accentMain;
 $panel-block-active-icon-color: $accentMain;
 $panel-block-active-border-left-color: $accentMain;
 $panel-tab-active-color: $accentSecondary;
-$panel-item-border: $darkLines;
+$panel-item-border: $accentDark;
 
 // Content <p>, <h1>...<h6>, <ul>, <ol>, <blockquote>, <table>, <strong>
-$content-blockquote-background-color: $darkLines;
+$content-blockquote-background-color: $accentDark;
 
 @import "~bulma/bulma.sass";
 
