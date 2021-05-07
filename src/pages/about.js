@@ -3,7 +3,8 @@ import { Link } from "gatsby"
 import Layout from "../components/layout/layout"
 import Hero from "../components/hero/hero"
 import Cartoon from "../components/cartoon/cartoon"
-import stakeholder from "../assets/svg/undraw_design_data_khdb.svg"
+import { ReactComponent as Stakeholder } from "../assets/svg/stakeholder.svg"
+
 
 export default function About() {
   return (
@@ -40,7 +41,9 @@ export default function About() {
             </div>
           </div>
           <div className="column is-two-fifths-tablet">
-            <Cartoon svg={stakeholder}/>
+            <Cartoon>
+              <Stakeholder/>
+            </Cartoon>
           </div>
         </div>
         <div className="container is-fluid"> 

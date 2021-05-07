@@ -148,15 +148,6 @@ span#burger:focus {
   border-top-color: $grey-dark;
 }
 
-@media screen and (max-width: 1024px) {
-  .navbar-dropdown .is-active {
-    display: block;
-  }
-  .navbar-dropdown:not(.is-active) {
-    display: none;
-  }
-}
-
 .has-text-gatsby {
   color: #a385c2;
 }
@@ -215,10 +206,26 @@ img.hero {
 }
 
 figure.image.cartoon {
-  width: 25rem;
+  max-width: 30rem;
   margin: auto;
+  color: $accentMain;
 }
 
 p.subtitle.date {
   margin-top: -1.25rem;
+}
+
+@media screen and (max-width: 1024px) {
+  .navbar-dropdown .is-active {
+    display: block;
+  }
+  .navbar-dropdown:not(.is-active) {
+    display: none;
+  }
+}
+
+@media screen and (max-width: 768px) {
+  figure.image.cartoon {
+    width: 75%;
+  }
 }
