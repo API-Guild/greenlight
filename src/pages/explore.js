@@ -4,7 +4,7 @@ import Layout from "../components/layout/layout"
 import Hero from "../components/hero/hero"
 import ContentIndex from "../components/contentIndex/contentIndex"
 import Cartoon from "../components/cartoon/cartoon"
-import analytics from "../assets/svg/undraw_predictive_analytics_kf9n.svg"
+import { ReactComponent as PredictiveAnalytics} from "../assets/svg/predictiveAnalytics.svg"
 
 export default function Reports({ data }) {
   const blog = data.allMdx.nodes;
@@ -28,7 +28,9 @@ export default function Reports({ data }) {
             />
           </div>
           <div className="column">
-            <Cartoon svg={analytics}/>
+            <Cartoon>
+              <PredictiveAnalytics/>
+            </Cartoon>
           </div>
         </div>
       </div>
