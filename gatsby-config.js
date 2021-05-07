@@ -37,6 +37,7 @@ module.exports = {
         path: `${__dirname}/content/blog/`,
       },
     },
+    'gatsby-plugin-svgr',
     `gatsby-plugin-sass`,
     {
       resolve: `gatsby-source-filesystem`,
