@@ -2,13 +2,14 @@ import React from "react"
 import { graphql, Link, useStaticQuery } from "gatsby"
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faListUl } from '@fortawesome/free-solid-svg-icons'
-import greenlight from "../../assets/svg/greenlight.svg"
+import greenlightUrl, { ReactComponent as Greenlight} from "../../assets/svg/greenlight.svg"
 import Search from "../search/search"
 import Dropdown from "../dropdown/dropdown"
 import Auth from "../auth/auth"
 
 
 export default function Navbar() {
+  console.log(greenlightUrl)
   // Toggles the dropdown menu upon hamburger clicks from tablet devices and smaller
   const showMenu = () => {
     const menu = document.getElementById("navMenu");
@@ -43,7 +44,9 @@ export default function Navbar() {
     <nav className="navbar" role="navigation" aria-label="main navigation">
       <div className="navbar-brand">
         <Link className="navbar-item" to="/">
-          <img className="logo" src={greenlight} alt="logo" />
+          <span className="logo is-flex is-align-items-center">
+            <Greenlight/>
+          </span>
           Greenlight
         </Link>
 
