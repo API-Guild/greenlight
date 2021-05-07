@@ -6,7 +6,7 @@ export default function Cartoon(props) {
 
   return (
     <div className="container is-fluid">
-      <figure className="image is-flex is-justify-content-center">
+      <figure className="image cartoon is-flex is-justify-content-center">
         {/* <img className="cartoon-pages" src={props.url} alt="cartoon"/> */}
         {props.children}
       </figure>
