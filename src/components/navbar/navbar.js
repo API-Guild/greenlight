@@ -2,7 +2,7 @@ import React from "react"
 import { graphql, Link, useStaticQuery } from "gatsby"
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faListUl } from '@fortawesome/free-solid-svg-icons'
-import greenlightUrl, { ReactComponent as Greenlight} from "../../assets/svg/greenlight.svg"
+import { ReactComponent as Greenlight} from "../../assets/svg/greenlight.svg"
 import Search from "../search/search"
 import Dropdown from "../dropdown/dropdown"
 import Auth from "../auth/auth"
