@@ -2,7 +2,7 @@ import React from "react"
 import Layout from "../components/layout/layout"
 import Hero from "../components/hero/hero"
 import Cartoon from "../components/cartoon/cartoon"
-import newIdea from "../assets/svg/undraw_new_ideas_jdea.svg"
+import { ReactComponent as NewIdea } from "../assets/svg/newIdea.svg"
 import ContactForm from "../components/contactForm/contactForm"
 
 export default function Contact() {
@@ -23,7 +23,9 @@ export default function Contact() {
           </div>
           <div className="column">
             <br/>
-            <Cartoon svg={newIdea}/>
+            <Cartoon>
+              <NewIdea/>
+            </Cartoon>
           </div>
         </div>
       </div>

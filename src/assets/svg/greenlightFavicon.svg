@@ -5,7 +5,7 @@
 <svg xmlns="http://www.w3.org/2000/svg"
      viewBox="0 0 221 400">
   <path id="Selection"
-        fill="currentColor" stroke="black" stroke-width="1"
+        fill="#0DF2C1" stroke="black" stroke-width="1"
         d="M 95.00,0.21
            C 95.00,0.21 118.00,0.21 118.00,0.21
              129.75,0.02 146.69,3.06 158.00,6.44

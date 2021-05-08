@@ -3,8 +3,9 @@ import PropTypes from "prop-types"
 import { Helmet } from "react-helmet"
 import { useLocation } from "@reach/router"
 import { useStaticQuery, graphql } from "gatsby"
-import faviconSvg from "../../assets/svg/greenlight.svg"
+import faviconSvg from "../../assets/svg/greenlightFavicon.svg"
 import faviconIco from "../../assets/ico/greenlight.ico"
+import maskIcon from "../../assets/svg/greenlightMaskIcon.svg"
 
 // Implementation reference available at: https://www.gatsbyjs.com/docs/add-seo-component/
 
@@ -35,10 +36,12 @@ const SEO = ({ title, description, image, article, siteLanguage }) => {
   return (
     <Helmet title={seo.title}>
       <html lang={seo.lang} />
-      {/* svg files need an alternative ico file in case client browser lacks support */}
+      {/* the favicon file has a static color, replace this value in the file itself */}
       <link rel="icon" type="image/svg+xml" href={faviconSvg} />
+      {/* svg files need an alternative ico file in case client browser lacks support */}
       <link rel="alternate icon" href={faviconIco} />
-      <link rel="mask-icon" href={faviconSvg} color="#ff8a01" />
+      {/* change the color of the mask-icon for hover effect on Safari pinned tabs */}
+      <link rel="mask-icon" href={maskIcon} color="#0DF2C1" />
     
       <meta name="description" content={seo.description} />
       <meta name="image" content={seo.image} />
