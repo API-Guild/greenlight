@@ -8,21 +8,25 @@
 
 ///////////// ** MODIFY COLOR PALETTE HERE! ** /////////////
 
-$greenlight: hsl(167, 90, 50); // #0DF2C1
-$milk: hsl(210, 50, 99); // #FBFCFE
-$overcast: hsl(240, 4, 95);
-$night: hsl(0, 0, 5); // #0D0D0D
-$canary: hsl(55, 79, 53);
-$tulip: hsl(350, 78, 75);
-$masago: hsl(28, 97, 49);
-$avocado: hsl(68, 90, 43);
-$salmon: hsl(8, 89, 65);
-$nori: hsl(32, 32, 10);
-$gatsby: hsl(270, 33, 64); // #a385c2
-$tableau: hsl(25, 100, 50); // #ff6d02
-$react: hsl(193, 95, 68); // #61dafb
-$node: hsl(98, 38, 56); // #84ba64
-$graphql: hsl(319, 100, 44); // #e10098
+$greenlight: hsl(167, 90%, 50%); // #0DF2C1
+$milk: hsl(210, 50%, 99%); // #FBFCFE
+$overcast: hsl(240, 4%, 95%); // #F2F2F3
+$night: hsl(0, 0%, 5%); // #0D0D0D
+$canary: hsl(55, 79%, 53%); // #E6D628
+$tulip: hsl(350, 78%, 75%); // #F18E9E
+$masago: hsl(28, 97%, 49%); // #F67504
+$avocado: hsl(68, 90%, 43%); // #B6D00B
+$salmon: hsl(8, 89%, 65%); // #F56B56
+$nori: hsl(32, 32%, 10%); // #221A11
+$gatsby: hsl(270, 33%, 64%); // #a385c2
+$tableau: hsl(25, 100%, 50%); // #ff6d02
+$react: hsl(193, 95%, 68%); // #61dafb
+$node: hsl(98, 38%, 56%); // #84ba64
+$graphql: hsl(319, 100%, 44%); // #e10098
+$bulma: hsl(171, 100%, 41%); // #00d1b2
+$mdx: hsl(39, 97%, 58%); // #fcb42d
+$md: hsl(209, 79%, 60%); // #499bea
+$undraw: hsl(244, 88%, 66%); // #665df5
 
 
 ///////////// ** MODIFY SITE THEMES HERE! ** /////////////
@@ -175,15 +179,15 @@ span#burger:focus {
 }
 
 .has-text-bulma {
-  color: #00d1b2;
+  color: $bulma;
 }
 
 .has-text-mdx {
-  color: #fcb42d;
+  color: $mdx;
 }
 
 .has-text-md {
-  color: #499bea;
+  color: $md;
 }
 
 .panel {
