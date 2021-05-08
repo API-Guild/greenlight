@@ -31,7 +31,7 @@ export default function About() {
                 by F. Scott Fitzgerald:
               </p>
               <br/>
-              <div className="content">
+              <div className="content is-hidden-tablet-only is-hidden-desktop-only">
                 <blockquote>
                   Gatsby believed in the green light, the orgiastic future that year by year recedes before us. 
                   It eluded us then, but that’s no matter—tomorrow we will run faster, stretch out our arms farther…. 
@@ -45,6 +45,13 @@ export default function About() {
               <Stakeholder/>
             </Cartoon>
           </div>
+        </div>
+        <div className="container is-fluid content is-hidden-mobile is-hidden-widescreen">
+          <blockquote>
+            Gatsby believed in the green light, the orgiastic future that year by year recedes before us. 
+            It eluded us then, but that’s no matter—tomorrow we will run faster, stretch out our arms farther…. 
+            And one fine morning— So we beat on, boats against the current, borne back ceaselessly into the past.
+          </blockquote>
         </div>
         <div className="container is-fluid"> 
           <p>
@@ -71,8 +78,12 @@ export default function About() {
           <br/>
           <p>
             This may sound complex at first, but we built this starter template for you. If you want, you can keep most of the complexity safely under the hood 
-            so you can focus on writing captivating content and embedding engaging visual analytics. Check out the 
-            <Link to="/blog/quick-start"> Quick Start</Link> guide. You will have a working site in no time.
+            so you can focus on writing captivating content and embedding engaging visual analytics.
+          </p>
+          <br/>
+          <p>
+            Check out the <Link to="/blog/quick-start"> Quick Start</Link> guide. 
+            You will have a working site in no time.
           </p>
         </div>
       </div>
