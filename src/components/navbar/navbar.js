@@ -9,7 +9,6 @@ import Auth from "../auth/auth"
 
 
 export default function Navbar() {
-  console.log(greenlightUrl)
   // Toggles the dropdown menu upon hamburger clicks from tablet devices and smaller
   const showMenu = () => {
     const menu = document.getElementById("navMenu");
