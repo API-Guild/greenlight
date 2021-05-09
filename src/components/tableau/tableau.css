@@ -1,7 +1,7 @@
-#vizContainer {
+.vizDiv {
   margin: 3rem auto;
 }
 
-#vizContainer iframe {
+.vizDiv iframe {
 	margin: auto;
 }

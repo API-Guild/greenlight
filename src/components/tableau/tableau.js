@@ -73,7 +73,7 @@ export default function Tableau(props) {
       <Helmet>
         <link as="script" rel="preload" href="https://public.tableau.com/javascripts/api/tableau-2.7.0.min.js" />
       </Helmet>
-      <div id={vizID}/>
+      <div id={vizID} className="vizDiv"/>
     </>
   )
 }
