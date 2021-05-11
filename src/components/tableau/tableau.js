@@ -1,11 +1,11 @@
 import React, { useState, useEffect } from "react"
 import Helmet from "react-helmet"
 import "./tableau.css"
-import * as tableau from "../tableauApi/tableau-2.7.0.min.js"
+import "./tableauApi/tableau-2.7.0.min.js"
 
 export default function Tableau(props) {
   // used to delay initializing the Tableau viz until the external JS API file has been loaded
-  const [loaded, setLoaded] = useState(false);
+  // const [loaded, setLoaded] = useState(false);
   const apiID = "tableauAPI-" + Math.random().toString(36).substr(2, 10);
   const vizID = "vizID-" + Math.random().toString(36).substr(2, 10);
   const vizOptions = {
@@ -20,15 +20,14 @@ export default function Tableau(props) {
   // similar in usage to the componentDidMount lifecycle method
   useEffect(() => {
     // loadAPI()
+    initViz()
   },[]);
 
   // initilazes the Tableau viz once the external JS API file has loaded
-  useEffect(() => {
-    if (!loaded) return
-    initViz()
-    // adds standard event listeners
-    vizEvents()
-  }, [loaded]);
+  // useEffect(() => {
+  //   if (!loaded) return
+  //   initViz()
+  // }, [loaded]);
 
   // const loadAPI = () => {
   //   // creates an HTMLCollection of Tableau API script tags to avoid duplicating them
@@ -64,9 +63,6 @@ export default function Tableau(props) {
     // Create a viz object and embed it in the container div.
     // eslint-disable-next-line
     vizObj = new tableau.Viz(vizContainer, props.viz, vizOptions);
-  };
-
-  const vizEvents = () => {
   };
 
   return (
