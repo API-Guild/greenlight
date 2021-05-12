@@ -11,14 +11,16 @@ function SEO({ description, lang, meta, image: metaImage, title, pathname }) {
           siteMetadata {
             title
             description
-            author
-            keywords
+            author {
+              name
+            }
             siteUrl
           }
         }
       }
     `
   )
+  console.log(site.siteMetadata.author[0].name)
   const metaDescription = description || site.siteMetadata.description
   const image =
     metaImage && metaImage.src
@@ -47,10 +49,10 @@ function SEO({ description, lang, meta, image: metaImage, title, pathname }) {
           name: `description`,
           content: metaDescription,
         },
-        {
-          name: "keywords",
-          content: site.siteMetadata.keywords.join(","),
-        },
+        // {
+        //   name: "keywords",
+        //   content: site.siteMetadata.keywords.join(","),
+        // },
         {
           property: `og:title`,
           content: title,
@@ -65,7 +67,7 @@ function SEO({ description, lang, meta, image: metaImage, title, pathname }) {
         },
         {
           name: `twitter:creator`,
-          content: site.siteMetadata.author,
+          content: `${site.siteMetadata.author[0].name} ${site.siteMetadata.author[1].name}`,
         },
         {
           name: `twitter:title`,
