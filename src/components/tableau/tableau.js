@@ -1,12 +1,9 @@
-import React, { useState, useEffect } from "react"
+import React, { useEffect } from "react"
 import Helmet from "react-helmet"
 import "./tableau.css"
 import "./tableauApi/tableau-2.7.0.min.js"
 
 export default function Tableau(props) {
-  // used to delay initializing the Tableau viz until the external JS API file has been loaded
-  // const [loaded, setLoaded] = useState(false);
-  const apiID = "tableauAPI-" + Math.random().toString(36).substr(2, 10);
   const vizID = "vizID-" + Math.random().toString(36).substr(2, 10);
   const vizOptions = {
     width: props.options.width,
@@ -21,37 +18,7 @@ export default function Tableau(props) {
   useEffect(() => {
     // loadAPI()
     initViz()
-  },[]);
-
-  // initilazes the Tableau viz once the external JS API file has loaded
-  // useEffect(() => {
-  //   if (!loaded) return
-  //   initViz()
-  // }, [loaded]);
-
-  // const loadAPI = () => {
-  //   // creates an HTMLCollection of Tableau API script tags to avoid duplicating them
-  //   const tableauScripts = document.getElementsByClassName("tableauAPI");
-  //   if (tableauScripts.length > 0) {
-  //     for (let i = 0; i < tableauScripts.length; i++ ) {
-  //       console.log('tableauScripts: ' + i,tableauScripts[i]);
-  //       if (tableauScripts[i].src === "https://public.tableau.com/javascripts/api/tableau-2.7.0.min.js") {
-  //         return initViz()
-  //       }
-  //     }
-  //   }
-
-  //   if (document.getElementById(apiID)) return initViz()
-
-  //   const tableauAPI = document.createElement('script');
-  //   tableauAPI.id = apiID;
-  //   tableauAPI.className = "tableauAPI";
-  //   tableauAPI.type = "text/javascript";
-  //   tableauAPI.src = "https://public.tableau.com/javascripts/api/tableau-2.7.0.min.js";
-  //   tableauAPI.defer = true;
-  //   tableauAPI.addEventListener('load', () => setLoaded(true))
-  //   document.body.appendChild(tableauAPI)
-  // };
+  });
 
   const initViz = () => {
     let vizObj;
