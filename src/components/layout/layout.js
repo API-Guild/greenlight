@@ -6,7 +6,7 @@ import Seo from "../seo/seo"
 import Callout from "../callout/callout"
 import Tableau from "../tableau/tableau"
 
-const shortcodes = { Callout, Tableau };
+const shortcodes = { Callout, Tableau }
 
 export default function Layout({ children }) {
   return (
