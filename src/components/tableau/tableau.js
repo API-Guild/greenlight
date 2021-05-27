@@ -1,43 +1,50 @@
-import React, { useEffect } from "react"
-import Helmet from "react-helmet"
+import React from "react"
 import "./tableau.css"
-import "./tableauApi/tableau-2.7.0.min.js"
+const apiTableau = typeof window !== 'undefined' ? require("./tableauApi/tableau-2.7.0.min.js") : null;
 
-export default function Tableau(props) {
-  const vizID = "vizID-" + Math.random().toString(36).substr(2, 10);
-  const vizOptions = {
-    width: props.options.width,
-    height: props.options.height,
-    onFirstVizSizeKnown: () => {
-    },
-    onFirstInteractive: () => {
-    }
-  };
-  
-  // similar in usage to the componentDidMount lifecycle method
-  useEffect(() => {
-    // loadAPI()
-    initViz()
-  });
+let vizObj;
+const vizID = "vizID-" + Math.random().toString(36).substr(2, 10);
 
-  const initViz = () => {
-    let vizObj;
+export default class Tableau extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      viz: props.viz,
+      height: props.height,
+      width: props.width,
+    };
+  }
+
+  componentDidMount() {
+    this.initViz()
+  }
+
+  componentWillUnmount() {
+  }
+
+  initViz() {
+    const viz = this.state.viz;
     const vizContainer = document.getElementById(vizID);
-    
+    const vizOptions = {
+      width: this.state.width,
+      height: this.state.height,
+      onFirstVizSizeKnown: () => {
+      },
+      onFirstInteractive: () => {
+      }
+    };
+
     // If a previous viz object exists, delete it.
     if (vizObj) { vizObj.dispose() }
 
     // Create a viz object and embed it in the container div.
     // eslint-disable-next-line
-    vizObj = new tableau.Viz(vizContainer, props.viz, vizOptions);
-  };
+    vizObj = new tableau.Viz(vizContainer, viz, vizOptions);
+  }
 
-  return (
-    <>
-      <Helmet>
-        <link as="script" rel="preload" href="https://public.tableau.com/javascripts/api/tableau-2.7.0.min.js" />
-      </Helmet>
-      <div id={vizID} className="vizDiv"/>
-    </>
-  )
+  render() {
+    return (
+      <div id={vizID}/>
+    );
+  }
 }
