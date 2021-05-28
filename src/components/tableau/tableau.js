@@ -20,6 +20,7 @@ export default class Tableau extends React.Component {
   }
 
   componentWillUnmount() {
+    if (vizObj) { vizObj.dispose() }
   }
 
   initViz() {
@@ -34,6 +35,7 @@ export default class Tableau extends React.Component {
       }
     };
 
+    if (!apiTableau) { return; }
     // If a previous viz object exists, delete it.
     if (vizObj) { vizObj.dispose() }
 
@@ -44,7 +46,7 @@ export default class Tableau extends React.Component {
 
   render() {
     return (
-      <div id={vizID}/>
+      <div id={vizID} className="vizDiv" />
     );
   }
 }
