@@ -52,7 +52,9 @@ export default class Tableau extends React.Component {
 
   render() {
     return (
-      <div id={this.state.vizID} className="vizDiv" />
+      <div className="outer-main-div">
+        <div id={this.state.vizID} className="vizDiv" />
+      </div>
     );
   }
 }
