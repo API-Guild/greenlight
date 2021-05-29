@@ -57,10 +57,9 @@ const addPx = (cssValue) => {
 // You can't know sheet type (worksheet or dashboard) until the onFirstInteractive event fires
 // This function lives separately to adjust the sizes of the iframe and surrounding div
 const adjustForWorksheetOrDashboard = (e) => {
-  // Worksheets have a white 4px border, which looks bad when the Viz background color is not white
-  // The parent <div> needs the following: "overflow: hidden;", "height: -8px;" and "width: -8px;"
-  // The iframe needs: "position: relative;", "top: -4px;", "left: -4px;"
-  // We have defined a CSS class:   iframe-with-worksheet {position: relative; top: -4px; left: -4px;}
+  // Worksheets have a white 4px border, which looks bad when the viz background is not white
+  // vizDiv gets the following: "overflow: hidden;", "height: -10px;" and "width: -10px;"
+  // iframe gets a new class (iframe-with-worksheet)
   const viz = e.getViz();
   const wb = viz.getWorkbook();
   const activeSheet = wb.getActiveSheet();
@@ -69,7 +68,6 @@ const adjustForWorksheetOrDashboard = (e) => {
   const iframe = vizDiv.querySelectorAll('iframe')[0];
 
   if (sheetType === 'worksheet') {
-      // Fix up the Div
       vizDiv.style.overflow = 'hidden';
       let oHeight = vizDiv.style.height;
       let oWidth = vizDiv.style.width;
@@ -80,7 +78,7 @@ const adjustForWorksheetOrDashboard = (e) => {
           oWidth = addPx(vizDiv.offsetWidth);
       }
 
-      // Remove PX from ending to do some math
+      // Remove 'px' from ending to do some math
       const oHeightInt = removePx(oHeight);
       const oWidthInt = removePx(oWidth);
 
@@ -91,12 +89,21 @@ const adjustForWorksheetOrDashboard = (e) => {
       vizDiv.style.height = addPx(nHeight);
       vizDiv.style.width = addPx(nWidth);
 
-      // Apply the adjusted style to the iframe
+      // add the iframe-with-worksheet class to the iframe
       iframe.classList.add(iframeWorksheetAdjustmentClassName);
   }
   else {
       if (iframe.classList.contains(iframeWorksheetAdjustmentClassName)){
           iframe.classList.remove(iframeWorksheetAdjustmentClassName);
+      }
+  }
+}
+
+// Uses breakpoints to determine device type
+const whichDevice = (availableSpaceRatio) => {
+  for (let i = 0; i < ratioBreakpoints.length; i++){
+      if ( availableSpaceRatio >= ratioBreakpoints[i].minRatio) {
+          return ratioBreakpoints[i].tableauDeviceName;
       }
   }
 }
