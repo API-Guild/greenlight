@@ -1,12 +1,13 @@
 /*
   CREDITS:
-  Thanks to Bryant Howell for his work documenting these methods at https://tableauandbehold.com
+  Thanks to Bryant Howell for his work documenting these methods at:
   https://tableauandbehold.com/2021/04/21/responsive-design-and-embedded-tableau-vizes-responsive_scaling_tableau-js/
   
-  and thanks to John Hegele for his work with TabScale: https://gitlab.com/jhegele/tabscale
+  and thanks to John Hegele for his work with TabScale: 
+  https://gitlab.com/jhegele/tabscale
 */
 
-// Real ratios are {phone:0.5635}, {tablet:0.75}, {desktop:1.33}
+// Real ratios are (phone:0.5635), (tablet:0.75), (desktop:1.33)
 // Tablet displays better scaled down, cutting sizes to half (1536:2048 to 768:1024)
 const ratioBreakpoints = [ 
   { 'tableauDeviceName': 'desktop', 'minRatio': 1.1, 'vizSizeDefaults': {'width': 1366, 'height': 768} },
@@ -20,3 +21,82 @@ const ratioBreakpoints = [
 // Used by the scaleDiv() function when the ratio changes and the viz needs to reload with a different display option
 let postResizeVizInitializationFunction;
 let postResizeVizOptionsObject;
+
+// The iframe adjustment function adds or removes a class to the iframe
+const iframeWorksheetAdjustmentClassName = 'iframe-with-worksheet';
+
+// Specifies the parent <div> that determines the space available for the Tableau viz
+const nameOfOuterDivContainingTableauViz = 'outer-main-div';
+
+// Pixels to subtract from the OuterDivContainingTableauViz providing slight margins
+// Used within the scaleDiv() function below
+const additionalWidthMargin = 30;
+const additionalHeightMargin = 60;
+
+// Delays the firing of a resize event until the browser really is done resizing
+let vizResizeTimeoutFunctionId;
+
+/*
+* Helper Functions
+*/
+// helper to remove the 'px' value from returned CSS properties to do calculations
+const removePx = (cssValue) => {
+  return cssValue.split('px')[0]
+}
+
+// helper to add the 'px' ending back for CSS properties that need it
+const addPx = (cssValue) => {
+  // Remove any existing 'px' so that you can sanitize any value without worrying
+  var strippedPx = cssValue.toString().split('px')[0];
+  return strippedPx + "px";
+}
+/*
+* End Helper Functions
+*/
+
+// You can't know sheet type (worksheet or dashboard) until the onFirstInteractive event fires
+// This function lives separately to adjust the sizes of the iframe and surrounding div
+const adjustForWorksheetOrDashboard = (e) => {
+  // Worksheets have a white 4px border, which looks bad when the Viz background color is not white
+  // The parent <div> needs the following: "overflow: hidden;", "height: -8px;" and "width: -8px;"
+  // The iframe needs: "position: relative;", "top: -4px;", "left: -4px;"
+  // We have defined a CSS class:   iframe-with-worksheet {position: relative; top: -4px; left: -4px;}
+  const viz = e.getViz();
+  const wb = viz.getWorkbook();
+  const activeSheet = wb.getActiveSheet();
+  const sheetType = activeSheet.getSheetType();
+  const vizDiv = viz.getParentElement();
+  const iframe = vizDiv.querySelectorAll('iframe')[0];
+
+  if (sheetType === 'worksheet') {
+      // Fix up the Div
+      vizDiv.style.overflow = 'hidden';
+      let oHeight = vizDiv.style.height;
+      let oWidth = vizDiv.style.width;
+      if (oHeight === ""){
+          oHeight = addPx(vizDiv.offsetHeight);
+      }
+      if (oWidth === ""){
+          oWidth = addPx(vizDiv.offsetWidth);
+      }
+
+      // Remove PX from ending to do some math
+      const oHeightInt = removePx(oHeight);
+      const oWidthInt = removePx(oWidth);
+
+      const nHeight = (oHeightInt - 10);
+      const nWidth = (oWidthInt - 10);
+
+      // Styles need 'px' at the end
+      vizDiv.style.height = addPx(nHeight);
+      vizDiv.style.width = addPx(nWidth);
+
+      // Apply the adjusted style to the iframe
+      iframe.classList.add(iframeWorksheetAdjustmentClassName);
+  }
+  else {
+      if (iframe.classList.contains(iframeWorksheetAdjustmentClassName)){
+          iframe.classList.remove(iframeWorksheetAdjustmentClassName);
+      }
+  }
+}
