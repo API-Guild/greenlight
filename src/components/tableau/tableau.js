@@ -1,14 +1,15 @@
 import React from "react"
 import "./tableau.css"
+import "./scaleViz.js"
+// eslint-disable-next-line no-unused-vars
 const apiTableau = typeof window !== 'undefined' ? require("./tableauApi/tableau-2.7.0.min.js") : null;
-
-let vizObj;
-const vizID = "vizID-" + Math.random().toString(36).substr(2, 10);
 
 export default class Tableau extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
+      vizID: "vizID-" + Math.random().toString(36).substr(2, 10),
+      vizObj: null,
       viz: props.viz,
       height: props.height,
       width: props.width,
@@ -20,12 +21,13 @@ export default class Tableau extends React.Component {
   }
 
   componentWillUnmount() {
-    if (vizObj) { vizObj.dispose() }
+    this.disposeViz()
   }
 
+  // Initializes the Tableau visualization
   initViz() {
     const viz = this.state.viz;
-    const vizContainer = document.getElementById(vizID);
+    const vizContainer = document.getElementById(this.state.vizID);
     const vizOptions = {
       width: this.state.width,
       height: this.state.height,
@@ -35,18 +37,22 @@ export default class Tableau extends React.Component {
       }
     };
 
-    if (!apiTableau) { return; }
     // If a previous viz object exists, delete it.
-    if (vizObj) { vizObj.dispose() }
+    this.disposeViz()
 
     // Create a viz object and embed it in the container div.
-    // eslint-disable-next-line
-    vizObj = new tableau.Viz(vizContainer, viz, vizOptions);
+    // eslint-disable-next-line no-undef
+    this.setState({vizObj: new tableau.Viz(vizContainer, viz, vizOptions)})
+  }
+
+  // Clears the vizObj if it previously was assigned to a different object
+  disposeViz() {
+    if (this.state.vizObj) { this.setState({vizObj: this.state.vizObj.dispose()}) }
   }
 
   render() {
     return (
-      <div id={vizID} className="vizDiv" />
+      <div id={this.state.vizID} className="vizDiv" />
     );
   }
 }
