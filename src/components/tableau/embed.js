@@ -7,6 +7,13 @@
   https://gitlab.com/jhegele/tabscale
 */
 
+import './tableau';
+
+// To be assigned to the viz Initialization function and its Options object 
+// Used by the scaleDiv() function when the ratio changes and the viz needs to reload with a different display option
+let postResizeVizInitializationFunction;
+let postResizeVizOptionsObject;
+
 // Real ratios are (phone:0.5635), (tablet:0.75), (desktop:1.33)
 // Tablet displays better scaled down, cutting sizes to half (1536:2048 to 768:1024)
 const ratioBreakpoints = [ 
@@ -16,11 +23,6 @@ const ratioBreakpoints = [
   { 'tableauDeviceName': 'web-edit', 'minRatio': 1.33, 'vizSizeDefaults': {'width': 1366, 'height': 768} },
   { 'tableauDeviceName': 'ask-data', 'minRatio': 1.33, 'vizSizeDefaults': {'width': 1366, 'height': 768} }
 ];
-
-// To be assigned to the viz Initialization function and its Options object 
-// Used by the scaleDiv() function when the ratio changes and the viz needs to reload with a different display option
-let postResizeVizInitializationFunction;
-let postResizeVizOptionsObject;
 
 // The iframe adjustment function adds or removes a class to the iframe
 const iframeWorksheetAdjustmentClassName = 'iframe-with-worksheet';
@@ -233,7 +235,7 @@ const resizeVizContainerDivBase = VizResizeEvent => {
   vizDiv.style.height = heightPx;
 }
 
-const resizeVizContainerDiv = VizResizeEvent => {
+const resizeVizContainerDiv = (VizResizeEvent) => {
   const thisViz = VizResizeEvent.getViz();
   const vizDiv = thisViz.getParentElement();
 
@@ -262,33 +264,31 @@ const scaleDiv = (divToScale, multipleLayouts) => {
   const currentPageSpace = getPageSpaceWidthHeight();
   let deviceLayoutToUse;
   // Logic for regular vizes with Device Designer or Automatic sizing.
-  // Want to check to see if also need a viz reload based on a change of proportions
   if (multipleLayouts === true){
     // Put on slight delay so this only happens if the page is still for a bit
     window.addEventListener("resize", function(){
-        // Clears any previous attempt to run this stuff
-        clearTimeout(vizResizeTimeoutFunctionId);
-        vizResizeTimeoutFunctionId = setTimeout( function () {
-            const newDeviceLayoutToUse = whichDevice(currentPageSpace.ratio);
-            if (newDeviceLayoutToUse !== deviceLayoutToUse){
-                postResizeVizOptionsObject.device = newDeviceLayoutToUse;
-                // Set the global so the next check won't trigger a reload
-                deviceLayoutToUse = newDeviceLayoutToUse;
-                // Now get the defaults to use from the ratioBreakpoints object and set those values in the options object
-                let vizWidthHeight;
-                for(let i = 0, len = ratioBreakpoints.length; i < len; i++){
-                    if ( ratioBreakpoints[i]['tableauDeviceName'] === deviceLayoutToUse ){
-                        vizWidthHeight = ratioBreakpoints[i]['vizSizeDefaults'];
-                    }
-                }
-                postResizeVizOptionsObject.width = vizWidthHeight.width;
-                postResizeVizOptionsObject.height = vizWidthHeight.height;
+      // Clears any previous attempt
+      clearTimeout(vizResizeTimeoutFunctionId);
+      vizResizeTimeoutFunctionId = setTimeout( function () {
+        const newDeviceLayoutToUse = whichDevice(currentPageSpace.ratio);
+        if (newDeviceLayoutToUse !== deviceLayoutToUse) {
+          postResizeVizOptionsObject.device = newDeviceLayoutToUse;
+          // Set the global so the next check won't trigger a reload
+          deviceLayoutToUse = newDeviceLayoutToUse;
+          // Now get the defaults to use from the ratioBreakpoints object and set those values in the options object
+          let vizWidthHeight;
+          for(let i = 0, len = ratioBreakpoints.length; i < len; i++){
+              if ( ratioBreakpoints[i]['tableauDeviceName'] === deviceLayoutToUse ){
+                  vizWidthHeight = ratioBreakpoints[i]['vizSizeDefaults'];
+              }
+          }
+          postResizeVizOptionsObject.width = vizWidthHeight.width;
+          postResizeVizOptionsObject.height = vizWidthHeight.height;
 
-                // This needs to be modular, this function is specific to our code
-                postResizeVizInitializationFunction();
-            }
-        },
-        300);
+          // This needs to be modular, this function is specific to our code
+          postResizeVizInitializationFunction();
+        }
+      }, 300);
     });
   }
 
@@ -374,8 +374,10 @@ const scaleDiv = (divToScale, multipleLayouts) => {
   //}
 }
 
-module.exports = {
+const embed = {
   adjustForWorksheetOrDashboard,
   resizeVizContainerDiv,
-  nameOfOuterDivContainingTableauViz,
-}
+  nameOfOuterDivContainingTableauViz
+};
+
+export default embed

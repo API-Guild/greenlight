@@ -2,10 +2,6 @@
   margin: 3rem auto;
 }
 
-.vizDiv iframe {
-	margin: auto;
-}
-
 /* used only when a Worksheet is displayed, not a Dashboard */
 .iframe-with-worksheet {
   position: relative;

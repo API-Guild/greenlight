@@ -1,6 +1,6 @@
 import React from "react"
 import "./tableau.css"
-import * as scale from "./scaleViz.js"
+import * as embed from "./embed.js"
 // eslint-disable-next-line no-unused-vars
 const apiTableau = typeof window !== 'undefined' ? require("./tableauApi/tableau-2.7.0.min.js") : null;
 
@@ -11,31 +11,28 @@ export default class Tableau extends React.Component {
       vizID: "vizID-" + Math.random().toString(36).substr(2, 10),
       vizObj: null,
       viz: props.viz,
-      height: props.height,
-      width: props.width,
     };
   }
 
   componentDidMount() {
+    console.log(embed)
     this.initViz()
   }
 
   componentWillUnmount() {
     this.disposeViz()
   }
-
+  
   // Initializes the Tableau visualization
   initViz() {
     const viz = this.state.viz;
     const vizContainer = document.getElementById(this.state.vizID);
     const vizOptions = {
-      width: this.state.width,
-      height: this.state.height,
       onFirstVizSizeKnown: (event) => {
-        scale.resizeVizContainerDiv(event)
+        embed.default.resizeVizContainerDiv(event)
       },
       onFirstInteractive: (event) => {
-        scale.adjustForWorksheetOrDashboard(event)
+        embed.default.adjustForWorksheetOrDashboard(event)
       }
     };
 
@@ -54,7 +51,7 @@ export default class Tableau extends React.Component {
 
   render() {
     return (
-      <div id={scale.nameOfOuterDivContainingTableauViz}>
+      <div id={embed.default.nameOfOuterDivContainingTableauViz}>
         <div id={this.state.vizID} className="vizDiv" />
       </div>
     );
