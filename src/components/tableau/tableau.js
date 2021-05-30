@@ -1,6 +1,6 @@
 import React from "react"
 import "./tableau.css"
-import "./scaleViz.js"
+import * as scale from "./scaleViz.js"
 // eslint-disable-next-line no-unused-vars
 const apiTableau = typeof window !== 'undefined' ? require("./tableauApi/tableau-2.7.0.min.js") : null;
 
@@ -33,7 +33,8 @@ export default class Tableau extends React.Component {
       height: this.state.height,
       onFirstVizSizeKnown: () => {
       },
-      onFirstInteractive: () => {
+      onFirstInteractive: (event) => {
+        scale.adjustForWorksheetOrDashboard(event)
       }
     };
 

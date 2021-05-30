@@ -264,32 +264,32 @@ const scaleDiv = (divToScale, multipleLayouts) => {
   // Logic for regular vizes with Device Designer or Automatic sizing.
   // Want to check to see if also need a viz reload based on a change of proportions
   if (multipleLayouts === true){
-      // Put on slight delay so this only happens if the page is still for a bit
-      window.addEventListener("resize", function(){
-          // Clears any previous attempt to run this stuff
-          clearTimeout(vizResizeTimeoutFunctionId);
-          vizResizeTimeoutFunctionId = setTimeout( function () {
-              const newDeviceLayoutToUse = whichDevice(currentPageSpace.ratio);
-              if (newDeviceLayoutToUse !== deviceLayoutToUse){
-                  postResizeVizOptionsObject.device = newDeviceLayoutToUse;
-                  // Set the global so the next check won't trigger a reload
-                  deviceLayoutToUse = newDeviceLayoutToUse;
-                  // Now get the defaults to use from the ratioBreakpoints object and set those values in the options object
-                  let vizWidthHeight;
-                  for(let i = 0, len = ratioBreakpoints.length; i < len; i++){
-                      if ( ratioBreakpoints[i]['tableauDeviceName'] === deviceLayoutToUse ){
-                          vizWidthHeight = ratioBreakpoints[i]['vizSizeDefaults'];
-                      }
-                  }
-                  postResizeVizOptionsObject.width = vizWidthHeight.width;
-                  postResizeVizOptionsObject.height = vizWidthHeight.height;
+    // Put on slight delay so this only happens if the page is still for a bit
+    window.addEventListener("resize", function(){
+        // Clears any previous attempt to run this stuff
+        clearTimeout(vizResizeTimeoutFunctionId);
+        vizResizeTimeoutFunctionId = setTimeout( function () {
+            const newDeviceLayoutToUse = whichDevice(currentPageSpace.ratio);
+            if (newDeviceLayoutToUse !== deviceLayoutToUse){
+                postResizeVizOptionsObject.device = newDeviceLayoutToUse;
+                // Set the global so the next check won't trigger a reload
+                deviceLayoutToUse = newDeviceLayoutToUse;
+                // Now get the defaults to use from the ratioBreakpoints object and set those values in the options object
+                let vizWidthHeight;
+                for(let i = 0, len = ratioBreakpoints.length; i < len; i++){
+                    if ( ratioBreakpoints[i]['tableauDeviceName'] === deviceLayoutToUse ){
+                        vizWidthHeight = ratioBreakpoints[i]['vizSizeDefaults'];
+                    }
+                }
+                postResizeVizOptionsObject.width = vizWidthHeight.width;
+                postResizeVizOptionsObject.height = vizWidthHeight.height;
 
-                  // This needs to be modular, this function is specific to our code
-                  postResizeVizInitializationFunction();
-              }
-          },
-          300);
-      });
+                // This needs to be modular, this function is specific to our code
+                postResizeVizInitializationFunction();
+            }
+        },
+        300);
+    });
   }
 
   const vizDiv = divToScale;
@@ -372,4 +372,8 @@ const scaleDiv = (divToScale, multipleLayouts) => {
   //    divToScale.style.transform = "scale(" + flipScale + ")";
   //    divToScale.style.transformOrigin = 'left top';
   //}
+}
+
+module.exports = {
+  adjustForWorksheetOrDashboard,
 }
