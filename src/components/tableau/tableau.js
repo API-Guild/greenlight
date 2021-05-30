@@ -31,7 +31,8 @@ export default class Tableau extends React.Component {
     const vizOptions = {
       width: this.state.width,
       height: this.state.height,
-      onFirstVizSizeKnown: () => {
+      onFirstVizSizeKnown: (event) => {
+        scale.resizeVizContainerDiv(event)
       },
       onFirstInteractive: (event) => {
         scale.adjustForWorksheetOrDashboard(event)
@@ -53,7 +54,7 @@ export default class Tableau extends React.Component {
 
   render() {
     return (
-      <div className="outer-main-div">
+      <div id={scale.nameOfOuterDivContainingTableauViz}>
         <div id={this.state.vizID} className="vizDiv" />
       </div>
     );

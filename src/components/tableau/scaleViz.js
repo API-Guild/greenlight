@@ -26,7 +26,7 @@ let postResizeVizOptionsObject;
 const iframeWorksheetAdjustmentClassName = 'iframe-with-worksheet';
 
 // Specifies the parent <div> that determines the space available for the Tableau viz
-const nameOfOuterDivContainingTableauViz = 'outer-main-div';
+const nameOfOuterDivContainingTableauViz = 'outer-main-div-' + Math.random().toString(36).substr(2, 10);
 
 // Pixels to subtract from the OuterDivContainingTableauViz providing slight margins
 // Used within the scaleDiv() function below
@@ -376,4 +376,6 @@ const scaleDiv = (divToScale, multipleLayouts) => {
 
 module.exports = {
   adjustForWorksheetOrDashboard,
+  resizeVizContainerDiv,
+  nameOfOuterDivContainingTableauViz,
 }
