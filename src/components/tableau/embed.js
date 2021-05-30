@@ -7,12 +7,42 @@
   https://gitlab.com/jhegele/tabscale
 */
 
-import './tableau';
+// exports Tableau component prop to be used on this script
+import {vizUrl} from './tableau';
 
-// To be assigned to the viz Initialization function and its Options object 
-// Used by the scaleDiv() function when the ratio changes and the viz needs to reload with a different display option
-let postResizeVizInitializationFunction;
-let postResizeVizOptionsObject;
+let vizObj;
+// Unique ID for the parent <div> that determines the space available for the Tableau viz
+const nameOfOuterDivContainingTableauViz = 'outer-main-div-' + Math.random().toString(36).substr(2, 10);
+// Unique ID for the embedding <div>
+const vizID = "vizID-" + Math.random().toString(36).substr(2, 10);
+
+// Options object to embed visualizations
+let vizOptions = {
+  onFirstVizSizeKnown: (event) => {
+    resizeVizContainerDiv(event)
+  },
+  onFirstInteractive: (event) => {
+    adjustForWorksheetOrDashboard(event)
+  }
+};
+
+// Initializes the Tableau visualization
+const initViz = () => {
+  const vizContainer = document.getElementById(vizID);
+
+  // If a previous viz object exists, delete it.
+  disposeViz()
+
+  // Create a viz object and embed it in the container div.
+  // eslint-disable-next-line no-undef
+  vizObj = new tableau.Viz(vizContainer, vizUrl, vizOptions);
+}
+
+// Clears the vizObj if it previously was assigned to a different object
+const disposeViz = () => {
+  if (vizObj) { vizObj.dispose() }
+}
+
 
 // Real ratios are (phone:0.5635), (tablet:0.75), (desktop:1.33)
 // Tablet displays better scaled down, cutting sizes to half (1536:2048 to 768:1024)
@@ -26,9 +56,6 @@ const ratioBreakpoints = [
 
 // The iframe adjustment function adds or removes a class to the iframe
 const iframeWorksheetAdjustmentClassName = 'iframe-with-worksheet';
-
-// Specifies the parent <div> that determines the space available for the Tableau viz
-const nameOfOuterDivContainingTableauViz = 'outer-main-div-' + Math.random().toString(36).substr(2, 10);
 
 // Pixels to subtract from the OuterDivContainingTableauViz providing slight margins
 // Used within the scaleDiv() function below
@@ -272,7 +299,7 @@ const scaleDiv = (divToScale, multipleLayouts) => {
       vizResizeTimeoutFunctionId = setTimeout( function () {
         const newDeviceLayoutToUse = whichDevice(currentPageSpace.ratio);
         if (newDeviceLayoutToUse !== deviceLayoutToUse) {
-          postResizeVizOptionsObject.device = newDeviceLayoutToUse;
+          vizOptions.device = newDeviceLayoutToUse;
           // Set the global so the next check won't trigger a reload
           deviceLayoutToUse = newDeviceLayoutToUse;
           // Now get the defaults to use from the ratioBreakpoints object and set those values in the options object
@@ -282,11 +309,11 @@ const scaleDiv = (divToScale, multipleLayouts) => {
                   vizWidthHeight = ratioBreakpoints[i]['vizSizeDefaults'];
               }
           }
-          postResizeVizOptionsObject.width = vizWidthHeight.width;
-          postResizeVizOptionsObject.height = vizWidthHeight.height;
+          vizOptions.width = vizWidthHeight.width;
+          vizOptions.height = vizWidthHeight.height;
 
           // This needs to be modular, this function is specific to our code
-          postResizeVizInitializationFunction();
+          initViz();
         }
       }, 300);
     });
@@ -377,7 +404,10 @@ const scaleDiv = (divToScale, multipleLayouts) => {
 const embed = {
   adjustForWorksheetOrDashboard,
   resizeVizContainerDiv,
-  nameOfOuterDivContainingTableauViz
+  nameOfOuterDivContainingTableauViz,
+  vizID,
+  initViz,
+  disposeViz,
 };
 
 export default embed
