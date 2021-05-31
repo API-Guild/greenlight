@@ -31,7 +31,6 @@ const ratioBreakpoints = [
 const whichDevice = availableSpaceRatio => {
   for (let i = 0; i < ratioBreakpoints.length; i++){
     if ( availableSpaceRatio >= ratioBreakpoints[i].minRatio) {
-      console.log('deviceName', ratioBreakpoints[i].tableauDeviceName)
       return ratioBreakpoints[i].tableauDeviceName;
     }
   }
@@ -44,7 +43,6 @@ const getPageSpaceWidthHeight = () => {
   const browserHeight = document.documentElement.clientHeight;
   // get available space from parent <div>
   const outerContainerDiv = document.getElementById(nameOfOuterDivContainingTableauViz);
-  console.log('outerContainerDiv', outerContainerDiv)
 
   const oStyles = window.getComputedStyle(outerContainerDiv);
   const computedPaddingTop = removePx(oStyles.getPropertyValue('padding-top'));
@@ -62,7 +60,6 @@ const getPageSpaceWidthHeight = () => {
   const finalWidth = totalVisibleWidth;
   const finalHeight = totalVisibleHeight;
   const ratio = finalWidth / finalHeight;
-  console.log('ratio', ratio)
 
   return { 'width' : finalWidth, 'height' : finalHeight, 'ratio' : ratio };
 }
@@ -82,7 +79,6 @@ let vizOptions = {
 const initViz = () => {
   const vizContainer = document.getElementById(vizID);
   vizOptions.device = whichDevice(getPageSpaceWidthHeight().ratio);
-  
 
   // If a previous viz object exists, delete it.
   disposeViz()
@@ -183,6 +179,7 @@ const resizeVizContainerDivBase = VizResizeEvent => {
   // Get the state of the toolbar and tabbar, for correct adjustment of the iframe size
   const isToolbarHidden = thisViz.getIsToolbarHidden();
   const areTabsHidden = thisViz.getAreTabsHidden();
+  const currentPageSpace = getPageSpaceWidthHeight();
   let sheetSize;
   let maxSize;
   let widthPx;
@@ -196,7 +193,6 @@ const resizeVizContainerDivBase = VizResizeEvent => {
   else {
     sheetSize = VizResizeEvent.getViz().getVizSize().sheetSize;
   }
-
   /* 
     There are three possible states: 'automatic', 'range', and 'fixed'
     But the JS API reports these as: AUTOMATIC, EXACTLY, RANGE, ATLEAST, and ATMOST.
@@ -216,7 +212,6 @@ const resizeVizContainerDivBase = VizResizeEvent => {
     widthPx = addPx(iframe.clientWidth);
     heightPx = addPx(iframe.clientHeight);
   }
-
   // EXACTLY vizzes should have a maxSize and minSize that match
   else if (sheetSize.behavior === 'exactly') {
     widthPx = addPx(iframe.clientWidth);
@@ -228,9 +223,17 @@ const resizeVizContainerDivBase = VizResizeEvent => {
     iframe.style.width = widthPx;
     iframe.style.height = heightPx;
   }
-
   // RANGE, ATLEAST & ATMOST
   else {
+    console.log('resizeVizContainerDivBase - sheetSize', sheetSize)
+    console.log('maxWidth', sheetSize.maxSize.width)
+    console.log('minWidth', sheetSize.minSize.width)
+    // Device layouts with "Fit Width" settings have "maxSize.width: 1" and "minSize.width: 0"
+    if (sheetSize.maxSize.width === 2147483647 && sheetSize.minSize.width === 0) {
+      maxSize = sheetSize.maxSize;
+      maxSize.width = currentPageSpace.width;
+    }
+    // ATMOST
     if (sheetSize.maxSize) {
       maxSize = sheetSize.maxSize;
       // Weird edge case for the tablet and phone layouts when set to "fit width"
@@ -238,6 +241,7 @@ const resizeVizContainerDivBase = VizResizeEvent => {
         maxSize.width = iframe.clientWidth;
       }
     }
+    // ATLEAST
     else if (sheetSize.minSize) {
       maxSize = { 'width' : null, 'height' : null };
       if (sheetSize.minSize.height >= iframe.clientHeight) {
@@ -279,7 +283,6 @@ const resizeVizContainerDiv = (VizResizeEvent) => {
   const vizDiv = thisViz.getParentElement();
 
   resizeVizContainerDivBase(VizResizeEvent)
-  console.log('resizeVizContainerDiv', vizDiv)
   // Scale it to match the viewport, with multipleLayouts set to true
   scaleDiv(vizDiv, true)
 
@@ -302,25 +305,29 @@ const resizeVizContainerDiv = (VizResizeEvent) => {
 // called on resize events (or the initial load) to scale the content Div to fit the visible space
 const scaleDiv = (divToScale, multipleLayouts) => {
   const currentPageSpace = getPageSpaceWidthHeight();
+  console.log('scaleDiv-currentPageSpace', currentPageSpace)
   let deviceLayoutToUse;
   // Logic for regular vizes with Device Designer or Automatic sizing.
   if (multipleLayouts === true){
     // Put on slight delay so this only happens if the page is still for a bit
-    window.addEventListener("resize", function(){
+    window.addEventListener("scaleDiv - resize", function(){
       // Clears any previous attempt
       clearTimeout(vizResizeTimeoutFunctionId);
       vizResizeTimeoutFunctionId = setTimeout( function () {
         const newDeviceLayoutToUse = whichDevice(currentPageSpace.ratio);
+        console.log('scaleDiv - newDeviceLayoutToUse', newDeviceLayoutToUse)
         if (newDeviceLayoutToUse !== deviceLayoutToUse) {
           postResizeVizOptionsObject.device = newDeviceLayoutToUse;
+          console.log('scaleDiv - postResizeVizOptionsObject', postResizeVizOptionsObject)
           // Set the global so the next check won't trigger a reload
           deviceLayoutToUse = newDeviceLayoutToUse;
           // Now get the defaults to use from the ratioBreakpoints object and set those values in the options object
           let vizWidthHeight;
           for(let i = 0, len = ratioBreakpoints.length; i < len; i++){
-              if ( ratioBreakpoints[i]['tableauDeviceName'] === deviceLayoutToUse ){
-                  vizWidthHeight = ratioBreakpoints[i]['vizSizeDefaults'];
-              }
+            if ( ratioBreakpoints[i]['tableauDeviceName'] === deviceLayoutToUse ){
+              vizWidthHeight = ratioBreakpoints[i]['vizSizeDefaults'];
+              console.log('scaleDiv - postResizeVizOptionsObject', postResizeVizOptionsObject)
+            }
           }
           postResizeVizOptionsObject.width = vizWidthHeight.width;
           postResizeVizOptionsObject.height = vizWidthHeight.height;
@@ -385,6 +392,10 @@ const scaleDiv = (divToScale, multipleLayouts) => {
   }
 
   const flipScale = 1 / vizScaleToWindow;
+  console.log('vizScaleToWindowWidth', vizScaleToWindowWidth)
+  console.log('vizScaleToWindowHeight', vizScaleToWindowHeight)
+  console.log('flipScale', flipScale)
+
 
   // When scaling down, the scaling should happen to the left because the margins run out (auto) and the right side is the boundary
   //if (flipScale < 0.95) {
@@ -404,7 +415,7 @@ const scaleDiv = (divToScale, multipleLayouts) => {
       const finalVizWidth = clientRect.width;
       const leftAdjust = (effectiveWidth - finalVizWidth) / 2;
       const leftAdjustPx = addPx(Math.floor(leftAdjust));
-      divToScale.style.transform = "scale(" + flipScale + ") translate(" + leftAdjustPx + ", 0px)";
+      // divToScale.style.transform = "scale(" + flipScale + ") translate(" + leftAdjustPx + ", 0px)";
       //divToScale.style.transformOrigin = 'center top';
   //}
   // When scaling up, it makes sense to scale from the middle, because the viz gets recentered by the auto margins
