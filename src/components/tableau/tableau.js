@@ -1,25 +1,22 @@
 import React from "react"
 import "./tableau.css"
-import * as embed from "./embed.js"
+import { useScaleViz } from "./scaleViz.js"
 // eslint-disable-next-line no-unused-vars
 const apiTableau = typeof window !== 'undefined' ? require("./tableauApi/tableau-2.7.0.min.js") : null;
-
-export let vizUrl;
 
 export default class Tableau extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      vizID: "vizID-" + Math.random().toString(36).substr(2, 10),
+      vizDivId: "vizID-" + Math.random().toString(36).substr(2, 10),
       vizObj: null,
-      viz: props.viz,
+      vizUrl: props.viz,
       height: props.height,
       width: props.width,
     };
   }
 
   componentDidMount() {
-    vizUrl = this.state.viz;
     this.initViz()
   }
 
@@ -29,16 +26,15 @@ export default class Tableau extends React.Component {
 
   // Initializes the Tableau visualization
   initViz() {
-    const viz = this.state.viz;
-    const vizContainer = document.getElementById(this.state.vizID);
+    const vizContainer = document.getElementById(this.state.vizDivId);
     const vizOptions = {
       width: this.state.width,
       height: this.state.height,
       onFirstVizSizeKnown: (event) => {
-        embed.resizeVizContainerDiv(event)
+        // embed.resizeVizContainerDiv(event)
       },
       onFirstInteractive: (event) => {
-        embed.adjustForWorksheetOrDashboard(event)
+        // embed.adjustForWorksheetOrDashboard(event)
       }
     };
 
@@ -47,7 +43,7 @@ export default class Tableau extends React.Component {
 
     // Create a viz object and embed it in the container div.
     // eslint-disable-next-line no-undef
-    this.setState({vizObj: new tableau.Viz(vizContainer, viz, vizOptions)})
+    this.setState({vizObj: new tableau.Viz(vizContainer, this.state.vizUrl, vizOptions)})
   }
 
   // Clears the vizObj if it previously was assigned to a different object
@@ -57,9 +53,7 @@ export default class Tableau extends React.Component {
 
   render() {
     return (
-      <div id={embed.nameOfOuterDivContainingTableauViz}>
-        <div id={this.state.vizID} className="vizDiv" />
-      </div>
+      <div id={this.state.vizDivId} className="vizDiv" />
     );
   }
 }
