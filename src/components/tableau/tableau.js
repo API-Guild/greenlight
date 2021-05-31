@@ -25,7 +25,7 @@ export default class Tableau extends React.Component {
 
   render() {
     return (
-      <div id={embed.default.nameOfOuterDivContainingTableauViz}>
+      <div id={embed.default.nameOfOuterDivContainingTableauViz} className="outer-div">
         <div id={embed.default.vizID} className="vizDiv" />
       </div>
     );

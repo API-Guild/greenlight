@@ -9,6 +9,9 @@
 
 // exports Tableau component prop to be used on this script
 import {vizUrl} from './tableau';
+// import './tableauApi/tableau-2.7.0.min.js'
+// eslint-disable-next-line no-unused-vars
+// const apiTableau = typeof window !== 'undefined' ? require("./tableauApi/tableau-2.7.0.min.js") : null;
 
 let vizObj;
 // Unique ID for the parent <div> that determines the space available for the Tableau viz
@@ -16,8 +19,57 @@ const nameOfOuterDivContainingTableauViz = 'outer-main-div-' + Math.random().toS
 // Unique ID for the embedding <div>
 const vizID = "vizID-" + Math.random().toString(36).substr(2, 10);
 
+// Real ratios are (phone:0.5635), (tablet:0.75), (desktop:1.33)
+// Tablet displays better scaled down, cutting sizes to half (1536:2048 to 768:1024)
+const ratioBreakpoints = [
+  { 'tableauDeviceName': 'desktop', 'minRatio': 1.1, 'vizSizeDefaults': {'width': 1366, 'height': 768} },
+  { 'tableauDeviceName': 'tablet',  'minRatio':  0.66, 'vizSizeDefaults': {'width': 768, 'height': 1024} },
+  { 'tableauDeviceName': 'phone', 'minRatio':  0.0, 'vizSizeDefaults': {'width': 1080, 'height': 1920} },
+];
+
+// Uses breakpoints to determine device type
+const whichDevice = availableSpaceRatio => {
+  for (let i = 0; i < ratioBreakpoints.length; i++){
+    if ( availableSpaceRatio >= ratioBreakpoints[i].minRatio) {
+      console.log('deviceName', ratioBreakpoints[i].tableauDeviceName)
+      return ratioBreakpoints[i].tableauDeviceName;
+    }
+  }
+}
+
+// The visible space available for the Tableau viz will depend on other elements of the page.
+const getPageSpaceWidthHeight = () => {
+  // Visible browser width & height
+  const browserWidth = document.documentElement.clientWidth;
+  const browserHeight = document.documentElement.clientHeight;
+  // get available space from parent <div>
+  const outerContainerDiv = document.getElementById(nameOfOuterDivContainingTableauViz);
+  console.log('outerContainerDiv', outerContainerDiv)
+
+  const oStyles = window.getComputedStyle(outerContainerDiv);
+  const computedPaddingTop = removePx(oStyles.getPropertyValue('padding-top'));
+  const computedMarginTop = removePx(oStyles.getPropertyValue('margin-top'));
+  const computedPaddingLeft = removePx(oStyles.getPropertyValue('padding-left'));
+  const computedMarginLeft = removePx(oStyles.getPropertyValue('margin-left'));
+  // removes left margin and padding for width
+  const totalVisibleWidth = outerContainerDiv.clientWidth - computedPaddingLeft - computedMarginLeft;
+
+
+
+  // parent <div> height varies based on the viz content that is loaded so total browser height is used
+  const totalVisibleHeight = browserHeight - computedPaddingTop - computedMarginTop;
+
+  const finalWidth = totalVisibleWidth;
+  const finalHeight = totalVisibleHeight;
+  const ratio = finalWidth / finalHeight;
+  console.log('ratio', ratio)
+
+  return { 'width' : finalWidth, 'height' : finalHeight, 'ratio' : ratio };
+}
+
 // Options object to embed visualizations
 let vizOptions = {
+  device: "default",
   onFirstVizSizeKnown: (event) => {
     resizeVizContainerDiv(event)
   },
@@ -29,10 +81,13 @@ let vizOptions = {
 // Initializes the Tableau visualization
 const initViz = () => {
   const vizContainer = document.getElementById(vizID);
+  vizOptions.device = whichDevice(getPageSpaceWidthHeight().ratio);
+  
 
   // If a previous viz object exists, delete it.
   disposeViz()
 
+  console.log('embedding options', vizOptions)
   // Create a viz object and embed it in the container div.
   // eslint-disable-next-line no-undef
   vizObj = new tableau.Viz(vizContainer, vizUrl, vizOptions);
@@ -43,16 +98,7 @@ const disposeViz = () => {
   if (vizObj) { vizObj.dispose() }
 }
 
-
-// Real ratios are (phone:0.5635), (tablet:0.75), (desktop:1.33)
-// Tablet displays better scaled down, cutting sizes to half (1536:2048 to 768:1024)
-const ratioBreakpoints = [ 
-  { 'tableauDeviceName': 'desktop', 'minRatio': 1.1, 'vizSizeDefaults': {'width': 1366, 'height': 768} },
-  { 'tableauDeviceName': 'tablet',  'minRatio':  0.66, 'vizSizeDefaults': {'width': 768, 'height': 1024} },
-  { 'tableauDeviceName': 'phone', 'minRatio':  0.0, 'vizSizeDefaults': {'width': 1080, 'height': 1920} },
-  { 'tableauDeviceName': 'web-edit', 'minRatio': 1.33, 'vizSizeDefaults': {'width': 1366, 'height': 768} },
-  { 'tableauDeviceName': 'ask-data', 'minRatio': 1.33, 'vizSizeDefaults': {'width': 1366, 'height': 768} }
-];
+let postResizeVizOptionsObject = vizOptions;
 
 // The iframe adjustment function adds or removes a class to the iframe
 const iframeWorksheetAdjustmentClassName = 'iframe-with-worksheet';
@@ -126,40 +172,6 @@ const adjustForWorksheetOrDashboard = e => {
           iframe.classList.remove(iframeWorksheetAdjustmentClassName);
       }
   }
-}
-
-// Uses breakpoints to determine device type
-const whichDevice = availableSpaceRatio => {
-  for (let i = 0; i < ratioBreakpoints.length; i++){
-      if ( availableSpaceRatio >= ratioBreakpoints[i].minRatio) {
-          return ratioBreakpoints[i].tableauDeviceName;
-      }
-  }
-}
-
-// The visible space available for the Tableau viz will depend on other elements of the page.
-const getPageSpaceWidthHeight = () => {
-  // Visible browser width & height
-  const browserWidth = document.documentElement.clientWidth;
-  const browserHeight = document.documentElement.clientHeight;
-  // get available space from parent <div>
-  const outerContainerDiv = document.getElementById(nameOfOuterDivContainingTableauViz);
-
-  const oStyles = window.getComputedStyle(outerContainerDiv);
-  const computedPaddingTop = removePx(oStyles.getPropertyValue('padding-top'));
-  const computedMarginTop = removePx(oStyles.getPropertyValue('margin-top'));
-  const computedPaddingLeft = removePx(oStyles.getPropertyValue('padding-left'));
-  const computedMarginLeft = removePx(oStyles.getPropertyValue('margin-left'));
-  // removes left margin and padding for width
-  const totalVisibleWidth = outerContainerDiv.clientWidth - computedPaddingLeft - computedMarginLeft ;
-
-  // parent <div> height varies based on the viz content that is loaded so total browser height is used
-  const totalVisibleHeight = browserHeight - computedPaddingTop - computedMarginTop;
-
-  const finalWidth = totalVisibleWidth;
-  const finalHeight = totalVisibleHeight;
-  const ratio = finalWidth / finalHeight;
-  return { 'width' : finalWidth, 'height' : finalHeight, 'ratio' : ratio };
 }
 
 // the first principle for the scaling algorithm is that the iframe and containing div should have the same proportions
@@ -267,6 +279,7 @@ const resizeVizContainerDiv = (VizResizeEvent) => {
   const vizDiv = thisViz.getParentElement();
 
   resizeVizContainerDivBase(VizResizeEvent)
+  console.log('resizeVizContainerDiv', vizDiv)
   // Scale it to match the viewport, with multipleLayouts set to true
   scaleDiv(vizDiv, true)
 
@@ -274,17 +287,17 @@ const resizeVizContainerDiv = (VizResizeEvent) => {
   window.addEventListener('resize', () => { scaleDiv(vizDiv, true)})
 }
 
-const resizeVizContainerDivWebEdit = VizResizeEvent => {
-  const thisViz = VizResizeEvent.getViz();
-  const vizDiv = thisViz.getParentElement();
+// const resizeVizContainerDivWebEdit = VizResizeEvent => {
+//   const thisViz = VizResizeEvent.getViz();
+//   const vizDiv = thisViz.getParentElement();
 
-  resizeVizContainerDivBase(VizResizeEvent);
-  // Scale it to match the viewport, with multipleLayouts set to false
-  scaleDiv(vizDiv, false);
+//   resizeVizContainerDivBase(VizResizeEvent);
+//   // Scale it to match the viewport, with multipleLayouts set to false
+//   scaleDiv(vizDiv, false);
 
-  // Set the resizing event after the first time it's been scaled, with multipleLayouts false
-  window.addEventListener('resize', () => { scaleDiv(vizDiv, false)})
-}
+//   // Set the resizing event after the first time it's been scaled, with multipleLayouts false
+//   window.addEventListener('resize', () => { scaleDiv(vizDiv, false)})
+// }
 
 // called on resize events (or the initial load) to scale the content Div to fit the visible space
 const scaleDiv = (divToScale, multipleLayouts) => {
@@ -299,7 +312,7 @@ const scaleDiv = (divToScale, multipleLayouts) => {
       vizResizeTimeoutFunctionId = setTimeout( function () {
         const newDeviceLayoutToUse = whichDevice(currentPageSpace.ratio);
         if (newDeviceLayoutToUse !== deviceLayoutToUse) {
-          vizOptions.device = newDeviceLayoutToUse;
+          postResizeVizOptionsObject.device = newDeviceLayoutToUse;
           // Set the global so the next check won't trigger a reload
           deviceLayoutToUse = newDeviceLayoutToUse;
           // Now get the defaults to use from the ratioBreakpoints object and set those values in the options object
@@ -309,8 +322,8 @@ const scaleDiv = (divToScale, multipleLayouts) => {
                   vizWidthHeight = ratioBreakpoints[i]['vizSizeDefaults'];
               }
           }
-          vizOptions.width = vizWidthHeight.width;
-          vizOptions.height = vizWidthHeight.height;
+          postResizeVizOptionsObject.width = vizWidthHeight.width;
+          postResizeVizOptionsObject.height = vizWidthHeight.height;
 
           // This needs to be modular, this function is specific to our code
           initViz();
@@ -402,8 +415,6 @@ const scaleDiv = (divToScale, multipleLayouts) => {
 }
 
 const embed = {
-  adjustForWorksheetOrDashboard,
-  resizeVizContainerDiv,
   nameOfOuterDivContainingTableauViz,
   vizID,
   initViz,
