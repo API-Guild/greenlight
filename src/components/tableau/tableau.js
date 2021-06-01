@@ -1,85 +1,99 @@
-import React, { useState, useEffect } from "react"
-import Helmet from "react-helmet"
+import React from "react"
 import "./tableau.css"
+import vizLayout from "./vizLayout.js"
+// eslint-disable-next-line no-unused-vars
+const apiTableau = typeof window !== 'undefined' ? require("./tableauApi/tableau-2.7.0.min.js") : null;
 
-export default function Tableau(props) {
-  // used to delay initializing the Tableau viz until the external JS API file has been loaded
-  const [loaded, setLoaded] = useState(false);
-  let vizObj;
-  const apiID = "tableauAPI-" + Math.random().toString(36).substr(2, 10);
-  const vizID = "vizID-" + Math.random().toString(36).substr(2, 10);
-  const vizOptions = {
-    width: props.options.width,
-    height: props.options.height,
-    onFirstVizSizeKnown: () => {
-      onVizSize()
-    },
-    onFirstInteractive: () => {
+export default class Tableau extends React.Component {
+
+  constructor(props) {
+    super(props);
+    this.state = {
+      vizDivId: "vizID-" + Math.random().toString(36).substr(2, 10),
+      vizObj: null,
+      vizUrl: props.viz,
+      height: props.height,
+      width: props.width,
+      hideTabs: !props.hideTabs ? true : false,
+      hideToolbar: !props.hideToolbar ? false : true,
+      device: !props.device ? vizLayout().device : props.device,
+      windowWidth: vizLayout().width,
+      layout: vizLayout().layout,
+      fixedLayout: !props.fixedLayout ? false : true,
+    };
+  }
+
+  componentDidMount() {
+    // keeps state up to date with window width and matching device layout
+    window.addEventListener('resize', () => {
+        this.setState({ 
+          device: vizLayout().device, 
+          windowWidth: vizLayout().width,
+          layout: vizLayout().layout, 
+        })
+    });
+    this.initViz()
+  }
+
+  componentDidUpdate(prevProps, prevState, snapshot) {
+    // reload the viz with a new device layout if it does not match the previous setting 
+    // and it has not been fixed by the author
+    if(!this.state.fixedLayout && (this.state.layout !== prevState.layout)) {
+      this.initViz()
     }
-  };
-  
-  // similar to the componentDidMount lifecycle method
-  useEffect(() => {
-    loadAPI()
-  },[]);
+  }
 
-  // initilazes the Tableau viz once the external JS API file has loaded
-  useEffect(() => {
-    if (!loaded) return
-    initViz()
-    console.log('viz', vizObj)
-    // adds standard event listeners
-    vizEvents()
-  }, [loaded]);
+  componentWillUnmount() {
+    // clean up once the component is removed
+    window.removeEventListener('resize', () => {
+      this.setState({ 
+        device: vizLayout().device, 
+        windowWidth: vizLayout().width,
+        layout: vizLayout().layout, 
+      })
+    });
+    this.disposeViz()
+    // fix Warning: Can't perform a React state update on an unmounted component
+    this.setState = (state,callback) => {
+      return;
+    };
+  }
 
-  const loadAPI = () => {
-    // creates an HTMLCollection of Tableau API script tags to avoid duplicating them
-    const tableauScripts = document.getElementsByClassName("tableauAPI");
-    if (tableauScripts.length > 0) {
-      for (let i = 0; i < tableauScripts.length; i++ ) {
-        console.log('tableauScripts: ' + i,tableauScripts[i]);
-        if (tableauScripts[i].src === "https://public.tableau.com/javascripts/api/tableau-2.7.0.min.js") {
-          return initViz()
-        }
+  // Initializes the Tableau visualization
+  initViz() {
+    const vizContainer = document.getElementById(this.state.vizDivId);
+    const vizOptions = {
+      device: this.state.device,
+      width: this.state.width,
+      height: this.state.height,
+      hideTabs: this.state.hideTabs,
+      hideToolbar: this.state.hideToolbar,
+      onFirstVizSizeKnown: (event) => {
+      },
+      onFirstInteractive: (event) => {
       }
-    }
-
-    if (document.getElementById(apiID)) return initViz()
-
-    const tableauAPI = document.createElement('script');
-    tableauAPI.id = apiID;
-    tableauAPI.className = "tableauAPI";
-    tableauAPI.type = "text/javascript";
-    tableauAPI.src = "https://public.tableau.com/javascripts/api/tableau-2.7.0.min.js";
-    tableauAPI.defer = true;
-    tableauAPI.addEventListener('load', () => setLoaded(true))
-    document.body.appendChild(tableauAPI)
-  };
-
-  const initViz = () => {
-    const vizContainer = document.getElementById("vizContainer");
+    };
 
     // If a previous viz object exists, delete it.
-    if (vizObj) { vizObj.dispose() }
+    this.disposeViz()
 
     // Create a viz object and embed it in the container div.
-    // eslint-disable-next-line
-    vizObj = new tableau.Viz(vizContainer, props.viz, vizOptions);
-  };
+    // eslint-disable-next-line no-undef
+    this.setState({vizObj: new tableau.Viz(vizContainer, this.state.vizUrl, vizOptions)})
+  }
 
-  const onVizSize = (VizResizeEvent) => {
-    console.log('resize', vizObj.getVizSize())
-  };
+  // Clears the vizObj if it previously was assigned to a different object
+  disposeViz() {
+    if (this.state.vizObj) {
+      let vizDispose = this.state.vizObj;
+      vizDispose.dispose()
+      this.setState({vizObj: vizDispose}) 
+    }
+  }
 
-  const vizEvents = () => {
-  };
-
-  return (
-    <>
-      <Helmet>
-        <link as="script" rel="preload" href="https://public.tableau.com/javascripts/api/tableau-2.7.0.min.js" />
-      </Helmet>
-      <div id="vizContainer"/>
-    </>
-  )
+  render() {
+    return (
+      <div id={this.state.vizDivId} className="vizDiv" />
+    );
+  }
 }

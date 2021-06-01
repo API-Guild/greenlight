@@ -1,7 +1,9 @@
-#vizContainer {
+/* the viz container <div> */
+.vizDiv {
   margin: 3rem auto;
 }
 
-#vizContainer iframe {
-	margin: auto;
+/* styles the viz (embedded via an iframe) */
+.vizDiv iframe {
+  margin: auto;
 }
