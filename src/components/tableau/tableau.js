@@ -1,26 +1,31 @@
 import React from "react"
 import "./tableau.css"
-import { useScaleViz } from "./scaleViz.js"
+import scaleViz from "./scaleViz.js"
 // eslint-disable-next-line no-unused-vars
 const apiTableau = typeof window !== 'undefined' ? require("./tableauApi/tableau-2.7.0.min.js") : null;
+
 
 export default class Tableau extends React.Component {
   constructor(props) {
     super(props);
+    console.log(props)
     this.state = {
       vizDivId: "vizID-" + Math.random().toString(36).substr(2, 10),
       vizObj: null,
       vizUrl: props.viz,
       height: props.height,
       width: props.width,
+      device: scaleViz().device,
     };
   }
 
   componentDidMount() {
+    window.addEventListener('resize', () => this.setState({device: scaleViz().device}));
     this.initViz()
   }
 
   componentWillUnmount() {
+    window.removeEventListener('resize', () => this.setState({device: scaleViz().device}));
     this.disposeViz()
   }
 
@@ -28,6 +33,7 @@ export default class Tableau extends React.Component {
   initViz() {
     const vizContainer = document.getElementById(this.state.vizDivId);
     const vizOptions = {
+      device: this.state.device,
       width: this.state.width,
       height: this.state.height,
       onFirstVizSizeKnown: (event) => {
@@ -53,7 +59,9 @@ export default class Tableau extends React.Component {
 
   render() {
     return (
-      <div id={this.state.vizDivId} className="vizDiv" />
+      <>
+        <div id={this.state.vizDivId} className="vizDiv" />
+      </>
     );
   }
 }
