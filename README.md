@@ -1,99 +1,113 @@
-<!-- AUTO-GENERATED-CONTENT:START (STARTER) -->
 <p align="center">
-  <a href="https://www.gatsbyjs.com">
-    <img alt="Gatsby" src="https://www.gatsbyjs.com/Gatsby-Monogram.svg" width="60" />
+  <a href="https://api-guild.github.io/greenlight/">
+    <img alt="Gatsby" src="./static/images/greenlight.png" height="45" />
   </a>
 </p>
-<h1 align="center">
-  Gatsby's hello-world starter
+<h1 align="center" style="color: #0DF2C1">
+  Greenlight
 </h1>
+<p align="center">
+   guerrilla data for analysts with deadlines.
+</p>
 
-Kick off your project with this hello-world boilerplate. This starter ships with the main Gatsby configuration files you might need to get up and running blazing fast with the blazing fast app generator for React.
+<br>
 
-_Have another more specific idea? You may want to check out our vibrant collection of [official and community-created starters](https://www.gatsbyjs.com/docs/gatsby-starters/)._
+> _"Gatsby believed in the green light, the orgiastic future that year by year recedes before us. It eluded us then, but that’s no matter—tomorrow we will run faster, stretch out our arms farther…. And one fine morning— So we beat on, boats against the current, borne back ceaselessly into the past."_
 
-## 🚀 Quick start
+<br>
 
-1.  **Create a Gatsby site.**
+## What is Greenlight?
 
-    Use the Gatsby CLI to create a new site, specifying the hello-world starter.
+The mission of this project is to provide a way for people who want to host their data visualizations at their own domains with little effort and time. To accomplish this, the project is built using Gatsby, which to quote them is _”a modern web framework for blazing fast websites.”_ To find out more about Gatsby you can visit their [GitHub Repo](https://github.com/gatsbyjs/gatsby).
 
-    ```shell
-    # create a new Gatsby site using the hello-world starter
-    gatsby new my-hello-world-starter https://github.com/gatsbyjs/gatsby-starter-hello-world
-    ```
+## Table of Contents
 
-1.  **Start developing.**
+- [What is Greenlight?](#what-is-greenlight)
+- [Table of Contents](#table-of-contents)
+- [Installation](#installation)
+- [Usage](#usage)
+- [Contributions](#contributions)
+- [LICENSE](#license)
+- [Maintainers](#maintainers)
 
-    Navigate into your new site’s directory and start it up.
+## Installation
 
-    ```shell
-    cd my-hello-world-starter/
-    gatsby develop
-    ```
+1. Install the Gatsby CLI
 
-1.  **Open the source code and start editing!**
+   ```bash
+   # install the Gatsby CLI from NPM
+   npm install -g gatsby-cli
+   ```
 
-    Your site is now running at `http://localhost:8000`!
+2. Install Greenlight Starter
 
-    _Note: You'll also see a second link: _`http://localhost:8000/___graphql`_. This is a tool you can use to experiment with querying your data. Learn more about using this tool in the [Gatsby tutorial](https://www.gatsbyjs.com/tutorial/part-five/#introducing-graphiql)._
+   ```bash
+   # create a new Gatsby site using the Greenlight starter
+   gatsby new {your-project-name} https://github.com/API-Guild/greenlight
+   ```
 
-    Open the `my-hello-world-starter` directory in your code editor of choice and edit `src/pages/index.js`. Save your changes and the browser will update in real time!
+3. Start the site in `develop` mode.
+   
+   ```bash
+   # start the develop server from your new project
+   cd {your-project-name}
+   gatsby develop
+   ```
 
-## 🧐 What's inside?
+4. Open your site in the browser at `http://localhost:8000`
 
-A quick look at the top-level files and directories you'll see in a Gatsby project.
+## Usage
 
-    .
-    ├── node_modules
-    ├── src
-    ├── .gitignore
-    ├── .prettierrc
-    ├── gatsby-browser.js
-    ├── gatsby-config.js
-    ├── gatsby-node.js
-    ├── gatsby-ssr.js
-    ├── LICENSE
-    ├── package-lock.json
-    ├── package.json
-    └── README.md
+After installation you can add your markdown or MDX files to the `/content/blog` directory. It is recommended you create folders within this directory and store any assets, like images, in the folder created for each post you create.
 
-1.  **`/node_modules`**: This directory contains all of the modules of code that your project depends on (npm packages) are automatically installed.
+Here is a diagram of the basic file structure of Greenlight.
 
-2.  **`/src`**: This directory will contain all of the code related to what you will see on the front-end of your site (what you see in the browser) such as your site header or a page template. `src` is a convention for “source code”.
+```
+.
+|-.cache
+|-content/blog/{your-files-here}
+|-node_modules
+|-public
+|-src
+|-static
+|-.gitignore
+|-.prettierignore
+|-.prettierrc
+|-gatsby-browser.js
+|-gatsby-config.js
+|-gatsby-node.js
+|-LICENSE
+|-package-lock.json
+|-package.json
+|-README.md
+```
 
-3.  **`.gitignore`**: This file tells git which files it should not track / not maintain a version history for.
+## Contributions
 
-4.  **`.prettierrc`**: This is a configuration file for [Prettier](https://prettier.io/). Prettier is a tool to help keep the formatting of your code consistent.
+We gladly welcome any contributions whether it is fixing bugs, documentation, or adding features. You can request an issue, fork the repo, work on the issue and then submit a pull request.
 
-5.  **`gatsby-browser.js`**: This file is where Gatsby expects to find any usage of the [Gatsby browser APIs](https://www.gatsbyjs.com/docs/browser-apis/) (if any). These allow customization/extension of default Gatsby settings affecting the browser.
+<br>
 
-6.  **`gatsby-config.js`**: This is the main configuration file for a Gatsby site. This is where you can specify information about your site (metadata) like the site title and description, which Gatsby plugins you’d like to include, etc. (Check out the [config docs](https://www.gatsbyjs.com/docs/gatsby-config/) for more detail).
+## LICENSE
 
-7.  **`gatsby-node.js`**: This file is where Gatsby expects to find any usage of the [Gatsby Node APIs](https://www.gatsbyjs.com/docs/node-apis/) (if any). These allow customization/extension of default Gatsby settings affecting pieces of the site build process.
+The BSD Zero Clause License (0BSD)
 
-8.  **`gatsby-ssr.js`**: This file is where Gatsby expects to find any usage of the [Gatsby server-side rendering APIs](https://www.gatsbyjs.com/docs/ssr-apis/) (if any). These allow customization of default Gatsby settings affecting server-side rendering.
+Copyright (c) 2020 Gatsby Inc.
 
-9.  **`LICENSE`**: This Gatsby starter is licensed under the 0BSD license. This means that you can see this file as a placeholder and replace it with your own license.
+Permission to use, copy, modify, and/or distribute this software for any
+purpose with or without fee is hereby granted.
 
-10. **`package-lock.json`** (See `package.json` below, first). This is an automatically generated file based on the exact versions of your npm dependencies that were installed for your project. **(You won’t change this file directly).**
+THE SOFTWARE IS PROVIDED "AS IS" AND THE AUTHOR DISCLAIMS ALL WARRANTIES WITH
+REGARD TO THIS SOFTWARE INCLUDING ALL IMPLIED WARRANTIES OF MERCHANTABILITY
+AND FITNESS. IN NO EVENT SHALL THE AUTHOR BE LIABLE FOR ANY SPECIAL, DIRECT,
+INDIRECT, OR CONSEQUENTIAL DAMAGES OR ANY DAMAGES WHATSOEVER RESULTING FROM
+LOSS OF USE, DATA OR PROFITS, WHETHER IN AN ACTION OF CONTRACT, NEGLIGENCE OR
+OTHER TORTIOUS ACTION, ARISING OUT OF OR IN CONNECTION WITH THE USE OR
+PERFORMANCE OF THIS SOFTWARE.
 
-11. **`package.json`**: A manifest file for Node.js projects, which includes things like metadata (the project’s name, author, etc). This manifest is how npm knows which packages to install for your project.
+<br>
 
-12. **`README.md`**: A text file containing useful reference information about your project.
+## Maintainers
 
-## 🎓 Learning Gatsby
-
-Looking for more guidance? Full documentation for Gatsby lives [on the website](https://www.gatsbyjs.com/). Here are some places to start:
-
-- **For most developers, we recommend starting with our [in-depth tutorial for creating a site with Gatsby](https://www.gatsbyjs.com/tutorial/).** It starts with zero assumptions about your level of ability and walks through every step of the process.
-
-- **To dive straight into code samples, head [to our documentation](https://www.gatsbyjs.com/docs/).** In particular, check out the _Guides_, _API Reference_, and _Advanced Tutorials_ sections in the sidebar.
-
-## 💫 Deploy
-
-[Build, Deploy, and Host On The Only Cloud Built For Gatsby](https://www.gatsbyjs.com/cloud/)
-
-Gatsby Cloud is an end-to-end cloud platform specifically built for the Gatsby framework that combines a modern developer experience with an optimized, global edge network.
-
-<!-- AUTO-GENERATED-CONTENT:END -->
+[Stephen Price](https://github.com/stephenlprice) <br>
+[Trevor Smith](https://github.com/trevorsmithbanjo)
