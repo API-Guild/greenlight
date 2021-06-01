@@ -1,5 +1,5 @@
 /*
-  CREDITS:
+  ACKNOWLEDGEMENTS:
   Bryant Howell for his work documenting embedded Tableau responsiveness and scaling techniques at:
   https://tableauandbehold.com/2021/04/21/responsive-design-and-embedded-tableau-vizes-responsive_scaling_tableau-js/
   
@@ -12,19 +12,24 @@
 
 const getWidth = () => window.innerWidth || document.documentElement.clientWidth || document.body.clientWidth;
 
-const scaleViz = () => {
+const vizLayout = () => {
   let width;
   let resizeTimeout;
   clearTimeout(resizeTimeout)
-  resizeTimeout = setTimeout(width = getWidth(), 150);
+  resizeTimeout = setTimeout(width = getWidth(), 300);
 
+  // breakpoints as defined by Tableau desktop's device layout designer & chrome's devtools
   // null values indicate window width
   const breakpoints = [
-    {layout: 'mobile', device: 'phone', min: 0, max: 767},
-    {layout: 'tablet', device: 'tablet', min: 768, max: 1024},
-    {layout: 'desktop', device: 'desktop', min: 1025, max: 1216},
-    {layout: 'widescreen', device: 'desktop', min: 1217, max: 1440},
-    {layout: 'fullhd', device: 'default', min: 1441, max: null},
+    {layout: 'mobile-s', device: 'phone', min: 0, max: 424},
+    {layout: 'mobile-m', device: 'phone', min: 425, max: 767},
+    {layout: 'mobile-l', device: 'phone', min: 768, max: 1023},
+    {layout: 'tablet', device: 'tablet', min: 1024, max: 1279},
+    {layout: 'desktop-s', device: 'desktop', min: 1280, max: 1365},
+    {layout: 'desktop-m', device: 'desktop', min: 1366, max: 1919},
+    {layout: 'desktop-l', device: 'desktop', min: 1920, max: 2279},
+    {layout: 'widescreen', device: 'desktop', min: 2280, max: 2560},
+    {layout: 'fullhd', device: 'desktop', min: 2561, max: null},
   ];
 
   let layout;
@@ -49,4 +54,4 @@ const scaleViz = () => {
   });
 }
 
-export default scaleViz;
+export default vizLayout;

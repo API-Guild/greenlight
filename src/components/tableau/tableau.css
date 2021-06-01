@@ -1,8 +1,9 @@
+/* the viz container <div> */
 .vizDiv {
   margin: 3rem auto;
 }
 
-/* used only when a Worksheet is displayed, not a Dashboard */
+/* styles the viz (embedded via an iframe) */
 .vizDiv iframe {
   margin: auto;
 }
