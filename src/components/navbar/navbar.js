@@ -16,7 +16,7 @@ export default function Navbar() {
 
     menu.classList.toggle("is-active")
     burger.classList.toggle("is-active")
-  };
+  }
 
   // Gatsby hook for graphql queries that aren't page components
   const data = useStaticQuery(

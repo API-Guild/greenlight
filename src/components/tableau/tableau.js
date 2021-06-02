@@ -5,7 +5,6 @@ import vizLayout from "./vizLayout.js"
 const apiTableau = typeof window !== 'undefined' ? require("./tableauApi/tableau-2.7.0.min.js") : null;
 
 export default class Tableau extends React.Component {
-
   constructor(props) {
     super(props);
     this.state = {
@@ -32,12 +31,25 @@ export default class Tableau extends React.Component {
           layout: vizLayout().layout, 
         })
     });
+    // server side rendering cannot access the window API, 
+    // vizLayout must be called again before initializing the viz
+    this.setState({
+      device: vizLayout().device, 
+      windowWidth: vizLayout().width,
+      layout: vizLayout().layout,
+    });
     this.initViz()
   }
 
+  // determines if a new viz object should be reloaded given changes to state
   componentDidUpdate(prevProps, prevState, snapshot) {
+    // server side rendering means that window layouts cannot be determined at build time
+    // therefore it is necessary to reinitialize the viz in this scenario
+    if (this.state.layout === undefined) {
+      this.initViz()
+    }
     // reload the viz with a new device layout if it does not match the previous setting 
-    // and it has not been fixed by the author
+    // and the fixedLayout prop has not been declared by the author
     if(!this.state.fixedLayout && (this.state.layout !== prevState.layout)) {
       this.initViz()
     }
@@ -53,6 +65,7 @@ export default class Tableau extends React.Component {
       })
     });
     this.disposeViz()
+    
     // fix Warning: Can't perform a React state update on an unmounted component
     this.setState = (state,callback) => {
       return;

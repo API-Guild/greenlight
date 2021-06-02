@@ -10,13 +10,27 @@
   https://dev.to/vitaliemaldur/resize-event-listener-using-react-hooks-1k0c
 */
 
-const getWidth = () => window.innerWidth || document.documentElement.clientWidth || document.body.clientWidth;
+// server side rendering requires that this function not be called if the window API
+// is inaccessible during builds: https://www.gatsbyjs.com/docs/debugging-html-builds/
+const getWidth = () => {
+  if (typeof window !== 'undefined') {
+    return window.innerWidth || document.documentElement.clientWidth || document.body.clientWidth
+  }
+  else {
+    return null;
+  }
+};
 
 const vizLayout = () => {
   let width;
   let resizeTimeout;
+  // prevent execution of previous setTimeout
   clearTimeout(resizeTimeout)
-  resizeTimeout = setTimeout(width = getWidth(), 300);
+
+  // runs if the window API is available (on clients)
+  if (typeof window !== 'undefined') {
+    resizeTimeout = setTimeout(width = getWidth(), 300);
+  }
 
   // breakpoints as defined by Tableau desktop's device layout designer & chrome's devtools
   // null values indicate window width
@@ -35,13 +49,16 @@ const vizLayout = () => {
   let layout;
   let device;
 
+  // determine the layout that fits within breakpoint min & max values
   for (let i = 0; i < breakpoints.length; i++) {
     if (width >= breakpoints[i].min && (!breakpoints[i].max || width <= breakpoints[i].max)) {
       device = breakpoints[i].device;
       layout = breakpoints[i].layout;
       break;
     }
-    else {
+    // should only occur when the window API is not available (in node during builds)
+    // results in Tableau component initial state having device: 'default'
+    else if (width === undefined) {
       device = 'default';
       layout = 'unknown';
     }

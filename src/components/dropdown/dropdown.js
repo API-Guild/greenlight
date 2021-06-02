@@ -1,23 +1,42 @@
-import React from "react"
+import React, { useState } from "react"
+
+const List = (props) => {
+  let display = 'navbar-dropdown';
+
+  if (props.dropdown) {
+    display = 'navbar-dropdown is-active';
+  }
+  else {
+    display = 'navbar-dropdown';
+  }
+  
+  return (
+    <div className={display}>
+      {props.content}
+    </div>
+  )
+}
 
 export default function Dropdown(props) {
-  const compId = Math.random().toString(36).substr(2, 9);
+  const [dropdown, setDropdown] = useState(false);
 
   const showDropdown = () => {
-    const dropdown = document.getElementById(`${compId}`);
-
-    dropdown.classList.toggle("is-active")
-  };
+    setDropdown(!dropdown);
+  }
 
   return (
     <div className="navbar-item has-dropdown is-hoverable">
-      <span className="navbar-link" onClick={showDropdown} onKeyPress={showDropdown} role="button" tabIndex={0}>
+      <span 
+        className="navbar-link" 
+        onClick={() => showDropdown()} 
+        onKeyPress={() => showDropdown()} 
+        role="button" 
+        tabIndex={0}
+      >
         {props.title}
       </span>
       
-      <div id={compId} className="navbar-dropdown">
-        {props.children}
-      </div>
+      <List content={props.children} dropdown={dropdown} />
     </div>
   )
 }
