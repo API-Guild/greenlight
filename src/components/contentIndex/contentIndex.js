@@ -25,8 +25,8 @@ export default function ContentIndex(props) {
 
         {props.content.map((item, index) => (
           <ContentItem 
+            key={item.fields.slug + '-' + index}
             slug={item.fields.slug}
-            index={index}
             title={item.frontmatter.title}
             date={item.frontmatter.date}
             description={item.frontmatter.description}
@@ -49,7 +49,7 @@ export default function ContentIndex(props) {
 // An individual item of content such as a blog post
 const ContentItem = (props) => {
   return (
-    <span key={props.slug + '-' + props.index}>
+    <span>
       <Link
         to={props.slug}
         className="panel-block contentIndexArticle is-active"

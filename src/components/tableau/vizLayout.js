@@ -39,7 +39,7 @@ const vizLayout = () => {
     {layout: 'mobile-m', device: 'phone', min: 425, max: 767},
     {layout: 'mobile-l', device: 'phone', min: 768, max: 1023},
     {layout: 'tablet', device: 'tablet', min: 1024, max: 1279},
-    {layout: 'desktop-s', device: 'desktop', min: 1280, max: 1365},
+    {layout: 'desktop-s', device: 'tablet', min: 1280, max: 1365},
     {layout: 'desktop-m', device: 'desktop', min: 1366, max: 1919},
     {layout: 'desktop-l', device: 'desktop', min: 1920, max: 2279},
     {layout: 'widescreen', device: 'desktop', min: 2280, max: 2560},

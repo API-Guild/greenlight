@@ -7,8 +7,8 @@ const apiTableau = typeof window !== 'undefined' ? require("./tableauApi/tableau
 export default class Tableau extends React.Component {
   constructor(props) {
     super(props);
+    this.vizRef = React.createRef();
     this.state = {
-      vizDivId: "vizID-" + Math.random().toString(36).substr(2, 10),
       vizObj: null,
       vizUrl: props.viz,
       height: props.height,
@@ -74,7 +74,8 @@ export default class Tableau extends React.Component {
 
   // Initializes the Tableau visualization
   initViz() {
-    const vizContainer = document.getElementById(this.state.vizDivId);
+    // use React ref to target the embedding <div> https://reactjs.org/docs/refs-and-the-dom.html
+    const vizContainer = this.vizRef.current;
     const vizOptions = {
       device: this.state.device,
       width: this.state.width,
@@ -106,7 +107,7 @@ export default class Tableau extends React.Component {
 
   render() {
     return (
-      <div id={this.state.vizDivId} className="vizDiv" />
+      <div className="vizDiv" ref={this.vizRef}/>
     );
   }
 }
