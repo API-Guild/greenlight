@@ -8,7 +8,6 @@ import Search from "../search/search"
 // Creates an index component listing posts on pages such as Explore
 export default function ContentIndex(props) {
 
-
   return (
     <div className="container is-max-desktop">
       <nav className="panel is-primary">
@@ -27,7 +26,7 @@ export default function ContentIndex(props) {
         </div>
 
         {props.content.map((item) => (
-          <span key={Math.random().toString(36).substr(2, 10)}>
+          <span key={item.fields.slug}>
             <Link
               to={item.fields.slug}
               className="panel-block contentIndexArticle is-active"
