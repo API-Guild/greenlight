@@ -1,4 +1,5 @@
-import React, { useState } from "react"
+import React, { useState, useRef, useEffect } from "react"
+import * as dropdownStyle from "./dropdown.module.css"
 
 const List = (props) => {
   let display = 'navbar-dropdown';
@@ -20,17 +21,29 @@ const List = (props) => {
 }
 
 export default function Dropdown(props) {
+  const navLinkRef = useRef(null);
   const [dropdown, setDropdown] = useState(false);
+
+  // rotates the caret pseudo element for a more interactive effect
+  useEffect(() => {
+    if (dropdown) {
+      navLinkRef.current.style.setProperty('--deg', "-45deg")
+    }
+    else {
+      navLinkRef.current.style.setProperty('--deg', "45deg")
+    }
+  },[dropdown])
 
   // toggles display of the <List/> component
   const showDropdown = () => {
     setDropdown(!dropdown);
   }
-
+  
   return (
     <div className="navbar-item has-dropdown is-hoverable">
       <span 
-        className="navbar-link" 
+        ref={navLinkRef}
+        className={`navbar-link ${dropdownStyle.navbarLink}`} 
         onClick={() => showDropdown()} 
         onKeyPress={() => showDropdown()} 
         role="button" 

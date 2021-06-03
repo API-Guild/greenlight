@@ -1,0 +1,4 @@
+.navbarLink:not(.is-arrowless)::after {
+  transform: rotate(var(--deg, 45deg));
+  transition: transform 0.33s;
+}
