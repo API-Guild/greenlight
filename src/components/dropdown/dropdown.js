@@ -10,6 +10,8 @@ const List = (props) => {
     display = 'navbar-dropdown';
   }
   
+  // props.content are <Link/> components from navbar.js 
+  // as nodes obtained from the content/blog folder
   return (
     <div className={display}>
       {props.content}
@@ -20,6 +22,7 @@ const List = (props) => {
 export default function Dropdown(props) {
   const [dropdown, setDropdown] = useState(false);
 
+  // toggles display of the <List/> component
   const showDropdown = () => {
     setDropdown(!dropdown);
   }
