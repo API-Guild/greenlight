@@ -10,12 +10,12 @@ import Auth from "../auth/auth"
 
 export default function Navbar() {
   const [dropdown, setDropdown] = useState(false);
-  
+
   // Toggles the dropdown menu upon hamburger clicks from tablet devices and smaller
   const showMenu = () => {
-    const burger = document.getElementById("burger");
+    // const burger = document.getElementById("burger");
 
-    burger.classList.toggle("is-active")
+    // burger.classList.toggle("is-active")
 
     setDropdown(!dropdown);
   }
@@ -29,22 +29,7 @@ export default function Navbar() {
           </span>
           Greenlight
         </Link>
-
-        <span
-          id="burger"
-          role="button"
-          className="navbar-burger"
-          aria-label="menu"
-          aria-expanded="false"
-          data-target="navMenu"
-          onClick={showMenu}
-          onKeyUp={showMenu}
-          tabIndex={0}
-        >
-          <span aria-hidden="true" data-target="navMenu"></span>
-          <span aria-hidden="true" data-target="navMenu"></span>
-          <span aria-hidden="true" data-target="navMenu"></span>
-        </span>
+        <Hamburger dropdown={dropdown} showMenu={showMenu}/>
       </div>
       <NavMenu dropdown={dropdown}/>
     </nav>
@@ -127,5 +112,36 @@ const NavMenu = (props) => {
         </div>
       </div>
     </div>
+  )
+}
+
+// hamburger icon, when clicked on tablet and mobile displays the NavMenu
+const Hamburger = (props) => {
+  // toggles showing a hamburger or an 'X' icon
+  let display = 'navbar-burger';
+
+  if (props.dropdown) {
+    display = 'navbar-burger is-active';
+  }
+  else {
+    display = 'navbar-burger';
+  }
+
+  return (
+    <span
+      id="burger"
+      role="button"
+      className={display}
+      aria-label="menu"
+      aria-expanded="false"
+      data-target="navMenu"
+      onClick={props.showMenu}
+      onKeyUp={props.showMenu}
+      tabIndex={0}
+    >
+      <span aria-hidden="true" data-target="navMenu"></span>
+      <span aria-hidden="true" data-target="navMenu"></span>
+      <span aria-hidden="true" data-target="navMenu"></span>
+    </span>
   )
 }
