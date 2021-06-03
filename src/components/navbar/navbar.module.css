@@ -1,0 +1,4 @@
+.navbarBurger span{
+  /* transition-duration: transform 1s; */
+  transition-duration: 0.4s;
+}

@@ -1,4 +1,4 @@
-import React from "react"
+import React, { useState } from "react"
 import { graphql, Link, useStaticQuery } from "gatsby"
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faListUl } from '@fortawesome/free-solid-svg-icons'
@@ -6,18 +6,66 @@ import { ReactComponent as Greenlight} from "../../assets/svg/greenlight.svg"
 import Search from "../search/search"
 import Dropdown from "../dropdown/dropdown"
 import Auth from "../auth/auth"
+import * as navbarStyle from "./navbar.module.css"
 
 
 export default function Navbar() {
+  const [navMenu, setNavMenu] = useState(false);
+
   // Toggles the dropdown menu upon hamburger clicks from tablet devices and smaller
   const showMenu = () => {
-    const menu = document.getElementById("navMenu");
-    const burger = document.getElementById("burger");
+    setNavMenu(!navMenu);
+  }
 
-    menu.classList.toggle("is-active")
-    burger.classList.toggle("is-active")
-  };
+  return (
+    <nav className="navbar" role="navigation" aria-label="main navigation">
+      <div className="navbar-brand">
+        <Link className="navbar-item" to="/">
+          <span className="logo is-flex is-align-items-center">
+            <Greenlight/>
+          </span>
+          Greenlight
+        </Link>
+        <Hamburger navMenu={navMenu} showMenu={showMenu}/>
+      </div>
+      <NavMenu navMenu={navMenu}/>
+    </nav>
+  )
+}
 
+// hamburger icon, when clicked on tablet and mobile displays the NavMenu
+const Hamburger = (props) => {
+  // toggles showing a hamburger or an 'X' icon
+  let display = `navbar-burger ${navbarStyle.navbarBurger}`;
+
+  if (props.navMenu) {
+    display = `navbar-burger is-active ${navbarStyle.navbarBurger}`;
+  }
+  else {
+    display = `navbar-burger ${navbarStyle.navbarBurger}`;
+  }
+
+  return (
+    <span
+      id="burger"
+      role="button"
+      className={display}
+      aria-label="menu"
+      aria-expanded="false"
+      data-target="navMenu"
+      onClick={props.showMenu}
+      onKeyUp={props.showMenu}
+      tabIndex={0}
+    >
+      <span aria-hidden="true" data-target="navMenu"></span>
+      <span aria-hidden="true" data-target="navMenu"></span>
+      <span aria-hidden="true" data-target="navMenu"></span>
+    </span>
+  )
+}
+
+// Contains a list of links and dropdowns
+const NavMenu = (props) => {
   // Gatsby hook for graphql queries that aren't page components
   const data = useStaticQuery(
     graphql`
@@ -38,76 +86,59 @@ export default function Navbar() {
       }
     `
   );
+  
+  // toggles visibility when clicking on the hamburger icon
+  let display = 'navbar-menu';
+
+  if (props.navMenu) {
+    display = 'navbar-menu is-active';
+  }
+  else {
+    display = 'navbar-menu';
+  }
 
   return (
-    <nav className="navbar" role="navigation" aria-label="main navigation">
-      <div className="navbar-brand">
-        <Link className="navbar-item" to="/">
-          <span className="logo is-flex is-align-items-center">
-            <Greenlight/>
-          </span>
-          Greenlight
+    <div id="navMenu" className={display}>
+      <div className="navbar-start">
+        <Link className="navbar-item" to="/about">
+          About
         </Link>
-
-        <span
-          id="burger"
-          role="button"
-          className="navbar-burger"
-          aria-label="menu"
-          aria-expanded="false"
-          data-target="navMenu"
-          onClick={showMenu}
-          onKeyUp={showMenu}
-          tabIndex={0}
-        >
-          <span aria-hidden="true" data-target="navMenu"></span>
-          <span aria-hidden="true" data-target="navMenu"></span>
-          <span aria-hidden="true" data-target="navMenu"></span>
-        </span>
-      </div>
-
-      <div id="navMenu" className="navbar-menu">
-        <div className="navbar-start">
-          <Link className="navbar-item" to="/about">
-            About
-          </Link>
-          <Link className="navbar-item" to="/contact">
-            Contact
-          </Link>
-          
-          <Dropdown title="Blog">
-            <Link to="/explore" className="navbar-item">
-              <span className="icon-text has-text-weight-bold">
-                <span className="icon">
-                  <FontAwesomeIcon icon={faListUl}/>
-                </span>
-                <span>Explore</span>
+        <Link className="navbar-item" to="/contact">
+          Contact
+        </Link>
+        
+        <Dropdown title="Blog" navMenu={props.navMenu}>
+          <Link to="/explore" className="navbar-item">
+            <span className="icon-text has-text-weight-bold">
+              <span className="icon">
+                <FontAwesomeIcon icon={faListUl}/>
               </span>
+              <span>Explore</span>
+            </span>
+          </Link>
+          <hr className="navbar-divider"></hr>
+          
+          {/* nodes obtained from the content/blog folder */}
+          {data.allMdx.edges.map(({ node }) => (
+            <Link
+              to={node.fields.slug}
+              className="navbar-item"
+              key={node.id}
+            >
+              {node.frontmatter.title}
             </Link>
-            <hr className="navbar-divider"></hr>
-            
-            {/* nodes obtained from the content/blog folder */}
-            {data.allMdx.edges.map(({ node }) => (
-              <Link
-                to={node.fields.slug}
-                className="navbar-item"
-                key={node.id}
-              >
-                {node.frontmatter.title}
-              </Link>
-            ))}
-            <div id="exploreSearch">
-              <Search/>
-            </div>
-          </Dropdown>
-        </div>
-
-        <div className="navbar-end">
-          <div className="navbar-item">
-            <Auth/>
+          ))}
+          <div id="exploreSearch">
+            <Search/>
           </div>
+        </Dropdown>
+      </div>
+
+      <div className="navbar-end">
+        <div className="navbar-item">
+          <Auth/>
         </div>
       </div>
-    </nav>
+    </div>
   )
 }
