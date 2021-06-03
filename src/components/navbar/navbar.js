@@ -1,4 +1,4 @@
-import React from "react"
+import React, { useState } from "react"
 import { graphql, Link, useStaticQuery } from "gatsby"
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faListUl } from '@fortawesome/free-solid-svg-icons'
@@ -9,35 +9,16 @@ import Auth from "../auth/auth"
 
 
 export default function Navbar() {
+  const [dropdown, setDropdown] = useState(false);
+  
   // Toggles the dropdown menu upon hamburger clicks from tablet devices and smaller
   const showMenu = () => {
-    const menu = document.getElementById("navMenu");
     const burger = document.getElementById("burger");
 
-    menu.classList.toggle("is-active")
     burger.classList.toggle("is-active")
-  }
 
-  // Gatsby hook for graphql queries that aren't page components
-  const data = useStaticQuery(
-    graphql`
-      query {
-        allMdx(sort: { fields: [frontmatter___date], order: DESC }) {
-          edges {
-            node {
-              id
-              frontmatter {
-                title
-              }
-              fields {
-                slug
-              }
-            }
-          }
-        }
-      }
-    `
-  );
+    setDropdown(!dropdown);
+  }
 
   return (
     <nav className="navbar" role="navigation" aria-label="main navigation">
@@ -65,49 +46,86 @@ export default function Navbar() {
           <span aria-hidden="true" data-target="navMenu"></span>
         </span>
       </div>
+      <NavMenu dropdown={dropdown}/>
+    </nav>
+  )
+}
 
-      <div id="navMenu" className="navbar-menu">
-        <div className="navbar-start">
-          <Link className="navbar-item" to="/about">
-            About
-          </Link>
-          <Link className="navbar-item" to="/contact">
-            Contact
-          </Link>
-          
-          <Dropdown title="Blog">
-            <Link to="/explore" className="navbar-item">
-              <span className="icon-text has-text-weight-bold">
-                <span className="icon">
-                  <FontAwesomeIcon icon={faListUl}/>
-                </span>
-                <span>Explore</span>
+// Contains a list of links and dropdowns
+const NavMenu = (props) => {
+  // Gatsby hook for graphql queries that aren't page components
+  const data = useStaticQuery(
+    graphql`
+      query {
+        allMdx(sort: { fields: [frontmatter___date], order: DESC }) {
+          edges {
+            node {
+              id
+              frontmatter {
+                title
+              }
+              fields {
+                slug
+              }
+            }
+          }
+        }
+      }
+    `
+  );
+  
+  // toggles visibility when clicking on the hamburger icon
+  let display = 'navbar-menu';
+
+  if (props.dropdown) {
+    display = 'navbar-menu is-active';
+  }
+  else {
+    display = 'navbar-menu';
+  }
+
+  return (
+    <div id="navMenu" className={display}>
+      <div className="navbar-start">
+        <Link className="navbar-item" to="/about">
+          About
+        </Link>
+        <Link className="navbar-item" to="/contact">
+          Contact
+        </Link>
+        
+        <Dropdown title="Blog">
+          <Link to="/explore" className="navbar-item">
+            <span className="icon-text has-text-weight-bold">
+              <span className="icon">
+                <FontAwesomeIcon icon={faListUl}/>
               </span>
+              <span>Explore</span>
+            </span>
+          </Link>
+          <hr className="navbar-divider"></hr>
+          
+          {/* nodes obtained from the content/blog folder */}
+          {data.allMdx.edges.map(({ node }) => (
+            <Link
+              to={node.fields.slug}
+              className="navbar-item"
+              key={node.id}
+            >
+              {node.frontmatter.title}
             </Link>
-            <hr className="navbar-divider"></hr>
-            
-            {/* nodes obtained from the content/blog folder */}
-            {data.allMdx.edges.map(({ node }) => (
-              <Link
-                to={node.fields.slug}
-                className="navbar-item"
-                key={node.id}
-              >
-                {node.frontmatter.title}
-              </Link>
-            ))}
-            <div id="exploreSearch">
-              <Search/>
-            </div>
-          </Dropdown>
-        </div>
-
-        <div className="navbar-end">
-          <div className="navbar-item">
-            <Auth/>
+          ))}
+          <div id="exploreSearch">
+            <Search/>
           </div>
+        </Dropdown>
+      </div>
+
+      <div className="navbar-end">
+        <div className="navbar-item">
+          <Auth/>
         </div>
       </div>
-    </nav>
+    </div>
   )
 }
