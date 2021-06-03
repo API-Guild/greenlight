@@ -6,6 +6,7 @@ import { ReactComponent as Greenlight} from "../../assets/svg/greenlight.svg"
 import Search from "../search/search"
 import Dropdown from "../dropdown/dropdown"
 import Auth from "../auth/auth"
+import * as navbarStyle from "./navbar.module.css"
 
 
 export default function Navbar() {
@@ -35,13 +36,13 @@ export default function Navbar() {
 // hamburger icon, when clicked on tablet and mobile displays the NavMenu
 const Hamburger = (props) => {
   // toggles showing a hamburger or an 'X' icon
-  let display = 'navbar-burger';
+  let display = `navbar-burger ${navbarStyle.navbarBurger}`;
 
   if (props.dropdown) {
-    display = 'navbar-burger is-active';
+    display = `navbar-burger is-active ${navbarStyle.navbarBurger}`;
   }
   else {
-    display = 'navbar-burger';
+    display = `navbar-burger ${navbarStyle.navbarBurger}`;
   }
 
   return (
