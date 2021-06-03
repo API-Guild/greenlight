@@ -4,7 +4,7 @@ import * as dropdownStyle from "./dropdown.module.css"
 const List = (props) => {
   let display = 'navbar-dropdown';
 
-  if (props.dropdown) {
+  if (props.dropdown && props.navMenu) {
     display = 'navbar-dropdown is-active';
   }
   else {
@@ -34,6 +34,10 @@ export default function Dropdown(props) {
     }
   },[dropdown])
 
+  useEffect(() => {
+    setDropdown(false);
+  },[props.navMenu])
+
   // toggles display of the <List/> component
   const showDropdown = () => {
     setDropdown(!dropdown);
@@ -52,7 +56,7 @@ export default function Dropdown(props) {
         {props.title}
       </span>
       
-      <List content={props.children} dropdown={dropdown} />
+      <List content={props.children} dropdown={dropdown} navMenu={props.navMenu} />
     </div>
   )
 }

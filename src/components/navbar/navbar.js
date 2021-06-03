@@ -10,11 +10,11 @@ import * as navbarStyle from "./navbar.module.css"
 
 
 export default function Navbar() {
-  const [dropdown, setDropdown] = useState(false);
+  const [navMenu, setNavMenu] = useState(false);
 
   // Toggles the dropdown menu upon hamburger clicks from tablet devices and smaller
   const showMenu = () => {
-    setDropdown(!dropdown);
+    setNavMenu(!navMenu);
   }
 
   return (
@@ -26,9 +26,9 @@ export default function Navbar() {
           </span>
           Greenlight
         </Link>
-        <Hamburger dropdown={dropdown} showMenu={showMenu}/>
+        <Hamburger navMenu={navMenu} showMenu={showMenu}/>
       </div>
-      <NavMenu dropdown={dropdown}/>
+      <NavMenu navMenu={navMenu}/>
     </nav>
   )
 }
@@ -38,7 +38,7 @@ const Hamburger = (props) => {
   // toggles showing a hamburger or an 'X' icon
   let display = `navbar-burger ${navbarStyle.navbarBurger}`;
 
-  if (props.dropdown) {
+  if (props.navMenu) {
     display = `navbar-burger is-active ${navbarStyle.navbarBurger}`;
   }
   else {
@@ -90,7 +90,7 @@ const NavMenu = (props) => {
   // toggles visibility when clicking on the hamburger icon
   let display = 'navbar-menu';
 
-  if (props.dropdown) {
+  if (props.navMenu) {
     display = 'navbar-menu is-active';
   }
   else {
@@ -107,7 +107,7 @@ const NavMenu = (props) => {
           Contact
         </Link>
         
-        <Dropdown title="Blog">
+        <Dropdown title="Blog" navMenu={props.navMenu}>
           <Link to="/explore" className="navbar-item">
             <span className="icon-text has-text-weight-bold">
               <span className="icon">
