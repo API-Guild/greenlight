@@ -4,6 +4,7 @@ import * as dropdownStyle from "./dropdown.module.css"
 const List = (props) => {
   let display = 'navbar-dropdown';
 
+  // only displays if both the navMenu and dropdown are true
   if (props.dropdown && props.navMenu) {
     display = 'navbar-dropdown is-active';
   }

@@ -1,5 +1,5 @@
 import React from "react"
-import "./tableau.css"
+import * as vizStyles from "./tableau.module.css"
 import vizLayout from "./vizLayout.js"
 // eslint-disable-next-line no-unused-vars
 const apiTableau = typeof window !== 'undefined' ? require("./tableauApi/tableau-2.7.0.min.js") : null;
@@ -49,7 +49,7 @@ export default class Tableau extends React.Component {
       this.initViz()
     }
     // reload the viz with a new device layout if it does not match the previous setting 
-    // and the fixedLayout prop has not been declared by the author
+    // and the fixedLayout prop is false -> resizes on different window sizes 
     if(!this.state.fixedLayout && (this.state.layout !== prevState.layout)) {
       this.initViz()
     }
@@ -107,7 +107,7 @@ export default class Tableau extends React.Component {
 
   render() {
     return (
-      <div className="vizDiv" ref={this.vizRef}/>
+      <div className={vizStyles.vizDiv} ref={this.vizRef}/>
     );
   }
 }

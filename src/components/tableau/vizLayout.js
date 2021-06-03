@@ -27,7 +27,7 @@ const vizLayout = () => {
   // prevent execution of previous setTimeout
   clearTimeout(resizeTimeout)
 
-  // runs if the window API is available (on clients)
+  // runs if the window API is available (on clients) not during builds (SSR)
   if (typeof window !== 'undefined') {
     resizeTimeout = setTimeout(width = getWidth(), 300);
   }
@@ -57,7 +57,7 @@ const vizLayout = () => {
       break;
     }
     // should only occur when the window API is not available (in node during builds)
-    // results in Tableau component initial state having device: 'default'
+    // results in the Tableau component's initial state having device: 'default'
     else if (width === undefined) {
       device = 'default';
       layout = 'unknown';
