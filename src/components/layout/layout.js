@@ -12,7 +12,7 @@ export default function Layout({ children }) {
   return (
     <>
       <Seo />
-      <div className="site">
+      <div className="site container">
         <Navbar />
         <main className="main">
           <MDXProvider components={shortcodes}>{children}</MDXProvider>
