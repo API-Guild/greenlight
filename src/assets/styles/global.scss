@@ -176,6 +176,7 @@ blockquote {
 figure.image.cartoon {
   margin: auto;
   color: $accentMain;
+  max-height: 66vh;
 }
 
 @media screen and (max-width: 768px) {
