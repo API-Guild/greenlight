@@ -14,7 +14,7 @@ export default function Footer() {
               <br/>
               The source code is licensed <a href="https://opensource.org/licenses/0BSD" target="_blank" rel="noreferrer"> 0BSD</a>.
               Visit us on <a href="https://github.com/API-Guild/greenlight" target="_blank" rel="noreferrer">
-                <FontAwesomeIcon icon={faGithub}/> Github
+                <FontAwesomeIcon icon={faGithub} style={{height: "1rem", verticalAlign: "middle"}}/> Github
               </a> 
               .
             </p>

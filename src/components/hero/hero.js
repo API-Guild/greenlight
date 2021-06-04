@@ -1,4 +1,5 @@
 import React from "react"
+import * as heroStyles from "./hero.module.css"
 
 export default function Hero(props) {
   return (
@@ -11,7 +12,7 @@ export default function Hero(props) {
           {props.subtitle}
         </p>
         {/* Used for dates on blog posts */}
-        <p className="subtitle date is-7"> 
+        <p className={`subtitle ${heroStyles.subtitleDate} is-7`}> 
           {props.date}
         </p>
       </div>

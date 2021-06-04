@@ -1,0 +1,12 @@
+.panel {
+  margin: 2rem 2rem;
+}
+
+.article {
+  margin: 0rem 0.5rem;
+  word-break: normal;
+}
+
+.description {
+  margin: 0rem 1rem;
+}

@@ -6,7 +6,7 @@ import { ReactComponent as Greenlight} from "../../assets/svg/greenlight.svg"
 import Search from "../search/search"
 import Dropdown from "../dropdown/dropdown"
 import Auth from "../auth/auth"
-import * as navbarStyle from "./navbar.module.css"
+import * as navbarStyles from "./navbar.module.css"
 
 
 export default function Navbar() {
@@ -36,13 +36,13 @@ export default function Navbar() {
 // hamburger icon, when clicked on tablet and mobile displays the NavMenu
 const Hamburger = (props) => {
   // toggles showing a hamburger or an 'X' icon
-  let display = `navbar-burger ${navbarStyle.navbarBurger}`;
+  let display = `navbar-burger ${navbarStyles.navbarBurger}`;
 
   if (props.navMenu) {
-    display = `navbar-burger is-active ${navbarStyle.navbarBurger}`;
+    display = `navbar-burger is-active ${navbarStyles.navbarBurger}`;
   }
   else {
-    display = `navbar-burger ${navbarStyle.navbarBurger}`;
+    display = `navbar-burger ${navbarStyles.navbarBurger}`;
   }
 
   return (
@@ -64,7 +64,7 @@ const Hamburger = (props) => {
   )
 }
 
-// Contains a list of links and dropdowns
+// Contains <Link>'s to pages and blog posts listed in the dropdown
 const NavMenu = (props) => {
   // Gatsby hook for graphql queries that aren't page components
   const data = useStaticQuery(
@@ -108,12 +108,12 @@ const NavMenu = (props) => {
         </Link>
         
         <Dropdown title="Blog" navMenu={props.navMenu}>
-          <Link to="/explore" className="navbar-item">
+          <Link to="/blog" className="navbar-item">
             <span className="icon-text has-text-weight-bold">
               <span className="icon">
                 <FontAwesomeIcon icon={faListUl}/>
               </span>
-              <span>Explore</span>
+              <span>Articles</span>
             </span>
           </Link>
           <hr className="navbar-divider"></hr>
@@ -128,7 +128,7 @@ const NavMenu = (props) => {
               {node.frontmatter.title}
             </Link>
           ))}
-          <div id="exploreSearch">
+          <div className={navbarStyles.exploreSearch}>
             <Search/>
           </div>
         </Dropdown>
