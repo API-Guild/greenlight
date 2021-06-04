@@ -2,13 +2,14 @@ import React from "react"
 import { Link } from "gatsby"
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faFileInvoice, faUndoAlt, faListUl  } from '@fortawesome/free-solid-svg-icons'
+import * as contentIndexStyles from "./contentIndex.module.css"
 import Search from "../search/search"
 
 // Creates an index component listing posts on pages such as Explore
 export default function ContentIndex(props) {
   return (
     <div className="container is-max-desktop">
-      <nav className="panel is-primary">
+      <nav className={`panel is-primary ${contentIndexStyles.panel}`}>
         
         <p className="panel-heading">
           <span className="icon-text has-text-weight-bold">
@@ -52,7 +53,7 @@ const ContentItem = (props) => {
     <span>
       <Link
         to={props.slug}
-        className="panel-block contentIndexArticle is-active"
+        className={`panel-block is-active ${contentIndexStyles.article}`}
       >
         <span className="panel-icon is-flex-shrink-0">
           <FontAwesomeIcon icon={faFileInvoice}/>
@@ -64,7 +65,7 @@ const ContentItem = (props) => {
           {props.date}
         </span>
       </Link>
-        <p className="contentIndexDesc has-text-weight-light has-text-left has-text-grey-lighter">
+        <p className={`${contentIndexStyles.description} has-text-weight-light has-text-left has-text-grey-lighter`}>
           {props.description}
         </p>
         <br/>
