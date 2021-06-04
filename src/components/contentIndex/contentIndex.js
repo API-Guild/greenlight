@@ -39,7 +39,7 @@ export default function ContentIndex(props) {
             <span className="icon">
               <FontAwesomeIcon icon={faUndoAlt}/>
             </span>
-            <span>Reset all filters</span>
+            <span>Reset Filter</span>
           </button>
         </div>
       </nav>
