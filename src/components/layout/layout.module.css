@@ -1,0 +1,12 @@
+/* Sets the display to flex so we can implement a 
+sticky footer by allowing main to expand as needed */
+.site {
+  display: flex;
+  min-height: 100vh;
+  flex-direction: column;
+}
+
+/* Lets main expand as needed with flex-grow */
+.main {
+  flex-grow: 1;
+}

@@ -6,16 +6,16 @@ import ContentIndex from "../components/contentIndex/contentIndex"
 import Cartoon from "../components/cartoon/cartoon"
 import { ReactComponent as PredictiveAnalytics} from "../assets/svg/predictiveAnalytics.svg"
 
-export default function Reports({ data }) {
+export default function Blog({ data }) {
   const blog = data.allMdx.nodes;
 
   return (
     <Layout>
       <Hero 
-        title="Explore" 
+        title="Blog" 
         subtitle={
           <span>
-            Search <strong>articles</strong> and <strong>dashboards</strong> published on this site
+            Search for <strong>articles</strong> published on this site
           </span>
         } 
       />

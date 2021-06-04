@@ -34,6 +34,8 @@ const vizLayout = () => {
 
   // breakpoints as defined by Tableau desktop's device layout designer & chrome's devtools
   // null values indicate window width
+  // This is how Tableau handles layouts by default: 
+  // https://help.tableau.com/current/pro/desktop/en-us/dashboards_dsd_create.htm#confirm-which-layout--a-device-will-display
   const breakpoints = [
     {layout: 'mobile-s', device: 'phone', min: 0, max: 424},
     {layout: 'mobile-m', device: 'phone', min: 425, max: 767},

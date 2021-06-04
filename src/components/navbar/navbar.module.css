@@ -2,3 +2,11 @@
   /* transition-duration: transform 1s; */
   transition-duration: 0.4s;
 }
+
+.navbarBurger:focus {
+  outline-style: none;
+}
+
+.exploreSearch {
+  padding: 0.5rem 0.5rem 0rem 0.5rem;
+}

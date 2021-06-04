@@ -1,6 +1,14 @@
 @media screen and (max-width: 1023px) {
+  /* toggles caret pointing left for mobile or down for desktop */
   .navbarLink:not(.is-arrowless)::after {
     transform: rotate(var(--deg, -45deg));
     transition: transform 0.33s;
+  }
+  /* toggles dropdown display when clicking in mobile menu */
+  .dropdownShow {
+    display: block;
+  }
+  .dropdownHide {
+    display: none;
   }
 }

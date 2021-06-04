@@ -1,21 +1,21 @@
 import React, { useState, useRef, useEffect } from "react"
-import * as dropdownStyle from "./dropdown.module.css"
+import * as dropdownStyles from "./dropdown.module.css"
 
 const List = (props) => {
-  let display = 'navbar-dropdown';
+  let display = dropdownStyles.dropdownHide;
 
   // only displays if both the navMenu and dropdown are true
   if (props.dropdown && props.navMenu) {
-    display = 'navbar-dropdown is-active';
+    display = dropdownStyles.dropdownShow;
   }
   else {
-    display = 'navbar-dropdown';
+    display = dropdownStyles.dropdownHide;
   }
   
   // props.content are <Link/> components from navbar.js 
   // as nodes obtained from the content/blog folder
   return (
-    <div className={display}>
+    <div id="d-test-yo" className={`navbar-dropdown ${display}`}>
       {props.content}
     </div>
   )
@@ -48,7 +48,7 @@ export default function Dropdown(props) {
     <div className="navbar-item has-dropdown is-hoverable">
       <span 
         ref={navLinkRef}
-        className={`navbar-link ${dropdownStyle.navbarLink}`} 
+        className={`navbar-link ${dropdownStyles.navbarLink}`} 
         onClick={() => showDropdown()} 
         onKeyPress={() => showDropdown()} 
         role="button" 
