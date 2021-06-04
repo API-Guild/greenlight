@@ -129,14 +129,6 @@ blockquote {
   font-style: italic;
 }
 
-span#burger:focus {
-  outline-style: none;
-}
-
-.navbar-link:focus {
-  outline-style: none;
-}
-
 .navbar-dropdown {
   border-top: 1px solid;
   border-top-color: $grey-dark;
@@ -174,19 +166,6 @@ span#burger:focus {
   color: $md;
 }
 
-.panel {
-  margin: 2rem 2rem;
-}
-
-.contentIndexArticle {
-  margin: 0rem 0.5rem;
-  word-break: normal;
-}
-
-.contentIndexDesc {
-  margin: 0rem 1rem;
-}
-
 .logo {
   width: 0.75rem;
   margin-left: 1.5em;
@@ -197,19 +176,6 @@ span#burger:focus {
 figure.image.cartoon {
   margin: auto;
   color: $accentMain;
-}
-
-p.subtitle.date {
-  margin-top: -1.25rem;
-}
-
-@media screen and (max-width: 1024px) {
-  .navbar-dropdown .is-active {
-    display: block;
-  }
-  .navbar-dropdown:not(.is-active) {
-    display: none;
-  }
 }
 
 @media screen and (max-width: 768px) {
