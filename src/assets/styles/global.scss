@@ -129,22 +129,6 @@ blockquote {
   font-style: italic;
 }
 
-// Sets the display to flex so we can implement a sticky footer by allowing main to expand as needed
-div.site {
-  display: flex;
-  min-height: 100vh;
-  flex-direction: column;
-}
-
-// Lets main expand as needed with flex-grow
-main.main {
-  flex-grow: 1;
-}
-
-div#exploreSearch {
-  padding: 0.5rem 0.5rem 0rem 0.5rem;
-}
-
 span#burger:focus {
   outline-style: none;
 }
@@ -210,14 +194,7 @@ span#burger:focus {
   color: $accentMain;
 }
 
-img.hero {
-  height: 0.75em;
-  margin-left: 1.5em;
-  margin-right: 0.5em;
-}
-
 figure.image.cartoon {
-  max-width: 30rem;
   margin: auto;
   color: $accentMain;
 }
@@ -237,6 +214,6 @@ p.subtitle.date {
 
 @media screen and (max-width: 768px) {
   figure.image.cartoon {
-    width: 75%;
+    width: 80%;
   }
 }
