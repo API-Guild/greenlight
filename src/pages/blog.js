@@ -4,7 +4,7 @@ import Layout from "../components/layout/layout"
 import Hero from "../components/hero/hero"
 import ContentIndex from "../components/contentIndex/contentIndex"
 import Cartoon from "../components/cartoon/cartoon"
-import { ReactComponent as PredictiveAnalytics} from "../assets/svg/predictiveAnalytics.svg"
+import { ReactComponent as Posts} from "../assets/svg/posts.svg"
 
 export default function Blog({ data }) {
   const blog = data.allMdx.nodes;
@@ -20,6 +20,11 @@ export default function Blog({ data }) {
         } 
       />
       <div className="container">
+        <div className="column is-hidden-desktop">
+          <Cartoon>
+            <Posts/>
+          </Cartoon>
+        </div>
         <div className="columns">
           <div className="column">
             <ContentIndex
@@ -27,9 +32,9 @@ export default function Blog({ data }) {
               content={blog}
             />
           </div>
-          <div className="column">
+          <div className="column is-hidden-touch is-two-fifths">
             <Cartoon>
-              <PredictiveAnalytics/>
+              <Posts/>
             </Cartoon>
           </div>
         </div>
