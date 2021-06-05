@@ -3,7 +3,6 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faUserPlus, faSignInAlt } from '@fortawesome/free-solid-svg-icons'
 
 export default function Auth() {
-
   return (
     <div className="buttons">
       <button className="button is-primary">

@@ -1,6 +1,8 @@
 import React from "react"
+import * as faSolid from '@fortawesome/free-solid-svg-icons'
 import Layout from "../components/layout/layout"
 import Hero from "../components/hero/hero"
+import Card from "../components/card/card"
 import Cartoon from "../components/cartoon/cartoon"
 import { ReactComponent as VizBuilders } from "../assets/svg/vizBuilders.svg"
 
@@ -19,14 +21,20 @@ export default function Home() {
             <div className="tile">
               <div className="tile is-parent">
                 <article className="tile is-child box">
-                  <p className="title has-text-primary">One</p>
-                  <p className="subtitle has-text-grey-light">Subtitle</p>
-                  <div className="content">
-                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam semper diam at erat pulvinar, at pulvinar felis blandit. Vestibulum volutpat tellus diam, consequat gravida libero rhoncus ut. Morbi maximus, leo sit amet vehicula eleifend, nunc dui porta orci, quis semper odio felis ut quam.</p>
-                    <Cartoon>
-                      <VizBuilders/>
-                    </Cartoon>
-                  </div>
+                  <Card
+                    header={'Sample Card Component'}
+                    icon={faSolid.faAngleDown}
+                    image={'https://bulma.io/images/placeholders/1280x960.png'}
+                    content={<span>Lorem ipsum dolor sit amet, consectetur adipiscing elit. 
+                            Phasellus nec iaculis mauris.
+                            <a href="/"> @bulmaio</a><a href="/"> #css </a><a href="/">
+                            #responsive</a></span>}
+                    footer={[
+                      <a href="/" className="card-footer-item">Save</a>, 
+                      <a href="/" className="card-footer-item">Edit</a>, 
+                      <a href="/" className="card-footer-item">Delete</a>,
+                    ]}
+                  />
                 </article>
               </div>
               <div className="tile is-7 is-vertical">
