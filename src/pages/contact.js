@@ -21,7 +21,7 @@ export default function Contact() {
           <div className="column">
             <ContactForm/>
           </div>
-          <div className="column">
+          <div className="column is-two-fifths">
             <br/>
             <Cartoon>
               <NewIdea/>
