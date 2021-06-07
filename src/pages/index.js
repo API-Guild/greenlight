@@ -1,5 +1,4 @@
 import React from "react"
-import * as faSolid from '@fortawesome/free-solid-svg-icons'
 import Layout from "../components/layout/layout"
 import Hero from "../components/hero/hero"
 import Card from "../components/card/card"
@@ -23,7 +22,6 @@ export default function Home() {
                 <article className="tile is-child box">
                   <Card
                     header={'Sample Card Component'}
-                    icon={faSolid.faAngleDown}
                     image={'https://bulma.io/images/placeholders/1280x960.png'}
                     content={<span>Lorem ipsum dolor sit amet, consectetur adipiscing elit. 
                             Phasellus nec iaculis mauris.

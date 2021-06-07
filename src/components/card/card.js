@@ -1,11 +1,11 @@
 import React from "react"
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import * as cardStyles from './card.module.css'
 
 // Main card component with optional subcomponents
 export default function Card(props) {
   return (
-    <div className="card">
-      {props.header ? <Header title={props.header} icon={props.icon}/> : null}
+    <div className={`card ${cardStyles.card}`}>
+      {props.header ? <Header title={props.header} /> : null}
       {props.image ? <Image image={props.image}/> : null}
       {props.content ? <Content content={props.content}/> : null}
       {props.footer ? <Footer footer={props.footer}/> : null}
@@ -18,11 +18,6 @@ function Header(props) {
     <header className="card-header">
       <span className="card-header-title has-text-primary">
         {props.title}
-      </span>
-      <span className="card-header-icon">
-        <span className="icon">
-          <FontAwesomeIcon icon={props.icon}/>
-        </span>
       </span>
     </header>
   )

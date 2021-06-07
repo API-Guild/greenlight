@@ -1,8 +1,35 @@
 ---
-title: Elements
+title: Markdown Reference
 date: "2021-04-19"
-description: "A reference displaying all of the Markdown content that Greenlight supports"
+description: "A guide describing the Markdown content available on this app"
 ---
+
+This document covers basic [Markdown](https://en.wikipedia.org/wiki/Markdown) syntax that allows creators to write web content without having to know how to write [HTML](https://developer.mozilla.org/en-US/docs/Web/HTML). Markdown is often used on sites as in [Github](https://github.github.com/gfm/), forums like [Reddit](https://www.reddit.com/wiki/markdown) and applications such as [Stoplight.io](https://meta.stoplight.io/docs/studio/docs/Documentation/03a-stoplight-flavored-markdown.md).  
+
+The [markdownguide](https://www.markdownguide.org/getting-started/) website does a great job at explaining what this language is all about:
+
+> #### What is Markdown?
+> Markdown is a lightweight markup language that you can use to add formatting elements to plaintext text documents. Created by [John Gruber](https://daringfireball.net/projects/markdown/) in 2004, Markdown is now one of the world’s most popular markup languages.
+>
+> Using Markdown is different than using a [WYSIWYG](https://en.wikipedia.org/wiki/WYSIWYG) editor. In an application like Microsoft Word, you click buttons to format words and phrases, and the changes are visible immediately. Markdown isn’t like that. When you create a Markdown-formatted file, you add Markdown syntax to the text to indicate which words and phrases should look different.
+>
+> #### What is Markdown good for?
+> Markdown is a fast and easy way to take notes, create content for a website, and produce print-ready documents.
+>
+> It doesn’t take long to learn the Markdown syntax, and once you know how to use it, you can write using Markdown just about everywhere. Most people use Markdown to create content for the web, but Markdown is good for formatting everything from email messages to grocery lists.
+
+You can choose to write Markdown `(.md)` files using a text editor application such as Notepad and use [syntax guides](https://www.markdownguide.org/cheat-sheet/) for reference. A great choice would be [Visual Studio Code](https://code.visualstudio.com/?wt.mc_id=DX_841432) or [Sublime Text](https://www.sublimetext.com/).
+
+One option that can really streamline your [Greenlight](https://api-guild.github.io/greenlight/) workflow is [Stoplight Studio](https://stoplight.io/studio/) as not only is it a great Markdown editor, it can also work with Git repositories directly (cloning, committing and pushing). Stoplight Studio simplifies working with Git, making commits feel more like a clicking on a 'save' button. You or your team can write content to a new branch, get reviews via pull requests and merge the new content into the main branch for publishing - all with the help of a visual editor! This app was actually built to design and document APIs so it is a great choice for developers, technical writers and [Greenlight](https://api-guild.github.io/greenlight/) bloggers.
+
+Other options listed on the [markdownguide](https://www.markdownguide.org/getting-started/#documents) that you may consider include:
+
+> - Mac: [MacDown](https://www.markdownguide.org/tools/macdown/), [iA Writer](https://www.markdownguide.org/tools/ia-writer/), or [Marked](https://marked2app.com/)
+> - iOS / Android: [iA Writer](https://www.markdownguide.org/tools/ia-writer/)
+> - Windows: [ghostwriter](https://wereturtle.github.io/ghostwriter/) or [Markdown Monster](https://markdownmonster.west-wind.com/)
+> - Linux: [ReText](https://github.com/retext-project/retext) or [ghostwriter](https://wereturtle.github.io/ghostwriter/)
+> - Web: [Dillinger](https://www.markdownguide.org/tools/dillinger/) or [StackEdit](https://www.markdownguide.org/tools/stackedit/)
+
 
 I'm sure I'll write a lot more interesting things in the future.
 

@@ -2,7 +2,7 @@ const { createFilePath } = require(`gatsby-source-filesystem`)
 const path = require(`path`)
 
 exports.onCreateNode = ({ node, getNode, actions }) => {
-  const { createNodeField } = actions
+  const { createNodeField } = actions;
   // Ensures we are processing only markdown files
   if (node.internal.type === `Mdx`) {
     // Use `createFilePath` to turn markdown files in our `content/blog/` directory into `/blog/`

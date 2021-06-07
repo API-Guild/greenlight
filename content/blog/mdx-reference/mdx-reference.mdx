@@ -1,0 +1,68 @@
+---
+title: MDX Reference
+date: "2021-04-18"
+description: "A guide describing the MDX components available on this app"
+---
+
+## Callouts
+
+```javascript
+<Callout
+    type={"primary"}
+    title={"Callout"}
+    subtitle={
+    <div>
+        A simple container to make <strong>callouts</strong>, using styles
+        as defined for the component.
+    </div>
+    }
+/>
+```
+### Result:
+<Callout
+    type={"primary"}
+    title={"Callout"}
+    subtitle={
+    <div>
+        A simple container to make <strong>callouts</strong>, using styles
+        as defined for the component.
+    </div>
+    }
+/>
+
+---
+
+## Cards
+```javascript
+<Card
+    header={'Sample Card Component'}
+    image={'https://bulma.io/images/placeholders/1280x960.png'}
+    content={<span>Lorem ipsum dolor sit amet, consectetur adipiscing elit. 
+            Phasellus nec iaculis mauris.
+            <a href="/"> @bulmaio</a><a href="/"> #css </a><a href="/">
+            #responsive</a></span>}
+    footer={[
+        <a href="/" className="card-footer-item">Save</a>, 
+        <a href="/" className="card-footer-item">Edit</a>, 
+        <a href="/" className="card-footer-item">Delete</a>,
+    ]}
+/>
+```
+### Result:
+<Card
+    header={'Sample Card Component'}
+    image={'https://bulma.io/images/placeholders/1280x960.png'}
+    content={<span>Lorem ipsum dolor sit amet, consectetur adipiscing elit. 
+            Phasellus nec iaculis mauris.
+            <a href="/"> @bulmaio</a><a href="/"> #css </a><a href="/">
+            #responsive</a></span>}
+    footer={[
+        <a href="/" className="card-footer-item">Save</a>, 
+        <a href="/" className="card-footer-item">Edit</a>, 
+        <a href="/" className="card-footer-item">Delete</a>,
+    ]}
+/>
+
+---
+
+<br/>

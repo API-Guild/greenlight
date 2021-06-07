@@ -12,6 +12,7 @@ $greenlight: hsl(167, 90%, 50%); // #0DF2C1
 $milk: hsl(210, 50%, 99%); // #FBFCFE
 $overcast: hsl(240, 4%, 95%); // #F2F2F3
 $night: hsl(0, 0%, 5%); // #0D0D0D
+$sombre: hsl(0, 0%, 12%); // #1f1f1f
 $canary: hsl(55, 79%, 53%); // #E6D628
 $tulip: hsl(350, 78%, 75%); // #F18E9E
 $masago: hsl(28, 97%, 49%); // #F67504
@@ -105,7 +106,7 @@ $panel-tab-active-color: $accentSecondary;
 $panel-item-border: $accentDark;
 
 // Content <p>, <h1>...<h6>, <ul>, <ol>, <blockquote>, <table>, <strong>
-$content-blockquote-background-color: $accentDark;
+$content-blockquote-background-color: $sombre;
 
 @import "~bulma/bulma.sass";
 
