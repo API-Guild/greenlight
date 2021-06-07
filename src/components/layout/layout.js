@@ -6,9 +6,10 @@ import Seo from "../seo/seo"
 import Tableau from "../tableau/tableau"
 import Callout from "../callout/callout"
 import Card from "../card/card"
+import Title from "../title/title"
 import * as layoutStyles from "./layout.module.css"
 
-const shortcodes = { Tableau, Callout, Card, };
+const shortcodes = { Tableau, Callout, Card, Title };
 
 export default function Layout({ children }) {
   return (
