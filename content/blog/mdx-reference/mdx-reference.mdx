@@ -1,7 +1,7 @@
 ---
 title: MDX Reference
 date: "2021-04-18"
-description: "A guide describing the MDX components available on this app"
+description: "A reference for all of the MDX components supported by Greenlight"
 ---
 
 [MDX](https://mdxjs.com/getting-started) is a superset of [Markdown](https://www.markdownguide.org/getting-started/). 
@@ -19,16 +19,20 @@ component and provides examples so you can use them for your own content.
 <Title 
     title="Awesome Section"
     titleSize={1}
-    subtitle="Use this component to replace headings"
+    titleColor="primary"
+    subtitle={<div>Use this component to replace <strong>headings</strong></div>}
     subtitleSize={3}
+    subtitleColor="grey-light"
 />
 ```
 ### Result:
 <Title 
     title="Awesome Section"
     titleSize={1}
-    subtitle="Use this component to replace headings"
+    titleColor="primary"
+    subtitle={<div>Use this component to replace <strong>headings</strong></div>}
     subtitleSize={3}
+    subtitleColor="grey-light"
 />
 
 ---
@@ -57,6 +61,21 @@ component and provides examples so you can use them for your own content.
         as defined for the component.
     </div>
     }
+/>
+
+<Callout
+    type="info"
+    title="Callout"
+    titleSize={1}
+    titleColor="warning"
+    subtitle={
+    <div>
+        A simple container to make <strong>callouts</strong>, using styles
+        as defined for the component.
+    </div>
+    }
+    subtitleSize={4}
+    subtitleColor="warning light"
 />
 
 ---

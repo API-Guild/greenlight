@@ -52,11 +52,7 @@ $gap: 32px;
 
 // Main Color Schemes
 $primary: $accentMain;
-$black: $accentMain;
-$black-ter: findLightColor($accentMain);
 $white: $milk;
-$white-ter: findLightColor($accentSecondary);
-$white-bis: findDarkColor($accentSecondary);
 $light: $overcast;
 
 // Background Colors
@@ -65,8 +61,8 @@ $scheme-main: $background;
 $scheme-main-bis: $background;
 
 // Text
-$text: $text;
-$text-strong: $white-bis;
+$text-strong: inherit;
+$scheme-invert: $accentMain;
 
 // Code Blocks
 $code: $masago;
@@ -168,7 +164,7 @@ blockquote {
 }
 
 .logo {
-  width: 0.75rem;
+  width: 0.6rem;
   margin-left: 1.5em;
   margin-right: 0.5em;
   color: $accentMain;
