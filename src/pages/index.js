@@ -3,13 +3,14 @@ import Layout from "../components/layout/layout"
 import Hero from "../components/hero/hero"
 import Cartoon from "../components/cartoon/cartoon"
 import Box from "../components/box/box"
+import Title from "../components/title/title"
 import { ReactComponent as Articles } from "../assets/svg/articles.svg"
 import { ReactComponent as PostChart } from "../assets/svg/postChart.svg"
 import { ReactComponent as StackedAreaChart } from "../assets/svg/stackedAreaChart.svg"
 import { ReactComponent as Builds } from "../assets/svg/builds.svg"
 import { ReactComponent as Security } from "../assets/svg/security.svg"
 import { ReactComponent as Pwa } from "../assets/svg/pwa.svg"
-import { ReactComponent as PredictiveAnalytics } from "../assets/svg/predictiveAnalytics.svg"
+import { ReactComponent as PredictiveAnalytics } from "../assets/svg/chilling.svg"
 
 export default function Home() {
   return (
@@ -33,11 +34,19 @@ export default function Home() {
                 </Cartoon>
               </div>
               <div className="column is-flex is-align-self-center">
-                <p>
-                  Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore 
-                  et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip 
-                  ex ea commodo consequat.
-                </p>
+                <Title
+                  title="Feature 1"
+                  titleColor="primary"
+                  titleSize={3}
+                  subtitle={
+                    <p>
+                      Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore 
+                      et dolore magna aliqua.
+                    </p>
+                  }
+                  subtitleColor="grey lighter"
+                  subtitleSize={6}
+                />
               </div>
             </div>
           </Box>
@@ -49,11 +58,19 @@ export default function Home() {
                 </Cartoon>
               </div>
               <div className="column is-flex is-align-self-center">
-                <p>
-                  Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore 
-                  et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip 
-                  ex ea commodo consequat.
-                </p>
+                <Title
+                  title="Feature 2"
+                  titleColor="primary"
+                  titleSize={3}
+                  subtitle={
+                    <p>
+                      Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore 
+                      et dolore magna aliqua.
+                    </p>
+                  }
+                  subtitleColor="grey lighter"
+                  subtitleSize={6}
+                />
               </div>
             </div>
           </Box>
@@ -63,11 +80,19 @@ export default function Home() {
           <Box>
             <div className="columns">
               <div className="column is-flex is-align-self-center">
-                <p>
-                  Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore 
-                  et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip 
-                  ex ea commodo consequat.
-                </p>
+                <Title
+                  title="Feature 3"
+                  titleColor="primary"
+                  titleSize={3}
+                  subtitle={
+                    <p>
+                      Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore 
+                      et dolore magna aliqua.
+                    </p>
+                  }
+                  subtitleColor="grey lighter"
+                  subtitleSize={6}
+                />
               </div>
               <div className="column is-flex is-align-self-center">
                 <Cartoon>
@@ -79,11 +104,19 @@ export default function Home() {
           <Box>
             <div className="columns">
               <div className="column is-flex is-align-self-center">
-                <p>
-                  Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore 
-                  et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip 
-                  ex ea commodo consequat.
-                </p>
+                <Title
+                  title="Feature 4"
+                  titleColor="primary"
+                  titleSize={3}
+                  subtitle={
+                    <p>
+                      Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore 
+                      et dolore magna aliqua.
+                    </p>
+                  }
+                  subtitleColor="grey lighter"
+                  subtitleSize={6}
+                />
               </div>
               <div className="column is-flex is-align-self-center">
                 <Cartoon>
@@ -103,11 +136,19 @@ export default function Home() {
                 </Cartoon>
               </div>
               <div className="column is-flex is-align-self-center">
-                <p>
-                  Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore 
-                  et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip 
-                  ex ea commodo consequat.
-                </p>
+                <Title
+                  title="Feature 5"
+                  titleColor="primary"
+                  titleSize={3}
+                  subtitle={
+                    <p>
+                      Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore 
+                      et dolore magna aliqua.
+                    </p>
+                  }
+                  subtitleColor="grey lighter"
+                  subtitleSize={6}
+                />
               </div>
             </div>
           </Box>
@@ -119,11 +160,19 @@ export default function Home() {
                 </Cartoon>
               </div>
               <div className="column is-flex is-align-self-center">
-                <p>
-                  Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore 
-                  et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip 
-                  ex ea commodo consequat.
-                </p>
+                <Title
+                  title="Feature 6"
+                  titleColor="primary"
+                  titleSize={3}
+                  subtitle={
+                    <p>
+                      Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore 
+                      et dolore magna aliqua.
+                    </p>
+                  }
+                  subtitleColor="grey lighter"
+                  subtitleSize={6}
+                />
               </div>
             </div>
           </Box>
@@ -139,11 +188,19 @@ export default function Home() {
                 </Cartoon>
               </div>
               <div className="column is-flex is-align-self-center">
-                <p>
-                  Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore 
-                  et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip 
-                  ex ea commodo consequat.
-                </p>
+                <Title
+                  title="Feature 1"
+                  titleColor="primary"
+                  titleSize={3}
+                  subtitle={
+                    <p>
+                      Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore 
+                      et dolore magna aliqua.
+                    </p>
+                  }
+                  subtitleColor="grey lighter"
+                  subtitleSize={6}
+                />
               </div>
             </div>
           </Box>
@@ -155,11 +212,19 @@ export default function Home() {
                 </Cartoon>
               </div>
               <div className="column is-flex is-align-self-center">
-                <p>
-                  Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore 
-                  et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip 
-                  ex ea commodo consequat.
-                </p>
+                <Title
+                  title="Feature 2"
+                  titleColor="primary"
+                  titleSize={3}
+                  subtitle={
+                    <p>
+                      Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore 
+                      et dolore magna aliqua.
+                    </p>
+                  }
+                  subtitleColor="grey lighter"
+                  subtitleSize={6}
+                />
               </div>
             </div>
           </Box>
@@ -174,11 +239,19 @@ export default function Home() {
                 </Cartoon>
               </div>
               <div className="column is-flex is-align-self-center">
-                <p>
-                  Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore 
-                  et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip 
-                  ex ea commodo consequat.
-                </p>
+                <Title
+                  title="Feature 3"
+                  titleColor="primary"
+                  titleSize={3}
+                  subtitle={
+                    <p>
+                      Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore 
+                      et dolore magna aliqua.
+                    </p>
+                  }
+                  subtitleColor="grey lighter"
+                  subtitleSize={6}
+                />
               </div>
             </div>
           </Box>
@@ -190,11 +263,19 @@ export default function Home() {
                 </Cartoon>
               </div>
               <div className="column is-flex is-align-self-center">
-                <p>
-                  Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore 
-                  et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip 
-                  ex ea commodo consequat.
-                </p>
+                <Title
+                  title="Feature 4"
+                  titleColor="primary"
+                  titleSize={3}
+                  subtitle={
+                    <p>
+                      Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore 
+                      et dolore magna aliqua.
+                    </p>
+                  }
+                  subtitleColor="grey lighter"
+                  subtitleSize={6}
+                />
               </div>
             </div>
           </Box>
@@ -209,11 +290,19 @@ export default function Home() {
                 </Cartoon>
               </div>
               <div className="column is-flex is-align-self-center">
-                <p>
-                  Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore 
-                  et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip 
-                  ex ea commodo consequat.
-                </p>
+                <Title
+                  title="Feature 5"
+                  titleColor="primary"
+                  titleSize={3}
+                  subtitle={
+                    <p>
+                      Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore 
+                      et dolore magna aliqua.
+                    </p>
+                  }
+                  subtitleColor="grey lighter"
+                  subtitleSize={6}
+                />
               </div>
             </div>
           </Box>
@@ -225,11 +314,19 @@ export default function Home() {
                 </Cartoon>
               </div>
               <div className="column is-flex is-align-self-center">
-                <p>
-                  Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore 
-                  et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip 
-                  ex ea commodo consequat.
-                </p>
+                <Title
+                  title="Feature 6"
+                  titleColor="primary"
+                  titleSize={3}
+                  subtitle={
+                    <p>
+                      Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore 
+                      et dolore magna aliqua.
+                    </p>
+                  }
+                  subtitleColor="grey lighter"
+                  subtitleSize={6}
+                />
               </div>
             </div>
           </Box>
