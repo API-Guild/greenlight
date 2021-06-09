@@ -15,7 +15,7 @@ import { ReactComponent as PredictiveAnalytics } from "../assets/svg/chilling.sv
 export default function Home() {
   return (
     <Layout>
-      <Hero 
+      <Hero
         title="Greenlight"
         titleColor="primary"
         titleSize={1} 
