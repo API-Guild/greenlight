@@ -25,6 +25,13 @@ export default function Home() {
       <Cartoon>
         <PostChart/>
       </Cartoon>
+      <section className="section">
+        <p className="has-text-centered has-text-left-mobile is-size-5-mobile is-size-3-tablet">
+          Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore 
+          et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut 
+          aliquip ex ea commodo consequat.
+        </p>
+      </section>
 
       <section className="section">
         {/* columns for tablets and above */}
@@ -38,9 +45,9 @@ export default function Home() {
               </div>
               <div className="column is-flex is-align-self-center">
                 <Title
-                  title="Feature 1"
+                  title="Embedded Analytics"
                   titleColor="primary"
-                  titleSize={3}
+                  titleSize={4}
                   subtitle={
                     <p>
                       Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore 
@@ -62,9 +69,9 @@ export default function Home() {
               </div>
               <div className="column is-flex is-align-self-center">
                 <Title
-                  title="Feature 2"
+                  title="Compelling Content"
                   titleColor="primary"
-                  titleSize={3}
+                  titleSize={4}
                   subtitle={
                     <p>
                       Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore 
@@ -84,9 +91,9 @@ export default function Home() {
             <div className="columns">
               <div className="column is-flex is-align-self-center">
                 <Title
-                  title="Feature 3"
+                  title="Static Site Generator"
                   titleColor="primary"
-                  titleSize={3}
+                  titleSize={4}
                   subtitle={
                     <p>
                       Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore 
@@ -108,9 +115,9 @@ export default function Home() {
             <div className="columns">
               <div className="column is-flex is-align-self-center">
                 <Title
-                  title="Feature 4"
+                  title="Secure"
                   titleColor="primary"
-                  titleSize={3}
+                  titleSize={4}
                   subtitle={
                     <p>
                       Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore 
@@ -140,9 +147,9 @@ export default function Home() {
               </div>
               <div className="column is-flex is-align-self-center">
                 <Title
-                  title="Feature 5"
+                  title="Responsive UI"
                   titleColor="primary"
-                  titleSize={3}
+                  titleSize={4}
                   subtitle={
                     <p>
                       Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore 
@@ -164,9 +171,9 @@ export default function Home() {
               </div>
               <div className="column is-flex is-align-self-center">
                 <Title
-                  title="Feature 6"
+                  title="Stress Free"
                   titleColor="primary"
-                  titleSize={3}
+                  titleSize={4}
                   subtitle={
                     <p>
                       Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore 
@@ -192,9 +199,9 @@ export default function Home() {
               </div>
               <div className="column is-flex is-align-self-center">
                 <Title
-                  title="Feature 1"
+                  title="Embedded Analytics"
                   titleColor="primary"
-                  titleSize={3}
+                  titleSize={4}
                   subtitle={
                     <p>
                       Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore 
@@ -216,9 +223,9 @@ export default function Home() {
               </div>
               <div className="column is-flex is-align-self-center">
                 <Title
-                  title="Feature 2"
+                  title="Compelling Content"
                   titleColor="primary"
-                  titleSize={3}
+                  titleSize={4}
                   subtitle={
                     <p>
                       Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore 
@@ -243,9 +250,9 @@ export default function Home() {
               </div>
               <div className="column is-flex is-align-self-center">
                 <Title
-                  title="Feature 3"
+                  title="Static Site Generator"
                   titleColor="primary"
-                  titleSize={3}
+                  titleSize={4}
                   subtitle={
                     <p>
                       Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore 
@@ -267,9 +274,9 @@ export default function Home() {
               </div>
               <div className="column is-flex is-align-self-center">
                 <Title
-                  title="Feature 4"
+                  title="Secure"
                   titleColor="primary"
-                  titleSize={3}
+                  titleSize={4}
                   subtitle={
                     <p>
                       Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore 
@@ -294,9 +301,9 @@ export default function Home() {
               </div>
               <div className="column is-flex is-align-self-center">
                 <Title
-                  title="Feature 5"
+                  title="Responsive UI"
                   titleColor="primary"
-                  titleSize={3}
+                  titleSize={4}
                   subtitle={
                     <p>
                       Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore 
@@ -318,9 +325,9 @@ export default function Home() {
               </div>
               <div className="column is-flex is-align-self-center">
                 <Title
-                  title="Feature 6"
+                  title="Stress Free"
                   titleColor="primary"
-                  titleSize={3}
+                  titleSize={4}
                   subtitle={
                     <p>
                       Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore 
