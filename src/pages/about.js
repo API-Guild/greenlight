@@ -9,7 +9,13 @@ import { ReactComponent as Stakeholder } from "../assets/svg/stakeholder.svg"
 export default function About() {
   return (
     <Layout>
-      <Hero title="About Greenlight" subtitle={<span><strong>Why</strong> and <strong>how</strong> it was built</span>} />
+      <Hero 
+        title="About Greenlight" 
+        titleColor="primary"
+        titleSize={1} 
+        subtitle={<span><strong>Why</strong> and <strong>how</strong> it was built</span>}
+        subtitleSize={4} 
+      />
       <div className="container">
         <div className="columns">
           <div className="column is-three-fifths-tablet">

@@ -8,13 +8,17 @@ export default function Footer() {
         <div className="container">
           <div className="content has-text-centered">
             <p>
-              <strong><a href="https://api-guild.github.io/greenlight/" target="_blank" rel="noreferrer">Greenlight </a></strong> 
-              by <a href="https://stephenlprice.github.io/portfolio/index.html" target="_blank" rel="noreferrer">Stephen Price </a> 
+              <strong>
+                <a href="https://api-guild.github.io/greenlight/" target="_blank" rel="noreferrer">
+                  Greenlight 
+                </a>
+              </strong> by 
+              <a href="https://stephenlprice.github.io/portfolio/index.html" target="_blank" rel="noreferrer"> Stephen Price </a> 
               and <a href="https://trevorsmithbanjo.github.io/#/" target="_blank" rel="noreferrer"> Trevor Smith</a>. 
               <br/>
               The source code is licensed <a href="https://opensource.org/licenses/0BSD" target="_blank" rel="noreferrer"> 0BSD</a>.
-              Visit us on <a href="https://github.com/API-Guild/greenlight" target="_blank" rel="noreferrer">
-                <FontAwesomeIcon icon={faGithub} style={{height: "1rem", verticalAlign: "middle"}}/> Github
+              Visit us on <a href="https://github.com/API-Guild/greenlight" target="_blank" rel="noreferrer" style={{verticalAlign: "middle"}}>
+                <FontAwesomeIcon icon={faGithub} style={{height: "1rem"}}/> Github
               </a> 
               .
             </p>
