@@ -27,7 +27,7 @@ export default function Home() {
         <PostChart/>
       </Cartoon>
       <section className="section">
-        <p className="has-text-centered has-text-primary has-text-left-mobile is-size-5-mobile is-size-3-tablet">
+        <p className="has-text-centered has-text-primary is-size-5-mobile is-size-3-tablet">
           The <strong>Tableau</strong> blog you've always wanted!
         </p>
         <p className="has-text-centered has-text-left-mobile is-size-6-mobile is-size-5-tablet">
@@ -40,7 +40,7 @@ export default function Home() {
 
       <section className="section">
         {/* columns for tablets and above */}
-        <div className="columns is-hidden-mobile">
+        <div className="columns">
           <div className="column is-half is-flex">
             <Box>
               <div className="columns">
@@ -96,10 +96,15 @@ export default function Home() {
           </div>
         </div>
 
-        <div className="columns is-hidden-mobile">
+        <div className="columns">
           <div className="column is-half is-flex">
             <Box>
               <div className="columns">
+                <div className="column is-flex is-hidden-tablet is-align-self-center">
+                  <Cartoon>
+                    <Builds/>
+                  </Cartoon>
+                </div>
                 <div className="column is-flex is-align-self-center">
                   <Title
                     title="Static Site Generator"
@@ -115,7 +120,7 @@ export default function Home() {
                     subtitleSize={6}
                   />
                 </div>
-                <div className="column is-flex is-align-self-center">
+                <div className="column is-flex is-hidden-mobile is-align-self-center">
                   <Cartoon>
                     <Builds/>
                   </Cartoon>
@@ -126,6 +131,11 @@ export default function Home() {
           <div className="column is-half is-flex">
             <Box>
               <div className="columns">
+                <div className="column is-flex is-hidden-tablet is-align-self-center">
+                  <Cartoon>
+                    <Security/>
+                  </Cartoon>
+                </div>
                 <div className="column is-flex is-align-self-center">
                   <Title
                     title="Secure"
@@ -141,7 +151,7 @@ export default function Home() {
                     subtitleSize={6}
                   />
                 </div>
-                <div className="column is-flex is-align-self-center">
+                <div className="column is-flex is-hidden-mobile is-align-self-center">
                   <Cartoon>
                     <Security/>
                   </Cartoon>
@@ -151,7 +161,7 @@ export default function Home() {
           </div>
         </div>
 
-        <div className="columns is-hidden-mobile">
+        <div className="columns">
           <div className="column is-half is-flex">
             <Box>
               <div className="columns">
@@ -204,160 +214,6 @@ export default function Home() {
               </div>
             </Box>
           </div>
-        </div>
-
-        {/* columns for mobile */}
-        <div className="columns is-hidden-tablet">
-          <Box>
-            <div className="columns">
-              <div className="column is-flex is-align-self-center">
-                <Cartoon>
-                  <StackedAreaChart/>
-                </Cartoon>
-              </div>
-              <div className="column is-flex is-align-self-center">
-                <Title
-                  title="Embedded Analytics"
-                  titleColor="primary"
-                  titleSize={4}
-                  subtitle={
-                    <p>
-                      Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore 
-                      et dolore magna aliqua.
-                    </p>
-                  }
-                  subtitleColor="grey lighter"
-                  subtitleSize={6}
-                />
-              </div>
-            </div>
-          </Box>
-          <Box>
-            <div className="columns">
-              <div className="column is-flex is-align-self-center">
-                <Cartoon>
-                  <Articles/>
-                </Cartoon>
-              </div>
-              <div className="column is-flex is-align-self-center">
-                <Title
-                  title="Compelling Content"
-                  titleColor="primary"
-                  titleSize={4}
-                  subtitle={
-                    <p>
-                      Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore 
-                      et dolore magna aliqua.
-                    </p>
-                  }
-                  subtitleColor="grey lighter"
-                  subtitleSize={6}
-                />
-              </div>
-            </div>
-          </Box>
-        </div>
-
-        <div className="columns is-hidden-tablet">
-          <Box>
-            <div className="columns">
-              <div className="column is-flex is-align-self-center">
-                <Cartoon>
-                  <Builds/>
-                </Cartoon>
-              </div>
-              <div className="column is-flex is-align-self-center">
-                <Title
-                  title="Static Site Generator"
-                  titleColor="primary"
-                  titleSize={4}
-                  subtitle={
-                    <p>
-                      Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore 
-                      et dolore magna aliqua.
-                    </p>
-                  }
-                  subtitleColor="grey lighter"
-                  subtitleSize={6}
-                />
-              </div>
-            </div>
-          </Box>
-          <Box>
-            <div className="columns">
-              <div className="column is-flex is-align-self-center">
-                <Cartoon>
-                  <Security/>
-                </Cartoon>
-              </div>
-              <div className="column is-flex is-align-self-center">
-                <Title
-                  title="Secure"
-                  titleColor="primary"
-                  titleSize={4}
-                  subtitle={
-                    <p>
-                      Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore 
-                      et dolore magna aliqua.
-                    </p>
-                  }
-                  subtitleColor="grey lighter"
-                  subtitleSize={6}
-                />
-              </div>
-            </div>
-          </Box>
-        </div>
-
-        <div className="columns is-hidden-tablet">
-          <Box>
-            <div className="columns">
-              <div className="column is-flex is-align-self-center">
-                <Cartoon>
-                  <Pwa/>
-                </Cartoon>
-              </div>
-              <div className="column is-flex is-align-self-center">
-                <Title
-                  title="Responsive UI"
-                  titleColor="primary"
-                  titleSize={4}
-                  subtitle={
-                    <p>
-                      Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore 
-                      et dolore magna aliqua.
-                    </p>
-                  }
-                  subtitleColor="grey lighter"
-                  subtitleSize={6}
-                />
-              </div>
-            </div>
-          </Box>
-          <Box>
-            <div className="columns">
-              <div className="column is-flex is-align-self-center">
-                <Cartoon>
-                  <Chilling/>
-                </Cartoon>
-              </div>
-              <div className="column is-flex is-align-self-center">
-                <Title
-                  title="Stress Free"
-                  titleColor="primary"
-                  titleSize={4}
-                  subtitle={
-                    <p>
-                      Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore 
-                      et dolore magna aliqua.
-                    </p>
-                  }
-                  subtitleColor="grey lighter"
-                  subtitleSize={6}
-                />
-              </div>
-            </div>
-          </Box>
         </div>
       </section>
     </Layout>
