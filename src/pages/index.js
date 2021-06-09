@@ -28,13 +28,13 @@ export default function Home() {
       </Cartoon>
       <section className="section">
         <p className="has-text-centered has-text-primary is-size-5-mobile is-size-3-tablet">
-          The <strong>Tableau</strong> blog you've always wanted!
+          The <strong>Tableau</strong> blog you've always wanted
         </p>
         <p className="has-text-centered has-text-left-mobile is-size-6-mobile is-size-5-tablet">
-          Leverage the modern web to build a site that's fast, secure
-          and low maintenance. Forget about deploying servers and dealing with malware. You don't need hundreds 
+          Leverage the modern web to build a site that's fast, secure, and low maintenance. 
+          Forget about deploying servers and dealing with malware. You don't need hundreds 
           of hours of work to learn these techniques either. Instead, focus on your content and let
-          <Link to="/"> Greenlight</Link> make everything easier.
+          <Link to="/"> Greenlight</Link> take care of the rest.
         </p>
       </section>
 
@@ -42,7 +42,7 @@ export default function Home() {
         {/* columns for tablets and above */}
         <div className="columns">
           <div className="column is-half is-flex">
-            <Box>
+            <Box hoverBox={true}>
               <div className="columns">
                 <div className="column is-flex is-align-self-center">
                   <Cartoon>
@@ -69,7 +69,7 @@ export default function Home() {
             </Box>
           </div>
           <div className="column is-half is-flex">
-            <Box>
+            <Box hoverBox={true}>
               <div className="columns">
                 <div className="column is-flex is-align-self-center">
                   <Cartoon>
@@ -98,7 +98,7 @@ export default function Home() {
 
         <div className="columns">
           <div className="column is-half is-flex">
-            <Box>
+            <Box hoverBox={true}>
               <div className="columns">
                 <div className="column is-flex is-hidden-tablet is-align-self-center">
                   <Cartoon>
@@ -129,7 +129,7 @@ export default function Home() {
             </Box>
           </div>
           <div className="column is-half is-flex">
-            <Box>
+            <Box hoverBox={true}>
               <div className="columns">
                 <div className="column is-flex is-hidden-tablet is-align-self-center">
                   <Cartoon>
@@ -163,7 +163,7 @@ export default function Home() {
 
         <div className="columns">
           <div className="column is-half is-flex">
-            <Box>
+            <Box hoverBox={true}>
               <div className="columns">
                 <div className="column is-flex is-align-self-center">
                   <Cartoon>
@@ -189,7 +189,7 @@ export default function Home() {
             </Box>
           </div>
           <div className="column is-half is-flex">
-            <Box>
+            <Box hoverBox={true}>
               <div className="columns">
                 <div className="column is-flex is-align-self-center">
                   <Cartoon>

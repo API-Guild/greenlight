@@ -1,16 +1,19 @@
 .box {
   margin: 1rem;
-  /* makes the boxes shit upwards on hover */
-  position: relative;
-  top: 0;
-  transition: top ease 0.5s;
 }
 
 .box:not(:last-child) {
   margin-bottom: 1rem;
 }
 
-.box:hover {
+.hoverBox {
+  /* makes the boxes shit upwards on hover */
+  position: relative;
+  top: 0;
+  transition: top ease 0.5s;
+}
+
+.hoverBox:hover {
   top: -10px;
   box-shadow: inset 0 0 100px 100px rgba(255, 255, 255, 0.05);
 }
