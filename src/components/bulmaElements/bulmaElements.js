@@ -26,12 +26,7 @@ export const isSize5 = props => (
   </h5>
 )
 export const isSize6 = props => (
-  <h6 className="is-size-6-tablet is-size-7-mobile has-text-primary" {...props}>
-    {props.children}
-  </h6>
-)
-export const isSize7 = props => (
-  <h6 className="is-size-7-tablet" {...props}>
+  <h6 className="is-size-6-tablet is-size-7-mobile has-text-grey-light" {...props}>
     {props.children}
   </h6>
 )
@@ -59,4 +54,9 @@ export const ol = props => (
   <div className="content">
     <ol {...props}>{props.children}</ol>
   </div>
+)
+export const a = props => (
+  <a target="_blank" rel="noreferrer" {...props}>
+    {props.children}
+  </a>
 )

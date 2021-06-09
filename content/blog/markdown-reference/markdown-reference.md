@@ -55,12 +55,8 @@ consider include:
 ---
 <br/>
 
-<Title 
-    title="Reference"
-    titleSize={2}
-    subtitle="Examples of Markdown elements with corresponding syntax"
-    subtitleSize={5}
-/>
+# Reference
+Examples of Markdown elements with corresponding syntax
 
 <br/>
 

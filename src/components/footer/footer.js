@@ -11,7 +11,7 @@ export default function Footer() {
             <p>
               <strong>
                 <a href="https://api-guild.github.io/greenlight/" target="_blank" rel="noreferrer">
-                  <Logo/> Greenlight 
+                  Greenlight 
                 </a>
               </strong> by 
               <a href="https://stephenlprice.github.io/portfolio/index.html" target="_blank" rel="noreferrer"> Stephen Price </a> 

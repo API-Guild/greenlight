@@ -83,19 +83,19 @@ const colorizer = (color) => {
     case 'black-ter':
       textColor = 'has-text-black-ter';
       break;
-    case 'grey-darker':
+    case 'grey darker':
       textColor = 'has-text-grey-darker';
       break;
-    case 'grey-dark':
+    case 'grey dark':
       textColor = 'has-text-grey-dark';
       break;
     case 'grey':
       textColor = 'has-text-grey';
       break;
-    case 'grey-light':
+    case 'grey light':
       textColor = 'has-text-grey-light';
       break;
-    case 'grey-lighter':
+    case 'grey lighter':
       textColor = 'has-text-grey-lighter';
       break;
     case 'white-ter':
