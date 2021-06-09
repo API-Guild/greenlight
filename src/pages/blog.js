@@ -12,12 +12,15 @@ export default function Blog({ data }) {
   return (
     <Layout>
       <Hero 
-        title="Blog" 
+        title="Blog"
+        titleColor="primary"
+        titleSize={1}  
         subtitle={
           <span>
             Search for <strong>articles</strong> published on this site
           </span>
-        } 
+        }
+        subtitleSize={4} 
       />
       <div className="container">
         <div className="column is-hidden-desktop">

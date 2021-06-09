@@ -16,8 +16,11 @@ export default function Home() {
   return (
     <Layout>
       <Hero 
-        title="Greenlight" 
+        title="Greenlight"
+        titleColor="primary"
+        titleSize={1} 
         subtitle={<span>A guerrilla <strong>data portal</strong> for analysts with deadlines.</span>} 
+        subtitleSize={4}
       />
       <Cartoon>
         <PostChart/>

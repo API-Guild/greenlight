@@ -42,7 +42,14 @@ export default function BlogPost({ data }) {
   return (
     <>
       <Layout>
-        <Hero title={meta.title} subtitle={meta.description} date={meta.date} />
+        <Hero 
+          title={meta.title}
+          titleColor="primary"
+          titleSize={1} 
+          subtitle={meta.description}
+          subtitleSize={4} 
+          date={meta.date}
+        />
         <div className="container is-fluid">
           <MDXProvider components={components}>
             <MDXRenderer>{post.body}</MDXRenderer>
