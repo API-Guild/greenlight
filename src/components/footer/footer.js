@@ -1,7 +1,6 @@
 import React from "react"
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faGithub } from '@fortawesome/free-brands-svg-icons'
-import Logo from "../logo/logo"
 
 export default function Footer() {
   return (
