@@ -1,5 +1,7 @@
 import React from "react"
-import { Link } from "gatsby"
+import { Link, navigate } from "gatsby"
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faRocket } from '@fortawesome/free-solid-svg-icons'
 import Layout from "../components/layout/layout"
 import Hero from "../components/hero/hero"
 import Cartoon from "../components/cartoon/cartoon"
@@ -27,7 +29,7 @@ export default function Home() {
         <PostChart/>
       </Cartoon>
       <section className="section">
-        <p className="has-text-centered has-text-primary is-size-5-mobile is-size-3-tablet">
+        <p className="has-text-centered has-text-left-mobile has-text-primary is-size-4-mobile is-size-3-tablet">
           The <strong>Tableau</strong> blog you've always wanted
         </p>
         <p className="has-text-centered has-text-left-mobile is-size-6-mobile is-size-5-tablet">
@@ -35,8 +37,18 @@ export default function Home() {
           Forget about deploying servers and dealing with malware. You don't need hundreds 
           of hours of work to learn these techniques either. Instead, focus on your content and let
           <Link to="/"> Greenlight</Link> take care of the rest.
-        </p>
+        </p>        
       </section>
+  
+      <button 
+        class="button is-primary is-outlined is-large is-rounded" 
+        style={{margin: "auto", display: "block"}}
+        onClick={()=>{navigate("/blog/quick-start")}}
+      >
+        <strong>
+          <FontAwesomeIcon icon={faRocket}/> Get Started
+        </strong>
+      </button>
 
       <section className="section">
         {/* columns for tablets and above */}
@@ -204,7 +216,7 @@ export default function Home() {
                     subtitle={
                       <p>
                         Follow the <Link to="/blog/quick-start">Quick Start</Link> guide. Host the site for
-                        cheap. Forget about servers. Dashboards just work.
+                        cheap. Forget about servers. Dashboards just work. Opensource license.
                       </p>
                     }
                     subtitleColor="grey lighter"
