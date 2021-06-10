@@ -6,13 +6,13 @@ import ContentIndex from "../components/contentIndex/contentIndex"
 import Cartoon from "../components/cartoon/cartoon"
 import { ReactComponent as Posts} from "../assets/svg/posts.svg"
 
-export default function Blog({ data }) {
-  const blog = data.allMdx.nodes;
+export default function Docs({ data }) {
+  const docs = data.allMdx.nodes;
 
   return (
     <Layout>
       <Hero 
-        title="Blog"
+        title="Documentation"
         titleColor="primary"
         titleSize={1}  
         subtitle={
@@ -32,7 +32,7 @@ export default function Blog({ data }) {
           <div className="column">
             <ContentIndex
               title="Articles"
-              content={blog}
+              content={docs}
             />
           </div>
           <div className="column is-hidden-touch is-two-fifths">
