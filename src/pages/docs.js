@@ -4,32 +4,40 @@ import Layout from "../components/layout/layout"
 import Hero from "../components/hero/hero"
 import ContentIndex from "../components/contentIndex/contentIndex"
 import Cartoon from "../components/cartoon/cartoon"
-import { ReactComponent as PredictiveAnalytics} from "../assets/svg/predictiveAnalytics.svg"
+import { ReactComponent as Posts} from "../assets/svg/posts.svg"
 
-export default function Blog({ data }) {
-  const blog = data.allMdx.nodes;
+export default function Docs({ data }) {
+  const docs = data.allMdx.nodes;
 
   return (
     <Layout>
       <Hero 
-        title="Blog" 
+        title="Documentation"
+        titleColor="primary"
+        titleSize={1}  
         subtitle={
           <span>
             Search for <strong>articles</strong> published on this site
           </span>
-        } 
+        }
+        subtitleSize={4} 
       />
       <div className="container">
+        <div className="column is-hidden-desktop">
+          <Cartoon>
+            <Posts/>
+          </Cartoon>
+        </div>
         <div className="columns">
           <div className="column">
             <ContentIndex
               title="Articles"
-              content={blog}
+              content={docs}
             />
           </div>
-          <div className="column">
+          <div className="column is-hidden-touch is-two-fifths">
             <Cartoon>
-              <PredictiveAnalytics/>
+              <Posts/>
             </Cartoon>
           </div>
         </div>

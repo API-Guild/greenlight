@@ -9,7 +9,13 @@ import { ReactComponent as Stakeholder } from "../assets/svg/stakeholder.svg"
 export default function About() {
   return (
     <Layout>
-      <Hero title="About Greenlight" subtitle={<span><strong>Why</strong> and <strong>how</strong> it was built</span>} />
+      <Hero 
+        title="About Greenlight" 
+        titleColor="primary"
+        titleSize={1} 
+        subtitle={<span><strong>Why</strong> and <strong>how</strong> it was built</span>}
+        subtitleSize={4} 
+      />
       <div className="container">
         <div className="columns">
           <div className="column is-three-fifths-tablet">
@@ -33,9 +39,9 @@ export default function About() {
               <br/>
               <div className="content is-hidden-tablet-only is-hidden-desktop-only">
                 <blockquote>
-                  Gatsby believed in the green light, the orgiastic future that year by year recedes before us. 
-                  It eluded us then, but that’s no matter—tomorrow we will run faster, stretch out our arms farther…. 
-                  And one fine morning— So we beat on, boats against the current, borne back ceaselessly into the past.
+                  "Gatsby believed in the green light, the orgiastic future that year by year recedes before us. 
+                  It eluded us then, but that’s no matter — tomorrow we will run faster, stretch out our arms farther... 
+                  And one fine morning — So we beat on, boats against the current, borne back ceaselessly into the past."
                 </blockquote>
               </div>       
             </div>

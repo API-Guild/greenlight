@@ -10,18 +10,21 @@ export default function Contact() {
     <Layout>
       <Hero 
         title="Contact" 
+        titleColor="primary"
+        titleSize={1} 
         subtitle={
           <span>
             Ask <strong>questions</strong>, make <strong>requests</strong> or share <strong>feedback</strong> with us
           </span>
         } 
+        subtitleSize={4}
       />
       <div className="container">
         <div className="columns">
           <div className="column">
             <ContactForm/>
           </div>
-          <div className="column">
+          <div className="column is-two-fifths">
             <br/>
             <Cartoon>
               <NewIdea/>

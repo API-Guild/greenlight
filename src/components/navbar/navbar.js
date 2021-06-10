@@ -2,7 +2,7 @@ import React, { useState } from "react"
 import { graphql, Link, useStaticQuery } from "gatsby"
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faListUl } from '@fortawesome/free-solid-svg-icons'
-import { ReactComponent as Greenlight} from "../../assets/svg/greenlight.svg"
+import Logo from "../logo/logo"
 import Search from "../search/search"
 import Dropdown from "../dropdown/dropdown"
 import Auth from "../auth/auth"
@@ -22,13 +22,13 @@ export default function Navbar() {
       <div className="navbar-brand">
         <Link className="navbar-item" to="/">
           <span className="logo is-flex is-align-items-center">
-            <Greenlight/>
+            <Logo />
           </span>
           Greenlight
         </Link>
-        <Hamburger navMenu={navMenu} showMenu={showMenu}/>
+        <Hamburger navMenu={navMenu} showMenu={showMenu} />
       </div>
-      <NavMenu navMenu={navMenu}/>
+      <NavMenu navMenu={navMenu} />
     </nav>
   )
 }
@@ -107,8 +107,8 @@ const NavMenu = (props) => {
           Contact
         </Link>
         
-        <Dropdown title="Blog" navMenu={props.navMenu}>
-          <Link to="/blog" className="navbar-item">
+        <Dropdown title="Documentation" navMenu={props.navMenu}>
+          <Link to="/docs" className="navbar-item">
             <span className="icon-text has-text-weight-bold">
               <span className="icon">
                 <FontAwesomeIcon icon={faListUl}/>

@@ -11,12 +11,12 @@ import {
   isSize4,
   isSize5,
   isSize6,
-  isSize7,
   table,
   paragraph,
   ul,
   blockquote,
   ol,
+  a,
 } from "../components/bulmaElements/bulmaElements"
 
 export default function BlogPost({ data }) {
@@ -31,18 +31,25 @@ export default function BlogPost({ data }) {
     h4: isSize4,
     h5: isSize5,
     h6: isSize6,
-    h7: isSize7,
     table: table,
     p: paragraph,
     ul: ul,
     blockquote: blockquote,
     ol: ol,
+    a: a,
   }
 
   return (
     <>
       <Layout>
-        <Hero title={meta.title} subtitle={meta.description} date={meta.date} />
+        <Hero 
+          title={meta.title}
+          titleColor="primary"
+          titleSize={1} 
+          subtitle={meta.description}
+          subtitleSize={4} 
+          date={meta.date}
+        />
         <div className="container is-fluid">
           <MDXProvider components={components}>
             <MDXRenderer>{post.body}</MDXRenderer>

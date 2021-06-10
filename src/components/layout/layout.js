@@ -3,11 +3,13 @@ import { MDXProvider } from "@mdx-js/react"
 import Navbar from "../navbar/navbar"
 import Footer from "../footer/footer"
 import Seo from "../seo/seo"
-import Callout from "../callout/callout"
 import Tableau from "../tableau/tableau"
+import Callout from "../callout/callout"
+import Card from "../card/card"
+import Title from "../title/title"
 import * as layoutStyles from "./layout.module.css"
 
-const shortcodes = { Callout, Tableau };
+const shortcodes = { Tableau, Callout, Card, Title };
 
 export default function Layout({ children }) {
   return (

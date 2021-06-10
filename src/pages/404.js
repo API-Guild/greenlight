@@ -9,8 +9,11 @@ export default function FourOFour() {
   return (
     <Layout>
       <Hero 
-        title="404 - Woops!" 
-        subtitle={<span>This is <strong>probably not</strong> what you are looking for...</span>} 
+        title="404 - Woops!"
+        titleColor="primary"
+        titleSize={1}  
+        subtitle={<span>This is <strong>probably not</strong> what you are looking for...</span>}
+        subtitleSize={4} 
       />
       <Cartoon>
         <Startled404 />
