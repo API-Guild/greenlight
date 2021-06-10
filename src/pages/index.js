@@ -43,7 +43,7 @@ export default function Home() {
       <button 
         class="button is-primary is-outlined is-large is-rounded" 
         style={{margin: "auto", display: "block"}}
-        onClick={()=>{navigate("/blog/quick-start")}}
+        onClick={()=>{navigate("/docs/quick-start")}}
       >
         <strong>
           <FontAwesomeIcon icon={faRocket}/> Get Started
@@ -215,7 +215,7 @@ export default function Home() {
                     titleSize={4}
                     subtitle={
                       <p>
-                        Follow the <Link to="/blog/quick-start">Quick Start</Link> guide. Host the site for
+                        Follow the <Link to="/docs/quick-start">Quick Start</Link> guide. Host the site for
                         cheap. Forget about servers. Dashboards just work. Opensource license.
                       </p>
                     }

@@ -34,7 +34,8 @@ module.exports = {
     {
       resolve: `gatsby-source-filesystem`,
       options: {
-        path: `${__dirname}/content/blog/`,
+        // important to change this path on your new site
+        path: `${__dirname}/content/docs/`,
       },
     },
     'gatsby-plugin-svgr',
@@ -42,8 +43,8 @@ module.exports = {
     {
       resolve: `gatsby-source-filesystem`,
       options: {
-        name: `blog`,
-        path: `${__dirname}/content/blog/`,
+        name: `docs`,
+        path: `${__dirname}/content/docs/`,
       },
     },
     `gatsby-plugin-react-helmet`,

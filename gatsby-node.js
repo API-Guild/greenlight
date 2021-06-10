@@ -9,7 +9,7 @@ exports.onCreateNode = ({ node, getNode, actions }) => {
     const relativeFilePath = createFilePath({
       node,
       getNode,
-      basePath: "content/blog/",
+      basePath: "content/docs/",
     })
 
     // removes the folder name from the slug as obtained from relativeFilePath
@@ -23,7 +23,7 @@ exports.onCreateNode = ({ node, getNode, actions }) => {
     createNodeField({
       node,
       name: "slug",
-      value: `/blog${modifiedPath}`,
+      value: `/docs${modifiedPath}`,
     })
   }
 }

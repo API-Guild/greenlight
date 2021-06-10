@@ -107,8 +107,8 @@ const NavMenu = (props) => {
           Contact
         </Link>
         
-        <Dropdown title="Blog" navMenu={props.navMenu}>
-          <Link to="/blog" className="navbar-item">
+        <Dropdown title="Documentation" navMenu={props.navMenu}>
+          <Link to="/docs" className="navbar-item">
             <span className="icon-text has-text-weight-bold">
               <span className="icon">
                 <FontAwesomeIcon icon={faListUl}/>

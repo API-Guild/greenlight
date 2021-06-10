@@ -31,7 +31,7 @@ export default function Footer() {
               <br/>
               <ul className="has-text-centered-mobile">
                 <li><Link to="/about">About</Link></li>
-                <li><Link to="/blog">Documentation</Link></li>
+                <li><Link to="/docs">Documentation</Link></li>
                 <li><Link to="/contact">Contact</Link></li>
                 <li>
                   <a href="https://github.com/API-Guild/greenlight" target="_blank" rel="noreferrer">
