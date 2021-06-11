@@ -1,6 +1,6 @@
 import React from "react"
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faCloudDownloadAlt } from '@fortawesome/free-solid-svg-icons'
+import { faCloudDownloadAlt, faBackward, faForward } from '@fortawesome/free-solid-svg-icons'
 import * as vizTbStyles from "./vizToolbar.module.css"
 import * as util from "./utilities.js"
 import Box from "../box/box"
@@ -15,6 +15,13 @@ export default function VizToolbar(props) {
   console.log('outline', outline)
   return (
     <Box vizToolbar={true}>
+      <VizNav
+        previous={{"name": "previous"}}
+        next={{"name": "next"}}
+        color={color}
+        outline={outline}
+        rounded={rounded}
+      />
       {/* mobile layout */}
       <div className="buttons are-small is-centered is-hidden-tablet">
         {renderButtons.map((button, index) => (
@@ -59,11 +66,37 @@ export default function VizToolbar(props) {
   )
 }
 
-// <Navigation> component
+// <VizNav> component
+const VizNav = (props) => {
+  const btnStyles = `${props.color} ${props.outline} ${props.rounded}`;
+
+  return (
+    <div className="columns is-1 is-mobile">
+      <div className="column">
+        <button class={`button is-fullwidth ${btnStyles}`}>
+          <span className="icon">
+            <FontAwesomeIcon icon={faBackward}/>
+          </span>
+          <span><strong>Previous</strong></span>
+          <span>{props.previous.name}</span>
+        </button>
+      </div>
+      <div className="column">
+        <button class={`button is-fullwidth ${btnStyles}`}>
+          <span>{props.next.name}</span>
+          <span><strong>Next</strong></span>
+          <span className="icon">
+            <FontAwesomeIcon icon={faForward}/>
+          </span>
+        </button>
+      </div>
+    </div>
+  )
+}
 
 // <Button> component
 const Button = (props) => {
-  const btnStyles = `${props.color} ${props.outline} ${props.rounded}`
+  const btnStyles = `${props.color} ${props.outline} ${props.rounded}`;
 
   return (
     <button 
@@ -81,7 +114,7 @@ const Button = (props) => {
 // <Download> component
 const Download = (props) => {
   const renderDownloads = util.downloadList(props.downloads);
-  const btnStyles = `${props.color} ${props.outline}`
+  const btnStyles = `${props.color} ${props.outline}`;
   
   return (
     <div className={`field has-addons has-addons-left ${vizTbStyles.download}`}>
