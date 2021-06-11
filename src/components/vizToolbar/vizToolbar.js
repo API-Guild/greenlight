@@ -68,29 +68,41 @@ export default function VizToolbar(props) {
 
 // <VizNav> component
 const VizNav = (props) => {
-  const btnStyles = `${props.color} ${props.outline} ${props.rounded}`;
+  const btnStyles = `${props.color} ${props.outline} ${props.rounded} ${vizTbStyles.navBtn}`;
 
   return (
-    <div className="columns is-1 is-mobile">
-      <div className="column">
-        <button class={`button is-fullwidth ${btnStyles}`}>
+    <>
+      <div className="buttons are-small is-centered is-hidden-tablet">
+        {/* mobile layout */}
+        <button class={`button ${btnStyles}`}>
           <span className="icon">
             <FontAwesomeIcon icon={faBackward}/>
           </span>
           <span><strong>Previous</strong></span>
-          <span>{props.previous.name}</span>
         </button>
-      </div>
-      <div className="column">
-        <button class={`button is-fullwidth ${btnStyles}`}>
-          <span>{props.next.name}</span>
+        <button class={`button ${btnStyles}`}>
           <span><strong>Next</strong></span>
           <span className="icon">
             <FontAwesomeIcon icon={faForward}/>
           </span>
         </button>
       </div>
-    </div>
+      {/* desktop layout */}
+      <div className="buttons is-centered is-hidden-mobile">
+        <button class={`button ${btnStyles}`}>
+          <span className="icon">
+            <FontAwesomeIcon icon={faBackward}/>
+          </span>
+          <span><strong>Previous</strong></span>
+        </button>
+        <button class={`button ${btnStyles}`}>
+          <span><strong>Next</strong></span>
+          <span className="icon">
+            <FontAwesomeIcon icon={faForward}/>
+          </span>
+        </button>
+      </div>
+    </>
   )
 }
 
