@@ -118,26 +118,24 @@ component and provides examples so you can use them for your own content.
 ```
 ### Result:
 <VizToolbar
-    buttons={[
-        'reset', 
-        'refresh', 
-        'pdf export', 
-        'image export', 
-        'data export', 
-        'crosstab export',
-        'powerpoint export',
-        'download workbook',
-        'share',
-        'redo',
-        'undo',
-        'details',
-        'pause'
-    ]}
-    color=''
 />
 
 <VizToolbar
-    color='warning light'
+    buttons={[
+        'reset', 
+        'refresh', 
+        'redo',
+        'undo',
+    ]}
+    downloads={[
+        'pdf',
+        'image',
+        'powerpoint'
+    ]}
+    color='warning'
+    outline={false}
+    rounded={false}
+    inverted={true}
 />
 
 ---

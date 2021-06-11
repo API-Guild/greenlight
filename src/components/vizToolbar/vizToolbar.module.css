@@ -1,0 +1,13 @@
+.download {
+ margin-left: 0.25rem;
+ margin-right: 0.25rem;
+}
+
+.download button {
+  margin-left: 0 !important; 
+}
+
+.select {
+  border-top-left-radius: 10px !important;
+  border-bottom-left-radius: 10px !important;
+}

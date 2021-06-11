@@ -169,6 +169,27 @@ blockquote {
   color: $accentMain;
 }
 
+.select {
+  .is-primary {
+    color: $primary;
+  }
+  .is-link {
+    color: $link;
+  }
+  .is-info {
+    color: $info;
+  }
+  .is-success {
+    color: $success;
+  }
+  .is-warning {
+    color: $warning;
+  }
+  .is-danger {
+    color: $danger;
+  }
+}
+
 figure.image.cartoon {
   margin: auto;
   color: $accentMain;
