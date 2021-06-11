@@ -13,7 +13,7 @@ const List = (props) => {
   }
   
   // props.content are <Link/> components from navbar.js 
-  // as nodes obtained from the content/blog folder
+  // as nodes obtained from the content/docs folder
   return (
     <div id="d-test-yo" className={`navbar-dropdown ${display}`}>
       {props.content}

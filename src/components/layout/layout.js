@@ -7,9 +7,10 @@ import Tableau from "../tableau/tableau"
 import Callout from "../callout/callout"
 import Card from "../card/card"
 import Title from "../title/title"
+import VizToolbar from "../vizToolbar/vizToolbar"
 import * as layoutStyles from "./layout.module.css"
 
-const shortcodes = { Tableau, Callout, Card, Title };
+const shortcodes = { Tableau, Callout, Card, Title, VizToolbar };
 
 export default function Layout({ children }) {
   return (

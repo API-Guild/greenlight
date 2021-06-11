@@ -19,7 +19,7 @@ import {
   a,
 } from "../components/bulmaElements/bulmaElements"
 
-export default function BlogPost({ data }) {
+export default function Article({ data }) {
   const post = data.mdx
   const meta = post.frontmatter
 

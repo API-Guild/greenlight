@@ -96,7 +96,7 @@ export default function Home() {
                     subtitle={
                       <p>
                         is empowered by data. Help the world see what matters to you.
-                        Knowledge is power and it's measured in data.
+                        Knowledge is power and it's measured in bytes.
                       </p>
                     }
                     subtitleColor="grey lighter"

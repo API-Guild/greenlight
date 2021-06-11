@@ -17,7 +17,7 @@ export default function Hero(props) {
           subtitleColor={props.subtitleColor}
           subtitleSize={props.subtitleSize}
         />
-        {/* Used for dates on blog posts */}
+        {/* Used for dates on articles */}
         <p className={`subtitle ${heroStyles.subtitleDate} is-7`}> 
           {props.date}
         </p>

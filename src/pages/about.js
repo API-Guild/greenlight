@@ -88,7 +88,7 @@ export default function About() {
           </p>
           <br/>
           <p>
-            Check out the <Link to="/blog/quick-start"> Quick Start</Link> guide. 
+            Check out the <Link to="/docs/quick-start"> Quick Start</Link> guide. 
             You will have a working site in no time.
           </p>
         </div>
