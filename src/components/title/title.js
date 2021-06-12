@@ -1,27 +1,34 @@
 import React from "react"
+import { titleEl } from "./title.module.scss"
 
 export default function Title(props) {
   const titleSize = sizer(props.titleSize);
   const titleColor = colorizer(props.titleColor);
   const subtitleSize = sizer(props.subtitleSize);
   const subtitleColor = colorizer(props.subtitleColor);
-
+  const responsiveTitle = sizer2(props.titleSize);
+  const responsiveSubtitle = sizer2(props.subtitleSize);
 
   // can have empty title and/or subtitle text with different sizes.
   // recommended to have a title that is 2 numbers larger than the subtitle, i.e. {title: 1}, {subtitle: 3}
   return (
     <div>
-      {props.title ? <h1 className={`title ${titleSize} ${titleColor}`}>{props.title}</h1> : null}
+      {/* mobile layout */}
+      {props.title ? <h1 className={`title ${titleSize} ${titleColor} ${titleEl}`}>{props.title}</h1> : null}
       {props.subtitle ? <h2 className={`subtitle ${subtitleSize} ${subtitleColor}`}>{props.subtitle}</h2> : null}
+      {/* desktop layout */}
+      {props.title ? <h1 className={`title ${responsiveTitle} ${titleColor}`}>Interdisciplinary</h1> : null}
+      {props.subtitle ? <h2 className={`subtitle ${responsiveSubtitle} ${subtitleColor}`}>{props.subtitle}</h2> : null}
     </div>
   )
 }
 
 const sizer = (size) => {
   let textSize;
+  let responsiveSize;
   switch (size) {
     case 1:
-      textSize = 'is-1';
+      textSize = 'is-size-1-tablet is-size-2-mobile';
       break;
     case 2:
       textSize = 'is-2';
@@ -42,6 +49,27 @@ const sizer = (size) => {
       textSize = null;
   }
   return textSize;
+}
+
+const sizer2 = (size) => {
+  let textSize2;
+  switch (size) {
+    case 1:
+      textSize2 = 'is-3';
+      break;
+    case 2:
+      textSize2 = 'is-4';
+      break;
+    case 3:
+      textSize2 = 'is-5';
+      break;
+    case 4:
+      textSize2 = 'is-6';
+      break;
+    default:
+      textSize2 = null;
+  }
+  return textSize2;
 }
 
 const colorizer = (color) => {

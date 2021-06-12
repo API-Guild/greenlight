@@ -40,7 +40,11 @@ export default function Footer() {
             </li>
             <li>
               <a href="https://www.buymeacoffee.com/stelloprint">
-                <img className={bmc} src="https://img.buymeacoffee.com/button-api/?text=Buy me a beer!&emoji=🍺&slug=stelloprint&button_colour=0df2c1&font_colour=000000&font_family=Lato&outline_colour=000000&coffee_colour=FFDD00"/>
+                <img 
+                  className={bmc} 
+                  src="https://img.buymeacoffee.com/button-api/?text=Buy me a beer!&emoji=🍺&slug=stelloprint&button_colour=0df2c1&font_colour=000000&font_family=Lato&outline_colour=000000&coffee_colour=FFDD00"
+                  alt="buy me a beer!"
+                />
               </a>
             </li>
           </ul>

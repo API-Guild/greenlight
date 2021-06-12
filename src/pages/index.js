@@ -41,7 +41,7 @@ export default function Home() {
       </section>
   
       <button 
-        class="button is-primary is-outlined is-large is-rounded" 
+        className="button is-primary is-outlined is-large is-rounded" 
         style={{margin: "auto", display: "block"}}
         onClick={()=>{navigate("/docs/quick-start")}}
       >

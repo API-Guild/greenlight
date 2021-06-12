@@ -74,13 +74,13 @@ const VizNav = (props) => {
     <>
       <div className={`buttons are-small is-centered is-hidden-tablet ${vizTbStyles.vizNav}`}>
         {/* mobile layout */}
-        <button class={`button ${btnStyles}`}>
+        <button className={`button ${btnStyles}`}>
           <span className="icon">
             <FontAwesomeIcon icon={faBackward}/>
           </span>
           <span><strong>Previous</strong></span>
         </button>
-        <button class={`button ${btnStyles}`}>
+        <button className={`button ${btnStyles}`}>
           <span><strong>Next</strong></span>
           <span className="icon">
             <FontAwesomeIcon icon={faForward}/>
@@ -89,13 +89,13 @@ const VizNav = (props) => {
       </div>
       {/* desktop layout */}
       <div className={`buttons is-centered is-hidden-mobile ${vizTbStyles.vizNav}`}>
-        <button class={`button ${btnStyles}`}>
+        <button className={`button ${btnStyles}`}>
           <span className="icon">
             <FontAwesomeIcon icon={faBackward}/>
           </span>
           <span><strong>Previous</strong></span>
         </button>
-        <button class={`button ${btnStyles}`}>
+        <button className={`button ${btnStyles}`}>
           <span><strong>Next</strong></span>
           <span className="icon">
             <FontAwesomeIcon icon={faForward}/>
