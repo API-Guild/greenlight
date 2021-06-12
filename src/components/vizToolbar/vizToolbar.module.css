@@ -1,17 +1,29 @@
-.download {
+.field {
  margin-left: 0.25rem;
  margin-right: 0.25rem;
 }
 
-.download button {
+.field button {
   margin-left: 0 !important; 
 }
 
 .select {
-  border-top-left-radius: 10px !important;
-  border-bottom-left-radius: 10px !important;
+  border-top-left-radius: 7px !important;
+  border-bottom-left-radius: 7px !important;
 }
 
-.navBtn {
-  min-width: 100px;
+.vizNav:not(:last-child) {
+  margin: 0;
+}
+
+@media screen and (max-width: 768px) {
+  .navBtn {
+    min-width: 100px;
+  }
+}
+
+@media screen and (min-width: 769px) {
+  .navBtn {
+    min-width: 150px;
+  }
 }

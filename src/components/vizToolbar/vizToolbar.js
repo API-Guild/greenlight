@@ -72,7 +72,7 @@ const VizNav = (props) => {
 
   return (
     <>
-      <div className="buttons are-small is-centered is-hidden-tablet">
+      <div className={`buttons are-small is-centered is-hidden-tablet ${vizTbStyles.vizNav}`}>
         {/* mobile layout */}
         <button class={`button ${btnStyles}`}>
           <span className="icon">
@@ -88,7 +88,7 @@ const VizNav = (props) => {
         </button>
       </div>
       {/* desktop layout */}
-      <div className="buttons is-centered is-hidden-mobile">
+      <div className={`buttons is-centered is-hidden-mobile ${vizTbStyles.vizNav}`}>
         <button class={`button ${btnStyles}`}>
           <span className="icon">
             <FontAwesomeIcon icon={faBackward}/>
@@ -129,7 +129,7 @@ const Download = (props) => {
   const btnStyles = `${props.color} ${props.outline}`;
   
   return (
-    <div className={`field has-addons has-addons-left ${vizTbStyles.download}`}>
+    <div className={`field has-addons has-addons-left ${vizTbStyles.field}`}>
       {/* mobile layout */}
       <div className="control">
         <div className={`select is-small is-hidden-tablet ${props.color}`}> 
