@@ -1,75 +1,63 @@
-import React from "react"
+import React, { useState, useEffect } from "react"
 import { titleEl } from "./title.module.scss"
 
 export default function Title(props) {
-  const titleSize = sizer(props.titleSize);
+  const [longTitle, setLongTitle] = useState(false);
+  const titleSize = titleSizer(props.titleSize, longTitle);
   const titleColor = colorizer(props.titleColor);
-  const subtitleSize = sizer(props.subtitleSize);
+  const subtitleSize = subtitlerSizer(props.subtitleSize, props.subtitle);
   const subtitleColor = colorizer(props.subtitleColor);
-  const responsiveTitle = sizer2(props.titleSize);
-  const responsiveSubtitle = sizer2(props.subtitleSize);
+
+  // determines if a title has a string that is too long and requires smaller
+  // font size for mobile devices (2 sizes instead of 1 size smaller than tablet)
+  useEffect(() => {
+    if (typeof props.title === 'string') {
+      let textSplit = props.title.split(' ');
+      textSplit.forEach(string => {
+        if (string.length > 12) {
+          return setLongTitle(true);
+        }
+      })
+    }
+  },[])
 
   // can have empty title and/or subtitle text with different sizes.
   // recommended to have a title that is 2 numbers larger than the subtitle, i.e. {title: 1}, {subtitle: 3}
   return (
     <div>
-      {/* mobile layout */}
       {props.title ? <h1 className={`title ${titleSize} ${titleColor} ${titleEl}`}>{props.title}</h1> : null}
       {props.subtitle ? <h2 className={`subtitle ${subtitleSize} ${subtitleColor}`}>{props.subtitle}</h2> : null}
-      {/* desktop layout */}
-      {props.title ? <h1 className={`title ${responsiveTitle} ${titleColor}`}>Interdisciplinary</h1> : null}
-      {props.subtitle ? <h2 className={`subtitle ${responsiveSubtitle} ${subtitleColor}`}>{props.subtitle}</h2> : null}
     </div>
   )
 }
 
-const sizer = (size) => {
-  let textSize;
-  let responsiveSize;
-  switch (size) {
-    case 1:
-      textSize = 'is-size-1-tablet is-size-2-mobile';
-      break;
-    case 2:
-      textSize = 'is-2';
-      break;
-    case 3:
-      textSize = 'is-3';
-      break;
-    case 4:
-      textSize = 'is-4';
-      break;
-    case 5:
-      textSize = 'is-5';
-      break;
-    case 6:
-      textSize = 'is-6';
-      break;
-    default:
-      textSize = null;
+const titleSizer = (size, longTitle) => {
+  let textClass;
+
+  if (longTitle) {
+    textClass = `is-size-${size}-tablet is-size-${size+2}-mobile`;
   }
-  return textSize;
+  else if (!longTitle && size <= 5) {
+    textClass = `is-size-${size}-tablet is-size-${size+1}-mobile`;
+  }
+  else {
+    textClass = `is-size-${size}`;
+  }
+
+  return textClass;
 }
 
-const sizer2 = (size) => {
-  let textSize2;
-  switch (size) {
-    case 1:
-      textSize2 = 'is-3';
-      break;
-    case 2:
-      textSize2 = 'is-4';
-      break;
-    case 3:
-      textSize2 = 'is-5';
-      break;
-    case 4:
-      textSize2 = 'is-6';
-      break;
-    default:
-      textSize2 = null;
+const subtitlerSizer = (size) => {
+  let textClass;
+
+  if (size <= 5) {
+    textClass = `is-size-${size}-tablet is-size-${size+1}-mobile`;
   }
-  return textSize2;
+  else {
+    textClass = `is-size-${size}`;
+  }
+
+  return textClass;
 }
 
 const colorizer = (color) => {
