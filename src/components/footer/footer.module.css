@@ -1,3 +1,23 @@
 .footer {
-  padding-bottom: 2rem;
+  padding-bottom: 3rem;
+  padding-top: 4rem;
+}
+
+.bmc {
+  margin-top: 0.75rem;
+  /* makes the boxes shit upwards on hover */
+  position: relative;
+  top: 0;
+  transition: top ease 0.5s;
+}
+
+.bmc:hover {
+  top: -5px;
+  color: black;
+}
+
+@media screen and (max-width: 768px) {
+  .bmc {
+    max-width: 180px;
+  }
 }

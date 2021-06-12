@@ -210,7 +210,7 @@ export default function Home() {
                 </div>
                 <div className="column is-flex is-align-self-center">
                   <Title
-                    title="Stress Free"
+                    title="Convenient"
                     titleColor="primary"
                     titleSize={4}
                     subtitle={
