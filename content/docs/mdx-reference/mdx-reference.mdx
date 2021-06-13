@@ -17,22 +17,31 @@ component and provides examples so you can use them for your own content.
 
 ```javascript
 <Title 
-    title="Awesome Section"
+    title="Interdisciplinary"
     titleSize={1}
     titleColor="primary"
-    subtitle={<div>Use this component to replace <strong>headings</strong></div>}
+    subtitle={<div>is a <strong>long</strong> title</div>}
     subtitleSize={3}
-    subtitleColor="grey-light"
+    subtitleColor="grey-lighter"
 />
 ```
 ### Result:
 <Title 
-    title="Awesome Section"
+    title="Interdisciplinary"
     titleSize={1}
     titleColor="primary"
-    subtitle={<div>Use this component to replace <strong>headings</strong></div>}
+    subtitle={<div>is a <strong>long</strong> title</div>}
     subtitleSize={3}
-    subtitleColor="grey-light"
+    subtitleColor="grey-lighter"
+/>
+
+<Title 
+    title="Docs"
+    titleSize={1}
+    titleColor="warning"
+    subtitle={<div>is a <strong>short</strong> title</div>}
+    subtitleSize={3}
+    subtitleColor="warning-dark"
 />
 
 ---
@@ -41,7 +50,6 @@ component and provides examples so you can use them for your own content.
 
 ```javascript
 <Callout
-    type="primary"
     title="Callout"
     subtitle={
     <div>
@@ -53,7 +61,6 @@ component and provides examples so you can use them for your own content.
 ```
 ### Result:
 <Callout
-    type="primary"
     title="Callout"
     subtitle={
     <div>
@@ -64,8 +71,8 @@ component and provides examples so you can use them for your own content.
 />
 
 <Callout
-    type="info"
     title="Callout"
+    color="info"
     titleSize={1}
     titleColor="warning"
     subtitle={
@@ -113,4 +120,82 @@ component and provides examples so you can use them for your own content.
 
 ---
 
-<br/>
+## VizToolbar
+```javascript
+```
+### Result:
+<VizToolbar
+/>
+
+<VizToolbar
+    outline={false}
+/>
+
+<VizToolbar
+    color='primary'
+/>
+
+<VizToolbar
+    color='primary'
+    outline={false}
+/>
+
+<VizToolbar
+    color='link'
+/>
+
+<VizToolbar
+    color='link'
+    outline={false}
+/>
+
+---
+
+<VizToolbar
+    color='info'
+    outline={false}
+/>
+
+<VizToolbar
+    color='info'
+    outline={true}
+/>
+
+---
+
+<VizToolbar
+    color='success'
+    outline={false}
+/>
+
+<VizToolbar
+    color='success'
+    outline={true}
+/>
+
+---
+
+<VizToolbar
+    color='warning'
+    outline={false}
+/>
+
+<VizToolbar
+    color='warning'
+    outline={true}
+/>
+
+---
+
+<VizToolbar
+    color='danger'
+    outline={false}
+/>
+
+<VizToolbar
+    color='danger'
+    outline={true}
+/>
+
+---
+

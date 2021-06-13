@@ -31,9 +31,11 @@ export const isSize6 = props => (
   </h6>
 )
 export const table = props => (
-  <table className="table is-bordered is-striped is-hoverable is-fullwidth" {...props}>
-    {props.children}
-  </table>
+  <div className="table-container">
+    <table className="table is-bordered is-striped is-hoverable is-fullwidth" {...props}>
+      {props.children}
+    </table>
+  </div>
 )
 export const paragraph = props => (
   <div className="content">

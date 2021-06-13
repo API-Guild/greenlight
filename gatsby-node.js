@@ -5,7 +5,7 @@ exports.onCreateNode = ({ node, getNode, actions }) => {
   const { createNodeField } = actions;
   // Ensures we are processing only markdown files
   if (node.internal.type === `Mdx`) {
-    // Use `createFilePath` to turn markdown files in our `content/blog/` directory into `/blog/`
+    // Use `createFilePath` to turn markdown files in our `content/docs/` directory into `/docs/`
     const relativeFilePath = createFilePath({
       node,
       getNode,
@@ -48,7 +48,7 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
 
   if (result.errors) {
     reporter.panicOnBuild(
-      `There was an error loading your data blog posts`,
+      `There was an error loading your content`,
       result.errors
     )
     return

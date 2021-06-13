@@ -3,11 +3,11 @@ import Title from "../title/title"
 import * as calloutStyles from "./callout.module.css"
 
 export default function Callout(props) {
-  const calloutType = setType(props.type);
+  const calloutColor = setColor(props.color);
 
   return (
     <div className={`container ${calloutStyles.callout}`}>
-      <div className={`notification ${calloutType}`}>
+      <div className={`notification ${calloutColor}`}>
         <Title 
           title={props.title}
           titleSize={props.titleSize}
@@ -21,48 +21,12 @@ export default function Callout(props) {
   )
 }
 
-const setType = (type) => {
-  let calloutType = "is-primary";
+const setColor = (color) => {
+  let colorClass = 'is-primary';
 
-  switch (type) {
-    case "primary":
-      calloutType = "is-primary";
-      break;
-    case "link":
-      calloutType = "is-link";
-      break;
-    case "info":
-      calloutType = "is-info";
-      break;
-    case "success":
-      calloutType = "is-success";
-      break;
-    case "warning":
-      calloutType = "is-warning";
-      break;
-    case "danger":
-      calloutType = "is-danger";
-      break;
-    case "primary light":
-      calloutType = "is-primary is-light";
-      break;
-    case "link light":
-      calloutType = "is-link is-light";
-      break;
-    case "info light":
-      calloutType = "is-info is-light";
-      break;
-    case "success light":
-      calloutType = "is-success is-light";
-      break;
-    case "warning light":
-      calloutType = "is-warning is-light";
-      break;
-    case "danger light":
-      calloutType = "is-danger is-light";
-      break;
-    default:
-      calloutType = null;
+  if (typeof color === 'string') {
+    colorClass = `is-${color}`
   }
-  return calloutType;
+
+  return colorClass;
 }

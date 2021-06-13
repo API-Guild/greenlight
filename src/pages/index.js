@@ -41,7 +41,7 @@ export default function Home() {
       </section>
   
       <button 
-        class="button is-primary is-outlined is-large is-rounded" 
+        className="button is-primary is-outlined is-large is-rounded" 
         style={{margin: "auto", display: "block"}}
         onClick={()=>{navigate("/docs/quick-start")}}
       >
@@ -73,7 +73,7 @@ export default function Home() {
                         More like, embed and forget. It just works.
                       </p>
                     }
-                    subtitleColor="grey lighter"
+                    subtitleColor="grey-lighter"
                     subtitleSize={6}
                   />
                 </div>
@@ -96,10 +96,10 @@ export default function Home() {
                     subtitle={
                       <p>
                         is empowered by data. Help the world see what matters to you.
-                        Knowledge is power and it's measured in data.
+                        Knowledge is power and it's measured in bytes.
                       </p>
                     }
-                    subtitleColor="grey lighter"
+                    subtitleColor="grey-lighter"
                     subtitleSize={6}
                   />
                 </div>
@@ -128,7 +128,7 @@ export default function Home() {
                         you from deploying and maintaining servers.
                       </p>
                     }
-                    subtitleColor="grey lighter"
+                    subtitleColor="grey-lighter"
                     subtitleSize={6}
                   />
                 </div>
@@ -159,7 +159,7 @@ export default function Home() {
                         attacks. It also makes hosting much cheaper.
                       </p>
                     }
-                    subtitleColor="grey lighter"
+                    subtitleColor="grey-lighter"
                     subtitleSize={6}
                   />
                 </div>
@@ -193,7 +193,7 @@ export default function Home() {
                         down to text is responsive.
                       </p>
                     }
-                    subtitleColor="grey lighter"
+                    subtitleColor="grey-lighter"
                     subtitleSize={6}
                   />
                 </div>
@@ -210,7 +210,7 @@ export default function Home() {
                 </div>
                 <div className="column is-flex is-align-self-center">
                   <Title
-                    title="Stress Free"
+                    title="Convenient"
                     titleColor="primary"
                     titleSize={4}
                     subtitle={
@@ -219,7 +219,7 @@ export default function Home() {
                         cheap. Forget about servers. Dashboards just work. Opensource license.
                       </p>
                     }
-                    subtitleColor="grey lighter"
+                    subtitleColor="grey-lighter"
                     subtitleSize={6}
                   />
                 </div>
