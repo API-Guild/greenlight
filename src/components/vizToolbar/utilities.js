@@ -1,6 +1,7 @@
 import { 
   faUndoAlt, faRedoAlt, faHistory, faSyncAlt, faShareAlt, faInfoCircle, faPause 
 } from '@fortawesome/free-solid-svg-icons'
+import * as vizTbStyles from "./vizToolbar.module.css"
 
 // array of supported buttons, all of them are displayed by default
 const buttonsArray = [
@@ -108,4 +109,52 @@ export const roundedSet = (rounded) => {
   else {
     return '';
   }
+}
+
+// sets background color for the download select control
+export const selectBgSet = (color, outline) => {
+  let selectBg = '';
+
+  if (outline === undefined && (color === 'primary' || color === 'link' || color === undefined)) {
+    return selectBg;
+  }
+  else if (outline === false && color === undefined) {
+    selectBg = `has-background-primary`;
+  }
+  else if (outline === false && (color === 'primary' || color === 'link' || color === undefined)) {
+    selectBg = `has-background-${color}`;
+  }
+  else if (outline === false && (color !== 'primary' || color !== 'link' || color !== undefined)) {
+    selectBg = `has-background-${color}`;
+  }
+
+  return selectBg;
+}
+
+// sets text color for the download select control
+export const selectTextSet = (color, outline) => {
+  let selectText = '';
+
+  if (!outline) {
+    if (color === undefined) {
+      selectText = 'has-text-primary';
+    }
+    else if (color === 'warning') {
+      selectText = 'has-text-black';
+    }
+    else {
+      selectText = 'has-text-white';
+    }
+  }
+  return selectText;
+}
+
+// sets arrow border color on select control
+export const selectArrowSet = (color, outline) => {
+  let selectArrow = `${color}`;
+
+  if (!outline) {
+    selectArrow = `${color} ${vizTbStyles.selectDiv1}`;
+  }
+
 }

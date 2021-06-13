@@ -11,6 +11,8 @@ export default function VizToolbar(props) {
   const color = util.colorSet(props.color);
   const outline = util.outlineSet(props.outline);
   const rounded = util.roundedSet(props.rounded);
+  const selectStyle = `${util.selectBgSet(props.color, props.outline)} ${util.selectTextSet(props.color, props.outline)}`;
+  const selectDivStyles = props.outline ? `${color}` : `${color} ${vizTbStyles.selectDiv1}`;
 
   return (
     <Box vizToolbar={true}>
@@ -39,6 +41,8 @@ export default function VizToolbar(props) {
           color={color}
           outline={outline}
           rounded={rounded}
+          selectStyle={selectStyle}
+          selectDivStyles={selectDivStyles}
         />
       </div>
       {/* desktop layout */}
@@ -59,6 +63,8 @@ export default function VizToolbar(props) {
           color={color}
           outline={outline}
           rounded={rounded}
+          selectStyle={selectStyle}
+          selectDivStyles={selectDivStyles}
         />
       </div>
     </Box>
@@ -126,14 +132,13 @@ const Button = (props) => {
 const Download = (props) => {
   const renderDownloads = util.downloadList(props.downloads);
   const btnStyles = `${props.color} ${props.outline} ${vizTbStyles.downloadBtn}`;
-  const selectStyles = `download ${props.color} ${vizTbStyles.select}`;
-
+  const selectStyles = `download ${props.color} ${props.selectStyle} ${vizTbStyles.select}`; 
   
   return (
     <div className={`field has-addons has-addons-left ${vizTbStyles.field}`}>
       {/* mobile layout */}
       <div className="control">
-        <div className={`select is-small is-hidden-tablet ${props.color}`}> 
+        <div className={`select is-small is-hidden-tablet ${props.selectDivStyles}`}> 
           <select className={selectStyles}>
             <option selected>Download</option>
             {renderDownloads.map((option, index) => (
@@ -158,7 +163,7 @@ const Download = (props) => {
 
       {/* desktop layout */}
       <div className="control">
-        <div className={`select is-hidden-mobile ${props.color}`}> 
+        <div className={`select is-hidden-mobile ${props.selectDivStyles}`}> 
           <select className={selectStyles}>
             <option selected>Download</option>
             {renderDownloads.map((option, index) => (
