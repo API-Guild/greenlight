@@ -17,31 +17,31 @@ component and provides examples so you can use them for your own content.
 
 ```javascript
 <Title 
-    title="Interdisciplinary is a long title"
+    title="Interdisciplinary"
     titleSize={1}
     titleColor="primary"
-    subtitle={<div>Use this component to replace <strong>headings</strong></div>}
+    subtitle={<div>is a <strong>long</strong> title</div>}
     subtitleSize={3}
-    subtitleColor="grey-light"
+    subtitleColor="grey-lighter"
 />
 ```
 ### Result:
 <Title 
-    title="Interdisciplinary is a long title"
+    title="Interdisciplinary"
     titleSize={1}
     titleColor="primary"
-    subtitle={<div>Use this component to replace <strong>headings</strong></div>}
+    subtitle={<div>is a <strong>long</strong> title</div>}
     subtitleSize={3}
-    subtitleColor="grey-light"
+    subtitleColor="grey-lighter"
 />
 
 <Title 
-    title="Docs is a short title"
+    title="Docs"
     titleSize={1}
-    titleColor="primary"
-    subtitle={<div>Use this component to replace <strong>headings</strong></div>}
+    titleColor="warning"
+    subtitle={<div>is a <strong>short</strong> title</div>}
     subtitleSize={3}
-    subtitleColor="grey-light"
+    subtitleColor="warning-dark"
 />
 
 ---
@@ -50,7 +50,6 @@ component and provides examples so you can use them for your own content.
 
 ```javascript
 <Callout
-    type="primary"
     title="Callout"
     subtitle={
     <div>
@@ -62,7 +61,6 @@ component and provides examples so you can use them for your own content.
 ```
 ### Result:
 <Callout
-    type="primary"
     title="Callout"
     subtitle={
     <div>
@@ -73,8 +71,8 @@ component and provides examples so you can use them for your own content.
 />
 
 <Callout
-    type="info"
     title="Callout"
+    color="info"
     titleSize={1}
     titleColor="warning"
     subtitle={

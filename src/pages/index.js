@@ -73,7 +73,7 @@ export default function Home() {
                         More like, embed and forget. It just works.
                       </p>
                     }
-                    subtitleColor="grey lighter"
+                    subtitleColor="grey-lighter"
                     subtitleSize={6}
                   />
                 </div>
@@ -99,7 +99,7 @@ export default function Home() {
                         Knowledge is power and it's measured in bytes.
                       </p>
                     }
-                    subtitleColor="grey lighter"
+                    subtitleColor="grey-lighter"
                     subtitleSize={6}
                   />
                 </div>
@@ -128,7 +128,7 @@ export default function Home() {
                         you from deploying and maintaining servers.
                       </p>
                     }
-                    subtitleColor="grey lighter"
+                    subtitleColor="grey-lighter"
                     subtitleSize={6}
                   />
                 </div>
@@ -159,7 +159,7 @@ export default function Home() {
                         attacks. It also makes hosting much cheaper.
                       </p>
                     }
-                    subtitleColor="grey lighter"
+                    subtitleColor="grey-lighter"
                     subtitleSize={6}
                   />
                 </div>
@@ -193,7 +193,7 @@ export default function Home() {
                         down to text is responsive.
                       </p>
                     }
-                    subtitleColor="grey lighter"
+                    subtitleColor="grey-lighter"
                     subtitleSize={6}
                   />
                 </div>
@@ -219,7 +219,7 @@ export default function Home() {
                         cheap. Forget about servers. Dashboards just work. Opensource license.
                       </p>
                     }
-                    subtitleColor="grey lighter"
+                    subtitleColor="grey-lighter"
                     subtitleSize={6}
                   />
                 </div>

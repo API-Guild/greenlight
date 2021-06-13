@@ -23,7 +23,7 @@ export default function Footer() {
               </blockquote>
             }
             subtitleSize={6}
-            subtitleColor="grey lighter"
+            subtitleColor="grey-lighter"
           />
           <p className="has-text-right">- F. Scott Fitzgerald</p>
         </div>
@@ -62,7 +62,7 @@ export default function Footer() {
               </blockquote>
             }
             subtitleSize={6}
-            subtitleColor="grey lighter"
+            subtitleColor="grey-lighter"
           />
           <p className="has-text-right">- F. Scott Fitzgerald</p>
         </div>
