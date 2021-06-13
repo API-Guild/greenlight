@@ -12,7 +12,6 @@ export default function VizToolbar(props) {
   const outline = util.outlineSet(props.outline);
   const rounded = util.roundedSet(props.rounded);
 
-  console.log('outline', outline)
   return (
     <Box vizToolbar={true}>
       <VizNav
@@ -126,14 +125,16 @@ const Button = (props) => {
 // <Download> component
 const Download = (props) => {
   const renderDownloads = util.downloadList(props.downloads);
-  const btnStyles = `${props.color} ${props.outline}`;
+  const btnStyles = `${props.color} ${props.outline} ${vizTbStyles.downloadBtn}`;
+  const selectStyles = `download ${props.color} ${vizTbStyles.select}`;
+
   
   return (
     <div className={`field has-addons has-addons-left ${vizTbStyles.field}`}>
       {/* mobile layout */}
       <div className="control">
         <div className={`select is-small is-hidden-tablet ${props.color}`}> 
-          <select className={`download ${props.color} ${vizTbStyles.select}`}>
+          <select className={selectStyles}>
             <option selected>Download</option>
             {renderDownloads.map((option, index) => (
               <option value={option.name} key={option.name + "-" + index}>
@@ -154,11 +155,11 @@ const Download = (props) => {
           </span>
         </button>
       </div>
-      
+
       {/* desktop layout */}
       <div className="control">
         <div className={`select is-hidden-mobile ${props.color}`}> 
-          <select className={`download ${props.color} ${vizTbStyles.select}`}>
+          <select className={selectStyles}>
             <option selected>Download</option>
             {renderDownloads.map((option, index) => (
               <option value={option.name} key={option.name + "-" + index}>

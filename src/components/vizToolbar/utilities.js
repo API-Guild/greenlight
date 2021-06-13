@@ -78,9 +78,8 @@ export const colorSet = (color) => {
 
   if (typeof color === 'string') {
     const colorSplit = color.split('-');
-    console.log('colorSplit', colorSplit)
     if (colorSplit.length === 2) {
-      colorClass = `is-${colorSplit[0]} is-${colorSplit[1]}`;
+      colorClass = `is-${colorSplit[0]}`;
     }
     else {
       colorClass = `is-${color}`;
