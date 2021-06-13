@@ -44,7 +44,7 @@ const downloadArray = [
   {name: "Data", function: () => {console.log("data!")}},
   {name: "CrossTab", function: () => {console.log("crosstab!")}},
   {name: "PowerPoint", function: () => {console.log("powerpoint!")}},
-  {name: "Download", function: () => {console.log("workbook!")}},
+  {name: "Workbook", function: () => {console.log("workbook!")}},
 ];
 
 // finds matches between props.downloads and the local downloadArray
@@ -74,69 +74,19 @@ export const downloadList = (options) => {
 // sets colors for <VizToolBar> buttons and controls
 // default = "is-primary"
 export const colorSet = (color) => {
-  let buttonColor;
-  switch (color) {
-    case "normal":
-      buttonColor = null;
-      break;
-    case "primary":
-      buttonColor = "is-primary";
-      break;
-    case "link":
-      buttonColor = "is-link";
-      break;
-    case "info":
-      buttonColor = "is-info";
-      break;
-    case "success":
-      buttonColor = "is-success";
-      break;
-    case "warning":
-      buttonColor = "is-warning";
-      break;
-    case "danger":
-      buttonColor = "is-danger";
-      break;
-    case "primary light":
-      buttonColor = "is-primary is-light";
-      break;
-    case "link light":
-      buttonColor = "is-link is-light";
-      break;
-    case "info light":
-      buttonColor = "is-info is-light";
-      break;
-    case "success light":
-      buttonColor = "is-success is-light";
-      break;
-    case "warning light":
-      buttonColor = "is-warning is-light";
-      break;
-    case "danger light":
-      buttonColor = "is-danger is-light";
-      break;
-    case "white":
-      buttonColor = "is-white";
-      break;
-    case "light":
-      buttonColor = "is-light";
-      break;
-    case "dark":
-      buttonColor = "is-dark";
-      break;
-    case "black":
-      buttonColor = "is-black";
-      break;
-    case "text":
-      buttonColor = "is-text";
-      break;
-    case "ghost":
-      buttonColor = "is-ghost";
-      break;
-    default:
-      buttonColor = "is-primary";
+  let colorClass = 'is-primary';
+
+  if (typeof color === 'string') {
+    const colorSplit = color.split('-');
+    console.log('colorSplit', colorSplit)
+    if (colorSplit.length === 2) {
+      colorClass = `is-${colorSplit[0]} is-${colorSplit[1]}`;
+    }
+    else {
+      colorClass = `is-${color}`;
+    }
   }
-  return buttonColor;
+  return colorClass;
 }
 
 // sets outline for <VizToolBar> buttons and controls

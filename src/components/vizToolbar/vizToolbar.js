@@ -154,6 +154,7 @@ const Download = (props) => {
           </span>
         </button>
       </div>
+      
       {/* desktop layout */}
       <div className="control">
         <div className={`select is-hidden-mobile ${props.color}`}> 
