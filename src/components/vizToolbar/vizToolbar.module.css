@@ -1,3 +1,9 @@
+/* 
+  regrettably, this module has extensive use of the !important keyword
+  due to a lack of support in the Bulma framework for styling form controls
+  in this case the select dropdown for downloads
+*/
+
 .field {
  margin-left: 0.25rem;
  margin-right: 0.25rem;
@@ -14,12 +20,18 @@
 
 .selectDiv1:not(:hover)::after {
   border-color: #fbfcfe !important;
-  /* border-color: inherit !important; */
+}
+
+.selectDiv1:hover::after {
+  border-color: #fbfcfe !important;
 }
 
 .selectDiv2:not(:hover)::after {
   border-color: #0a0a0a !important;
-  /* border-color: inherit !important; */
+}
+
+.selectDiv2:hover::after {
+  border-color: #0a0a0a !important;
 }
 
 .vizNav:not(:last-child) {
