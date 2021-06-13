@@ -33,7 +33,7 @@ export default function Title(props) {
 const titleSizer = (size, longTitle) => {
   let sizeClass;
 
-  if (longTitle) {
+  if (longTitle && typeof size === 'number') {
     sizeClass = `is-size-${size}-tablet is-size-${size+2}-mobile`;
   }
   else if (!longTitle && size <= 5) {
@@ -42,20 +42,20 @@ const titleSizer = (size, longTitle) => {
   else {
     sizeClass = `is-size-${size}`;
   }
-
   return sizeClass;
 }
 
 const subtitlerSizer = (size) => {
-  let sizeClass;
+  let sizeClass = '';
 
-  if (size <= 5) {
-    sizeClass = `is-size-${size}-tablet is-size-${size+1}-mobile`;
+  if (typeof size === 'string') {
+    if (size <= 5) {
+      sizeClass = `is-size-${size}-tablet is-size-${size+1}-mobile`;
+    }
+    else {
+      sizeClass = `is-size-${size}`;
+    }
   }
-  else {
-    sizeClass = `is-size-${size}`;
-  }
-
   return sizeClass;
 }
 
