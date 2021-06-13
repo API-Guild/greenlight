@@ -13,7 +13,7 @@
 }
 
 .selectDiv1:not(:hover)::after {
-  border-color: inherit !important;
+  border-color: #fbfcfe !important;
 }
 
 .vizNav:not(:last-child) {
