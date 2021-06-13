@@ -12,7 +12,8 @@ export default function VizToolbar(props) {
   const outline = util.outlineSet(props.outline);
   const rounded = util.roundedSet(props.rounded);
   const selectStyle = `${util.selectBgSet(props.color, props.outline)} ${util.selectTextSet(props.color, props.outline)}`;
-  const selectDivStyles = props.outline ? `${color}` : `${color} ${vizTbStyles.selectDiv1}`;
+  // const selectDivStyles = props.outline ? `${color}` : `${color} ${vizTbStyles.selectDiv1}`;
+  const selectDivStyles = util.selectArrowSet(props.color, props.outline);
 
   return (
     <Box vizToolbar={true}>
@@ -131,7 +132,7 @@ const Button = (props) => {
 // <Download> component
 const Download = (props) => {
   const renderDownloads = util.downloadList(props.downloads);
-  const btnStyles = `${props.color} ${props.outline} ${vizTbStyles.downloadBtn}`;
+  const btnStyles = `${props.color} ${props.outline}`;
   const selectStyles = `download ${props.color} ${props.selectStyle} ${vizTbStyles.select}`; 
   
   return (

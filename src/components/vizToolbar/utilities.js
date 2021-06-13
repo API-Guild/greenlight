@@ -146,16 +146,28 @@ export const selectTextSet = (color, outline) => {
       selectText = `has-text-white`;
     }
   }
-  
+
   return selectText;
 }
 
 // sets arrow border color on select control
-// export const selectArrowSet = (color, outline) => {
-//   let selectArrow = `${color}`;
+export const selectArrowSet = (color, outline) => {
+  let selectArrow = `is-${color}`;
 
-//   if (!outline) {
-//     selectArrow = `${color} ${vizTbStyles.selectDiv1}`;
-//   }
+  if (outline === undefined && color === undefined) {
+    selectArrow = `is-primary`;
+  }
+  else if (outline === false) {
+    if (color === 'primary' || color === 'link' || color === 'warning') {
+      selectArrow = `is-${color} ${vizTbStyles.selectDiv2}`;
+    }
+    else if (color === undefined) {
+      selectArrow = `is-primary ${vizTbStyles.selectDiv2}`;
+    }
+    else {
+      selectArrow = `is-${color} ${vizTbStyles.selectDiv1}`;
+    }
+  }
 
-// }
+  return selectArrow;
+}
