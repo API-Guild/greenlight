@@ -7,28 +7,33 @@ export default function ContactForm(props) {
   const [lastName, setLastName] = useState('');
   const [email, setEmail] = useState('');
   const [message, setMessage] = useState('');
+  const [subject, setSubject] = useState('Select');
+
+  const handleSubject = (event) => {
+    setSubject(event.target.value);
+  }
 
   const clearFirstName = () => {
-    setFirstName('')
+    setFirstName('');
   };
 
   const clearLastName = () => {
-    setLastName('')
+    setLastName('');
   };
 
   const clearEmail = () => {
-    setEmail('')
+    setEmail('');
   };
 
   const clearMessage = () => {
-    setMessage('')
+    setMessage('');
   };
 
   const clearAll = () => {
-    setFirstName('')
-    setLastName('')
-    setEmail('')
-    setMessage('')
+    setFirstName('');
+    setLastName('');
+    setEmail('');
+    setMessage('');
   };
 
   return (
@@ -100,7 +105,8 @@ export default function ContactForm(props) {
         <label className="label has-text-primary" htmlFor="subjectControl">Subject</label>
         <div id="subjectControl" className="control">
           <div className="select">
-            <select defaultValue="Select">
+            {/* eslint-disable-next-line */}
+            <select value={subject} onChange={handleSubject}>
               <option disabled hidden>Select</option>
               <option>Dashboard Request</option>
               <option>Datasource Access</option>

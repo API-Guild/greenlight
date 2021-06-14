@@ -31,7 +31,7 @@ export default function VizToolbar(props) {
             key={button.name + '-' + index}
             name={button.name}
             icon={button.icon}
-            function={button.function}
+            onClick={button.function}
             color={color}
             outline={outline}
             rounded={rounded}
@@ -53,7 +53,7 @@ export default function VizToolbar(props) {
             key={button.name + '-' + index}
             name={button.name}
             icon={button.icon}
-            function={button.function}
+            onClick={button.function}
             color={color}
             outline={outline}
             rounded={rounded}
@@ -119,7 +119,7 @@ const Button = (props) => {
   return (
     <button 
       className={`button ${btnStyles}`}
-      onClick={props.function}
+      onClick={props.onClick}
     >
       <span className="icon">
         <FontAwesomeIcon icon={props.icon}/>
@@ -140,8 +140,8 @@ const Download = (props) => {
       {/* mobile layout */}
       <div className="control">
         <div className={`select is-small is-hidden-tablet ${props.selectDivStyles}`}> 
-          <select className={selectStyles}>
-            <option selected>Download</option>
+          <select className={selectStyles} defaultValue="Download">
+            <option disabled hidden>Download</option>
             {renderDownloads.map((option, index) => (
               <option value={option.name} key={option.name + "-" + index}>
                 {option.name}
@@ -165,8 +165,8 @@ const Download = (props) => {
       {/* desktop layout */}
       <div className="control">
         <div className={`select is-hidden-mobile ${props.selectDivStyles}`}> 
-          <select className={selectStyles}>
-            <option selected>Download</option>
+          <select className={selectStyles} defaultValue="Download">
+            <option disabled hidden>Download</option>
             {renderDownloads.map((option, index) => (
               <option value={option.name} key={option.name + "-" + index}>
                 {option.name}
