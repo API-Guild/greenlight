@@ -4,6 +4,10 @@
   in this case the select dropdown for downloads
 */
 
+.toolbar {
+  margin-bottom: 0.75rem;
+}
+
 .field {
  margin-left: 0.25rem;
  margin-right: 0.25rem;

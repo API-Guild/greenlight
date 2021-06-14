@@ -6,8 +6,30 @@ description: "A sample report for an oil and gas use case"
 
 Production continues to decline in the `Nor B` and `Onyx Alpha` mature fields. Tertiary recovery has been able to sustain productivity on both of these fields, maintaining production above the contractual threshold set with the government.
 
+```javascript
 <Tableau
   viz="https://public.tableau.com/views/OilGasProduction_16207892650600/AssetProductionReport"
+  customToolbar={true}
+  toolbarOptions={
+    buttons: [
+      'undo',
+      'redo',
+      'reset'
+    ],
+  }
+/>
+```
+
+<Tableau
+  viz="https://public.tableau.com/views/OilGasProduction_16207892650600/AssetProductionReport"
+  customToolbar={true}
+  toolbarOptions={{
+    buttons: [
+      'undo',
+      'redo',
+      'reset'
+    ],
+  }}
 />
 
 Built by [Stephen Price](https://public.tableau.com/profile/stprice#!/), this is his [original work](https://public.tableau.com/profile/stprice#!/vizhome/OilGasProductionwmobilelayouts/WellReport).

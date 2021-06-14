@@ -3,11 +3,11 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faCloudDownloadAlt, faBackward, faForward } from '@fortawesome/free-solid-svg-icons'
 import * as vizTbStyles from "./vizToolbar.module.css"
 import * as util from "./utilities.js"
-import Box from "../box/box"
 
 // main VizToolbar component
 export default function VizToolbar(props) {
-  const renderButtons = util.buttonList(props.buttons);
+  console.log('props', props)
+  const renderButtons = util.buttonList(props.options.buttons);
   const color = util.colorSet(props.color);
   const outline = util.outlineSet(props.outline);
   const rounded = util.roundedSet(props.rounded);
@@ -15,7 +15,7 @@ export default function VizToolbar(props) {
   const selectDivStyles = util.selectArrowSet(props.color, props.outline);
 
   return (
-    <Box vizToolbar={true}>
+    <div className={vizTbStyles.toolbar}>
       <VizNav
         previous={{"name": "previous"}}
         next={{"name": "next"}}
@@ -67,7 +67,7 @@ export default function VizToolbar(props) {
           selectDivStyles={selectDivStyles}
         />
       </div>
-    </Box>
+    </div>
   )
 }
 

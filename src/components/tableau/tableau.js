@@ -1,6 +1,8 @@
 import React from "react"
 import * as vizStyles from "./tableau.module.css"
 import vizLayout from "./vizLayout.js"
+import VizToolbar from "../vizToolbar/vizToolbar";
+import Box from "../box/box"
 // eslint-disable-next-line no-unused-vars
 const apiTableau = typeof window !== 'undefined' ? require("./tableauApi/tableau-2.7.0.min.js") : null;
 
@@ -8,17 +10,19 @@ export default class Tableau extends React.Component {
   constructor(props) {
     super(props);
     this.vizRef = React.createRef();
+
     this.state = {
       vizObj: null,
       vizUrl: props.viz,
       height: props.height,
       width: props.width,
-      hideTabs: !props.hideTabs ? true : false,
+      hideTabs: props.hideTabs === false ? false : true,
       hideToolbar: !props.hideToolbar ? false : true,
       device: !props.device ? vizLayout().device : props.device,
       windowWidth: vizLayout().width,
       layout: vizLayout().layout,
       fixedLayout: !props.fixedLayout ? false : true,
+      customToolbar: props.customToolbar === false ? false : true,
     };
   }
 
@@ -106,8 +110,12 @@ export default class Tableau extends React.Component {
   }
 
   render() {
+    console.log('this.props', this.props)
     return (
-      <div className={vizStyles.vizDiv} ref={this.vizRef}/>
+      <Box vizBox={true}>
+        <div className={vizStyles.vizDiv} ref={this.vizRef}/>
+        {this.state.customToolbar ? <VizToolbar options={this.props.toolbarOptions}/> : null}
+      </Box>
     );
   }
 }

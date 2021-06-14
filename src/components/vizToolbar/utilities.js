@@ -19,7 +19,7 @@ const buttonsArray = [
 export const buttonList = (buttons) => {
   const newArray = [];
 
-  if (buttons === undefined) {
+  if (buttons === undefined || !Array.isArray(buttons)) {
     return buttonsArray;
   }
   else if (Array.isArray(buttons)) {
