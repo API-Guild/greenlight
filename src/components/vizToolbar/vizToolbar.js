@@ -1,4 +1,4 @@
-import React from "react"
+import React, {useState} from "react"
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faCloudDownloadAlt, faBackward, faForward } from '@fortawesome/free-solid-svg-icons'
 import * as vizTbStyles from "./vizToolbar.module.css"
@@ -12,7 +12,6 @@ export default function VizToolbar(props) {
   const outline = util.outlineSet(props.outline);
   const rounded = util.roundedSet(props.rounded);
   const selectStyle = `${util.selectBgSet(props.color, props.outline)} ${util.selectTextSet(props.color, props.outline)}`;
-  // const selectDivStyles = props.outline ? `${color}` : `${color} ${vizTbStyles.selectDiv1}`;
   const selectDivStyles = util.selectArrowSet(props.color, props.outline);
 
   return (
@@ -131,16 +130,22 @@ const Button = (props) => {
 
 // <Download> component
 const Download = (props) => {
+  const [downloadSelect, setDownload] = useState('Download');
   const renderDownloads = util.downloadList(props.downloads);
   const btnStyles = `${props.color} ${props.outline}`;
   const selectStyles = `download ${props.color} ${props.selectStyle} ${vizTbStyles.select}`; 
+
+  const handledownloadSelect = (event) => {
+    setDownload(event.target.value);
+  }
   
   return (
     <div className={`field has-addons has-addons-left ${vizTbStyles.field}`}>
       {/* mobile layout */}
       <div className="control">
-        <div className={`select is-small is-hidden-tablet ${props.selectDivStyles}`}> 
-          <select className={selectStyles} defaultValue="Download">
+        <div className={`select is-small is-hidden-tablet ${props.selectDivStyles}`}>
+          {/* eslint-disable-next-line */} 
+          <select className={selectStyles} value={downloadSelect} onChange={handledownloadSelect}>
             <option disabled hidden>Download</option>
             {renderDownloads.map((option, index) => (
               <option value={option.name} key={option.name + "-" + index}>
@@ -165,7 +170,8 @@ const Download = (props) => {
       {/* desktop layout */}
       <div className="control">
         <div className={`select is-hidden-mobile ${props.selectDivStyles}`}> 
-          <select className={selectStyles} defaultValue="Download">
+          {/* eslint-disable-next-line */}
+          <select className={selectStyles} value={downloadSelect} onChange={handledownloadSelect}>
             <option disabled hidden>Download</option>
             {renderDownloads.map((option, index) => (
               <option value={option.name} key={option.name + "-" + index}>
