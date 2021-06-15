@@ -8,11 +8,11 @@ import * as util from "./utilities.js"
 export default function VizToolbar(props) {
   console.log('props', props)
   const renderButtons = util.buttonList(props.options.buttons);
-  const color = util.colorSet(props.color);
-  const outline = util.outlineSet(props.outline);
-  const rounded = util.roundedSet(props.rounded);
-  const selectStyle = `${util.selectBgSet(props.color, props.outline)} ${util.selectTextSet(props.color, props.outline)}`;
-  const selectDivStyles = util.selectArrowSet(props.color, props.outline);
+  const color = util.colorSet(props.options.color);
+  const outline = util.outlineSet(props.options.outline);
+  const rounded = util.roundedSet(props.options.rounded);
+  const selectStyle = `${util.selectBgSet(props.options.color, props.options.outline)} ${util.selectTextSet(props.options.color, props.options.outline)}`;
+  const selectDivStyles = util.selectArrowSet(props.options.color, props.options.outline);
 
   return (
     <div className={vizTbStyles.toolbar}>

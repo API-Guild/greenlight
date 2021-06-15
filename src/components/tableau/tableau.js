@@ -110,7 +110,6 @@ export default class Tableau extends React.Component {
   }
 
   render() {
-    console.log('this.props', this.props)
     return (
       <Box vizBox={true}>
         <div className={vizStyles.vizDiv} ref={this.vizRef}/>
