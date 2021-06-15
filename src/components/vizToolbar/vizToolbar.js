@@ -1,18 +1,49 @@
-import React, {useState} from "react"
+import React, {useState, useEffect} from "react"
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faCloudDownloadAlt, faBackward, faForward } from '@fortawesome/free-solid-svg-icons'
 import * as vizTbStyles from "./vizToolbar.module.css"
-import * as util from "./utilities.js"
+import * as util from "./options/options"
 
 // main VizToolbar component
 export default function VizToolbar(props) {
-  console.log('props', props)
-  const renderButtons = util.buttonList(props.options.buttons);
-  const color = util.colorSet(props.options.color);
-  const outline = util.outlineSet(props.options.outline);
-  const rounded = util.roundedSet(props.options.rounded);
-  const selectStyle = `${util.selectBgSet(props.options.color, props.options.outline)} ${util.selectTextSet(props.options.color, props.options.outline)}`;
-  const selectDivStyles = util.selectArrowSet(props.options.color, props.options.outline);
+  const [options, setOptions] = useState({
+    buttons: undefined,
+    color: undefined,
+    outline: undefined,
+    rounded: undefined,
+    downloads: undefined,
+  });
+  const [buttonFlag, setButtonFlag] = useState(true);
+  const [downloadFlag, setDownloadFlag] = useState(true);
+
+  console.log('options before', options)
+
+  useEffect(() => {
+    // check if toolbarOptions prop has been passed
+    if (props.toolbarOptions) {
+      setOptions({...props.toolbarOptions})
+      console.log('options later', options)
+      // decide if buttons should be rendered, default is true and renders all of them
+      if (props.toolbarOptions.buttons) {
+        if (Array.isArray(props.toolbarOptions.buttons) && props.toolbarOptions.buttons.length === 0) {
+          setButtonFlag(false);
+        }
+      }
+      // decide if downloads should be rendered, default is true and renders all options
+      if (props.toolbarOptions.buttons) {
+        if (Array.isArray(props.toolbarOptions.downloads) && props.toolbarOptions.downloads.length === 0) {
+          setDownloadFlag(false);
+        }
+      }
+    }
+  },[])
+
+  const renderButtons = util.buttonList(options.buttons);
+  const color = util.colorSet(options.color);
+  const outline = util.outlineSet(options.outline);
+  const rounded = util.roundedSet(options.rounded);
+  const selectStyle = `${util.selectBgSet(options.color, options.outline)} ${util.selectTextSet(options.color, options.outline)}`;
+  const selectDivStyles = util.selectArrowSet(options.color, options.outline);
 
   return (
     <div className={vizTbStyles.toolbar}>
@@ -25,47 +56,55 @@ export default function VizToolbar(props) {
       />
       {/* mobile layout */}
       <div className="buttons are-small is-centered is-hidden-tablet">
-        {renderButtons.map((button, index) => (
-          <Button
-            key={button.name + '-' + index}
-            name={button.name}
-            icon={button.icon}
-            onClick={button.function}
+        {!buttonFlag ? null : (
+          renderButtons.map((button, index) => (
+            <Button
+              key={button.name + '-' + index}
+              name={button.name}
+              icon={button.icon}
+              onClick={button.function}
+              color={color}
+              outline={outline}
+              rounded={rounded}
+            />
+          ))
+        )}
+        {!downloadFlag ? null : (
+          <Download
+            downloads={options.downloads}
             color={color}
             outline={outline}
             rounded={rounded}
+            selectStyle={selectStyle}
+            selectDivStyles={selectDivStyles}
           />
-        ))}
-        <Download
-          downloads={props.downloads}
-          color={color}
-          outline={outline}
-          rounded={rounded}
-          selectStyle={selectStyle}
-          selectDivStyles={selectDivStyles}
-        />
+        )}
       </div>
       {/* desktop layout */}
       <div className="buttons is-centered is-hidden-mobile">
-        {renderButtons.map((button, index) => (
-          <Button
-            key={button.name + '-' + index}
-            name={button.name}
-            icon={button.icon}
-            onClick={button.function}
+        {!buttonFlag ? null : (
+          renderButtons.map((button, index) => (
+            <Button
+              key={button.name + '-' + index}
+              name={button.name}
+              icon={button.icon}
+              onClick={button.function}
+              color={color}
+              outline={outline}
+              rounded={rounded}
+            />
+          ))
+        )}
+        {!downloadFlag ? null : (
+          <Download
+            downloads={options.downloads}
             color={color}
             outline={outline}
             rounded={rounded}
+            selectStyle={selectStyle}
+            selectDivStyles={selectDivStyles}
           />
-        ))}
-        <Download
-          downloads={props.downloads}
-          color={color}
-          outline={outline}
-          rounded={rounded}
-          selectStyle={selectStyle}
-          selectDivStyles={selectDivStyles}
-        />
+        )}
       </div>
     </div>
   )

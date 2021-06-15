@@ -1,7 +1,7 @@
 import { 
   faUndoAlt, faRedoAlt, faHistory, faSyncAlt, faShareAlt, faInfoCircle, faPause 
 } from '@fortawesome/free-solid-svg-icons'
-import * as vizTbStyles from "./vizToolbar.module.css"
+import * as vizTbStyles from "../vizToolbar.module.css"
 
 // array of supported buttons, all of them are displayed by default
 const buttonsArray = [
@@ -56,7 +56,7 @@ export const downloadList = (options) => {
   if (options === undefined) {
     return downloadArray;
   }
-  else if (Array.isArray(options)) {
+  else if (Array.isArray(options) || !Array.isArray(options)) {
     // make everything lowercase
     const propArray = options.map((name) => name.toLowerCase());
     // check if the local array includes the button name declared in props
