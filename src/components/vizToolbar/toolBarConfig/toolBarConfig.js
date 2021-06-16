@@ -1,5 +1,4 @@
-import { selectDiv1, selectDiv2 } from "../components/download/download.module.css"
-import "../components/button/button"
+import { selectDiv1, selectDiv2 } from "../vizToolbar.module.css"
 
 // finds matches between props.buttons and defaultButtons to render
 // <Button/> components in <VizToolbar/> based on user selection
@@ -24,16 +23,6 @@ export const buttonList = (buttons, defaultButtons) => {
   }
   return newArray;
 }
-
-// array of supported downloads, all of them are displayed by default
-const downloadArray = [
-  {name: "PDF", function: () => {console.log("PDF!")}},
-  {name: "Image", function: () => {console.log("image!")}},
-  {name: "Data", function: () => {console.log("data!")}},
-  {name: "CrossTab", function: () => {console.log("crosstab!")}},
-  {name: "PowerPoint", function: () => {console.log("powerpoint!")}},
-  {name: "Workbook", function: () => {console.log("workbook!")}},
-];
 
 // finds matches between props.downloads and defaultDownloads to render
 // <Download/> components in <VizToolbar/> based on user selection
