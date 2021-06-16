@@ -1,17 +1,21 @@
+.toolbar {
+  margin-bottom: 0.75rem;
+}
+
+.field {
+  margin-left: 0.25rem;
+  margin-right: 0.25rem;
+ }
+
+ .field button {
+  margin-left: 0 !important; 
+}
+
 /* 
   regrettably, this module has extensive use of the !important keyword
   due to a lack of support in the Bulma framework for styling form controls
   in this case the select dropdown for downloads
 */
-
-.field {
- margin-left: 0.25rem;
- margin-right: 0.25rem;
-}
-
-.field button {
-  margin-left: 0 !important; 
-}
 
 .select {
   border-top-left-radius: 7px !important;
@@ -32,20 +36,4 @@
 
 .selectDiv2:hover::after {
   border-color: #0a0a0a !important;
-}
-
-.vizNav:not(:last-child) {
-  margin: 0;
-}
-
-@media screen and (max-width: 768px) {
-  .navBtn {
-    min-width: 100px;
-  }
-}
-
-@media screen and (min-width: 769px) {
-  .navBtn {
-    min-width: 150px;
-  }
 }

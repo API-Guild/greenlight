@@ -1,22 +1,107 @@
-import React from "react"
+import React, {useState, useEffect} from "react"
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faCloudDownloadAlt, faBackward, faForward } from '@fortawesome/free-solid-svg-icons'
+import { faCloudDownloadAlt } from '@fortawesome/free-solid-svg-icons'
 import * as vizTbStyles from "./vizToolbar.module.css"
-import * as util from "./utilities.js"
-import Box from "../box/box"
+import * as set from "./toolBarConfig/toolBarConfig"
+import VizNav from "./components/vizNav/vizNav"
+import DownloadOptions from "./components/downloadOptions/downloadOptions"
+import Button from "./components/button/button"
 
-// main VizToolbar component
 export default function VizToolbar(props) {
-  const renderButtons = util.buttonList(props.buttons);
-  const color = util.colorSet(props.color);
-  const outline = util.outlineSet(props.outline);
-  const rounded = util.roundedSet(props.rounded);
-  const selectStyle = `${util.selectBgSet(props.color, props.outline)} ${util.selectTextSet(props.color, props.outline)}`;
-  // const selectDivStyles = props.outline ? `${color}` : `${color} ${vizTbStyles.selectDiv1}`;
-  const selectDivStyles = util.selectArrowSet(props.color, props.outline);
+  // by default a full <VizToolbar/> get's mounted unless props are explicitly set to false or empty arrays
+  // therefore undefined is a baseline that adds a full toolbar regardless
+  const [options, setOptions] = useState({
+    buttons: undefined,
+    color: undefined,
+    outline: undefined,
+    rounded: undefined,
+    downloads: undefined,
+  });
+
+  // both of these flags determine if components get rendered, default behavior is true
+  const [buttonFlag, setButtonFlag] = useState(true);
+  const [downloadFlag, setDownloadFlag] = useState(true);
+
+  // if a toolbarOptions prop is available, update state and flags accordingly
+  useEffect(() => {
+    // check if toolbarOptions prop has been passed and update state
+    if (props.toolbarOptions) {
+      setOptions({...props.toolbarOptions})
+      // decide if buttons should be rendered, default is true and renders all of them
+      if (props.toolbarOptions.buttons) {
+        if (Array.isArray(props.toolbarOptions.buttons) && props.toolbarOptions.buttons.length === 0) {
+          setButtonFlag(false);
+        }
+      }
+      // decide if downloads should be rendered, default is true and renders all options
+      if (props.toolbarOptions.buttons) {
+        if (Array.isArray(props.toolbarOptions.downloads) && props.toolbarOptions.downloads.length === 0) {
+          setDownloadFlag(false);
+        }
+      }
+    }
+  },[props.toolbarOptions])
+
+  // sets download options for the select control
+  const [downloadSelect, setDownload] = useState('Download');
+
+  // sets state based on the selected download option
+  const handledownloadSelect = (event) => {
+    setDownload(event.target.value);
+  }
+
+  const handleDownload = () => {
+    switch (downloadSelect) {
+      case 'Download':
+        return;
+      case 'PDF':
+        props.vizObj.showExportPDFDialog()
+        break;
+      case 'Image':
+        props.vizObj.showExportImageDialog()
+        break;
+      case 'Data':
+        if (props.vizObj.getWorkbook().getActiveSheet() === undefined) {
+          alert('select a chart or sheet to download data');
+        }
+        else {
+          props.vizObj.showExportDataDialog()
+        }
+        break;
+      case 'CrossTab':
+        if (props.vizObj.getWorkbook().getActiveSheet() === undefined) {
+          alert('select a chart or sheet to download crosstab data');
+        }
+        else {
+          props.vizObj.showExportCrossTabDialog()
+        }
+        break;
+      case 'PowerPoint':
+        props.vizObj.showExportPowerPointDialog()
+        break;
+      case 'Workbook':
+        props.vizObj.showDownloadWorkbookDialog()
+        break;
+      default:
+        return;
+    }
+  }
+
+  // toolbar settings and styles, the set methods help standardize 
+  // these options beyond what is supported by the Bulma framework
+  const color = set.colorSet(options.color);
+  const outline = set.outlineSet(options.outline);
+  const rounded = set.roundedSet(options.rounded);
+
+  // standardize styles for select controls with buttons based on user input
+  const selectDivStyles = set.selectArrowSet(options.color, options.outline);
+  const selectBg = set.selectBgSet(options.color, options.outline);
+  const selectTxt = set.selectTextSet(options.color, options.outline);
+  const selectStyles = `download ${color} ${selectBg} ${selectTxt} ${vizTbStyles.select}`;
+  const btnStyles = `${color} ${outline}`;
 
   return (
-    <Box vizToolbar={true}>
+    <div className={vizTbStyles.toolbar}>
       <VizNav
         previous={{"name": "previous"}}
         next={{"name": "next"}}
@@ -26,165 +111,79 @@ export default function VizToolbar(props) {
       />
       {/* mobile layout */}
       <div className="buttons are-small is-centered is-hidden-tablet">
-        {renderButtons.map((button, index) => (
-          <Button
-            key={button.name + '-' + index}
-            name={button.name}
-            icon={button.icon}
-            function={button.function}
-            color={color}
-            outline={outline}
-            rounded={rounded}
-          />
-        ))}
-        <Download
-          downloads={props.downloads}
+        <Button
+          buttonFlag={buttonFlag}
+          buttons={options.buttons}
           color={color}
           outline={outline}
           rounded={rounded}
-          selectStyle={selectStyle}
-          selectDivStyles={selectDivStyles}
+          vizObj={props.vizObj}
         />
+        {!downloadFlag ? null : (
+          <div className={`field has-addons has-addons-left ${vizTbStyles.field}`}>
+            <div className="control">
+              <div className={`select is-small is-hidden-tablet ${selectDivStyles}`}>
+                {/* eslint-disable-next-line */} 
+                <select className={selectStyles} value={downloadSelect} onChange={handledownloadSelect}>
+                  <option disabled hidden>Download</option>
+                  <DownloadOptions
+                    downloads={options.downloads}
+                    vizObj={props.vizObj}
+                  />
+                </select>
+              </div>
+            </div>
+            <div className="control is-hidden-tablet">
+              <button 
+                type="submit" 
+                className={`button ${btnStyles}`}
+                onClick={handleDownload}
+              >
+                <span className="icon">
+                  <FontAwesomeIcon icon={faCloudDownloadAlt}/>
+                </span>
+              </button>
+            </div>
+          </div>
+        )}
       </div>
       {/* desktop layout */}
       <div className="buttons is-centered is-hidden-mobile">
-        {renderButtons.map((button, index) => (
-          <Button
-            key={button.name + '-' + index}
-            name={button.name}
-            icon={button.icon}
-            function={button.function}
-            color={color}
-            outline={outline}
-            rounded={rounded}
-          />
-        ))}
-        <Download
-          downloads={props.downloads}
+        <Button
+          buttonFlag={buttonFlag}
+          buttons={options.buttons}
           color={color}
           outline={outline}
           rounded={rounded}
-          selectStyle={selectStyle}
-          selectDivStyles={selectDivStyles}
+          vizObj={props.vizObj}
         />
-      </div>
-    </Box>
-  )
-}
-
-// <VizNav> component
-const VizNav = (props) => {
-  const btnStyles = `${props.color} ${props.outline} ${props.rounded} ${vizTbStyles.navBtn}`;
-
-  return (
-    <>
-      <div className={`buttons are-small is-centered is-hidden-tablet ${vizTbStyles.vizNav}`}>
-        {/* mobile layout */}
-        <button className={`button ${btnStyles}`}>
-          <span className="icon">
-            <FontAwesomeIcon icon={faBackward}/>
-          </span>
-          <span><strong>Previous</strong></span>
-        </button>
-        <button className={`button ${btnStyles}`}>
-          <span><strong>Next</strong></span>
-          <span className="icon">
-            <FontAwesomeIcon icon={faForward}/>
-          </span>
-        </button>
-      </div>
-      {/* desktop layout */}
-      <div className={`buttons is-centered is-hidden-mobile ${vizTbStyles.vizNav}`}>
-        <button className={`button ${btnStyles}`}>
-          <span className="icon">
-            <FontAwesomeIcon icon={faBackward}/>
-          </span>
-          <span><strong>Previous</strong></span>
-        </button>
-        <button className={`button ${btnStyles}`}>
-          <span><strong>Next</strong></span>
-          <span className="icon">
-            <FontAwesomeIcon icon={faForward}/>
-          </span>
-        </button>
-      </div>
-    </>
-  )
-}
-
-// <Button> component
-const Button = (props) => {
-  const btnStyles = `${props.color} ${props.outline} ${props.rounded}`;
-
-  return (
-    <button 
-      className={`button ${btnStyles}`}
-      onClick={props.function}
-    >
-      <span className="icon">
-        <FontAwesomeIcon icon={props.icon}/>
-      </span>
-      <span>{props.name}</span>
-    </button>
-  )
-}
-
-// <Download> component
-const Download = (props) => {
-  const renderDownloads = util.downloadList(props.downloads);
-  const btnStyles = `${props.color} ${props.outline}`;
-  const selectStyles = `download ${props.color} ${props.selectStyle} ${vizTbStyles.select}`; 
-  
-  return (
-    <div className={`field has-addons has-addons-left ${vizTbStyles.field}`}>
-      {/* mobile layout */}
-      <div className="control">
-        <div className={`select is-small is-hidden-tablet ${props.selectDivStyles}`}> 
-          <select className={selectStyles}>
-            <option selected>Download</option>
-            {renderDownloads.map((option, index) => (
-              <option value={option.name} key={option.name + "-" + index}>
-                {option.name}
-              </option>
-            ))}
-          </select>
-        </div>
-      </div>
-      <div className="control is-hidden-tablet">
-        <button 
-          type="submit" 
-          className={`button ${btnStyles}`}
-          onClick={() => {console.log('download!')}}
-        >
-          <span className="icon">
-            <FontAwesomeIcon icon={faCloudDownloadAlt}/>
-          </span>
-        </button>
-      </div>
-
-      {/* desktop layout */}
-      <div className="control">
-        <div className={`select is-hidden-mobile ${props.selectDivStyles}`}> 
-          <select className={selectStyles}>
-            <option selected>Download</option>
-            {renderDownloads.map((option, index) => (
-              <option value={option.name} key={option.name + "-" + index}>
-                {option.name}
-              </option>
-            ))}
-          </select>
-        </div>
-      </div>
-      <div className="control is-hidden-mobile">
-        <button 
-          type="submit" 
-          className={`button ${btnStyles}`}
-          onClick={() => {console.log('download!')}}
-        >
-          <span className="icon">
-            <FontAwesomeIcon icon={faCloudDownloadAlt}/>
-          </span>
-        </button>
+        {!downloadFlag ? null : (
+          <div className={`field has-addons has-addons-left ${vizTbStyles.field}`}>
+            <div className="control">
+              <div className={`select is-hidden-mobile ${selectDivStyles}`}> 
+                {/* eslint-disable-next-line */}
+                <select className={selectStyles} value={downloadSelect} onChange={handledownloadSelect}>
+                  <option disabled hidden>Download</option>
+                  <DownloadOptions
+                    downloads={options.downloads}
+                    vizObj={props.vizObj}
+                  />
+                </select>
+              </div>
+            </div>
+            <div className="control is-hidden-mobile">
+              <button 
+                type="submit" 
+                className={`button ${btnStyles}`}
+                onClick={handleDownload}
+              >
+                <span className="icon">
+                  <FontAwesomeIcon icon={faCloudDownloadAlt}/>
+                </span>
+              </button>
+            </div>
+          </div>
+        )}
       </div>
     </div>
   )

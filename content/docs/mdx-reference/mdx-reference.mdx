@@ -120,82 +120,46 @@ component and provides examples so you can use them for your own content.
 
 ---
 
-## VizToolbar
-```javascript
+## Tableau Visualization
+```jsx
+<Tableau
+  viz="https://public.tableau.com/views/OilGasProduction_16207892650600/AssetProductionReport"
+  customToolbar={true}
+  toolbarOptions={{
+    buttons: [
+      'undo',
+      'redo',
+      'reset'
+    ],
+    color: 'danger',
+    outline: false,
+    rounded: false,
+    downloads: [
+      'pdf',
+      'image',
+      'powerpoint'
+    ],
+  }}
+/>
 ```
 ### Result:
-<VizToolbar
+<Tableau
+  viz="https://public.tableau.com/views/OilGasProduction_16207892650600/AssetProductionReport"
+  customToolbar={true}
+  toolbarOptions={{
+    buttons: [
+      'undo',
+      'redo',
+      'reset',
+      'share'
+    ],
+    color: 'warning',
+    outline: false,
+    rounded: false,
+    downloads: [
+      'pdf',
+      'image',
+      'powerpoint'
+    ],
+  }}
 />
-
-<VizToolbar
-    outline={false}
-/>
-
-<VizToolbar
-    color='primary'
-/>
-
-<VizToolbar
-    color='primary'
-    outline={false}
-/>
-
-<VizToolbar
-    color='link'
-/>
-
-<VizToolbar
-    color='link'
-    outline={false}
-/>
-
----
-
-<VizToolbar
-    color='info'
-    outline={false}
-/>
-
-<VizToolbar
-    color='info'
-    outline={true}
-/>
-
----
-
-<VizToolbar
-    color='success'
-    outline={false}
-/>
-
-<VizToolbar
-    color='success'
-    outline={true}
-/>
-
----
-
-<VizToolbar
-    color='warning'
-    outline={false}
-/>
-
-<VizToolbar
-    color='warning'
-    outline={true}
-/>
-
----
-
-<VizToolbar
-    color='danger'
-    outline={false}
-/>
-
-<VizToolbar
-    color='danger'
-    outline={true}
-/>
-
----
-
