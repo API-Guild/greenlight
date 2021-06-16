@@ -4,7 +4,7 @@ import { faCloudDownloadAlt } from '@fortawesome/free-solid-svg-icons'
 import * as vizTbStyles from "./vizToolbar.module.css"
 import * as set from "./toolBarConfig/toolBarConfig"
 import VizNav from "./components/vizNav/vizNav"
-import Download from "./components/download/download"
+import DownloadOptions from "./components/downloadOptions/downloadOptions"
 import Button from "./components/button/button"
 
 export default function VizToolbar(props) {
@@ -61,10 +61,20 @@ export default function VizToolbar(props) {
         props.vizObj.showExportImageDialog()
         break;
       case 'Data':
-        props.vizObj.showExportDataDialog()
+        if (props.vizObj.getWorkbook().getActiveSheet() === undefined) {
+          alert('select a chart or sheet to download data');
+        }
+        else {
+          props.vizObj.showExportDataDialog()
+        }
         break;
       case 'CrossTab':
-        props.vizObj.showExportCrossTabDialog()
+        if (props.vizObj.getWorkbook().getActiveSheet() === undefined) {
+          alert('select a chart or sheet to download crosstab data');
+        }
+        else {
+          props.vizObj.showExportCrossTabDialog()
+        }
         break;
       case 'PowerPoint':
         props.vizObj.showExportPowerPointDialog()
@@ -116,7 +126,7 @@ export default function VizToolbar(props) {
                 {/* eslint-disable-next-line */} 
                 <select className={selectStyles} value={downloadSelect} onChange={handledownloadSelect}>
                   <option disabled hidden>Download</option>
-                  <Download
+                  <DownloadOptions
                     downloads={options.downloads}
                     vizObj={props.vizObj}
                   />
@@ -154,7 +164,7 @@ export default function VizToolbar(props) {
                 {/* eslint-disable-next-line */}
                 <select className={selectStyles} value={downloadSelect} onChange={handledownloadSelect}>
                   <option disabled hidden>Download</option>
-                  <Download
+                  <DownloadOptions
                     downloads={options.downloads}
                     vizObj={props.vizObj}
                   />

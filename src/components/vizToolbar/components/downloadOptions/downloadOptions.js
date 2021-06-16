@@ -1,7 +1,7 @@
 import React from "react"
 import * as set from "../../toolBarConfig/toolBarConfig"
 
-export default function Download(props) {
+export default function DownloadOptions(props) {
 
   // array of supported downloads, all of them are displayed by default
   const downloadArray = [

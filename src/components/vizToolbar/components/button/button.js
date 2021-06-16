@@ -1,7 +1,7 @@
 import React from "react"
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { 
-  faUndoAlt, faRedoAlt, faHistory, faSyncAlt, faShareAlt, faInfoCircle, faPause 
+  faUndoAlt, faRedoAlt, faHistory, faSyncAlt, faShareAlt, faInfoCircle, 
 } from '@fortawesome/free-solid-svg-icons'
 import * as set from "../../toolBarConfig/toolBarConfig"
 
@@ -10,11 +10,10 @@ export default function Button(props) {
   
   // array of supported buttons, all of them are displayed by default
   const buttonsArray = [
-    {name: "Undo", icon: faUndoAlt, function: () => {console.log("undo!", props.vizObj)}},
-    {name: "Redo", icon: faRedoAlt, function: () => {console.log("redo!", props.vizObj)}},
-    {name: "Reset", icon: faHistory, function: () => {console.log("reset!", props.vizObj)}},
-    {name: "Refresh", icon: faSyncAlt, function: () => {console.log("refresh!", props.vizObj)}},
-    {name: "Pause", icon: faPause, function: () => {console.log("pause!", props.vizObj)}},
+    {name: "Undo", icon: faUndoAlt, function: () => {props.vizObj.undoAsync()}},
+    {name: "Redo", icon: faRedoAlt, function: () => {props.vizObj.redoAsync()}},
+    {name: "Reset", icon: faHistory, function: () => {props.vizObj.revertAllAsync()}},
+    {name: "Refresh", icon: faSyncAlt, function: () => {props.vizObj.refreshDataAsync()}},
     {name: "Details", icon: faInfoCircle, function: () => {console.log("details!", props.vizObj)}},
     {name: "Share", icon: faShareAlt, function: () => {props.vizObj.showShareDialog()}},  
   ];
