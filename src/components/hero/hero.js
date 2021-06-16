@@ -17,7 +17,7 @@ export default function Hero(props) {
           subtitleColor={props.subtitleColor}
           subtitleSize={props.subtitleSize}
         />
-        {/* Used for dates on blog posts */}
+        {/* Used for dates on articles */}
         <p className={`subtitle ${heroStyles.subtitleDate} is-7`}> 
           {props.date}
         </p>
@@ -27,52 +27,19 @@ export default function Hero(props) {
 }
 
 const colorizer = (color) => {
-  let heroColor;
-  switch (color) {
-    case 'primary':
-      heroColor = 'is-primary';
-      break;
-    case 'link':
-      heroColor = 'is-link';
-      break;
-    case 'info':
-      heroColor = 'is-info';
-      break;
-    case 'success':
-      heroColor = 'is-success';
-      break;
-    case 'warning':
-      heroColor = 'is-warning';
-      break;
-    case 'danger':
-      heroColor = 'is-danger';
-      break;
-    default:
-      heroColor = null;
+  let colorClass = '';
+
+  if (typeof color === 'string') {
+    colorClass = `is-${color}`;
   }
-  return heroColor;
+  return colorClass;
 }
 
 const sizer = (size) => {
-  let heroSize;
-  switch (size) {
-    case 'small':
-      heroSize = 'is-small';
-      break;
-    case 'medium':
-      heroSize = 'is-medium';
-      break;
-    case 'large':
-      heroSize = 'is-large';
-      break;
-    case 'half':
-      heroSize = 'is-halfheight';
-      break;
-    case 'full':
-      heroSize = 'is-fullheight';
-      break;
-    default:
-      heroSize = null;
+  let sizeClass = '';
+
+  if (typeof size === 'number') {
+    sizeClass = `is-${size}`
   }
-  return heroSize;
+  return sizeClass;
 }
