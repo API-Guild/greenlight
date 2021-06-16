@@ -19,7 +19,6 @@ export default function VizToolbar(props) {
   // both of these flags determine if components get rendered, default behavior is true
   const [buttonFlag, setButtonFlag] = useState(true);
   const [downloadFlag, setDownloadFlag] = useState(true);
-  const renderButtons = set.buttonList(options.buttons);
 
   // toolbar settings and styles, the set methods help standardize 
   // these options beyond what is supported by the Bulma framework
@@ -60,19 +59,14 @@ export default function VizToolbar(props) {
       />
       {/* mobile layout */}
       <div className="buttons are-small is-centered is-hidden-tablet">
-        {!buttonFlag ? null : (
-          renderButtons.map((button, index) => (
-            <Button
-              key={button.name + '-' + index}
-              name={button.name}
-              icon={button.icon}
-              onClick={button.function}
-              color={color}
-              outline={outline}
-              rounded={rounded}
-            />
-          ))
-        )}
+        <Button
+          buttonFlag={buttonFlag}
+          buttons={options.buttons}
+          color={color}
+          outline={outline}
+          rounded={rounded}
+          vizObj={props.vizObj}
+        />
         {!downloadFlag ? null : (
           <Download
             downloads={options.downloads}
@@ -81,24 +75,20 @@ export default function VizToolbar(props) {
             rounded={rounded}
             selectStyle={selectStyle}
             selectDivStyles={selectDivStyles}
+            vizObj={props.vizObj}
           />
         )}
       </div>
       {/* desktop layout */}
       <div className="buttons is-centered is-hidden-mobile">
-        {!buttonFlag ? null : (
-          renderButtons.map((button, index) => (
-            <Button
-              key={button.name + '-' + index}
-              name={button.name}
-              icon={button.icon}
-              onClick={button.function}
-              color={color}
-              outline={outline}
-              rounded={rounded}
-            />
-          ))
-        )}
+        <Button
+          buttonFlag={buttonFlag}
+          buttons={options.buttons}
+          color={color}
+          outline={outline}
+          rounded={rounded}
+          vizObj={props.vizObj}
+        />
         {!downloadFlag ? null : (
           <Download
             downloads={options.downloads}
@@ -107,6 +97,7 @@ export default function VizToolbar(props) {
             rounded={rounded}
             selectStyle={selectStyle}
             selectDivStyles={selectDivStyles}
+            vizObj={props.vizObj}
           />
         )}
       </div>

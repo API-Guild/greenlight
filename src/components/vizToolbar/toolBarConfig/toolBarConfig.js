@@ -2,6 +2,7 @@ import {
   faUndoAlt, faRedoAlt, faHistory, faSyncAlt, faShareAlt, faInfoCircle, faPause 
 } from '@fortawesome/free-solid-svg-icons'
 import { selectDiv1, selectDiv2 } from "../components/download/download.module.css"
+import "../components/button/button"
 
 // array of supported buttons, all of them are displayed by default
 const buttonsArray = [
@@ -16,17 +17,17 @@ const buttonsArray = [
 
 // finds matches between props.buttons and the local buttonsArray
 // to render <Button/> components in the <VizToolbar/> component
-export const buttonList = (buttons) => {
+export const buttonList = (buttons, defaultButtons) => {
   const newArray = [];
 
   if (buttons === undefined || !Array.isArray(buttons)) {
-    return buttonsArray;
+    return defaultButtons;
   }
   else if (Array.isArray(buttons)) {
     // make everything lowercase
     const propArray = buttons.map((name) => name.toLowerCase());
     // check if the local array includes the button name declared in props
-    buttonsArray.forEach(button => {
+    defaultButtons.forEach(button => {
       if (propArray.includes(button.name.toLowerCase())) {
         newArray.push(button) 
       }
