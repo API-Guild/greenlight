@@ -1,7 +1,7 @@
 import { 
   faUndoAlt, faRedoAlt, faHistory, faSyncAlt, faShareAlt, faInfoCircle, faPause 
 } from '@fortawesome/free-solid-svg-icons'
-import * as vizTbStyles from "../vizToolbar.module.css"
+import { selectDiv1, selectDiv2 } from "../components/download/download.module.css"
 
 // array of supported buttons, all of them are displayed by default
 const buttonsArray = [
@@ -159,13 +159,13 @@ export const selectArrowSet = (color, outline) => {
   }
   else if (outline === false) {
     if (color === 'primary' || color === 'link' || color === 'warning') {
-      selectArrow = `is-${color} ${vizTbStyles.selectDiv2}`;
+      selectArrow = `is-${color} ${selectDiv2}`;
     }
     else if (color === undefined) {
-      selectArrow = `is-primary ${vizTbStyles.selectDiv2}`;
+      selectArrow = `is-primary ${selectDiv2}`;
     }
     else {
-      selectArrow = `is-${color} ${vizTbStyles.selectDiv1}`;
+      selectArrow = `is-${color} ${selectDiv1}`;
     }
   }
 
