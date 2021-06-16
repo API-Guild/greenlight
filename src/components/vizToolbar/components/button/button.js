@@ -19,8 +19,8 @@ export default function Button(props) {
     {name: "Share", icon: faShareAlt, function: () => {props.vizObj.showShareDialog()}},  
   ];
 
-  // determines what buttons get rendered, default is all unless
-  // an allowlist (array) is passed as a prop
+  // determines what buttons get rendered, default is all 
+  // unless an allowlist (array) is passed as a prop
   const renderButtons = set.buttonList(props.buttons, buttonsArray);
 
   return (

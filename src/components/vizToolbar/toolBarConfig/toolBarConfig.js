@@ -1,22 +1,8 @@
-import { 
-  faUndoAlt, faRedoAlt, faHistory, faSyncAlt, faShareAlt, faInfoCircle, faPause 
-} from '@fortawesome/free-solid-svg-icons'
 import { selectDiv1, selectDiv2 } from "../components/download/download.module.css"
 import "../components/button/button"
 
-// array of supported buttons, all of them are displayed by default
-const buttonsArray = [
-  {name: "Undo", icon: faUndoAlt, function: () => {console.log("undo!")}},
-  {name: "Redo", icon: faRedoAlt, function: () => {console.log("redo!")}},
-  {name: "Reset", icon: faHistory, function: () => {console.log("reset!")}},
-  {name: "Refresh", icon: faSyncAlt, function: () => {console.log("refresh!")}},
-  {name: "Pause", icon: faPause, function: () => {console.log("pause!")}},
-  {name: "Details", icon: faInfoCircle, function: () => {console.log("details!")}},
-  {name: "Share", icon: faShareAlt, function: () => {console.log("share!")}},  
-];
-
-// finds matches between props.buttons and the local buttonsArray
-// to render <Button/> components in the <VizToolbar/> component
+// finds matches between props.buttons and defaultButtons to render
+// <Button/> components in <VizToolbar/> based on user selection
 export const buttonList = (buttons, defaultButtons) => {
   const newArray = [];
 
@@ -26,7 +12,7 @@ export const buttonList = (buttons, defaultButtons) => {
   else if (Array.isArray(buttons)) {
     // make everything lowercase
     const propArray = buttons.map((name) => name.toLowerCase());
-    // check if the local array includes the button name declared in props
+    // check if the buttons array includes the button name declared in props
     defaultButtons.forEach(button => {
       if (propArray.includes(button.name.toLowerCase())) {
         newArray.push(button) 
@@ -49,19 +35,19 @@ const downloadArray = [
   {name: "Workbook", function: () => {console.log("workbook!")}},
 ];
 
-// finds matches between props.downloads and the local downloadArray
-// to render <Download/> components in the <VizToolbar/> component
-export const downloadList = (options) => {
+// finds matches between props.downloads and defaultDownloads to render
+// <Download/> components in <VizToolbar/> based on user selection
+export const downloadList = (options, defaultDownloads) => {
   const optionsArray = [];
 
-  if (options === undefined) {
-    return downloadArray;
+  if (options === undefined || !Array.isArray(options)) {
+    return defaultDownloads;
   }
-  else if (Array.isArray(options) || !Array.isArray(options)) {
+  else if (Array.isArray(options)) {
     // make everything lowercase
     const propArray = options.map((name) => name.toLowerCase());
-    // check if the local array includes the button name declared in props
-    downloadArray.forEach(download => {
+    // check if the options array includes the download name declared in props
+    defaultDownloads.forEach(download => {
       if (propArray.includes(download.name.toLowerCase())) {
         optionsArray.push(download) 
       }

@@ -25,8 +25,8 @@ export default function VizToolbar(props) {
   const color = set.colorSet(options.color);
   const outline = set.outlineSet(options.outline);
   const rounded = set.roundedSet(options.rounded);
-  const selectStyle = `${set.selectBgSet(options.color, options.outline)} ${set.selectTextSet(options.color, options.outline)}`;
-  const selectDivStyles = set.selectArrowSet(options.color, options.outline);
+  // const selectStyle = `${set.selectBgSet(options.color, options.outline)} ${set.selectTextSet(options.color, options.outline)}`;
+  // const selectDivStyles = set.selectArrowSet(options.color, options.outline);
 
   // if a toolbarOptions prop is available, update state and flags accordingly
   useEffect(() => {
@@ -67,17 +67,18 @@ export default function VizToolbar(props) {
           rounded={rounded}
           vizObj={props.vizObj}
         />
-        {!downloadFlag ? null : (
-          <Download
-            downloads={options.downloads}
-            color={color}
-            outline={outline}
-            rounded={rounded}
-            selectStyle={selectStyle}
-            selectDivStyles={selectDivStyles}
-            vizObj={props.vizObj}
-          />
-        )}
+        <Download
+          downloadFlag={downloadFlag}
+          downloads={options.downloads}
+          color={color}
+          outline={outline}
+          rounded={rounded}
+          options={{
+            color: options.color,
+            outline: options.outline
+          }}
+          vizObj={props.vizObj}
+        />
       </div>
       {/* desktop layout */}
       <div className="buttons is-centered is-hidden-mobile">
@@ -89,7 +90,19 @@ export default function VizToolbar(props) {
           rounded={rounded}
           vizObj={props.vizObj}
         />
-        {!downloadFlag ? null : (
+        <Download
+          downloadFlag={downloadFlag}
+          downloads={options.downloads}
+          color={color}
+          outline={outline}
+          rounded={rounded}
+          options={{
+            color: options.color,
+            outline: options.outline
+          }}
+          vizObj={props.vizObj}
+        />
+        {/* {!downloadFlag ? null : (
           <Download
             downloads={options.downloads}
             color={color}
@@ -99,7 +112,7 @@ export default function VizToolbar(props) {
             selectDivStyles={selectDivStyles}
             vizObj={props.vizObj}
           />
-        )}
+        )} */}
       </div>
     </div>
   )
