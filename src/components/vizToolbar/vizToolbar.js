@@ -1,7 +1,7 @@
 import React, {useState, useEffect} from "react"
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faCloudDownloadAlt } from '@fortawesome/free-solid-svg-icons'
-import * as vizTbStyles from "./vizToolbar.module.css"
+import * as vizTbStyles from "./vizToolbar.module.scss"
 import * as set from "./toolBarConfig/toolBarConfig"
 import VizNav from "./components/vizNav/vizNav"
 import DownloadOptions from "./components/downloadOptions/downloadOptions"
@@ -200,7 +200,21 @@ export default function VizToolbar(props) {
         card={true}
         display={detailModal}
         setDisplay={handleModal}
+        title="Sample Test Modal"
+        footer={
+          <>
+            <button class="button is-primary">Save changes</button>
+            <button class="button">Cancel</button>
+          </>
+        }
       >
+      <p>
+        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut 
+        labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris 
+        nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit 
+        esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in 
+        culpa qui officia deserunt mollit anim id est laborum.
+      </p>
       </Modal>
     </div>
   )

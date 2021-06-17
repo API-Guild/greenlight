@@ -1,4 +1,4 @@
-import { selectDiv1, selectDiv2 } from "../vizToolbar.module.css"
+import { selectDiv1, selectDiv2 } from "../vizToolbar.module.scss"
 
 // finds matches between props.buttons and defaultButtons to render
 // <Button/> components in <VizToolbar/> based on user selection

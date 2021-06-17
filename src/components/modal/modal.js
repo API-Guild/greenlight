@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react"
+import { cardHead, cardFooter } from "./modal.module.scss"
 
 export default function Modal(props) {
   const [active, setActive] = useState('');
@@ -25,14 +26,14 @@ export default function Modal(props) {
           </>
         ) : (
           <div className="modal-card">
-            <header className="modal-card-head">
+            <header className={`modal-card-head ${cardHead}`}>
               <p className="modal-card-title">{props.title}</p>
               <button className="delete" aria-label="close" onClick={props.setDisplay}/>
             </header>
             <section className="modal-card-body">
               {props.children}
             </section>
-            <footer className="modal-card-foot">
+            <footer className={`modal-card-foot ${cardFooter}`}>
               {props.footer}
             </footer>
           </div>
