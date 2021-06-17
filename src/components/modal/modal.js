@@ -16,7 +16,14 @@ export default function Modal(props) {
   return (
     <>
       <div className={`modal ${active}`}>
-        <div className="modal-background"/>
+        <div 
+          className="modal-background" 
+          onClick={props.setDisplay} 
+          onKeyDown={props.setDisplay} 
+          role="button"
+          aria-label="close modal"
+          tabIndex={0}
+        />
         {!props.card ? (
           <>
             <div className="modal-content">

@@ -6,7 +6,6 @@ import * as set from "./toolBarConfig/toolBarConfig"
 import VizNav from "./components/vizNav/vizNav"
 import DownloadOptions from "./components/downloadOptions/downloadOptions"
 import Button from "./components/button/button"
-import Modal from "../modal/modal"
 
 export default function VizToolbar(props) {
   // by default a full <VizToolbar/> get's mounted unless props are explicitly set to false or empty arrays
@@ -88,14 +87,6 @@ export default function VizToolbar(props) {
     }
   }
 
-  // controls display of embedded content details
-  const [detailModal, setDetailModal] = useState(false);
-
-  const handleModal = () => {
-    console.log('detailModal', detailModal)
-    setDetailModal(!detailModal);
-  }
-
   // toolbar settings and styles, the set methods help standardize 
   // these options beyond what is supported by the Bulma framework
   const color = set.colorSet(options.color);
@@ -127,7 +118,6 @@ export default function VizToolbar(props) {
           outline={outline}
           rounded={rounded}
           vizObj={props.vizObj}
-          handleModal={handleModal}
         />
         {!downloadFlag ? null : (
           <div className={`field has-addons has-addons-left ${vizTbStyles.field}`}>
@@ -166,7 +156,6 @@ export default function VizToolbar(props) {
           outline={outline}
           rounded={rounded}
           vizObj={props.vizObj}
-          handleModal={handleModal}
         />
         {!downloadFlag ? null : (
           <div className={`field has-addons has-addons-left ${vizTbStyles.field}`}>
@@ -196,26 +185,6 @@ export default function VizToolbar(props) {
           </div>
         )}
       </div>
-      <Modal
-        card={true}
-        display={detailModal}
-        setDisplay={handleModal}
-        title="Sample Test Modal"
-        footer={
-          <>
-            <button class="button is-primary">Save changes</button>
-            <button class="button">Cancel</button>
-          </>
-        }
-      >
-      <p>
-        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut 
-        labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris 
-        nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit 
-        esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in 
-        culpa qui officia deserunt mollit anim id est laborum.
-      </p>
-      </Modal>
     </div>
   )
 }
