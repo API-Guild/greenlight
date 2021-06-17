@@ -6,6 +6,7 @@ import * as set from "./toolBarConfig/toolBarConfig"
 import VizNav from "./components/vizNav/vizNav"
 import DownloadOptions from "./components/downloadOptions/downloadOptions"
 import Button from "./components/button/button"
+import Modal from "../modal/modal"
 
 export default function VizToolbar(props) {
   // by default a full <VizToolbar/> get's mounted unless props are explicitly set to false or empty arrays
@@ -87,6 +88,14 @@ export default function VizToolbar(props) {
     }
   }
 
+  // controls display of embedded content details
+  const [detailModal, setDetailModal] = useState(false);
+
+  const handleModal = () => {
+    console.log('detailModal', detailModal)
+    setDetailModal(!detailModal);
+  }
+
   // toolbar settings and styles, the set methods help standardize 
   // these options beyond what is supported by the Bulma framework
   const color = set.colorSet(options.color);
@@ -118,6 +127,7 @@ export default function VizToolbar(props) {
           outline={outline}
           rounded={rounded}
           vizObj={props.vizObj}
+          handleModal={handleModal}
         />
         {!downloadFlag ? null : (
           <div className={`field has-addons has-addons-left ${vizTbStyles.field}`}>
@@ -156,6 +166,7 @@ export default function VizToolbar(props) {
           outline={outline}
           rounded={rounded}
           vizObj={props.vizObj}
+          handleModal={handleModal}
         />
         {!downloadFlag ? null : (
           <div className={`field has-addons has-addons-left ${vizTbStyles.field}`}>
@@ -185,6 +196,12 @@ export default function VizToolbar(props) {
           </div>
         )}
       </div>
+      <Modal
+        card={true}
+        display={detailModal}
+        setDisplay={handleModal}
+      >
+      </Modal>
     </div>
   )
 }

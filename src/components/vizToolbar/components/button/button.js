@@ -14,7 +14,13 @@ export default function Button(props) {
     {name: "Redo", icon: faRedoAlt, function: () => {props.vizObj.redoAsync()}},
     {name: "Reset", icon: faHistory, function: () => {props.vizObj.revertAllAsync()}},
     {name: "Refresh", icon: faSyncAlt, function: () => {props.vizObj.refreshDataAsync()}},
-    {name: "Details", icon: faInfoCircle, function: () => {console.log("details!", props.vizObj)}},
+    {name: "Details", icon: faInfoCircle, function: () => {
+      props.handleModal();
+      console.log('getName', props.vizObj.getWorkbook().getName())
+      console.log('getActiveSheet', props.vizObj.getWorkbook().getActiveSheet())
+      console.log('getPublishedSheetsInfo', props.vizObj.getWorkbook().getPublishedSheetsInfo())
+      console.log('getWorksheets', props.vizObj.getWorkbook().getActiveSheet().getWorksheets())
+    }},
     {name: "Share", icon: faShareAlt, function: () => {props.vizObj.showShareDialog()}},  
   ];
 
