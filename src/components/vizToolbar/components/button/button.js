@@ -1,19 +1,33 @@
-import React, { useState } from "react"
+import React, { useEffect, useState } from "react"
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { 
   faUndoAlt, faRedoAlt, faHistory, faSyncAlt, faShareAlt, faInfoCircle, 
 } from '@fortawesome/free-solid-svg-icons'
 import * as set from "../../toolBarConfig/toolBarConfig"
 import Modal from "../../../modal/modal"
+import Title from "../../../title/title"
 
 export default function Button(props) {
   // controls display of embedded content details
   const [detailModal, setDetailModal] = useState(false);
+  const [vizUrl, setVizUrl] = useState('');
+  const [workbookName, setWorkbookName] = useState('');
+  const [activeSheet, setActiveSheet] = useState('');
+  const [publishedSheets, setPublishedSheets] = useState('');
+  const [worksheets, setWorksheets] = useState('');
 
   // toggles display of modal
   const handleModal = () => {
-    console.log('detailModal', detailModal)
     setDetailModal(!detailModal);
+    setVizUrl(props.vizObj.getUrl());
+    setWorkbookName(props.vizObj.getWorkbook().getName());
+    setActiveSheet(props.vizObj.getWorkbook().getActiveSheet());
+    setPublishedSheets(props.vizObj.getWorkbook().getActiveSheet().getWorksheets());
+    setWorksheets(props.vizObj.getWorkbook().getPublishedSheetsInfo());
+    console.log('activeSheet', activeSheet)
+    console.log('publishedSheets', publishedSheets)
+    console.log('worksheets', worksheets)
+    console.count('handleModal')
   }
 
   const btnStyles = `${props.color} ${props.outline} ${props.rounded}`;
@@ -24,13 +38,7 @@ export default function Button(props) {
     {name: "Redo", icon: faRedoAlt, function: () => {props.vizObj.redoAsync()}},
     {name: "Reset", icon: faHistory, function: () => {props.vizObj.revertAllAsync()}},
     {name: "Refresh", icon: faSyncAlt, function: () => {props.vizObj.refreshDataAsync()}},
-    {name: "Details", icon: faInfoCircle, function: () => {
-      handleModal();
-      console.log('getName', props.vizObj.getWorkbook().getName())
-      console.log('getActiveSheet', props.vizObj.getWorkbook().getActiveSheet())
-      console.log('getPublishedSheetsInfo', props.vizObj.getWorkbook().getPublishedSheetsInfo())
-      console.log('getWorksheets', props.vizObj.getWorkbook().getActiveSheet().getWorksheets())
-    }},
+    {name: "Details", icon: faInfoCircle, function: () => {handleModal()}},
     {name: "Share", icon: faShareAlt, function: () => {props.vizObj.showShareDialog()}},  
   ];
 
@@ -58,7 +66,7 @@ export default function Button(props) {
         card={true}
         display={detailModal}
         setDisplay={handleModal}
-        title="Sample Test Modal"
+        title={workbookName}
         footer={
           <>
             <button className="button is-primary">Save changes</button>
@@ -66,13 +74,28 @@ export default function Button(props) {
           </>
         }
       >
-        <p>
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut 
-          labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris 
-          nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit 
-          esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in 
-          culpa qui officia deserunt mollit anim id est laborum.
-        </p>
+        <div className="columns">
+          <div className="column">
+            <Title
+              title="Workbook"
+              titleSize={5}
+              titleColor="primary"
+              subtitle={workbookName}
+              subtitleSize={6}
+              subtitleColor="grey-lighter"
+            />
+          </div>
+          <div className="column">
+            <Title
+              title="URL"
+              titleSize={5}
+              titleColor="primary"
+              subtitle={<a href={vizUrl} target="_blank" rel="noreferrer">{vizUrl}</a>}
+              subtitleSize={6}
+              subtitleColor="grey-lighter"
+            />
+          </div>
+        </div>
       </Modal>
     </>
   )
