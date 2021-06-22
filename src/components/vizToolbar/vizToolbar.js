@@ -102,13 +102,15 @@ export default function VizToolbar(props) {
 
   return (
     <div className={vizTbStyles.toolbar}>
-      <VizNav
-        previous={{"name": "previous"}}
-        next={{"name": "next"}}
-        color={color}
-        outline={outline}
-        rounded={rounded}
-      />
+      {!props.vizArray ? null : (
+        <VizNav
+          previous={{"name": "previous"}}
+          next={{"name": "next"}}
+          color={color}
+          outline={outline}
+          rounded={rounded}
+        />
+      )}
       {/* mobile layout */}
       <div className="buttons are-small is-centered is-hidden-tablet">
         <Button

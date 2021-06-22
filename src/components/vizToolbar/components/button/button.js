@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react"
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { 
-  faUndoAlt, faRedoAlt, faHistory, faSyncAlt, faShareAlt, faInfoCircle, 
+  faUndoAlt, faRedoAlt, faHistory, faSyncAlt, faShareAlt, faInfoCircle, faExternalLinkAlt, faLink, faBook, faFileContract 
 } from '@fortawesome/free-solid-svg-icons'
 import * as set from "../../toolBarConfig/toolBarConfig"
 import Modal from "../../../modal/modal"
@@ -13,21 +13,31 @@ export default function Button(props) {
   const [vizUrl, setVizUrl] = useState('');
   const [workbookName, setWorkbookName] = useState('');
   const [activeSheet, setActiveSheet] = useState('');
-  const [publishedSheets, setPublishedSheets] = useState('');
+  const [activeName, setActiveName] = useState('');
+  const [activeDataSource, setActiveDataSource] = useState('');
+  const [publishedSheets, setPublishedSheets] = useState([]);
   const [worksheets, setWorksheets] = useState('');
 
   // toggles display of modal
   const handleModal = () => {
     setDetailModal(!detailModal);
-    setVizUrl(props.vizObj.getUrl());
-    setWorkbookName(props.vizObj.getWorkbook().getName());
-    setActiveSheet(props.vizObj.getWorkbook().getActiveSheet());
-    setPublishedSheets(props.vizObj.getWorkbook().getActiveSheet().getWorksheets());
-    setWorksheets(props.vizObj.getWorkbook().getPublishedSheetsInfo());
-    console.log('activeSheet', activeSheet)
-    console.log('publishedSheets', publishedSheets)
-    console.log('worksheets', worksheets)
-    console.count('handleModal')
+    if (!props.vizObj) {
+      return;
+    }
+    else {
+      setVizUrl(props.vizObj.getUrl());
+      setWorkbookName(props.vizObj.getWorkbook().getName());
+      setActiveSheet(props.vizObj.getWorkbook().getActiveSheet());
+      setActiveName(props.vizObj.getWorkbook().getActiveSheet().getName());
+      // setActiveDataSource(props.vizObj.getWorkbook().getPublishedSheetsInfo().getDataSourcesAsync());
+      setWorksheets(props.vizObj.getWorkbook().getActiveSheet().getWorksheets());
+      setPublishedSheets(props.vizObj.getWorkbook().getPublishedSheetsInfo());
+
+      console.count('handleModal')
+      console.log('activeSheet', activeSheet)
+      console.log('activeName', activeName)
+      console.log('activeSheet.getSummaryDataAsync()', activeDataSource)
+    }
   }
 
   const btnStyles = `${props.color} ${props.outline} ${props.rounded}`;
@@ -66,7 +76,7 @@ export default function Button(props) {
         card={true}
         display={detailModal}
         setDisplay={handleModal}
-        title={workbookName}
+        title={activeName}
         footer={
           <>
             <button className="button is-primary">Save changes</button>
@@ -79,20 +89,48 @@ export default function Button(props) {
             <Title
               title="Workbook"
               titleSize={5}
-              titleColor="primary"
-              subtitle={workbookName}
+              titleColor="grey-lighter"
+              subtitle={
+                <div>
+                  <a href={vizUrl} target="_blank" rel="noreferrer">
+                    <FontAwesomeIcon icon={faBook} style={{height: "0.7rem", verticalAlign: "inherit"}}/> {workbookName}
+                  </a>
+                </div>
+              }
               subtitleSize={6}
-              subtitleColor="grey-lighter"
+              subtitleColor="link"
+            />
+            <Title
+              title="Worksheets"
+              titleSize={5}
+              titleColor="grey-lighter"
+              subtitle={
+                publishedSheets.map((sheet, index) => (
+                  <div key={sheet + '-' + index}>
+                    <a href={sheet.getUrl()} target="_blank" rel="noreferrer">
+                     <FontAwesomeIcon icon={faFileContract} style={{height: "0.7rem", verticalAlign: "inherit"}}/> {sheet.getName()}
+                    </a>
+                  </div>
+                ))
+              }
+              subtitleSize={6}
+              subtitleColor="grey-light"
             />
           </div>
           <div className="column">
             <Title
-              title="URL"
+              title="Datasources"
               titleSize={5}
-              titleColor="primary"
-              subtitle={<a href={vizUrl} target="_blank" rel="noreferrer">{vizUrl}</a>}
+              titleColor="grey-lighter"
+              subtitle={
+                <div>
+                  <a href={vizUrl} target="_blank" rel="noreferrer">
+                    {workbookName} <FontAwesomeIcon icon={faLink} style={{height: "0.7rem", verticalAlign: "inherit"}}/>
+                  </a>
+                </div>
+              }
               subtitleSize={6}
-              subtitleColor="grey-lighter"
+              subtitleColor="link"
             />
           </div>
         </div>

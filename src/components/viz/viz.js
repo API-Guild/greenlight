@@ -38,7 +38,7 @@ export default class Viz extends React.Component {
       windowWidth: vizLayout().width,
       layout: vizLayout().layout,
     });
-    this.initViz()
+    this.initViz(this.props.vizIndex)
   }
 
   // determines if a new viz object should be reloaded given changes to state
@@ -46,12 +46,12 @@ export default class Viz extends React.Component {
     // server side rendering means that window layouts cannot be determined at build time
     // therefore it is necessary to reinitialize the viz in this scenario
     if (this.state.layout === undefined) {
-      this.initViz()
+      this.initViz(this.props.vizIndex)
     }
     // reload the viz with a new device layout if it does not match the previous setting 
     // and the fixedLayout prop is false -> resizes on different window sizes 
     if(!this.state.fixedLayout && (this.state.layout !== prevState.layout)) {
-      this.initViz()
+      this.initViz(this.props.vizIndex)
     }
   }
 
@@ -73,8 +73,17 @@ export default class Viz extends React.Component {
   }
 
   // Initializes the Tableau visualization
-  initViz() {
-    // use React ref to target the embedding <div> https://reactjs.org/docs/refs-and-the-dom.html
+  initViz(vizIndex) {
+    let embedUrl;
+
+    // handles URLs for single strings and arrays of URLs
+    if (!this.props.vizArray) {
+      embedUrl = this.state.vizUrl;
+    }
+    else {
+      embedUrl = this.state.vizUrl[vizIndex];
+    }
+
     const vizOptions = {
       device: this.state.device,
       width: this.state.width,
@@ -92,7 +101,7 @@ export default class Viz extends React.Component {
 
     // Create a new viz object and embed it in the container div.
     // eslint-disable-next-line no-undef
-    this.props.setVizObj(new tableau.Viz(this.vizRef.current, this.state.vizUrl, vizOptions));
+    this.props.setVizObj(new tableau.Viz(this.vizRef.current, embedUrl, vizOptions));
   }
 
   // Clears the vizObj if it previously was assigned to a different object
