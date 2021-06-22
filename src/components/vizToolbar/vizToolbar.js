@@ -104,11 +104,10 @@ export default function VizToolbar(props) {
     <div className={vizTbStyles.toolbar}>
       {!props.vizArray ? null : (
         <VizNav
-          previous={{"name": "previous"}}
-          next={{"name": "next"}}
           color={color}
           outline={outline}
           rounded={rounded}
+          handleVizIndex={props.handleVizIndex}
         />
       )}
       {/* mobile layout */}

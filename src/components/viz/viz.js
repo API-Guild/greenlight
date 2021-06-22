@@ -53,6 +53,10 @@ export default class Viz extends React.Component {
     if(!this.state.fixedLayout && (this.state.layout !== prevState.layout)) {
       this.initViz(this.props.vizIndex)
     }
+
+    if(this.props.vizIndex !== prevProps.vizIndex) {
+      this.initViz(this.props.vizIndex)
+    }
   }
 
   componentWillUnmount() {
@@ -102,6 +106,8 @@ export default class Viz extends React.Component {
     // Create a new viz object and embed it in the container div.
     // eslint-disable-next-line no-undef
     this.props.setVizObj(new tableau.Viz(this.vizRef.current, embedUrl, vizOptions));
+
+    console.count('initViz()')
   }
 
   // Clears the vizObj if it previously was assigned to a different object
@@ -110,6 +116,8 @@ export default class Viz extends React.Component {
       let vizDispose = this.props.vizObj;
       vizDispose.dispose();
       this.props.setVizObj(vizDispose);
+
+      console.count('disposeViz()')
     }
   }
 
