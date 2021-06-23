@@ -19,7 +19,7 @@ export default function Search() {
         <span className="icon is-small is-left">
           <FontAwesomeIcon icon={faSearch}/>
         </span>
-        <span className="icon is-small is-right" onClick={clearSearch} onKeyPress={clearSearch} role="button" tabIndex={0}>
+        <span className="icon is-small is-right" onClick={clearSearch} onKeyDown={clearSearch} role="button" tabIndex={0}>
           <button className="delete is-small" aria-label="clear search"/>
         </span>
       </p>

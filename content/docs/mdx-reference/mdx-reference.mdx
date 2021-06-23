@@ -123,26 +123,23 @@ component and provides examples so you can use them for your own content.
 ## Tableau Visualization
 ```jsx
 <Tableau
-  viz="https://public.tableau.com/views/OilGasProduction_16207892650600/AssetProductionReport"
-  customToolbar={true}
-  toolbarOptions={{
-    buttons: [
-      'undo',
-      'redo',
-      'reset'
-    ],
-    color: 'danger',
-    outline: false,
-    rounded: false,
-    downloads: [
-      'pdf',
-      'image',
-      'powerpoint'
-    ],
-  }}
+  viz={[
+    "https://public.tableau.com/views/Greenlight/GreenlightProfitDashboard",
+    "https://public.tableau.com/views/Greenlight/SummaryofProfitAnalysis",
+    "https://public.tableau.com/views/Greenlight/WeeklyMetrics",
+  ]}
 />
 ```
 ### Result:
+<Tableau
+  viz={[
+    "https://public.tableau.com/views/Greenlight/GreenlightProfitDashboard",
+    "https://public.tableau.com/views/Greenlight/SummaryofProfitAnalysis",
+    "https://public.tableau.com/views/Greenlight/WeeklyMetrics",
+  ]}
+/>
+
+<!-- 
 <Tableau
   viz="https://public.tableau.com/views/OilGasProduction_16207892650600/AssetProductionReport"
   customToolbar={true}
@@ -162,4 +159,4 @@ component and provides examples so you can use them for your own content.
       'powerpoint'
     ],
   }}
-/>
+/> -->

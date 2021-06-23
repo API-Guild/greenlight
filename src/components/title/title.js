@@ -48,7 +48,7 @@ const titleSizer = (size, longTitle) => {
 const subtitlerSizer = (size) => {
   let sizeClass = '';
 
-  if (typeof size === 'string') {
+  if (typeof size === 'number') {
     if (size <= 5) {
       sizeClass = `is-size-${size}-tablet is-size-${size+1}-mobile`;
     }

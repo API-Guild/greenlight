@@ -1,7 +1,7 @@
 import React, {useState, useEffect} from "react"
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faCloudDownloadAlt } from '@fortawesome/free-solid-svg-icons'
-import * as vizTbStyles from "./vizToolbar.module.css"
+import * as vizTbStyles from "./vizToolbar.module.scss"
 import * as set from "./toolBarConfig/toolBarConfig"
 import VizNav from "./components/vizNav/vizNav"
 import DownloadOptions from "./components/downloadOptions/downloadOptions"
@@ -102,13 +102,14 @@ export default function VizToolbar(props) {
 
   return (
     <div className={vizTbStyles.toolbar}>
-      <VizNav
-        previous={{"name": "previous"}}
-        next={{"name": "next"}}
-        color={color}
-        outline={outline}
-        rounded={rounded}
-      />
+      {!props.vizArray ? null : (
+        <VizNav
+          color={color}
+          outline={outline}
+          rounded={rounded}
+          handleVizIndex={props.handleVizIndex}
+        />
+      )}
       {/* mobile layout */}
       <div className="buttons are-small is-centered is-hidden-tablet">
         <Button

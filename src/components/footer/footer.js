@@ -39,7 +39,7 @@ export default function Footer() {
               </a>
             </li>
             <li>
-              <a href="https://www.buymeacoffee.com/stelloprint">
+              <a href="https://www.buymeacoffee.com/stelloprint" target="_blank" rel="noreferrer">
                 <img 
                   className={bmc} 
                   src="https://img.buymeacoffee.com/button-api/?text=Buy me a beer!&emoji=🍺&slug=stelloprint&button_colour=0df2c1&font_colour=000000&font_family=Lato&outline_colour=000000&coffee_colour=FFDD00"
