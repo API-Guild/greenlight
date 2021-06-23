@@ -53,7 +53,7 @@ export default class Viz extends React.Component {
     if(!this.state.fixedLayout && (this.state.layout !== prevState.layout)) {
       this.initViz(this.props.vizIndex)
     }
-
+    // reload the viz whenever vizIndex has changed to allow for navigation within an array of URLs
     if(this.props.vizIndex !== prevProps.vizIndex) {
       this.initViz(this.props.vizIndex)
     }

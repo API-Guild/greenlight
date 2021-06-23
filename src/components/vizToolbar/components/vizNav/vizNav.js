@@ -6,8 +6,8 @@ import { navBtn, vizNav } from "./vizNav.module.css"
 export default function VizNav(props) {
   const btnStyles = `${props.color} ${props.outline} ${props.rounded} ${navBtn}`;
 
-  // onClick={props.handleVizIndex(-1)}
-
+  // props.handleVizIndex() is defined in the <Tableau/> component
+  // it allows for navigation within an array of URLs
   const Next = () => {
     props.handleVizIndex(1);
   }

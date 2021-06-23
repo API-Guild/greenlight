@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react"
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { 
-  faUndoAlt, faRedoAlt, faHistory, faSyncAlt, faShareAlt, faInfoCircle, faExternalLinkAlt, faLink, faBook, faFileContract 
+  faUndoAlt, faRedoAlt, faHistory, faSyncAlt, faShareAlt, faInfoCircle, faLink, faBook, faFileContract 
 } from '@fortawesome/free-solid-svg-icons'
 import * as set from "../../toolBarConfig/toolBarConfig"
 import Modal from "../../../modal/modal"

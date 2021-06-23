@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react"
+import React, { useState } from "react"
 import Box from "../box/box"
 import Viz from "../viz/viz"
 import VizToolbar from "../vizToolbar/vizToolbar"
@@ -10,16 +10,15 @@ export default function Tableau(props) {
   // index used to navigate through an array of viz URLs
   const [vizIndex, setVizIndex] = useState(0);
 
+  // allows for navigation functionality within arrays of URLs
   const handleVizIndex = (step) => {
-    console.log('old vizIndex:', vizIndex);
-    console.log('add ' + step);
     const vizLen = props.viz.length;
     // if vizIndex equals or exceeds the length of the array, loop back to the first value
     if (vizIndex + step >= vizLen) {
       setVizIndex(0);
     }
     // if vizIndex becomes negative, loop towards the last value in the array
-    else if (vizIndex + step <= 0) {
+    else if (vizIndex + step < 0) {
       setVizIndex(vizLen -1);
     }
     // + 1 or -1 to vizIndex based on click events from navigation buttons
@@ -27,10 +26,6 @@ export default function Tableau(props) {
       setVizIndex(vizIndex + step);
     }
   }
-
-  useEffect(() => {
-    console.log('new vizIndex:', vizIndex)
-  },[vizIndex])
 
   // since default is to display the toolbar, an undefined prop should equal true
   // i.e. only explicitly setting it to false would exclude it
