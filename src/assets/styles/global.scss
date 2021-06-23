@@ -2,6 +2,7 @@
 
 // Importing Bulma variables so they may be used or be overwritten before building css
 @import "~bulma/sass/utilities/initial-variables";
+@import "~bulma/sass/utilities/functions";
 
 // colors use hsl to allow Bulma to optimize their values for readability
 // for more info see: https://bulma.io/documentation/overview/functions/#the-code-findcolorinvert-code-function
@@ -101,6 +102,10 @@ $panel-block-active-icon-color: $accentMain;
 $panel-block-active-border-left-color: $accentMain;
 $panel-tab-active-color: $accentSecondary;
 $panel-item-border: $accentDark;
+
+// Modal
+$modal-background-background-color: bulmaRgba($background, 0.86);
+$modal-card-title-color: $accentMain;
 
 // Content <p>, <h1>...<h6>, <ul>, <ol>, <blockquote>, <table>, <strong>
 $content-blockquote-background-color: $sombre;

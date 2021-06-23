@@ -52,7 +52,7 @@ export default function ContactForm(props) {
           </span>
           <span 
             className="icon is-small is-right" role="button" tabIndex={0} 
-            onClick={clearFirstName} onKeyPress={clearFirstName}
+            onClick={clearFirstName} onKeyDown={clearFirstName}
           >
             <button className="delete is-small" aria-label="clear field"/>
           </span>
@@ -73,7 +73,7 @@ export default function ContactForm(props) {
           </span>
           <span 
             className="icon is-small is-right" role="button" tabIndex={0}
-            onClick={clearLastName} onKeyPress={clearLastName}
+            onClick={clearLastName} onKeyDown={clearLastName}
           >
             <button className="delete is-small" aria-label="clear field"/>
           </span>
@@ -94,7 +94,7 @@ export default function ContactForm(props) {
           </span>
           <span 
             className="icon is-small is-right" role="button" tabIndex={0}
-            onClick={clearEmail} onKeyPress={clearEmail}
+            onClick={clearEmail} onKeyDown={clearEmail}
           >
             <button className="delete is-small" aria-label="clear field"/>
           </span>
@@ -130,7 +130,7 @@ export default function ContactForm(props) {
           />
           <span 
             className="icon is-small is-right" role="button" tabIndex={0}
-            onClick={clearMessage} onKeyPress={clearMessage}
+            onClick={clearMessage} onKeyDown={clearMessage}
           >
             <button className="delete is-small" aria-label="clear field"/>
           </span>
@@ -147,7 +147,7 @@ export default function ContactForm(props) {
           </button>
         </div>
         <div className="control">
-          <button className="button is-light" tabIndex={0} onClick={clearAll} onKeyPress={clearAll}>
+          <button className="button is-light" tabIndex={0} onClick={clearAll} onKeyDown={clearAll}>
             <span className="icon">
               <FontAwesomeIcon icon={faBackspace}/>
             </span>

@@ -54,7 +54,7 @@ const Hamburger = (props) => {
       aria-expanded="false"
       data-target="navMenu"
       onClick={props.showMenu}
-      onKeyUp={props.showMenu}
+      onKeyDown={props.showMenu}
       tabIndex={0}
     >
       <span aria-hidden="true" data-target="navMenu"></span>

@@ -50,7 +50,7 @@ export default function Dropdown(props) {
         ref={navLinkRef}
         className={`navbar-link ${dropdownStyles.navbarLink}`} 
         onClick={() => showDropdown()} 
-        onKeyPress={() => showDropdown()} 
+        onKeyDown={() => showDropdown()} 
         role="button" 
         tabIndex={0}
       >
