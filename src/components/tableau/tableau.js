@@ -11,23 +11,25 @@ export default function Tableau(props) {
   const [vizIndex, setVizIndex] = useState(0);
 
   const handleVizIndex = (step) => {
-    console.log('vizIndex:', vizIndex);
+    console.log('old vizIndex:', vizIndex);
     console.log('add ' + step);
+    const vizLen = props.viz.length;
+    // if vizIndex equals or exceeds the length of the array, loop back to the first value
+    if (vizIndex + step >= vizLen) {
+      setVizIndex(0);
+    }
+    // if vizIndex becomes negative, loop towards the last value in the array
+    else if (vizIndex + step <= 0) {
+      setVizIndex(vizLen -1);
+    }
     // + 1 or -1 to vizIndex based on click events from navigation buttons
-    setVizIndex(vizIndex + step);
+    else {
+      setVizIndex(vizIndex + step);
+    }
   }
 
   useEffect(() => {
     console.log('new vizIndex:', vizIndex)
-    const vizLen = props.viz.length;
-    // if vizIndex equals or exceeds the length of the array, loop back to the first value
-    if (vizIndex >= vizLen) {
-      setVizIndex(0);
-    }
-    // if vizIndex becomes negative, loop towards the last value in the array
-    else if (vizIndex < 0) {
-      setVizIndex(vizLen -1);
-    }
   },[vizIndex])
 
   // since default is to display the toolbar, an undefined prop should equal true
