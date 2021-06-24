@@ -108,6 +108,8 @@ export default function VizToolbar(props) {
           outline={outline}
           rounded={rounded}
           handleVizIndex={props.handleVizIndex}
+          vizUrl={props.vizUrl} 
+          vizIndex={props.vizIndex}
         />
       )}
       {/* mobile layout */}

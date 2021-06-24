@@ -29,7 +29,6 @@ export default function Button(props) {
       setWorkbookName(props.vizObj.getWorkbook().getName());
       setActiveSheet(props.vizObj.getWorkbook().getActiveSheet());
       setActiveName(props.vizObj.getWorkbook().getActiveSheet().getName());
-      // setActiveDataSource(props.vizObj.getWorkbook().getPublishedSheetsInfo().getDataSourcesAsync());
       setWorksheets(props.vizObj.getWorkbook().getActiveSheet().getWorksheets());
       setPublishedSheets(props.vizObj.getWorkbook().getPublishedSheetsInfo());
 
