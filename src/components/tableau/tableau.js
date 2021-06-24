@@ -5,7 +5,7 @@ import VizToolbar from "../vizToolbar/vizToolbar"
 
 export default function Tableau(props) {
   // shared viz object updated by the <Viz/> component but required by functions in <VizToolbar/>
-  const [vizObj, setVizObj] = useState(null);
+  const [vizObj, setVizObj] = useState(undefined);
   // lets components know if the viz has been loaded to obtain useful metadata and enable buttons
   const [loaded, setLoaded] = useState(false);
   // index used to navigate through an array of viz URLs
