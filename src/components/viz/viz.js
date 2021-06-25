@@ -97,6 +97,8 @@ export default class Viz extends React.Component {
       onFirstVizSizeKnown: (event) => {
       },
       onFirstInteractive: (event) => {
+        // enables <VizToolbar> buttons that depend on an initialized viz
+        this.props.setLoaded(true);
       }
     };
 
@@ -126,7 +128,6 @@ export default class Viz extends React.Component {
         console.error(err);
       }
     )
-    .then(this.props.setLoaded(true));
 
     console.count('initViz()')
   }

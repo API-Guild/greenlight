@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react"
+import React, { useState } from "react"
 import Box from "../box/box"
 import Viz from "../viz/viz"
 import VizToolbar from "../vizToolbar/vizToolbar"
@@ -10,11 +10,6 @@ export default function Tableau(props) {
   const [loaded, setLoaded] = useState(false);
   // index used to navigate through an array of viz URLs
   const [vizIndex, setVizIndex] = useState(0);
-
-  useEffect(() => {
-    console.count('loaded')
-    console.log('load status: ', loaded)
-  },[loaded])
 
   // allows for navigation functionality within arrays of URLs
   const handleVizIndex = (step) => {

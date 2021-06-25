@@ -42,6 +42,15 @@ export default function VizToolbar(props) {
     }
   },[props.toolbarOptions])
 
+  // by default buttons are disabled until a Tableau vizualization is loaded
+  const [disabled, setDisabled] = useState(true);
+
+  useEffect(() => {
+    console.log('props.loaded', props.loaded)
+    setDisabled(props.loaded ? false : true);
+    console.log('disabled', disabled)
+  },[props.loaded])
+
   // sets download options for the select control
   const [downloadSelect, setDownload] = useState('Download');
 
@@ -51,40 +60,46 @@ export default function VizToolbar(props) {
   }
 
   const handleDownload = () => {
-    switch (downloadSelect) {
-      case 'Download':
-        return;
-      case 'PDF':
-        props.vizObj.showExportPDFDialog()
-        break;
-      case 'Image':
-        props.vizObj.showExportImageDialog()
-        break;
-      case 'Data':
-        if (props.vizObj.getWorkbook().getActiveSheet() === undefined) {
-          alert('select a chart or sheet to download data');
-        }
-        else {
-          props.vizObj.showExportDataDialog()
-        }
-        break;
-      case 'CrossTab':
-        if (props.vizObj.getWorkbook().getActiveSheet() === undefined) {
-          alert('select a chart or sheet to download crosstab data');
-        }
-        else {
-          props.vizObj.showExportCrossTabDialog()
-        }
-        break;
-      case 'PowerPoint':
-        props.vizObj.showExportPowerPointDialog()
-        break;
-      case 'Workbook':
-        props.vizObj.showDownloadWorkbookDialog()
-        break;
-      default:
-        return;
+    try {
+      switch (downloadSelect) {
+        case 'Download':
+          return;
+        case 'PDF':
+          props.vizObj.showExportPDFDialog()
+          break;
+        case 'Image':
+          props.vizObj.showExportImageDialog()
+          break;
+        case 'Data':
+          if (props.vizObj.getWorkbook().getActiveSheet() === undefined) {
+            alert('select a chart or sheet to download data');
+          }
+          else {
+            props.vizObj.showExportDataDialog()
+          }
+          break;
+        case 'CrossTab':
+          if (props.vizObj.getWorkbook().getActiveSheet() === undefined) {
+            alert('select a chart or sheet to download crosstab data');
+          }
+          else {
+            props.vizObj.showExportCrossTabDialog()
+          }
+          break;
+        case 'PowerPoint':
+          props.vizObj.showExportPowerPointDialog()
+          break;
+        case 'Workbook':
+          props.vizObj.showDownloadWorkbookDialog()
+          break;
+        default:
+          return;
+      }
     }
+    catch(err) {
+      console.error(err);
+    }
+    setDownload('Download');
   }
 
   // toolbar settings and styles, the set methods help standardize 
@@ -121,13 +136,19 @@ export default function VizToolbar(props) {
           outline={outline}
           rounded={rounded}
           vizObj={props.vizObj}
+          disabled={disabled}
         />
         {!downloadFlag ? null : (
           <div className={`field has-addons has-addons-left ${vizTbStyles.field}`}>
             <div className="control">
               <div className={`select is-small is-hidden-tablet ${selectDivStyles}`}>
                 {/* eslint-disable-next-line */} 
-                <select className={selectStyles} value={downloadSelect} onChange={handledownloadSelect}>
+                <select 
+                  className={selectStyles} 
+                  value={downloadSelect} 
+                  onChange={handledownloadSelect} 
+                  disabled={disabled}
+                >
                   <option disabled hidden>Download</option>
                   <DownloadOptions
                     downloads={options.downloads}
@@ -141,6 +162,7 @@ export default function VizToolbar(props) {
                 type="submit" 
                 className={`button ${btnStyles}`}
                 onClick={handleDownload}
+                disabled={disabled}
               >
                 <span className="icon">
                   <FontAwesomeIcon icon={faCloudDownloadAlt}/>
@@ -159,13 +181,19 @@ export default function VizToolbar(props) {
           outline={outline}
           rounded={rounded}
           vizObj={props.vizObj}
+          disabled={disabled}
         />
         {!downloadFlag ? null : (
           <div className={`field has-addons has-addons-left ${vizTbStyles.field}`}>
             <div className="control">
               <div className={`select is-hidden-mobile ${selectDivStyles}`}> 
                 {/* eslint-disable-next-line */}
-                <select className={selectStyles} value={downloadSelect} onChange={handledownloadSelect}>
+                <select 
+                  className={selectStyles} 
+                  value={downloadSelect} 
+                  onChange={handledownloadSelect} 
+                  disabled={disabled}
+                >
                   <option disabled hidden>Download</option>
                   <DownloadOptions
                     downloads={options.downloads}
@@ -179,6 +207,7 @@ export default function VizToolbar(props) {
                 type="submit" 
                 className={`button ${btnStyles}`}
                 onClick={handleDownload}
+                disabled={disabled}
               >
                 <span className="icon">
                   <FontAwesomeIcon icon={faCloudDownloadAlt}/>
