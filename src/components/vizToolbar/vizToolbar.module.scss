@@ -1,4 +1,3 @@
-@import "~bulma/sass/utilities/derived-variables";
 @import "../../assets/styles/themes.scss";
 
 .toolbar {
@@ -48,6 +47,10 @@
 }
 
 // for primary text selects
+.selectDivPrimary select[disabled] {
+  color: $primary;
+}
+
 .selectDivPrimary:not(:hover)::after {
   border-color: $primary !important;
 }
@@ -57,6 +60,10 @@
 }
 
 // for warning text selects
+.selectDivWarning select[disabled] {
+  color: $warning;
+}
+
 .selectDivWarning:not(:hover)::after {
   border-color: $warning !important;
 }
@@ -66,6 +73,10 @@
 }
 
 // for info text selects
+.selectDivInfo select[disabled] {
+  color: $info;
+}
+
 .selectDivInfo:not(:hover)::after {
   border-color: $info !important;
 }
@@ -75,6 +86,10 @@
 }
 
 // for success text selects
+.selectDivSuccess select[disabled] {
+  color: $success;
+}
+
 .selectDivSuccess:not(:hover)::after {
   border-color: $success !important;
 }
@@ -84,6 +99,10 @@
 }
 
 // for danger text selects
+.selectDivDanger select[disabled] {
+  color: $danger;
+}
+
 .selectDivDanger:not(:hover)::after {
   border-color: $danger !important;
 }
@@ -93,6 +112,10 @@
 }
 
 // for link text selects
+.selectDivLink select[disabled] {
+  color: $link;
+}
+
 .selectDivLink:not(:hover)::after {
   border-color: $link !important;
 }

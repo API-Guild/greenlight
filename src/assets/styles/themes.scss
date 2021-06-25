@@ -1,6 +1,6 @@
 @charset "utf-8";
 
-// Importing Bulma variables so they may be used or be overwritten before building css
+// Importing initial Bulma variables and functions so they may be used to build themes
 @import "~bulma/sass/utilities/initial-variables";
 @import "~bulma/sass/utilities/functions";
 
@@ -109,3 +109,5 @@ $modal-card-title-color: $accentMain;
 
 // Content <p>, <h1>...<h6>, <ul>, <ol>, <blockquote>, <table>, <strong>
 $content-blockquote-background-color: $sombre;
+
+@import "~bulma/sass/utilities/derived-variables";

@@ -1,9 +1,11 @@
-@import "./themes.scss";
+@charset "utf-8";
 
+// imports the themes file first, evaluated first
+@import "./themes.scss";
+// imports the entire bulma library, evaluated last
 @import "~bulma/bulma.sass";
 
 // Local CSS classes
-
 html,
 body {
   height: 100%;
