@@ -60,6 +60,15 @@
   color: $primary;
 }
 
+.selectDivPrimary:hover select[disabled] {
+  color: $primary;
+  background-color: $background;
+}
+
+.selectDivPrimary[disabled]:hover::after {
+  border-color: $primary !important;
+}
+
 .selectDivPrimary:hover select {
   color: $black;
   background-color: $primary;
@@ -76,6 +85,15 @@
 // for warning text selects
 .selectDivWarning select[disabled] {
   color: $warning;
+}
+
+.selectDivWarning:hover select[disabled] {
+  color: $warning;
+  background-color: $background;
+}
+
+.selectDivWarning[disabled]:hover::after {
+  border-color: $warning !important;
 }
 
 .selectDivWarning:hover select {
@@ -96,6 +114,15 @@
   color: $info;
 }
 
+.selectDivInfo:hover select[disabled] {
+  color: $info;
+  background-color: $background;
+}
+
+.selectDivInfo[disabled]:hover::after {
+  border-color: $info !important;
+}
+
 .selectDivInfo:hover select {
   color: $white;
   background-color: $info;
@@ -112,6 +139,15 @@
 // for success text selects
 .selectDivSuccess select[disabled] {
   color: $success;
+}
+
+.selectDivSuccess:hover select[disabled] {
+  color: $success;
+  background-color: $background;
+}
+
+.selectDivSuccess[disabled]:hover::after {
+  border-color: $success !important;
 }
 
 .selectDivSuccess:hover select {
@@ -132,6 +168,15 @@
   color: $danger;
 }
 
+.selectDivDanger:hover select[disabled] {
+  color: $danger;
+  background-color: $background;
+}
+
+.selectDivDanger[disabled]:hover::after {
+  border-color: $danger !important;
+}
+
 .selectDivDanger:hover select {
   color: $white;
   background-color: $danger;
@@ -148,6 +193,15 @@
 // for link text selects
 .selectDivLink select[disabled] {
   color: $link;
+}
+
+.selectDivLink:hover select[disabled] {
+  color: $link;
+  background-color: $background;
+}
+
+.selectDivLink[disabled]:hover::after {
+  border-color: $link !important;
 }
 
 .selectDivLink:hover select {
