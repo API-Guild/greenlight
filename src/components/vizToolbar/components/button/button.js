@@ -29,7 +29,6 @@ export default function Button(props) {
       setWorkbookName(props.vizObj.getWorkbook().getName());
       setActiveSheet(props.vizObj.getWorkbook().getActiveSheet());
       setActiveName(props.vizObj.getWorkbook().getActiveSheet().getName());
-      // setActiveDataSource(props.vizObj.getWorkbook().getPublishedSheetsInfo().getDataSourcesAsync());
       setWorksheets(props.vizObj.getWorkbook().getActiveSheet().getWorksheets());
       setPublishedSheets(props.vizObj.getWorkbook().getPublishedSheetsInfo());
 
@@ -44,12 +43,12 @@ export default function Button(props) {
   
   // array of supported buttons, all of them are displayed by default
   const buttonsArray = [
-    {name: "Undo", icon: faUndoAlt, function: () => {props.vizObj.undoAsync()}},
-    {name: "Redo", icon: faRedoAlt, function: () => {props.vizObj.redoAsync()}},
-    {name: "Reset", icon: faHistory, function: () => {props.vizObj.revertAllAsync()}},
-    {name: "Refresh", icon: faSyncAlt, function: () => {props.vizObj.refreshDataAsync()}},
+    {name: "Undo", icon: faUndoAlt, function: () => {try{props.vizObj.undoAsync()} catch(err){console.error(err)}}},
+    {name: "Redo", icon: faRedoAlt, function: () => {try{props.vizObj.redoAsync()} catch(err){console.error(err)}}},
+    {name: "Reset", icon: faHistory, function: () => {try{props.vizObj.revertAllAsync()} catch(err){console.error(err)}}},
+    {name: "Refresh", icon: faSyncAlt, function: () => {try{props.vizObj.refreshDataAsync()} catch(err){console.error(err)}}},
     {name: "Details", icon: faInfoCircle, function: () => {handleModal()}},
-    {name: "Share", icon: faShareAlt, function: () => {props.vizObj.showShareDialog()}},  
+    {name: "Share", icon: faShareAlt, function: () => {try{props.vizObj.showShareDialog()} catch(err){console.error(err)}}},  
   ];
 
   // determines what buttons get rendered, default is all 
@@ -64,6 +63,7 @@ export default function Button(props) {
             key={button.name + '-' + index + '-' + Math.random().toString(36).substr(2, 10)} 
             className={`button ${btnStyles}`}
             onClick={button.function}
+            disabled={props.disabled}
           >
             <span className="icon">
               <FontAwesomeIcon icon={button.icon}/>

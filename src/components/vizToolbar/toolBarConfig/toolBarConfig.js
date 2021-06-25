@@ -1,4 +1,14 @@
-import { selectDiv1, selectDiv2 } from "../vizToolbar.module.scss"
+import {
+  selectDiv, 
+  selectDivLight, 
+  selectDivDark, 
+  selectDivPrimary, 
+  selectDivWarning, 
+  selectDivInfo, 
+  selectDivSuccess, 
+  selectDivDanger, 
+  selectDivLink 
+} from "../vizToolbar.module.scss"
 
 // finds matches between props.buttons and defaultButtons to render
 // <Button/> components in <VizToolbar/> based on user selection
@@ -126,22 +136,45 @@ export const selectTextSet = (color, outline) => {
   return selectText;
 }
 
+export const selectHover = (color) => {
+
+}
+
 // sets arrow border color on select control
 export const selectArrowSet = (color, outline) => {
-  let selectArrow = `is-${color}`;
+  let selectArrow = `is-${color} ${selectDiv}`;
 
-  if (outline === undefined && color === undefined) {
-    selectArrow = `is-primary`;
+  // select tags that are outlined (default) lacking a background color
+  if (outline === undefined || outline === true) {
+    if (color === undefined || color === 'primary') {
+      selectArrow = `is-primary ${selectDivPrimary} ${selectDiv}`;
+    }
+    else if (color === 'warning') {
+      selectArrow = `is-${color} ${selectDivWarning} ${selectDiv}`;
+    }
+    else if (color === 'info') {
+      selectArrow = `is-${color} ${selectDivInfo} ${selectDiv}`;
+    }
+    else if (color === 'success') {
+      selectArrow = `is-${color} ${selectDivSuccess} ${selectDiv}`;
+    }
+    else if (color === 'danger') {
+      selectArrow = `is-${color} ${selectDivDanger} ${selectDiv}`;
+    }
+    else if (color === 'link') {
+      selectArrow = `is-${color} ${selectDivLink} ${selectDiv}`;
+    }
   }
+  // select tags with a background color
   else if (outline === false) {
     if (color === 'primary' || color === 'link' || color === 'warning') {
-      selectArrow = `is-${color} ${selectDiv2}`;
+      selectArrow = `is-${color} ${selectDivDark} ${selectDiv}`;
     }
     else if (color === undefined) {
-      selectArrow = `is-primary ${selectDiv2}`;
+      selectArrow = `is-primary ${selectDivDark} ${selectDiv}`;
     }
     else {
-      selectArrow = `is-${color} ${selectDiv1}`;
+      selectArrow = `is-${color} ${selectDivLight} ${selectDiv}`;
     }
   }
 

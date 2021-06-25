@@ -38,7 +38,7 @@ export default class Viz extends React.Component {
       windowWidth: vizLayout().width,
       layout: vizLayout().layout,
     });
-    this.initViz(this.props.vizIndex)
+    this.initViz(this.props.vizIndex);
   }
 
   // determines if a new viz object should be reloaded given changes to state
@@ -46,16 +46,16 @@ export default class Viz extends React.Component {
     // server side rendering means that window layouts cannot be determined at build time
     // therefore it is necessary to reinitialize the viz in this scenario
     if (this.state.layout === undefined) {
-      this.initViz(this.props.vizIndex)
+      this.initViz(this.props.vizIndex);
     }
     // reload the viz with a new device layout if it does not match the previous setting 
     // and the fixedLayout prop is false -> resizes on different window sizes 
     if(!this.state.fixedLayout && (this.state.layout !== prevState.layout)) {
-      this.initViz(this.props.vizIndex)
+      this.initViz(this.props.vizIndex);
     }
     // reload the viz whenever vizIndex has changed to allow for navigation within an array of URLs
     if(this.props.vizIndex !== prevProps.vizIndex) {
-      this.initViz(this.props.vizIndex)
+      this.initViz(this.props.vizIndex);
     }
   }
 
@@ -68,7 +68,7 @@ export default class Viz extends React.Component {
         layout: vizLayout().layout, 
       })
     });
-    this.disposeViz()
+    this.disposeViz();
     
     // fix Warning: Can't perform a React state update on an unmounted component
     this.setState = (state, callback) => {
@@ -97,26 +97,46 @@ export default class Viz extends React.Component {
       onFirstVizSizeKnown: (event) => {
       },
       onFirstInteractive: (event) => {
+        // enables <VizToolbar> buttons that depend on an initialized viz
+        this.props.setLoaded(true);
       }
     };
 
     // If a previous viz object exists, delete it.
-    this.disposeViz()
+    this.disposeViz();
 
-    // Create a new viz object and embed it in the container div.
-    // eslint-disable-next-line no-undef
-    this.props.setVizObj(new tableau.Viz(this.vizRef.current, embedUrl, vizOptions));
+    let viz;
+    // promise is used to chain operations upon success or error
+    const embed = new Promise((resolve, reject) => {
+      // Create a new viz object and embed it in the container div.
+      try {
+        // eslint-disable-next-line no-undef
+        viz = new tableau.Viz(this.vizRef.current, embedUrl, vizOptions);
+      }
+      catch(err) {
+        // reference: https://help.tableau.com/current/api/js_api/en-us/JavaScriptAPI/js_api_ref.htm#tableauexception_class
+        reject(`Tableau Error: ${err}`);
+      }
+      // passes the new viz object down the chain
+      resolve(viz);
+    });
+
+    embed.then(
+      (obj) => {this.props.setVizObj(obj);},
+      (err) => {
+        this.props.setLoaded(false);
+        console.error(err);
+      }
+    )
 
     console.count('initViz()')
   }
 
   // Clears the vizObj if it previously was assigned to a different object
   disposeViz() {
-    if (this.props.vizObj) {
-      let vizDispose = this.props.vizObj;
-      vizDispose.dispose();
-      this.props.setVizObj(vizDispose);
-
+    this.props.setLoaded(false);
+    if (this.props.vizObj !== undefined) {
+      this.props.setVizObj(this.props.vizObj.dispose());
       console.count('disposeViz()')
     }
   }
