@@ -46,9 +46,7 @@ export default function VizToolbar(props) {
   const [disabled, setDisabled] = useState(true);
 
   useEffect(() => {
-    console.log('props.loaded', props.loaded)
     setDisabled(props.loaded ? false : true);
-    console.log('disabled', disabled)
   },[props.loaded])
 
   // sets download options for the select control
@@ -137,6 +135,7 @@ export default function VizToolbar(props) {
           rounded={rounded}
           vizObj={props.vizObj}
           disabled={disabled}
+          loaded={props.loaded}
         />
         {!downloadFlag ? null : (
           <div className={`field has-addons has-addons-left ${vizTbStyles.field}`}>
@@ -182,6 +181,7 @@ export default function VizToolbar(props) {
           rounded={rounded}
           vizObj={props.vizObj}
           disabled={disabled}
+          loaded={props.loaded}
         />
         {!downloadFlag ? null : (
           <div className={`field has-addons has-addons-left ${vizTbStyles.field}`}>

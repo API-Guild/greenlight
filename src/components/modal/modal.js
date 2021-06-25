@@ -24,6 +24,7 @@ export default function Modal(props) {
           aria-label="close modal"
           tabIndex={0}
         />
+        {/* determines if modal has card or normal layout */}
         {!props.card ? (
           <>
             <div className="modal-content">
