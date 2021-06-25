@@ -141,7 +141,7 @@ export default function VizToolbar(props) {
         {!downloadFlag ? null : (
           <div className={`field has-addons has-addons-left ${vizTbStyles.field}`}>
             <div className="control">
-              <div className={`select is-small is-hidden-tablet ${selectDivStyles}`}>
+              <div className={`select is-small is-hidden-tablet ${selectDivStyles}`} disabled={disabled}>
                 {/* eslint-disable-next-line */} 
                 <select 
                   className={selectStyles} 
@@ -186,7 +186,7 @@ export default function VizToolbar(props) {
         {!downloadFlag ? null : (
           <div className={`field has-addons has-addons-left ${vizTbStyles.field}`}>
             <div className="control">
-              <div className={`select is-hidden-mobile ${selectDivStyles}`}> 
+              <div className={`select is-hidden-mobile ${selectDivStyles}`} disabled={disabled}> 
                 {/* eslint-disable-next-line */}
                 <select 
                   className={selectStyles} 

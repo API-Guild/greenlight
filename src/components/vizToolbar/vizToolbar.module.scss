@@ -28,6 +28,15 @@
   opacity: 0.5;
 }
 
+// shared for all selectDiv's
+.selectDiv[disabled]:not(:hover)::after {
+  opacity: 0.5;
+}
+
+.selectDiv[disabled]:hover::after {
+  opacity: 0.5;
+}
+
 // for white text selects
 .selectDivLight:not(:hover)::after {
   border-color: #fbfcfe !important;
