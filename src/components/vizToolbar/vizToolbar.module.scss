@@ -37,22 +37,22 @@
   opacity: 0.5;
 }
 
-// for white text selects
+// for white text selects (not outlined)
 .selectDivLight:not(:hover)::after {
-  border-color: #fbfcfe !important;
+  border-color: $white !important;
 }
 
 .selectDivLight:hover::after {
-  border-color: #fbfcfe !important;
+  border-color: $white !important;
 }
 
-// for black text selects
+// for black text selects (not outlined)
 .selectDivDark:not(:hover)::after {
-  border-color: #0a0a0a !important;
+  border-color: $black !important;
 }
 
 .selectDivDark:hover::after {
-  border-color: #0a0a0a !important;
+  border-color: $black !important;
 }
 
 // for primary text selects
@@ -60,12 +60,17 @@
   color: $primary;
 }
 
+.selectDivPrimary:hover select {
+  color: $black;
+  background-color: $primary;
+}
+
 .selectDivPrimary:not(:hover)::after {
   border-color: $primary !important;
 }
 
 .selectDivPrimary:hover::after {
-  border-color: $primary !important;
+  border-color: $black !important;
 }
 
 // for warning text selects
@@ -73,12 +78,17 @@
   color: $warning;
 }
 
+.selectDivWarning:hover select {
+  color: $black;
+  background-color: $warning;
+}
+
 .selectDivWarning:not(:hover)::after {
   border-color: $warning !important;
 }
 
 .selectDivWarning:hover::after {
-  border-color: $warning !important;
+  border-color: $black !important;
 }
 
 // for info text selects
@@ -86,12 +96,17 @@
   color: $info;
 }
 
+.selectDivInfo:hover select {
+  color: $white;
+  background-color: $info;
+}
+
 .selectDivInfo:not(:hover)::after {
   border-color: $info !important;
 }
 
 .selectDivInfo:hover::after {
-  border-color: $info !important;
+  border-color: $white !important;
 }
 
 // for success text selects
@@ -99,12 +114,17 @@
   color: $success;
 }
 
+.selectDivSuccess:hover select {
+  color: $white;
+  background-color: $success;
+}
+
 .selectDivSuccess:not(:hover)::after {
   border-color: $success !important;
 }
 
 .selectDivSuccess:hover::after {
-  border-color: $success !important;
+  border-color: $white !important;
 }
 
 // for danger text selects
@@ -112,12 +132,17 @@
   color: $danger;
 }
 
+.selectDivDanger:hover select {
+  color: $white;
+  background-color: $danger;
+}
+
 .selectDivDanger:not(:hover)::after {
   border-color: $danger !important;
 }
 
 .selectDivDanger:hover::after {
-  border-color: $danger !important;
+  border-color: $white !important;
 }
 
 // for link text selects
@@ -125,10 +150,15 @@
   color: $link;
 }
 
+.selectDivLink:hover select {
+  color: $black;
+  background-color: $link;
+}
+
 .selectDivLink:not(:hover)::after {
   border-color: $link !important;
 }
 
 .selectDivLink:hover::after {
-  border-color: $link !important;
+  border-color: $black !important;
 }

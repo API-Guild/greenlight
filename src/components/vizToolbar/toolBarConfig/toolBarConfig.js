@@ -136,6 +136,10 @@ export const selectTextSet = (color, outline) => {
   return selectText;
 }
 
+export const selectHover = (color) => {
+
+}
+
 // sets arrow border color on select control
 export const selectArrowSet = (color, outline) => {
   let selectArrow = `is-${color} ${selectDiv}`;
