@@ -29,7 +29,7 @@ export default function VizNav(props) {
           <span><strong>Previous</strong></span>
         </button>
 
-        <button className={`button is-static ${indexBtn}`}>{props.vizIndex + 1}/{vizzes}</button>
+        <button className={`button ${indexBtn}`}>{props.vizIndex + 1}/{vizzes}</button>
 
         <button className={`button ${btnStyles}`} onClick={Next}>
           <span><strong>Next</strong></span>
@@ -47,7 +47,7 @@ export default function VizNav(props) {
           <span><strong>Previous</strong></span>
         </button>
 
-        <button className={`button is-static ${indexBtn}`}>{props.vizIndex + 1}/{vizzes}</button>
+        <button className={`button ${indexBtn}`}>{props.vizIndex + 1}/{vizzes}</button>
 
         <button className={`button ${btnStyles}`} onClick={Next}>
           <span><strong>Next</strong></span>

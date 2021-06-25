@@ -1,3 +1,6 @@
+@import "~bulma/sass/utilities/derived-variables";
+@import "../../assets/styles/themes.scss";
+
 .toolbar {
   margin-bottom: 0.75rem;
 }
@@ -22,18 +25,78 @@
   border-bottom-left-radius: 7px !important;
 }
 
-.selectDiv1:not(:hover)::after {
+.select:disabled {
+  opacity: 0.5;
+}
+
+// for white text selects
+.selectDivLight:not(:hover)::after {
   border-color: #fbfcfe !important;
 }
 
-.selectDiv1:hover::after {
+.selectDivLight:hover::after {
   border-color: #fbfcfe !important;
 }
 
-.selectDiv2:not(:hover)::after {
+// for black text selects
+.selectDivDark:not(:hover)::after {
   border-color: #0a0a0a !important;
 }
 
-.selectDiv2:hover::after {
+.selectDivDark:hover::after {
   border-color: #0a0a0a !important;
+}
+
+// for primary text selects
+.selectDivPrimary:not(:hover)::after {
+  border-color: $primary !important;
+}
+
+.selectDivPrimary:hover::after {
+  border-color: $primary !important;
+}
+
+// for warning text selects
+.selectDivWarning:not(:hover)::after {
+  border-color: $warning !important;
+}
+
+.selectDivWarning:hover::after {
+  border-color: $warning !important;
+}
+
+// for info text selects
+.selectDivInfo:not(:hover)::after {
+  border-color: $info !important;
+}
+
+.selectDivInfo:hover::after {
+  border-color: $info !important;
+}
+
+// for success text selects
+.selectDivSuccess:not(:hover)::after {
+  border-color: $success !important;
+}
+
+.selectDivSuccess:hover::after {
+  border-color: $success !important;
+}
+
+// for danger text selects
+.selectDivDanger:not(:hover)::after {
+  border-color: $danger !important;
+}
+
+.selectDivDanger:hover::after {
+  border-color: $danger !important;
+}
+
+// for link text selects
+.selectDivLink:not(:hover)::after {
+  border-color: $link !important;
+}
+
+.selectDivLink:hover::after {
+  border-color: $link !important;
 }

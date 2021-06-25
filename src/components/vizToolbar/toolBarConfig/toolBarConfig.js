@@ -1,4 +1,13 @@
-import { selectDiv1, selectDiv2 } from "../vizToolbar.module.scss"
+import { 
+  selectDivLight, 
+  selectDivDark, 
+  selectDivPrimary, 
+  selectDivWarning, 
+  selectDivInfo, 
+  selectDivSuccess, 
+  selectDivDanger, 
+  selectDivLink 
+} from "../vizToolbar.module.scss"
 
 // finds matches between props.buttons and defaultButtons to render
 // <Button/> components in <VizToolbar/> based on user selection
@@ -130,18 +139,35 @@ export const selectTextSet = (color, outline) => {
 export const selectArrowSet = (color, outline) => {
   let selectArrow = `is-${color}`;
 
-  if (outline === undefined && color === undefined) {
-    selectArrow = `is-primary`;
+  if (outline === undefined || outline === true) {
+    if (color === undefined || color === 'primary') {
+      selectArrow = `is-primary ${selectDivPrimary}`;
+    }
+    else if (color === 'warning') {
+      selectArrow = `is-${color} ${selectDivWarning}`;
+    }
+    else if (color === 'info') {
+      selectArrow = `is-${color} ${selectDivInfo}`;
+    }
+    else if (color === 'success') {
+      selectArrow = `is-${color} ${selectDivSuccess}`;
+    }
+    else if (color === 'danger') {
+      selectArrow = `is-${color} ${selectDivDanger}`;
+    }
+    else if (color === 'link') {
+      selectArrow = `is-${color} ${selectDivLink}`;
+    }
   }
   else if (outline === false) {
     if (color === 'primary' || color === 'link' || color === 'warning') {
-      selectArrow = `is-${color} ${selectDiv2}`;
+      selectArrow = `is-${color} ${selectDivDark}`;
     }
     else if (color === undefined) {
-      selectArrow = `is-primary ${selectDiv2}`;
+      selectArrow = `is-primary ${selectDivDark}`;
     }
     else {
-      selectArrow = `is-${color} ${selectDiv1}`;
+      selectArrow = `is-${color} ${selectDivLight}`;
     }
   }
 
