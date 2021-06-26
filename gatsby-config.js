@@ -26,7 +26,7 @@ module.exports = {
     Built with Gatsby and Tableau.`,
     siteUrl: `https://api-guild.github.io/greenlight/`,
     image: `/images/greenlight-sideways.png`,
-    siteLanguage: `en`,
+    siteLanguage: `en-US`,
   },
   pathPrefix: "/greenlight",
   /* Your site config here */

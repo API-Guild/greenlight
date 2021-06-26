@@ -1,15 +1,16 @@
-import React from "react"
+import React, { useContext } from "react"
 import PropTypes from "prop-types"
 import { Helmet } from "react-helmet"
 import { useLocation } from "@reach/router"
 import { useStaticQuery, graphql } from "gatsby"
+import ModalContext from "../../context/ModalContext"
 import faviconSvg from "../../assets/svg/greenlightFavicon.svg"
 import faviconIco from "../../assets/ico/greenlight.ico"
 import maskIcon from "../../assets/svg/greenlightMaskIcon.svg"
 
 // Implementation reference available at: https://www.gatsbyjs.com/docs/add-seo-component/
-
-const SEO = ({ title, description, image, article, siteLanguage }) => {
+export default function SEO({ title, description, image, article, siteLanguage }) {
+  const { clip } = useContext(ModalContext);
   const { pathname } = useLocation();
   const { site } = useStaticQuery(query);
 
@@ -35,7 +36,7 @@ const SEO = ({ title, description, image, article, siteLanguage }) => {
   // Checks if the props were used. If not, the default values are applied.
   return (
     <Helmet title={seo.title}>
-      <html lang={seo.lang} />
+      <html className={clip} lang={seo.lang} />
       {/* the favicon file has a static color, replace this value in the file itself */}
       <link rel="icon" type="image/svg+xml" href={faviconSvg} />
       {/* svg files need an alternative ico file in case client browser lacks support */}
@@ -61,8 +62,6 @@ const SEO = ({ title, description, image, article, siteLanguage }) => {
     </Helmet>
   )
 }
-
-export default SEO
 
 // propTypes ensure we get all the data needed in the component
 // helps as a guide while destructuring or using the props.
