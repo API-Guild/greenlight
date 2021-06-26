@@ -58,44 +58,46 @@ export default function VizToolbar(props) {
   }
 
   const handleDownload = () => {
-    try {
-      switch (downloadSelect) {
-        case 'Download':
-          return;
-        case 'PDF':
-          props.vizObj.showExportPDFDialog()
-          break;
-        case 'Image':
-          props.vizObj.showExportImageDialog()
-          break;
-        case 'Data':
-          if (props.vizObj.getWorkbook().getActiveSheet() === undefined) {
-            alert('select a chart or sheet to download data');
-          }
-          else {
-            props.vizObj.showExportDataDialog()
-          }
-          break;
-        case 'CrossTab':
-          if (props.vizObj.getWorkbook().getActiveSheet() === undefined) {
-            alert('select a chart or sheet to download crosstab data');
-          }
-          else {
-            props.vizObj.showExportCrossTabDialog()
-          }
-          break;
-        case 'PowerPoint':
-          props.vizObj.showExportPowerPointDialog()
-          break;
-        case 'Workbook':
-          props.vizObj.showDownloadWorkbookDialog()
-          break;
-        default:
-          return;
+    if (props.vizObj) {
+      try {
+        switch (downloadSelect) {
+          case 'Download':
+            return;
+          case 'PDF':
+            props.vizObj.showExportPDFDialog()
+            break;
+          case 'Image':
+            props.vizObj.showExportImageDialog()
+            break;
+          case 'Data':
+            if (props.vizObj.getWorkbook().getActiveSheet() === undefined) {
+              alert('select a chart or sheet to download data');
+            }
+            else {
+              props.vizObj.showExportDataDialog()
+            }
+            break;
+          case 'CrossTab':
+            if (props.vizObj.getWorkbook().getActiveSheet() === undefined) {
+              alert('select a chart or sheet to download crosstab data');
+            }
+            else {
+              props.vizObj.showExportCrossTabDialog()
+            }
+            break;
+          case 'PowerPoint':
+            props.vizObj.showExportPowerPointDialog()
+            break;
+          case 'Workbook':
+            props.vizObj.showDownloadWorkbookDialog()
+            break;
+          default:
+            return;
+        }
       }
-    }
-    catch(err) {
-      console.error(err);
+      catch(err) {
+        console.error('Tableau error: ', err);
+      }
     }
     setDownload('Download');
   }

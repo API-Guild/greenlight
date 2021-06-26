@@ -17,16 +17,17 @@ export default function Detail(props) {
   // queries the viz object for meta data once it has become interactive
   useEffect(() => {
     const viz = props.vizObj;
-    if (props.loaded === true) {
+    if (props.loaded && viz) {
       setVizUrl(viz.getUrl());
       setWorkbookName(viz.getWorkbook().getName());
-      setActiveSheet(viz.getWorkbook().getActiveSheet());
-      setSheetType(viz.getWorkbook().getActiveSheet().getSheetType());
-      setActiveName(viz.getWorkbook().getActiveSheet().getName());
-      setWorksheets(viz.getWorkbook().getActiveSheet().getWorksheets());
-      setPublishedSheets(viz.getWorkbook().getPublishedSheetsInfo());
+      // setActiveSheet(viz.getWorkbook().getActiveSheet());
+      // setSheetType(viz.getWorkbook().getActiveSheet().getSheetType());
+      // setActiveName(viz.getWorkbook().getActiveSheet().getName());
+      // setWorksheets(viz.getWorkbook().getActiveSheet().getWorksheets());
+      // setPublishedSheets(viz.getWorkbook().getPublishedSheetsInfo());
     }
   },[props.loaded, props.vizObj])
+
 
   return (
     <>

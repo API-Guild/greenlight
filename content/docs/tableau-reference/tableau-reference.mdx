@@ -1,0 +1,242 @@
+---
+title: Tableau Reference
+date: "2021-04-17"
+description: "How to easily embed Tableau data visualizations"
+---
+
+## Tableau Visualization
+```jsx
+<Tableau
+  viz={[
+    "https://public.tableau.com/views/Greenlight/GreenlightProfitDashboard",
+    "https://public.tableau.com/views/Greenlight/SummaryofProfitAnalysis",
+    "https://public.tableau.com/views/Greenlight/WeeklyMetrics",
+  ]}
+/>
+```
+
+### Result:
+<Tableau
+  viz={[
+    "https://public.tableau.com/views/Greenlight/GreenlightProfitDashboard",
+    "https://public.tableau.com/views/Greenlight/SummaryofProfitAnalysis",
+    "https://public.tableau.com/views/Greenlight/WeeklyMetrics",
+    "intentionally-bad-url",
+  ]}
+/>
+
+<!-- 
+<Tableau
+  viz="https://public.tableau.com/views/OilGasProduction_16207892650600/AssetProductionReport"
+  customToolbar={true}
+  toolbarOptions={{
+    buttons: [
+      'undo',
+      'redo',
+      'reset',
+      'share'
+    ],
+    color: 'warning',
+    outline: false,
+    rounded: false,
+    downloads: [
+      'pdf',
+      'image',
+      'powerpoint'
+    ],
+  }}
+/> -->
+
+<!-- color undefined -->
+# Undefined
+
+<VizToolbar
+  toolbarOptions={{
+    rounded: false,
+  }}
+  loaded={true}
+  vizArray={true}
+  vizIndex={0}
+  vizUrl={['1','2']}
+  handleVizIndex={()=>{}}
+/>
+
+<VizToolbar
+  toolbarOptions={{
+    rounded: false,
+    outline: false,
+  }}
+  loaded={true}
+  vizArray={true}
+  vizIndex={0}
+  vizUrl={['1','2']}
+  handleVizIndex={()=>{}}
+/>
+
+<!-- warning  -->
+# Warning
+
+<VizToolbar
+  toolbarOptions={{
+    color: 'warning',
+    rounded: false,
+  }}
+  loaded={true}
+  vizArray={true}
+  vizIndex={0}
+  vizUrl={['1','2']}
+  handleVizIndex={()=>{}}
+/>
+
+<VizToolbar
+  toolbarOptions={{
+    color: 'warning',
+    outline: false,
+    rounded: false,
+  }}
+  loaded={true}
+  vizArray={true}
+  vizIndex={0}
+  vizUrl={['1','2']}
+  handleVizIndex={()=>{}}
+/>
+
+<!-- info -->
+# Info
+
+<VizToolbar
+  toolbarOptions={{
+    color: 'info',
+    rounded: false,
+  }}
+  loaded={true}
+  vizArray={true}
+  vizIndex={0}
+  vizUrl={['1','2']}
+  handleVizIndex={()=>{}}
+/>
+
+<VizToolbar
+  toolbarOptions={{
+    color: 'info',
+    outline: false,
+    rounded: false,
+  }}
+  loaded={true}
+  vizArray={true}
+  vizIndex={0}
+  vizUrl={['1','2']}
+  handleVizIndex={()=>{}}
+/>
+
+<!-- success -->
+# Success
+
+<VizToolbar
+  toolbarOptions={{
+    color: 'success',
+    rounded: false,
+  }}
+  loaded={true}
+  vizArray={true}
+  vizIndex={0}
+  vizUrl={['1','2']}
+  handleVizIndex={()=>{}}
+/>
+
+<VizToolbar
+  toolbarOptions={{
+    color: 'success',
+    outline: false,
+    rounded: false,
+  }}
+  loaded={true}
+  vizArray={true}
+  vizIndex={0}
+  vizUrl={['1','2']}
+  handleVizIndex={()=>{}}
+/>
+
+<!-- danger -->
+# Danger
+
+<VizToolbar
+  toolbarOptions={{
+    color: 'danger',
+    rounded: false,
+  }}
+  loaded={true}
+  vizArray={true}
+  vizIndex={0}
+  vizUrl={['1','2']}
+  handleVizIndex={()=>{}}
+/>
+
+<VizToolbar
+  toolbarOptions={{
+    color: 'danger',
+    outline: false,
+    rounded: false,
+  }}
+  loaded={true}
+  vizArray={true}
+  vizIndex={0}
+  vizUrl={['1','2']}
+  handleVizIndex={()=>{}}
+/>
+
+<!-- primary -->
+# Primary
+
+<VizToolbar
+  toolbarOptions={{
+    color: 'primary',
+    rounded: false,
+  }}
+  loaded={true}
+  vizArray={true}
+  vizIndex={0}
+  vizUrl={['1','2']}
+  handleVizIndex={()=>{}}
+/>
+
+<VizToolbar
+  toolbarOptions={{
+    color: 'primary',
+    outline: false,
+    rounded: false,
+  }}
+  loaded={true}
+  vizArray={true}
+  vizIndex={0}
+  vizUrl={['1','2']}
+  handleVizIndex={()=>{}}
+/>
+
+<!-- link -->
+# Link
+
+<VizToolbar
+  toolbarOptions={{
+    color: 'link',
+    rounded: false,
+  }}
+  loaded={true}
+  vizArray={true}
+  vizIndex={0}
+  vizUrl={['1','2']}
+  handleVizIndex={()=>{}}
+/>
+
+<VizToolbar
+  toolbarOptions={{
+    color: 'link',
+    outline: false,
+    rounded: false,
+  }}
+  loaded={true}
+  vizArray={true}
+  vizIndex={0}
+  vizUrl={['1','2']}
+  handleVizIndex={()=>{}}
+/>
