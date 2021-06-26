@@ -1,17 +1,31 @@
-import React, { useState, useEffect } from "react"
+import React, { useState, useEffect, useContext } from "react"
 import { cardHead, cardFooter } from "./modal.module.scss"
+import ModalContext from "../../context/ModalContext"
 
 export default function Modal(props) {
+  // displays the modal
   const [active, setActive] = useState('');
+  // stops scrolling while the modal is displayed, adds 'is-clipped' to <html> tag via SEO component
+  const { handleClip } = useContext(ModalContext);
+  // controls that multiple modals don't "unclip" the page if not displayed using 'context' (global) handleClip function
+  const [clipFlag, setClipFlag] = useState(false);
 
   useEffect(() => {
-    if(props.display) {
+    // a parent component should decide when to display the Modal (i.e. OnClick)
+    if (props.display) {
       setActive('is-active');
+      handleClip('is-clipped');
+      setClipFlag(true);
     }
     else {
       setActive('');
+      // only unclips <html> if local component has set flag to true
+      if (clipFlag === true) {
+        handleClip('');
+        setClipFlag(false);
+      }
     }
-  }, [props.display])
+  }, [props.display, handleClip, clipFlag])
 
   return (
     <>
@@ -24,6 +38,7 @@ export default function Modal(props) {
           aria-label="close modal"
           tabIndex={0}
         />
+        {/* determines if modal has card or normal layout */}
         {!props.card ? (
           <>
             <div className="modal-content">

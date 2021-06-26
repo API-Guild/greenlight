@@ -121,8 +121,9 @@ export default class Viz extends React.Component {
       resolve(viz);
     });
 
+    // if promise resolves -> pass viz to setVizObj, else give the user a Tableau error
     embed.then(
-      (obj) => {this.props.setVizObj(obj);},
+      (viz) => {this.props.setVizObj(viz);},
       (err) => {
         this.props.setLoaded(false);
         console.error(err);
