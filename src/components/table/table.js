@@ -1,4 +1,4 @@
-import React from "react"
+import React, { useState } from "react"
 
 export default function Table(props) {
   return (
@@ -16,7 +16,9 @@ const Headers = (props) => {
     <thead>
       <tr align="center">
         {props.headers.map((header, index) => (
-          <th>{header}</th>
+          <th key={`${index}-${Math.random().toString(36).substr(2, 10)}`}>
+            {header}
+          </th>
         ))}
       </tr>
     </thead>
@@ -24,13 +26,51 @@ const Headers = (props) => {
 }
 
 const Data = (props) => {
+  if (!Array.isArray(props.data)) {
+    throw new Error('data props for <Table/> must be an array!')
+  }
+  
   return (
     <tbody>
-      <tr>
-        {props.data.map((datum, index) => (
-          <td>{datum}</td>
-        ))}
-      </tr>
+      {props.data.map((row, index) => (
+        <Row 
+          row={row} key={`${index}-${Math.random().toString(36).substr(2, 10)}`}
+        />
+      ))}
     </tbody>
+  )
+}
+
+const Row = (props) => {
+  const [selected, setSelected] = useState('');
+
+  const handleClick = () => {
+    setSelected(selected === '' ? 'is-selected' : '');
+  }
+
+  return (
+    <>
+      {props.row.map((row, index) => (
+        <tr 
+          key={`${index}-${Math.random().toString(36).substr(2, 10)}`}
+          className={selected}
+          onClick={handleClick}
+        >
+          <Cell row={row}/>
+        </tr>
+      ))}
+    </>
+  )
+}
+
+const Cell = (props) => {
+  return (
+    <>
+      {props.row.map((cell, index) => (
+        <td key={`${index}-${Math.random().toString(36).substr(2, 10)}`}>
+          {cell}
+        </td>
+      ))}
+    </>
   )
 }

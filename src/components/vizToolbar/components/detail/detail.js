@@ -71,19 +71,7 @@ export default function Detail(props) {
     }
     else if (activeType === 'Dashboard') {
       meta.getDashSheets(activeSheet).then(
-        (sheets) => {
-          setSheets(sheets);
-          let dashData = [];
-          sheets.forEach((sheet) => {
-            sheet.getDataSourcesAsync().then(
-              (datasources) => {
-                datasources.forEach((datasource) => dashData.push(datasource));
-              },
-              (err) => console.error(`Cannot push datasources to array: ${err}`)
-            );
-          });
-          setDataSources(dashData);
-        },
+        (sheets) => setSheets(sheets),
         (err) => tabError(err)
       );
     }
@@ -136,6 +124,7 @@ export default function Detail(props) {
         subtitleSize={6}
         subtitleColor="grey-lighter"
       />
+      <br/>
       {activeType === 'Dashboard' ? (
         <Sheets
           activeType={activeType}

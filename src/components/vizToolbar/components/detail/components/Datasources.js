@@ -1,24 +1,30 @@
-import React from 'react'
+import React, { useState, useEffect } from 'react'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faDatabase } from '@fortawesome/free-solid-svg-icons'
-import Title from "../../../../title/title"
 
 export default function Datasources(props) {
+  const [datasources, setDataSources] = useState(undefined);
+
+  props.sheet.getDataSourcesAsync().then(
+    result => setDataSources(result),
+    err => console.error(`Cannot get datasources from sheet ${props.sheet}`, err)
+  );
+
+  useEffect(() => {
+  }, [datasources])
+ 
   return (
     <>
-    {props.sheet.getDataSourcesAsync().then(
-      datasources => {
+      {datasources === undefined ? null : (
         datasources.map((datasource, index) => (
-          <p>
+          <p key={`${index}-${datasource.getName()}`}>
             <FontAwesomeIcon 
               icon={faDatabase} 
               style={{height: "0.7rem", verticalAlign: "inherit"}}
             /> {datasource.getName()}
           </p>
         ))
-      },
-      err => console.error('Cannot get datasources from sheet: ', err)
-    )}
+      )}
     </>
   )
 }
