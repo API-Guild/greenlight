@@ -1,10 +1,10 @@
 import React, { useState, useEffect } from "react"
-import { uniqWith, isEqual } from 'lodash';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faFileContract } from '@fortawesome/free-solid-svg-icons'
+import { faFileContract, faLink } from '@fortawesome/free-solid-svg-icons'
 import * as meta from "./vizMeta.js"
 import Modal from "../../../modal/modal"
-import Dashboard from "./panels/Dashboard"
+import Title from "../../../title/title"
+import Sheets from "./components/Sheets"
 
 export default function Detail(props) {
   const [vizUrl, setVizUrl] = useState('');
@@ -82,8 +82,6 @@ export default function Detail(props) {
               (err) => console.error(`Cannot push datasources to array: ${err}`)
             );
           });
-          console.log('dashData', dashData)
-          console.log('uniqWith',uniqWith(dashData, isEqual))
           setDataSources(dashData);
         },
         (err) => tabError(err)
@@ -92,11 +90,6 @@ export default function Detail(props) {
     else if (activeType === 'Story') {
     }
   },[activeType, activeSheet])
-
-  useEffect(() => {
-    // console.log('sheets', sheets)
-    // console.log('dataSources', dataSources)
-  },[sheets,dataSources])
 
   return (
     <>
@@ -119,14 +112,37 @@ export default function Detail(props) {
           </>
         }
       >
+      <Title
+        title="Current View"
+        titleSize={4}
+        titleColor="white"
+        subtitle={
+          <div className="columns">
+            <div className="column">
+              <a href={vizUrl} target="_blank" rel="noreferrer">
+                <FontAwesomeIcon 
+                  icon={faLink} 
+                  style={{height: "0.7rem", verticalAlign: "inherit"}}
+                />{activeName}
+              </a>
+              <p>Type: {activeType}</p>
+            </div>
+            <div className="column">
+              <p>Workbook: {workbookName}</p>
+              <p>Size: {activeSize.behavior}</p>
+            </div>
+          </div>
+        }
+        subtitleSize={6}
+        subtitleColor="grey-lighter"
+      />
       {activeType === 'Dashboard' ? (
-        <Dashboard
+        <Sheets
           activeType={activeType}
           vizUrl={vizUrl}
           activeName={activeName}
           workbookName={workbookName}
           activeSize={activeSize}
-          dataSources={dataSources}
           sheets={sheets}
         />
       ) : null}
