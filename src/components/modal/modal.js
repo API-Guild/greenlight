@@ -1,6 +1,7 @@
 import React, { useState, useEffect, useContext } from "react"
-import { cardHead, cardFooter } from "./modal.module.scss"
+import { modal, content, body, cardHead, cardFooter } from "./modal.module.scss"
 import ModalContext from "../../context/ModalContext"
+import Box from "../box/box"
 
 export default function Modal(props) {
   // displays the modal
@@ -29,7 +30,7 @@ export default function Modal(props) {
 
   return (
     <>
-      <div className={`modal ${active}`}>
+      <div className={`modal ${active} ${modal}`}>
         <div 
           className="modal-background" 
           onClick={props.setDisplay} 
@@ -41,23 +42,33 @@ export default function Modal(props) {
         {/* determines if modal has card or normal layout */}
         {!props.card ? (
           <>
-            <div className="modal-content">
-              {props.children}
-            </div>
-            <button className="modal-close is-large" aria-label="close" onClick={props.setDisplay}/>
+            <Box modalBox={true}>
+              <div className={`modal-content ${content}`}>
+                {props.children}
+              </div>
+              <button 
+                className="modal-close is-large" 
+                aria-label="close" 
+                onClick={props.setDisplay}
+              />
+            </Box>
           </>
         ) : (
-          <div className="modal-card">
-            <header className={`modal-card-head ${cardHead}`}>
-              <p className="modal-card-title">{props.title}</p>
-              <button className="delete" aria-label="close" onClick={props.setDisplay}/>
-            </header>
-            <section className="modal-card-body">
-              {props.children}
-            </section>
-            <footer className={`modal-card-foot ${cardFooter}`}>
-              {props.footer}
-            </footer>
+          <div className={`modal-card ${content}`}>
+              <header className={`modal-card-head ${cardHead}`}>
+                <p className="modal-card-title">{props.title}</p>
+                <button 
+                  className="delete" 
+                  aria-label="close" 
+                  onClick={props.setDisplay}
+                />
+              </header>
+              <section className={`modal-card-body ${body}`}>
+                {props.children}
+              </section>
+              <footer className={`modal-card-foot if-flex is-justify-content-center ${cardFooter}`}>
+                {props.footer}
+              </footer>
           </div>
         )}
       </div>

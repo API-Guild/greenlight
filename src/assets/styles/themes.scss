@@ -87,11 +87,14 @@ $navbar-divider-background-color: $accentDark;
 $hr-background-color: $accentLight;
 
 // Tables
-$table-row-hover-background-color: $accentLight;
-$table-striped-row-even-background-color: $accentDark;
-$table-striped-row-even-hover-background-color: $accentLight;
+$table-row-hover-background-color: $accentDark;
+$table-striped-row-even-background-color: $sombre;
+$table-striped-row-even-hover-background-color: $accentDark;
 $table-cell-heading-color: $accentMain;
-$table-row-active-color: $accentMain;
+$table-head-cell-color: $accentMain;
+$table-foot-cell-color: $accentMain;
+$table-row-active-color: $black;
+$table-row-active-background-color: $accentMain;
 
 // Panels
 $panel-block-color: $accentSecondary;

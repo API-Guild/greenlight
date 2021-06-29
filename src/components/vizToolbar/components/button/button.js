@@ -14,12 +14,61 @@ export default function Button(props) {
   
   // array of supported buttons, all of them are displayed by default
   const buttonsArray = [
-    {name: "Undo", icon: faUndoAlt, function: () => {try{props.vizObj.undoAsync()} catch(err){console.error(err)}}},
-    {name: "Redo", icon: faRedoAlt, function: () => {try{props.vizObj.redoAsync()} catch(err){console.error(err)}}},
-    {name: "Reset", icon: faHistory, function: () => {try{props.vizObj.revertAllAsync()} catch(err){console.error(err)}}},
-    {name: "Refresh", icon: faSyncAlt, function: () => {try{props.vizObj.refreshDataAsync()} catch(err){console.error(err)}}},
-    {name: "Details", icon: faInfoCircle, function: () => {handleModal()}},
-    {name: "Share", icon: faShareAlt, function: () => {try{props.vizObj.showShareDialog()} catch(err){console.error(err)}}},  
+    {
+      name: "Undo", 
+      icon: faUndoAlt, 
+      function: () => {
+        if (props.vizObj) {
+          try {props.vizObj.undoAsync();} 
+          catch(err) {console.error('Tableau error:', err);}
+        }
+      }
+    },
+    {
+      name: "Redo", 
+      icon: faRedoAlt, 
+      function: () => {
+        if (props.vizObj) {
+          try {props.vizObj.redoAsync();} 
+          catch(err) {console.error('Tableau error:', err);}
+        } 
+      }
+    },
+    {
+      name: "Reset", 
+      icon: faHistory, 
+      function: () => {
+        if (props.vizObj) {
+          try {props.vizObj.revertAllAsync();} 
+          catch(err) { console.error('Tableau error:', err); }
+        }
+      }
+    },
+    {
+      name: "Refresh", 
+      icon: faSyncAlt, 
+      function: () => {
+        if (props.vizObj) {
+          try{props.vizObj.refreshDataAsync();} 
+          catch(err){console.error('Tableau error:', err);}
+        }
+      }
+    },
+    {
+      name: "Details", 
+      icon: faInfoCircle, 
+      function: () => {handleModal();}
+    },
+    {
+      name: "Share", 
+      icon: faShareAlt, 
+      function: () => {
+        if (props.vizObj) {
+          try{props.vizObj.showShareDialog();} 
+          catch(err){console.error('Tableau error:', err);}
+        }
+      }
+    },  
   ];
   // determines what buttons get rendered, default is all 
   // unless an allowlist (array) is passed as a prop
@@ -49,6 +98,14 @@ export default function Button(props) {
         handleModal={handleModal}
         vizObj={props.vizObj}
         loaded={props.loaded}
+        disabled={props.disabled}
+        vizArray={props.vizArray}
+        color={props.color}
+        outline={props.outline}
+        rounded={props.rounded}
+        handleVizIndex={props.handleVizIndex}
+        vizUrl={props.vizUrl} 
+        vizIndex={props.vizIndex}
       />
     </>
   )

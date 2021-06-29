@@ -1,32 +1,98 @@
 import React, { useState, useEffect } from "react"
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faLink, faBook, faFileContract } from '@fortawesome/free-solid-svg-icons'
+import { faFileContract, faLink, faUnlink, faSpinner } from '@fortawesome/free-solid-svg-icons'
+import * as meta from "./vizMeta/vizMeta"
 import Modal from "../../../modal/modal"
 import Title from "../../../title/title"
+import VizNav from "../vizNav/vizNav"
+import Sheets from "./components/Sheets"
+import Datasources from "./components/Datasources"
 
 export default function Detail(props) {
   const [vizUrl, setVizUrl] = useState('');
   const [workbookName, setWorkbookName] = useState('');
-  const [sheetType, setSheetType] = useState('');
   const [activeSheet, setActiveSheet] = useState('');
+  const [activeType, setActiveType] = useState('');
   const [activeName, setActiveName] = useState('');
-  const [activeDataSource, setActiveDataSource] = useState('');
-  const [publishedSheets, setPublishedSheets] = useState([]);
-  const [worksheets, setWorksheets] = useState('');
+  const [activeSize, setActiveSize] = useState('');
+  const [dataSources, setDataSources] = useState('');
+  const [sheets, setSheets] = useState('');
+
+  const tabError = (err) => {
+    console.error('Visualization Metadata Error: ', err)
+  }
 
   // queries the viz object for meta data once it has become interactive
   useEffect(() => {
     const viz = props.vizObj;
-    if (props.loaded === true) {
-      setVizUrl(viz.getUrl());
-      setWorkbookName(viz.getWorkbook().getName());
-      setActiveSheet(viz.getWorkbook().getActiveSheet());
-      setSheetType(viz.getWorkbook().getActiveSheet().getSheetType());
-      setActiveName(viz.getWorkbook().getActiveSheet().getName());
-      setWorksheets(viz.getWorkbook().getActiveSheet().getWorksheets());
-      setPublishedSheets(viz.getWorkbook().getPublishedSheetsInfo());
+
+    if (!props.loaded && !viz) {
+      setVizUrl('');
+      setWorkbookName('');
+      setActiveSheet('');
+      setActiveType('');
+      setActiveName('');
+      setActiveSize('');
+      setDataSources('');
+      setSheets('');
+    }
+
+    if (props.loaded && viz) {
+      meta.getVizUrl(viz).then(
+        (url) => setVizUrl(url),
+        (err) => tabError(err)
+      );
+
+      meta.getVizWb(viz).then(
+        (workbook) => {
+          setWorkbookName(workbook.getName());
+          setActiveSheet(workbook.getActiveSheet());
+        },
+        (err) => tabError(err)
+      );
     }
   },[props.loaded, props.vizObj])
+
+  // queries metadata for the active visualization once state has been updated
+  useEffect(() => {
+    if (activeSheet !== '') {
+      meta.getSheetType(activeSheet).then(
+        (type) => setActiveType(type),
+        (err) => tabError(err)
+      );
+      
+      meta.getSheetName(activeSheet).then(
+        (name) => setActiveName(name),
+        (err) => tabError(err)
+      );
+
+      meta.getSheetSize(activeSheet).then(
+        (size) => setActiveSize(size),
+        (err) => tabError(err)
+      );
+    }
+  },[activeSheet])
+
+  // queries datasources using methods specific to 
+  // each visualization type ['Dashboard', 'Story', 'Worksheet']
+  useEffect(() => {
+    if (activeType === 'Worksheet') {
+      meta.worksheetData(activeSheet).then(
+        (datasources) => {
+          setDataSources(datasources);
+        },
+        (err) => tabError(err)
+      );
+    }
+    else if (activeType === 'Dashboard') {
+      meta.getDashSheets(activeSheet).then(
+        (sheets) => setSheets(sheets),
+        (err) => tabError(err)
+      );
+    }
+    else if (activeType === 'Story') {
+    }
+  },[activeType, activeSheet])
 
   return (
     <>
@@ -34,64 +100,93 @@ export default function Detail(props) {
         card={true}
         display={props.detailModal}
         setDisplay={props.handleModal}
-        title={activeName}
+        title={
+          <span>
+            {activeName !== '' ? (
+              <>
+                <FontAwesomeIcon 
+                  icon={faFileContract} 
+                  style={{height: "1rem", verticalAlign: "baseline"}}
+                /> Visualization Details
+              </>
+            ) : (
+              <>
+                <FontAwesomeIcon 
+                  icon={faSpinner} 
+                  style={{height: "1rem", verticalAlign: "baseline"}}
+                  pulse
+                /> Loading Visualization...
+              </>
+            )}
+          </span>
+        }
         footer={
           <>
-            <button className="button is-primary">Save changes</button>
-            <button className="button">Cancel</button>
+            {!props.vizArray ? null : (
+              <VizNav
+                color={props.color}
+                outline={props.outline}
+                rounded={props.rounded}
+                handleVizIndex={props.handleVizIndex}
+                vizUrl={props.vizUrl} 
+                vizIndex={props.vizIndex}
+              />
+            )}
           </>
         }
       >
-        <div className="columns">
-          <div className="column">
-            <Title
-              title="Workbook"
-              titleSize={5}
-              titleColor="grey-lighter"
-              subtitle={
-                <div>
+        <Title
+          title={activeName !== '' ? activeName : 'Name'}
+          titleSize={4}
+          titleColor="white"
+          subtitle={
+            <div className="columns">
+              <div className="column">
+                {vizUrl !== '' ? (
                   <a href={vizUrl} target="_blank" rel="noreferrer">
-                    <FontAwesomeIcon icon={faBook} style={{height: "0.7rem", verticalAlign: "inherit"}}/> {workbookName}
+                    <FontAwesomeIcon 
+                      icon={faLink} 
+                      style={{height: "0.7rem", verticalAlign: "inherit"}}
+                    /> Link
                   </a>
-                </div>
-              }
-              subtitleSize={6}
-              subtitleColor="link"
-            />
-            <Title
-              title="Worksheets"
-              titleSize={5}
-              titleColor="grey-lighter"
-              subtitle={
-                publishedSheets.map((sheet, index) => (
-                  <div key={sheet + '-' + index}>
-                    <a href={sheet.getUrl()} target="_blank" rel="noreferrer">
-                      <FontAwesomeIcon icon={faFileContract} style={{height: "0.7rem", verticalAlign: "inherit"}}/> {sheet.getName()}
-                    </a>
-                  </div>
-                ))
-              }
-              subtitleSize={6}
-              subtitleColor="grey-light"
-            />
-          </div>
-          <div className="column">
-            <Title
-              title="Datasources"
-              titleSize={5}
-              titleColor="grey-lighter"
-              subtitle={
-                <div>
-                  <a href={vizUrl} target="_blank" rel="noreferrer">
-                    {workbookName} <FontAwesomeIcon icon={faLink} style={{height: "0.7rem", verticalAlign: "inherit"}}/>
-                  </a>
-                </div>
-              }
-              subtitleSize={6}
-              subtitleColor="link"
-            />
-          </div>
-        </div>
+                ) : (
+                  <p>
+                    <FontAwesomeIcon 
+                      icon={faUnlink} 
+                      style={{height: "0.7rem", verticalAlign: "inherit"}}
+                    /> Link unavailable
+                  </p>
+                )}
+                <p>Type: <strong>{activeType}</strong></p>
+              </div>
+              <div className="column">
+                <p>Workbook: <strong>{workbookName}</strong></p>
+                <p>Size: <strong>{activeSize.behavior}</strong></p>
+              </div>
+            </div>
+          }
+          subtitleSize={6}
+          subtitleColor="grey-lighter"
+        />
+        <br/>
+        {activeType === 'Dashboard' &&
+          <Sheets
+            activeType={activeType}
+            vizUrl={vizUrl}
+            activeName={activeName}
+            workbookName={workbookName}
+            activeSize={activeSize}
+            sheets={sheets}
+          />
+        }
+        {activeType === 'Worksheet' &&
+          <Datasources
+            data={dataSources}
+          />
+        }
+        {activeType === 'Story' &&
+          <></>
+        }
       </Modal>
     </>
   )
