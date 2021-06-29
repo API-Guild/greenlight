@@ -138,6 +138,10 @@ export default function VizToolbar(props) {
           vizObj={props.vizObj}
           disabled={disabled}
           loaded={props.loaded}
+          vizArray={props.vizArray}
+          handleVizIndex={props.handleVizIndex}
+          vizUrl={props.vizUrl} 
+          vizIndex={props.vizIndex}
         />
         {!downloadFlag ? null : (
           <div className={`field has-addons has-addons-left ${vizTbStyles.field}`}>
@@ -184,6 +188,10 @@ export default function VizToolbar(props) {
           vizObj={props.vizObj}
           disabled={disabled}
           loaded={props.loaded}
+          vizArray={props.vizArray}
+          handleVizIndex={props.handleVizIndex}
+          vizUrl={props.vizUrl} 
+          vizIndex={props.vizIndex}
         />
         {!downloadFlag ? null : (
           <div className={`field has-addons has-addons-left ${vizTbStyles.field}`}>

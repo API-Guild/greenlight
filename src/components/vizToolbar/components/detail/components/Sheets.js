@@ -7,17 +7,19 @@ export default function Sheets(props) {
   let worksheets = [];
   const data = [];
 
-  try {
-    props.sheets.forEach(sheet => {
-      worksheets.push(<VizLink sheet={sheet}/>);
-      worksheets.push(sheet.getSheetType());
-      worksheets.push(sheet.getSize().behavior);
-      data.push([worksheets]);
-      worksheets = [];
-    })
-  }
-  catch(err) {
-    console.error('Cannot get sheet meta data for provided sheets: ', err)
+  if(props.sheets !== '') {
+    try {
+      props.sheets.forEach(sheet => {
+        worksheets.push(<VizLink sheet={sheet}/>);
+        worksheets.push(sheet.getSheetType());
+        worksheets.push(sheet.getSize().behavior);
+        data.push([worksheets]);
+        worksheets = [];
+      })
+    }
+    catch(err) {
+      console.error('Cannot get sheet meta data for provided sheets: ', err)
+    }
   }
   
   return (

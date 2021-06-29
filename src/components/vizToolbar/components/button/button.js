@@ -1,4 +1,4 @@
-import React, { useState } from "react"
+import React, { useState, useEffect } from "react"
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faUndoAlt, faRedoAlt, faHistory, faSyncAlt, faShareAlt, faInfoCircle } from '@fortawesome/free-solid-svg-icons'
 import * as set from "../../toolBarConfig/toolBarConfig"
@@ -98,6 +98,14 @@ export default function Button(props) {
         handleModal={handleModal}
         vizObj={props.vizObj}
         loaded={props.loaded}
+        disabled={props.disabled}
+        vizArray={props.vizArray}
+        color={props.color}
+        outline={props.outline}
+        rounded={props.rounded}
+        handleVizIndex={props.handleVizIndex}
+        vizUrl={props.vizUrl} 
+        vizIndex={props.vizIndex}
       />
     </>
   )

@@ -11,6 +11,9 @@ export const getVizUrl = (viz) => {
       else {
         url = viz.getUrl();
       }
+      if (!url) {
+        throw new Error(`vizUrl cannot be obtained from provided viz`)
+      }
     }
     catch(err) {
       reject(err);
