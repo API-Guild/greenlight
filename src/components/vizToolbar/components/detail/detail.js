@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react"
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faFileContract, faLink } from '@fortawesome/free-solid-svg-icons'
-import * as meta from "./vizMeta.js"
+import * as meta from "./vizMeta/vizMeta"
 import Modal from "../../../modal/modal"
 import Title from "../../../title/title"
 import Sheets from "./components/Sheets"
@@ -125,7 +125,7 @@ export default function Detail(props) {
         subtitleColor="grey-lighter"
       />
       <br/>
-      {activeType === 'Dashboard' ? (
+      {activeType === 'Dashboard' &&
         <Sheets
           activeType={activeType}
           vizUrl={vizUrl}
@@ -134,7 +134,11 @@ export default function Detail(props) {
           activeSize={activeSize}
           sheets={sheets}
         />
-      ) : null}
+      }
+      {activeType === 'Worksheet' &&
+        <>
+        </>
+      }
       </Modal>
     </>
   )

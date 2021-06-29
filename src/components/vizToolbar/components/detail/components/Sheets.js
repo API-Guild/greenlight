@@ -25,6 +25,7 @@ export default function Sheets(props) {
       <Table
         headers={['Worksheet', 'Type', 'Size']}
         data={data}
+        modalTable={true}
       />
     </>
   )

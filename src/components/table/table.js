@@ -1,8 +1,11 @@
 import React, { useState } from "react"
+import { modalTable } from "./table.module.scss"
 
 export default function Table(props) {
+  const modal = props.modalTable ? modalTable : '';
+
   return (
-    <div className="table-container">
+    <div className={`table-container ${modal}`}>
       <table className="table is-bordered is-striped is-hoverable is-fullwidth">
         <Headers headers={props.headers}/>
         <Data data={props.data}/>

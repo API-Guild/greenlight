@@ -1,5 +1,17 @@
 @import "~bulma/sass/utilities/initial-variables";
 
+.modal {
+  justify-content: center;
+}
+
+.content {
+  max-height: 90vh;
+}
+
+.body {
+  height: 100%;
+}
+
 .cardHead {
   border-bottom-color: $grey-darker;
 }

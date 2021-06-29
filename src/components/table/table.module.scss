@@ -1,0 +1,9 @@
+.modalTable {
+  overflow-y: auto;
+}
+
+@media screen and (max-height: 600px) {
+  .modalTable {
+    // max-height: 18vh;
+  }
+}
