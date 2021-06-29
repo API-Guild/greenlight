@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react"
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faFileContract, faLink, faUnlink } from '@fortawesome/free-solid-svg-icons'
+import { faFileContract, faLink, faUnlink, faSpinner } from '@fortawesome/free-solid-svg-icons'
 import * as meta from "./vizMeta/vizMeta"
 import Modal from "../../../modal/modal"
 import Title from "../../../title/title"
@@ -8,12 +8,11 @@ import Sheets from "./components/Sheets"
 import VizNav from "../vizNav/vizNav"
 
 export default function Detail(props) {
-  const [spinner, setSpinner] = useState(true);
   const [vizUrl, setVizUrl] = useState('');
   const [workbookName, setWorkbookName] = useState('');
   const [activeSheet, setActiveSheet] = useState('');
   const [activeType, setActiveType] = useState('');
-  const [activeName, setActiveName] = useState('Loading Visualization...');
+  const [activeName, setActiveName] = useState('');
   const [activeSize, setActiveSize] = useState('');
   const [dataSources, setDataSources] = useState([]);
   const [sheets, setSheets] = useState([]);
@@ -27,12 +26,11 @@ export default function Detail(props) {
     const viz = props.vizObj;
 
     if (viz === undefined) {
-      setSpinner(true);
       setVizUrl('');
       setWorkbookName('');
       setActiveSheet('');
       setActiveType('');
-      setActiveName('Loading Visualization...');
+      setActiveName('');
       setActiveSize('');
       setDataSources('');
       setSheets('');
@@ -101,10 +99,22 @@ export default function Detail(props) {
         setDisplay={props.handleModal}
         title={
           <span>
-            <FontAwesomeIcon 
-              icon={faFileContract} 
-              style={{height: "1rem", verticalAlign: "baseline"}}
-            /> {activeName}
+            {activeName !== '' ? (
+              <>
+                <FontAwesomeIcon 
+                  icon={faFileContract} 
+                  style={{height: "1rem", verticalAlign: "baseline"}}
+                /> {activeName}
+              </>
+            ) : (
+              <>
+                <FontAwesomeIcon 
+                  icon={faSpinner} 
+                  style={{height: "1rem", verticalAlign: "baseline"}}
+                  pulse
+                /> Loading Visualization...
+              </>
+            )}
           </span>
         }
         footer={

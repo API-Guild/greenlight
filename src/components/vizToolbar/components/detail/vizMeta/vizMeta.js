@@ -32,6 +32,9 @@ export const getVizWb = (viz) => {
       else {
         wb = viz.getWorkbook();
       }
+      if (!wb) {
+        throw new Error(`Workbook cannot be obtained from provided viz`)
+      }
     }
     catch(err) {
       reject(err);
