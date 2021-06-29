@@ -104,7 +104,7 @@ export default function Detail(props) {
                 <FontAwesomeIcon 
                   icon={faFileContract} 
                   style={{height: "1rem", verticalAlign: "baseline"}}
-                /> {activeName}
+                /> Visualization Details
               </>
             ) : (
               <>
@@ -133,7 +133,7 @@ export default function Detail(props) {
         }
       >
         <Title
-          title={"Visualization Details"}
+          title={activeName !== '' ? activeName : 'Name'}
           titleSize={4}
           titleColor="white"
           subtitle={
@@ -154,11 +154,11 @@ export default function Detail(props) {
                     /> Link unavailable
                   </p>
                 )}
-                <p>Type: {activeType}</p>
+                <p>Type: <strong>{activeType}</strong></p>
               </div>
               <div className="column">
-                <p>Workbook: {workbookName}</p>
-                <p>Size: {activeSize.behavior}</p>
+                <p>Workbook: <strong>{workbookName}</strong></p>
+                <p>Size: <strong>{activeSize.behavior}</strong></p>
               </div>
             </div>
           }

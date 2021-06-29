@@ -66,7 +66,7 @@ export default function Modal(props) {
               <section className={`modal-card-body ${body}`}>
                 {props.children}
               </section>
-              <footer className={`modal-card-foot ${cardFooter}`}>
+              <footer className={`modal-card-foot if-flex is-justify-content-center ${cardFooter}`}>
                 {props.footer}
               </footer>
           </div>
