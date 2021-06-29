@@ -4,8 +4,9 @@ import { faFileContract, faLink, faUnlink, faSpinner } from '@fortawesome/free-s
 import * as meta from "./vizMeta/vizMeta"
 import Modal from "../../../modal/modal"
 import Title from "../../../title/title"
-import Sheets from "./components/Sheets"
 import VizNav from "../vizNav/vizNav"
+import Sheets from "./components/Sheets"
+import Datasources from "./components/Datasources"
 
 export default function Detail(props) {
   const [vizUrl, setVizUrl] = useState('');
@@ -14,8 +15,8 @@ export default function Detail(props) {
   const [activeType, setActiveType] = useState('');
   const [activeName, setActiveName] = useState('');
   const [activeSize, setActiveSize] = useState('');
-  const [dataSources, setDataSources] = useState([]);
-  const [sheets, setSheets] = useState([]);
+  const [dataSources, setDataSources] = useState('');
+  const [sheets, setSheets] = useState('');
 
   const tabError = (err) => {
     console.error('Visualization Metadata Error: ', err)
@@ -25,7 +26,7 @@ export default function Detail(props) {
   useEffect(() => {
     const viz = props.vizObj;
 
-    if (viz === undefined) {
+    if (!props.loaded && !viz) {
       setVizUrl('');
       setWorkbookName('');
       setActiveSheet('');
@@ -73,11 +74,13 @@ export default function Detail(props) {
   },[activeSheet])
 
   // queries datasources using methods specific to 
-  // each visualiation type ['Dashboard', 'Story', 'Worksheet']
+  // each visualization type ['Dashboard', 'Story', 'Worksheet']
   useEffect(() => {
     if (activeType === 'Worksheet') {
       meta.worksheetData(activeSheet).then(
-        (datasources) => setDataSources(datasources),
+        (datasources) => {
+          setDataSources(datasources);
+        },
         (err) => tabError(err)
       );
     }
@@ -177,8 +180,12 @@ export default function Detail(props) {
           />
         }
         {activeType === 'Worksheet' &&
-          <>
-          </>
+          <Datasources
+            data={dataSources}
+          />
+        }
+        {activeType === 'Story' &&
+          <></>
         }
       </Modal>
     </>

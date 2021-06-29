@@ -12,7 +12,7 @@ export const getVizUrl = (viz) => {
         url = viz.getUrl();
       }
       if (!url) {
-        throw new Error(`vizUrl cannot be obtained from provided viz`)
+        throw new Error(`vizUrl cannot be obtained from provided viz`);
       }
     }
     catch(err) {
@@ -33,7 +33,7 @@ export const getVizWb = (viz) => {
         wb = viz.getWorkbook();
       }
       if (!wb) {
-        throw new Error(`Workbook cannot be obtained from provided viz`)
+        throw new Error(`Workbook cannot be obtained from provided viz`);
       }
     }
     catch(err) {
@@ -88,7 +88,7 @@ export const getSheetSize = (sheet) => {
     let size;
     try {
       if (sheet === '' || !sheet) {
-        throw new Error('invalid sheet provided, cannot get sheet size')
+        throw new Error('invalid sheet provided, cannot get sheet size');
       }
       else {
         size = sheet.getSize();
@@ -107,21 +107,41 @@ export const worksheetData = (sheet) => {
     let dataTables = [];
     try {
       if (sheet === '' || !sheet) {
-        throw new Error('invalid sheet provided, cannot get sheet data')
+        throw new Error('invalid sheet provided, cannot get sheet data');
       }
       else {
         sheet.getDataSourcesAsync().then(
-          tables => dataTables.push(tables),
-          err => {throw new Error('dataTables.push(tables) could not be performed due to:', err)}
+          tables => resolve(tables),
+          err => {throw new Error('dataTables.push(tables) could not be performed due to:', err);}
         )
       }
     }
     catch(err) {
       reject(err);
     }
-    resolve(dataTables);
   });
 }
+
+// export const worksheetData = (sheet) => {
+//   return new Promise((resolve, reject) => {
+//     let dataTables = [];
+//     try {
+//       if (sheet === '' || !sheet) {
+//         throw new Error('invalid sheet provided, cannot get sheet data')
+//       }
+//       else {
+//         sheet.getDataSourcesAsync().then(
+//           tables => dataTables.push(tables),
+//           err => {throw new Error('dataTables.push(tables) could not be performed due to:', err)}
+//         )
+//       }
+//     }
+//     catch(err) {
+//       reject(err);
+//     }
+//     resolve(dataTables);
+//   });
+// }
 
 export const getDashSheets = (dashboard) => {
   return new Promise((resolve, reject) => {
