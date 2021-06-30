@@ -168,6 +168,7 @@ export default function VizToolbar(props) {
                 className={`button ${btnStyles}`}
                 onClick={handleDownload}
                 disabled={disabled}
+                aria-label="download"
               >
                 <span className="icon">
                   <FontAwesomeIcon icon={faCloudDownloadAlt}/>
@@ -218,6 +219,7 @@ export default function VizToolbar(props) {
                 className={`button ${btnStyles}`}
                 onClick={handleDownload}
                 disabled={disabled}
+                aria-label="download"
               >
                 <span className="icon">
                   <FontAwesomeIcon icon={faCloudDownloadAlt}/>
