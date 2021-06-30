@@ -146,15 +146,49 @@ export const getDashSheets = (dashboard) => {
   });
 }
 
-// returns storypoints from provided story class object
-export const getStoryPoints = (story) => {
+// returns a StoryPointInfo class from provided Sheet class
+export const getStory = (sheet) => {
   return new Promise((resolve, reject) => {
     try {
-      if (!story) {
-        throw new Error('cannot obtain storypoints from invalid story');
+      if (!sheet) {
+        throw new Error('cannot obtain storypoints from invalid sheet');
       }
       else {
-        resolve(story.getStoryPointsInfo());
+        resolve(sheet.getStoryPointsInfo());
+      }
+    }
+    catch(err) {
+      reject(err);
+    }
+  });
+}
+
+// returns the active story point from a provided Sheet class
+export const getActiveStory = (sheet) => {
+  return new Promise((resolve, reject) => {
+    try {
+      if (!sheet) {
+        throw new Error('cannot obtain storypoint from invalid sheet');
+      }
+      else {
+        resolve(sheet.getActiveStoryPoint());
+      }
+    }
+    catch(err) {
+      reject(err);
+    }
+  });
+}
+
+// returns the visualization embedded on an active Story Sheet
+export const getStoryViz = (sheet) => {
+  return new Promise((resolve, reject) => {
+    try {
+      if (!sheet) {
+        throw new Error('cannot obtain current sheet from invalid story');
+      }
+      else {
+        resolve(sheet.getContainedSheet());
       }
     }
     catch(err) {

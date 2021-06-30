@@ -16,8 +16,13 @@ export default function Detail(props) {
   const [activeType, setActiveType] = useState('');
   const [activeName, setActiveName] = useState('');
   const [activeSize, setActiveSize] = useState('');
-  const [dataSources, setDataSources] = useState('');
   const [sheets, setSheets] = useState('');
+  const [dataSources, setDataSources] = useState('');
+  const [story, setStory] = useState('');
+  const [activePoint, setStoryPoint] = useState('');
+  const [storySheet, setStorySheet] = useState('');
+  const [storySheetUrl, setStorySheetUrl] = useState('');
+  
 
   const tabError = (err) => {
     console.error('Visualization Metadata Error: ', err)
@@ -92,8 +97,24 @@ export default function Detail(props) {
       );
     }
     else if (activeType === 'Story') {
-      meta.getStoryPoints(activeSheet).then(
-        (storypoints) => console.log('storypoints', storypoints),
+      meta.getActiveStory(activeSheet).then(
+        (storypoint) => {
+          setStoryPoint(storypoint);
+          meta.getStoryViz(storypoint).then(
+            (sheet) => {
+              setStorySheet(sheet);
+              meta.getVizUrl(sheet).then(
+                (url) => setStorySheetUrl(url),
+                (err) => tabError(err)
+              );
+            },
+            (err) => tabError(err)
+          );
+        },
+        (err) => tabError(err)
+      );
+      meta.getStory(activeSheet).then(
+        (story) => setStory(story),
         (err) => tabError(err)
       );
     }
@@ -141,56 +162,112 @@ export default function Detail(props) {
         }
       >
         <Title
-          title={activeName !== '' ? activeName : 'Name'}
+          title={!activeName ? 'Name' : activeName}
           titleSize={4}
           titleColor="white"
-          subtitle={
-            <div className="columns">
-              <div className="column">
-                {vizUrl !== '' ? (
-                  <a href={vizUrl} target="_blank" rel="noreferrer">
-                    <FontAwesomeIcon 
-                      icon={faLink} 
-                      style={{height: "0.7rem", verticalAlign: "inherit"}}
-                    /> Link
-                  </a>
-                ) : (
-                  <p>
-                    <FontAwesomeIcon 
-                      icon={faUnlink} 
-                      style={{height: "0.7rem", verticalAlign: "inherit"}}
-                    /> Link unavailable
-                  </p>
-                )}
-                <p>Type: <strong>{activeType}</strong></p>
-              </div>
-              <div className="column">
-                <p>Workbook: <strong>{workbookName}</strong></p>
-                <p>Size: <strong>{activeSize.behavior}</strong></p>
-              </div>
-            </div>
-          }
           subtitleSize={6}
           subtitleColor="grey-lighter"
+          subtitle={
+            <>
+              <div className="columns">
+                <div className="column">
+                  {vizUrl !== '' ? (
+                    <a href={vizUrl} target="_blank" rel="noreferrer">
+                      <FontAwesomeIcon 
+                        icon={faLink} 
+                        style={{height: "0.7rem", verticalAlign: "inherit"}}
+                      /> Link
+                    </a>
+                  ) : (
+                    <p>
+                      <FontAwesomeIcon 
+                        icon={faUnlink} 
+                        style={{height: "0.7rem", verticalAlign: "inherit"}}
+                      /> Link unavailable
+                    </p>
+                  )}
+                  <p>Type: <strong>{activeType}</strong></p>
+                </div>
+                <div className="column">
+                  <p>Workbook: <strong>{workbookName}</strong></p>
+                  <p>Size: <strong>{activeSize.behavior}</strong></p>
+                </div>
+              </div>
+            </>
+          }
         />
-        <br/>
         {activeType === 'Dashboard' &&
-          <Sheets
-            activeType={activeType}
-            vizUrl={vizUrl}
-            activeName={activeName}
-            workbookName={workbookName}
-            activeSize={activeSize}
-            sheets={sheets}
-          />
+          <>
+            <br/>
+            <Sheets
+              activeType={activeType}
+              vizUrl={vizUrl}
+              activeName={activeName}
+              workbookName={workbookName}
+              activeSize={activeSize}
+              sheets={sheets}
+            />
+          </>
         }
         {activeType === 'Worksheet' &&
-          <Datasources
-            data={dataSources}
-          />
+          <>
+            <br/>
+            <Datasources
+              data={dataSources}
+            />
+          </>
         }
-        {activeType === 'Story' &&
-          <></>
+        {activeType === 'Story' && 
+          <>
+            {/* <br/>
+            <Title
+              title="Active Storypoint"
+              titleSize={4}
+              titleColor="white"
+              subtitleSize={6}
+              subtitleColor="grey-lighter"
+              subtitle={
+                <div className="columns">
+                  <div className="column">
+                    <p>
+                      <strong>Name:</strong> {activePoint.getContainedSheet().getName()}
+                    </p>
+                    {!storySheet ? null : (
+                      storySheetUrl ? (
+                        <a 
+                          href={storySheetUrl} 
+                          target="_blank" 
+                          rel="noreferrer"
+                        >
+                          <FontAwesomeIcon 
+                            icon={faLink} 
+                            style={{height: "0.7rem", verticalAlign: "inherit"}}
+                          /> Link
+                        </a>
+                      ) : (
+                        <p>
+                          <FontAwesomeIcon 
+                            icon={faUnlink} 
+                            style={{height: "0.7rem", verticalAlign: "inherit"}}
+                          /> Link unavailable
+                        </p>
+                      )
+                    )}
+                  </div>
+                  <div className="column">
+                    <p>
+                      <strong>Index: </strong> {activePoint.getContainedSheet().getIndex()}
+                    </p>
+                  </div>
+                </div>
+              }
+            /> */}
+            <br/>
+            <StoryPoints
+              story={story}
+              activeSheet={activeSheet}
+            />
+          </> 
         }
       </Modal>
     </>
