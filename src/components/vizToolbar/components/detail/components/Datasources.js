@@ -29,12 +29,12 @@ export default function Datasources(props) {
                 </p>
                 <p className="is-size-7 has-text-grey">
                   <strong className="is-size-7 has-text-grey-lighter">Fields:</strong> [
-                    {Object.keys(datasource.getFields()).map(fields => (
-                      <>
+                    {Object.keys(datasource.getFields()).map((fields, index) => (
+                      <span key={`${index}-${Math.random().toString(36).substr(2, 10)}`}>
                         {typeof datasource.getFields()[fields] === 'object' ? 
                         (`${datasource.getFields()[fields].getName()}, `) 
                         : null}
-                      </>
+                      </span>
                     ))}
                   ]
                 </p>

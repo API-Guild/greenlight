@@ -7,6 +7,7 @@ import Title from "../../../title/title"
 import VizNav from "../vizNav/vizNav"
 import Sheets from "./components/Sheets"
 import Datasources from "./components/Datasources"
+import StoryPoints from "./components/StoryPoints"
 
 export default function Detail(props) {
   const [vizUrl, setVizUrl] = useState('');
@@ -91,6 +92,10 @@ export default function Detail(props) {
       );
     }
     else if (activeType === 'Story') {
+      meta.getStoryPoints(activeSheet).then(
+        (storypoints) => console.log('storypoints', storypoints),
+        (err) => tabError(err)
+      );
     }
   },[activeType, activeSheet])
 

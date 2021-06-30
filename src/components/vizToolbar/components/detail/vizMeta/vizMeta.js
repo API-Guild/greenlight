@@ -1,6 +1,7 @@
 // These methods use promises that obtain metadata from embedded Tableau visualizations
 // a viz, sheet or other Tableau object is passed as a parameter in the component that uses them
 
+// returns a URL for a provided sheet
 export const getVizUrl = (viz) => {
   return new Promise((resolve, reject) => {
     let url;
@@ -22,6 +23,7 @@ export const getVizUrl = (viz) => {
   });
 }
 
+// returns a workbook class object for a provided sheet
 export const getVizWb = (viz) => {
   return new Promise((resolve, reject) => {
     let wb;
@@ -43,6 +45,7 @@ export const getVizWb = (viz) => {
   });
 }
 
+// returns the sheet type ('Dashboard', 'Worksheet', 'Story')
 export const getSheetType = (sheet) => {
   return new Promise((resolve, reject) => {
     let type;
@@ -63,6 +66,7 @@ export const getSheetType = (sheet) => {
   });
 }
 
+// returns the formatted name of a provided sheet
 export const getSheetName = (sheet) => {
   return new Promise((resolve, reject) => {
     let name;
@@ -83,6 +87,7 @@ export const getSheetName = (sheet) => {
   })
 }
 
+// returns the size object for a provided sheet
 export const getSheetSize = (sheet) => {
   return new Promise((resolve, reject) => {
     let size;
@@ -102,9 +107,9 @@ export const getSheetSize = (sheet) => {
   });
 }
 
+// returns datasources for a provided sheet
 export const worksheetData = (sheet) => {
   return new Promise((resolve, reject) => {
-    let dataTables = [];
     try {
       if (sheet === '' || !sheet) {
         throw new Error('invalid sheet provided, cannot get sheet data');
@@ -122,33 +127,13 @@ export const worksheetData = (sheet) => {
   });
 }
 
-// export const worksheetData = (sheet) => {
-//   return new Promise((resolve, reject) => {
-//     let dataTables = [];
-//     try {
-//       if (sheet === '' || !sheet) {
-//         throw new Error('invalid sheet provided, cannot get sheet data')
-//       }
-//       else {
-//         sheet.getDataSourcesAsync().then(
-//           tables => dataTables.push(tables),
-//           err => {throw new Error('dataTables.push(tables) could not be performed due to:', err)}
-//         )
-//       }
-//     }
-//     catch(err) {
-//       reject(err);
-//     }
-//     resolve(dataTables);
-//   });
-// }
-
+// returns worksheets displayed on a provided dashboard class object
 export const getDashSheets = (dashboard) => {
   return new Promise((resolve, reject) => {
     let worksheets;
     try {
       if (dashboard.length === 0 || !dashboard) {
-        throw new Error('')
+        throw new Error('cannot obtain worksheets from invalid dashboard');
       }
       else {
         worksheets = dashboard.getWorksheets();
@@ -161,4 +146,20 @@ export const getDashSheets = (dashboard) => {
   });
 }
 
+// returns storypoints from provided story class object
+export const getStoryPoints = (story) => {
+  return new Promise((resolve, reject) => {
+    try {
+      if (!story) {
+        throw new Error('cannot obtain storypoints from invalid story');
+      }
+      else {
+        resolve(story.getStoryPointsInfo());
+      }
+    }
+    catch(err) {
+      reject(err);
+    }
+  });
+}
 
