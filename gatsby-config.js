@@ -80,9 +80,9 @@ module.exports = {
     {
       resolve: `gatsby-plugin-manifest`,
       options: {
-        name: "Greenlight: a guerrilla data portal for analysts with deadlines",
+        name: "Greenlight",
         short_name: "Greenlight",
-        description: "Leverage the modern web to build a site that's fast, secure, and low maintenance. Forget about deploying servers and dealing with malware. You don't need hundreds of hours of work to learn these techniques either. Instead, focus on your content and let Greenlight take care of the rest.",
+        description: "Greenlight: a guerrilla data portal for analysts with deadlines",
         start_url: "/",
         background_color: "#0D0D0D",
         theme_color: "#0DF2C1",
