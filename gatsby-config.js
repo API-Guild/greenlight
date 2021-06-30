@@ -76,6 +76,27 @@ module.exports = {
         ],
       },
     },
+    `gatsby-plugin-sitemap`,
+    {
+      resolve: `gatsby-plugin-manifest`,
+      options: {
+        name: "Greenlight",
+        short_name: "Greenlight",
+        description: "Greenlight: a guerrilla data portal for analysts with deadlines",
+        start_url: "/",
+        background_color: "#0D0D0D",
+        theme_color: "#0DF2C1",
+        // Enables "Add to Homescreen" prompt and disables browser UI (including back button)
+        // see https://developers.google.com/web/fundamentals/web-app-manifest/#display
+        display: "minimal-ui",
+        icon: "src/assets/svg/greenlightFavicon.svg", // This path is relative to the root of the site.
+        // An optional attribute which provides support for CORS check.
+        // If you do not provide a crossOrigin option, it will skip CORS for manifest.
+        // Any invalid keyword or empty string defaults to `anonymous`
+        crossOrigin: `use-credentials`,
+      },
+    },
+    'gatsby-plugin-offline',
     // {
     //   resolve: `gatsby-plugin-mdx`,
     //   options: {
