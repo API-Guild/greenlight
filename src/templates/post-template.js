@@ -17,6 +17,7 @@ import {
   blockquote,
   ol,
   a,
+  CodeBlock,
 } from "../components/bulmaElements/bulmaElements"
 
 export default function Article({ data }) {
@@ -37,6 +38,8 @@ export default function Article({ data }) {
     blockquote: blockquote,
     ol: ol,
     a: a,
+    pre: props => <div {...props}/>,
+    code: CodeBlock,
   }
 
   return (
