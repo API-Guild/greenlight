@@ -77,11 +77,8 @@ export const a = props => (
   </a>
 )
 
+// inspiration from https://prince.dev/prism-react-renderer
 export const CodeBlock = props => {
-
-  console.log('CodeBlock props:', props)
-  console.log('CodeBlock className:', props.className)
-  console.log('CodeBlock children:', props.children)
   // Pull the className from <pre>
   const language = props.className.replace(/language-/, '') || "";
   // remove the trailing '/n' adding empty line number at the end

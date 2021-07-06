@@ -25,6 +25,8 @@ export default function Article({ data }) {
   const meta = post.frontmatter
 
   // Applying Bulma classes to markup generated from markdown
+  // prism-react-renderer already adds a <pre> on top of remark's <pre> tag
+  // in this case we modify the first <pre> tag into a <div>
   const components = {
     h1: isSize1,
     h2: isSize2,
