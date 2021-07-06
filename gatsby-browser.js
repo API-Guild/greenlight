@@ -1,5 +1,4 @@
 import "./src/assets/styles/global.scss"
-require("prismjs/themes/prism-tomorrow.css")
 
 export const onServiceWorkerUpdateReady = () => {
   const answer = window.confirm(

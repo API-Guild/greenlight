@@ -73,6 +73,12 @@ module.exports = {
               maxWidth: 700,            
             },
           },
+          {
+            resolve: `gatsby-remark-vscode`,
+            options: {
+              theme: 'Monokai' // Or install your favorite theme from GitHub
+            }
+          },
         ],
       },
     },
@@ -97,16 +103,5 @@ module.exports = {
       },
     },
     'gatsby-plugin-offline',
-    // {
-    //   resolve: `gatsby-plugin-mdx`,
-    //   options: {
-    //     extensions: [`.mdx`, `.md`],
-    //     gatsbyRemarkPlugins: [
-    //       {
-    //         resolve: `gatsby-remark-prismjs`,
-    //       },
-    //     ],
-    //   },
-    // },
   ],
 }
