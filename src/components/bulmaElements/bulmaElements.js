@@ -1,7 +1,7 @@
 import React from 'react'
 import Highlight, { defaultProps } from 'prism-react-renderer'
 import codeTheme from 'prism-react-renderer/themes/nightOwl'
-import { pre } from './bulmaElements.module.scss'
+import { pre, lineNumber } from './bulmaElements.module.scss'
 
 export const isSize1 = props => (
   <h1 className="is-size-1-tablet is-size-2-mobile has-text-primary" {...props}>
@@ -84,10 +84,13 @@ export const CodeBlock = props => {
   console.log('CodeBlock children:', props.children)
   // Pull the className from <pre>
   const language = props.className.replace(/language-/, '') || "";
+  // remove the trailing '/n' adding empty line number at the end
+  const code = props.children.slice(0, props.children.lastIndexOf('\n'));
+
 
   return (
     <Highlight {...defaultProps}
-      code={props.children}
+      code={code}
       language={language}
       theme={codeTheme}
     >
@@ -97,7 +100,7 @@ export const CodeBlock = props => {
             const lineProps = getLineProps({ line, key: index })
             return (
               <div key={index} {...lineProps}>
-                {index + 1}
+                <span className={lineNumber}>{index + 1}</span>
                 {line.map((token, key) => (
                   <span key={key} {...getTokenProps({ token, key })} />
                 ))}
