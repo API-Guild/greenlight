@@ -81,7 +81,7 @@ export const a = props => (
 export const CodeBlock = props => {
   // Pull the className from <pre>
   const language = props.className.replace(/language-/, '') || "";
-  // remove the trailing '/n' adding empty line number at the end
+  // remove the trailing '/n' adding a empty line number at the end
   const code = props.children.slice(0, props.children.lastIndexOf('\n'));
 
 
