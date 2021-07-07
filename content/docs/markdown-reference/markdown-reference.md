@@ -78,7 +78,7 @@ Oh, and here's a great quote from this Wikipedia on
 You can also write code blocks here!
 
 ```js
-const saltyDuckEgg = "chinese preserved food product"
+const saltyDuckEgg = "chinese preserved food product";
 ```
 
 | Number | Title                                    | Year | Score | Box Office | Runtime |
@@ -110,16 +110,31 @@ This is a paragraph.
 
 ###### Header 6
 
-    # Header 1
-    ## Header 2
-    ### Header 3
-    #### Header 4
-    ##### Header 5
-    ###### Header 6
+```markdown
+# Header 1
 
-> Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aliquam hendrerit mi posuere lectus. Vestibulum enim wisi, viverra nec, fringilla in, laoreet vitae, risus.
+## Header 2
 
-    > Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aliquam hendrerit mi posuere lectus. Vestibulum enim wisi, viverra nec, fringilla in, laoreet vitae, risus.
+### Header 3
+
+#### Header 4
+
+##### Header 5
+
+###### Header 6
+```
+
+> Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aliquam hendrerit mi posuere lectus. 
+> Vestibulum enim wisi, viverra nec, fringilla in, laoreet vitae, risus.
+>
+> Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+
+```markdown
+> Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aliquam hendrerit mi posuere lectus. 
+> Vestibulum enim wisi, viverra nec, fringilla in, laoreet vitae, risus.
+>
+> Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+```
 
 > ## This is a header.
 >
@@ -128,15 +143,22 @@ This is a paragraph.
 >
 > Here's some example code:
 >
->       Markdown.generate();
+> ```js
+> let md = Markdown.generate();
+> ```
 
-    > ## This is a header.
-    > 1. This is the first list item.
-    > 2. This is the second list item.
-    >
-    > Here's some example code:
-    >
-    >       Markdown.generate();
+```markdown
+> ## This is a header.
+>
+> 1. This is the first list item.
+> 2. This is the second list item.
+>
+> Here's some example code:
+>
+> ```js
+> let md = Markdown.generate();
+> ```
+```
 
 - Red
 - Green
@@ -145,10 +167,6 @@ This is a paragraph.
 * Red
 * Green
 * Blue
-
-- Red
-- Green
-- Blue
 
 ```markdown
 - Red
@@ -158,10 +176,6 @@ This is a paragraph.
 * Red
 * Green
 * Blue
-
-- Red
-- Green
-- Blue
 ```
 
 - `code goes` here in this line
@@ -178,47 +192,41 @@ This is a paragraph.
 
 ```markdown
 1. Buy flour and salt
-1. Mix together with water
-1. Bake
+2. Mix together with water
+3. Bake
 ```
 
 1. `code goes` here in this line
-1. **bold** goes here
+2. **bold** goes here
 
 ```markdown
 1. `code goes` here in this line
-1. **bold** goes here
+2. **bold** goes here
 ```
 
 Paragraph:
 
     Code
 
-<!-- -->
+```markdown
+Paragraph:
 
-    Paragraph:
+    Code
+```
 
-        Code
+* * *
+***
+*****
+- - -
+---------------------------------------
 
----
-
----
-
----
-
----
-
----
-
-    * * *
-
-    ***
-
-    *****
-
-    - - -
-
-    ---------------------------------------
+```markdown
+* * *
+***
+*****
+- - -
+---------------------------------------
+```
 
 This is [an example](http://example.com "Example") link.
 
@@ -228,13 +236,15 @@ This is [an example][id] reference-style link.
 
 [id]: http://example.com "Optional Title"
 
-    This is [an example](http://example.com "Example") link.
+```markdown
+This is [an example](http://example.com "Example") link.
 
-    [This link](http://example.com) has no title attr.
+[This link](http://example.com) has no title attr.
 
-    This is [an example] [id] reference-style link.
+This is [an example][id] reference-style link.
 
-    [id]: http://example.com "Optional Title"
+[id]: http://example.com "Optional Title"
+```
 
 _single asterisks_
 
@@ -244,14 +254,18 @@ _single underscores_
 
 **double underscores**
 
-    *single asterisks*
+```markdown
+_single asterisks_
 
-    _single underscores_
+_single underscores_
 
-    **double asterisks**
+**double asterisks**
 
-    __double underscores__
+**double underscores**
+```
 
 This paragraph has some `code` in it.
 
-    This paragraph has some `code` in it.
+```markdown
+This paragraph has some `code` in it.
+```
