@@ -106,6 +106,7 @@ figure.image.cartoon {
   border: solid thin $grey;
 }
 
+// changes color to dots and numbers before list items
 li::marker {
   color: $accentMain;
 }

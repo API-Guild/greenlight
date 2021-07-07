@@ -92,6 +92,19 @@ const saltyDuckEgg = "chinese preserved food product";
 | 7      | Harry Potter and the Deathly Harrows I   | 2010 |  77%  |  $295.0M   | 2h 26m  |
 | 8      | Harry Potter and the Deathly Harrows II  | 2011 |  96%  |  $381.0M   | 2h 11m  |
 
+```markdown
+| Number | Title                                    | Year | Score | Box Office | Runtime |
+| :----- | :--------------------------------------: | :--: | :---: | :--------: | ------: |
+| 1      | Harry Potter and the Sorcerer's Stone    | 2001 |  81%  |  $317.6M   | 2h 32m  |
+| 2      | Harry Potter and the Chamber of Secrets  | 2002 |  82%  |  $262.0M   | 2h 41m  |
+| 3      | Harry Potter and the Prisoner of Azkaban | 2004 |  90%  |  $249.4M   | 2h 21m  |
+| 4      | Harry Potter and the Goblet of Fire      | 2005 |  88%  |  $290.0M   | 2h 37m  |
+| 5      | Harry Potter and the Order of the Phoenix| 2007 |  77%  |  $292.0M   | 2h 18m  |
+| 6      | Harry Potter and the Half-Blood Prince   | 2009 |  84%  |  $302.0M   | 2h 33m  |
+| 7      | Harry Potter and the Deathly Harrows I   | 2010 |  77%  |  $295.0M   | 2h 26m  |
+| 8      | Harry Potter and the Deathly Harrows II  | 2011 |  96%  |  $381.0M   | 2h 11m  |
+```
+
 [View raw (TEST.md)](https://raw.github.com/adamschwartz/github-markdown-kitchen-sink/master/README.md)
 
 This is a paragraph.
