@@ -25,13 +25,13 @@ You don’t need to be an expert on MDX either, you can learn more about it [her
 
 1. If you don't already have the Gatsby CLI installed then you can do so by using this command to install it globally to your machine.
 
-   ```bash
+   ```shell
    npm install -g gatsby-cli
    ```
 
 2. Next you will install the Greenlight Gatsby Starter.
 
-   ```bash
+   ```shell
    gatsby new {your-project-name} https://github.com/API-Guild/greenlight
    ```
 
@@ -59,7 +59,7 @@ When you open `http://localhost:8000` you will see this sample site. Take a minu
    <br />
 5. Inside this file you first need to add your title, description and date of the post in the format below.
 
-```yaml
+```yaml {numberLines}
 ---
 title: Quick Start
 date: "2021-04-27"
@@ -69,7 +69,7 @@ description: "A quick start guide on using Greenlight starter."
 
 6. For the most part you can write your post using normal Markdown syntax as you would any normal blog post. Where MDX comes into play is bringing in your data visualizations. For this example we are using our Tableau component which comes with Greenlight.
 
-```javascript
+```js {numberLines}
 <Tableau
    viz="https://public.tableau.com/views/Greenlight/GreenlightProfitDashboard"
 />

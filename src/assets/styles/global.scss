@@ -98,3 +98,15 @@ figure.image.cartoon {
     width: 80%;
   }
 }
+
+// vscode highlighting plugin 
+// https://www.gatsbyjs.com/plugins/gatsby-remark-vscode/?=syntax-highlighting#styles
+.grvsc-container {
+  margin-bottom: 1.5rem;
+  border: solid thin $grey;
+}
+
+// changes color to dots and numbers before list items
+li::marker {
+  color: $accentMain;
+}
