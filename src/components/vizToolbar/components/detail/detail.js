@@ -19,9 +19,9 @@ export default function Detail(props) {
   const [sheets, setSheets] = useState('');
   const [dataSources, setDataSources] = useState('');
   const [story, setStory] = useState('');
-  const [activePoint, setStoryPoint] = useState('');
-  const [storySheet, setStorySheet] = useState('');
-  const [storySheetUrl, setStorySheetUrl] = useState('');
+  // const [activePoint, setStoryPoint] = useState('');
+  // const [storySheet, setStorySheet] = useState('');
+  // const [storySheetUrl, setStorySheetUrl] = useState('');
   
 
   const tabError = (err) => {
@@ -97,22 +97,22 @@ export default function Detail(props) {
       );
     }
     else if (activeType === 'Story') {
-      meta.getActiveStory(activeSheet).then(
-        (storypoint) => {
-          setStoryPoint(storypoint);
-          meta.getStoryViz(storypoint).then(
-            (sheet) => {
-              setStorySheet(sheet);
-              meta.getVizUrl(sheet).then(
-                (url) => setStorySheetUrl(url),
-                (err) => tabError(err)
-              );
-            },
-            (err) => tabError(err)
-          );
-        },
-        (err) => tabError(err)
-      );
+      // meta.getActiveStory(activeSheet).then(
+      //   (storypoint) => {
+      //     setStoryPoint(storypoint);
+      //     meta.getStorySheet(storypoint).then(
+      //       (sheet) => {
+      //         setStorySheet(sheet);
+      //         meta.getVizUrl(sheet).then(
+      //           (url) => setStorySheetUrl(url),
+      //           (err) => tabError(err)
+      //         );
+      //       },
+      //       (err) => tabError(err)
+      //     );
+      //   },
+      //   (err) => tabError(err)
+      // );
       meta.getStory(activeSheet).then(
         (story) => setStory(story),
         (err) => tabError(err)

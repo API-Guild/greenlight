@@ -10,8 +10,9 @@ import Callout from "../callout/callout"
 import Card from "../card/card"
 import Title from "../title/title"
 import VizToolbar from "../vizToolbar/vizToolbar"
+import ExtLink from "../ExtLink/ExtLink"
 
-const shortcodes = { Tableau, Callout, Card, Title, VizToolbar };
+const shortcodes = { Tableau, Callout, Card, Title, VizToolbar, ExtLink };
 
 export default function Layout({ children }) {
   // when modals are displayed, 'clip' adds a class to <html> to stop scrolling within <SEO/> component
