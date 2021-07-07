@@ -181,14 +181,14 @@ export const getActiveStory = (sheet) => {
 }
 
 // returns the visualization embedded on an active Story Sheet
-export const getStoryViz = (sheet) => {
+export const getStorySheet = (storypoint) => {
   return new Promise((resolve, reject) => {
     try {
-      if (!sheet) {
+      if (!storypoint) {
         throw new Error('cannot obtain current sheet from invalid story');
       }
       else {
-        resolve(sheet.getContainedSheet());
+        resolve(storypoint.getContainedSheet());
       }
     }
     catch(err) {
