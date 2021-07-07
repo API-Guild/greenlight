@@ -15,7 +15,7 @@ component and provides examples so you can use them for your own content.
 
 ## Title
 
-```javascript
+```js {numberLines}
 <Title 
     title="Interdisciplinary"
     titleSize={1}
@@ -48,7 +48,7 @@ component and provides examples so you can use them for your own content.
 
 ## Callouts
 
-```javascript
+```js {numberLines}
 <Callout
     title="Callout"
     subtitle={
@@ -88,7 +88,7 @@ component and provides examples so you can use them for your own content.
 ---
 
 ## Cards
-```javascript
+```js {numberLines}
 <Card
     header="Sample Card Component"
     image="https://bulma.io/images/placeholders/1280x960.png"
@@ -117,46 +117,3 @@ component and provides examples so you can use them for your own content.
         <a href="/" className="card-footer-item">Delete</a>,
     ]}
 />
-
----
-
-## Tableau Visualization
-```jsx
-<Tableau
-  viz={[
-    "https://public.tableau.com/views/Greenlight/GreenlightProfitDashboard",
-    "https://public.tableau.com/views/Greenlight/SummaryofProfitAnalysis",
-    "https://public.tableau.com/views/Greenlight/WeeklyMetrics",
-  ]}
-/>
-```
-### Result:
-<Tableau
-  viz={[
-    "https://public.tableau.com/views/Greenlight/GreenlightProfitDashboard",
-    "https://public.tableau.com/views/Greenlight/SummaryofProfitAnalysis",
-    "https://public.tableau.com/views/Greenlight/WeeklyMetrics",
-  ]}
-/>
-
-<!-- 
-<Tableau
-  viz="https://public.tableau.com/views/OilGasProduction_16207892650600/AssetProductionReport"
-  customToolbar={true}
-  toolbarOptions={{
-    buttons: [
-      'undo',
-      'redo',
-      'reset',
-      'share'
-    ],
-    color: 'warning',
-    outline: false,
-    rounded: false,
-    downloads: [
-      'pdf',
-      'image',
-      'powerpoint'
-    ],
-  }}
-/> -->

@@ -1,3 +1,5 @@
+@import "../../assets/styles/themes.scss";
+
 .toolbar {
   margin-bottom: 0.75rem;
 }
@@ -22,18 +24,195 @@
   border-bottom-left-radius: 7px !important;
 }
 
-.selectDiv1:not(:hover)::after {
-  border-color: #fbfcfe !important;
+.select:disabled {
+  opacity: 0.5;
 }
 
-.selectDiv1:hover::after {
-  border-color: #fbfcfe !important;
+// shared for all selectDiv's
+.selectDiv[disabled]:not(:hover)::after {
+  opacity: 0.5;
 }
 
-.selectDiv2:not(:hover)::after {
-  border-color: #0a0a0a !important;
+.selectDiv[disabled]:hover::after {
+  opacity: 0.5;
 }
 
-.selectDiv2:hover::after {
-  border-color: #0a0a0a !important;
+// for white text selects (not outlined)
+.selectDivLight:not(:hover)::after {
+  border-color: $white !important;
+}
+
+.selectDivLight:hover::after {
+  border-color: $white !important;
+}
+
+// for black text selects (not outlined)
+.selectDivDark:not(:hover)::after {
+  border-color: $black !important;
+}
+
+.selectDivDark:hover::after {
+  border-color: $black !important;
+}
+
+// for primary text selects
+.selectDivPrimary select[disabled] {
+  color: $primary;
+}
+
+.selectDivPrimary:hover select[disabled] {
+  color: $primary;
+  background-color: $background;
+}
+
+.selectDivPrimary[disabled]:hover::after {
+  border-color: $primary !important;
+}
+
+.selectDivPrimary:hover select {
+  color: $black;
+  background-color: $primary;
+}
+
+.selectDivPrimary:not(:hover)::after {
+  border-color: $primary !important;
+}
+
+.selectDivPrimary:hover::after {
+  border-color: $black !important;
+}
+
+// for warning text selects
+.selectDivWarning select[disabled] {
+  color: $warning;
+}
+
+.selectDivWarning:hover select[disabled] {
+  color: $warning;
+  background-color: $background;
+}
+
+.selectDivWarning[disabled]:hover::after {
+  border-color: $warning !important;
+}
+
+.selectDivWarning:hover select {
+  color: $black;
+  background-color: $warning;
+}
+
+.selectDivWarning:not(:hover)::after {
+  border-color: $warning !important;
+}
+
+.selectDivWarning:hover::after {
+  border-color: $black !important;
+}
+
+// for info text selects
+.selectDivInfo select[disabled] {
+  color: $info;
+}
+
+.selectDivInfo:hover select[disabled] {
+  color: $info;
+  background-color: $background;
+}
+
+.selectDivInfo[disabled]:hover::after {
+  border-color: $info !important;
+}
+
+.selectDivInfo:hover select {
+  color: $white;
+  background-color: $info;
+}
+
+.selectDivInfo:not(:hover)::after {
+  border-color: $info !important;
+}
+
+.selectDivInfo:hover::after {
+  border-color: $white !important;
+}
+
+// for success text selects
+.selectDivSuccess select[disabled] {
+  color: $success;
+}
+
+.selectDivSuccess:hover select[disabled] {
+  color: $success;
+  background-color: $background;
+}
+
+.selectDivSuccess[disabled]:hover::after {
+  border-color: $success !important;
+}
+
+.selectDivSuccess:hover select {
+  color: $white;
+  background-color: $success;
+}
+
+.selectDivSuccess:not(:hover)::after {
+  border-color: $success !important;
+}
+
+.selectDivSuccess:hover::after {
+  border-color: $white !important;
+}
+
+// for danger text selects
+.selectDivDanger select[disabled] {
+  color: $danger;
+}
+
+.selectDivDanger:hover select[disabled] {
+  color: $danger;
+  background-color: $background;
+}
+
+.selectDivDanger[disabled]:hover::after {
+  border-color: $danger !important;
+}
+
+.selectDivDanger:hover select {
+  color: $white;
+  background-color: $danger;
+}
+
+.selectDivDanger:not(:hover)::after {
+  border-color: $danger !important;
+}
+
+.selectDivDanger:hover::after {
+  border-color: $white !important;
+}
+
+// for link text selects
+.selectDivLink select[disabled] {
+  color: $link;
+}
+
+.selectDivLink:hover select[disabled] {
+  color: $link;
+  background-color: $background;
+}
+
+.selectDivLink[disabled]:hover::after {
+  border-color: $link !important;
+}
+
+.selectDivLink:hover select {
+  color: $black;
+  background-color: $link;
+}
+
+.selectDivLink:not(:hover)::after {
+  border-color: $link !important;
+}
+
+.selectDivLink:hover::after {
+  border-color: $black !important;
 }

@@ -1,0 +1,116 @@
+@charset "utf-8";
+
+// Importing initial Bulma variables and functions so they may be used to build themes
+@import "~bulma/sass/utilities/initial-variables";
+@import "~bulma/sass/utilities/functions";
+
+// colors use hsl to allow Bulma to optimize their values for readability
+// for more info see: https://bulma.io/documentation/overview/functions/#the-code-findcolorinvert-code-function
+
+///////////// ** MODIFY COLOR PALETTE HERE! ** /////////////
+
+$greenlight: hsl(167, 90%, 50%); // #0DF2C1
+$milk: hsl(210, 50%, 99%); // #FBFCFE
+$overcast: hsl(240, 4%, 95%); // #F2F2F3
+$night: hsl(0, 0%, 5%); // #0D0D0D
+$sombre: hsl(0, 0%, 12%); // #1f1f1f
+$canary: hsl(55, 79%, 53%); // #E6D628
+$tulip: hsl(350, 78%, 75%); // #F18E9E
+$masago: hsl(28, 97%, 49%); // #F67504
+$avocado: hsl(68, 90%, 43%); // #B6D00B
+$salmon: hsl(8, 89%, 65%); // #F56B56
+$nori: hsl(32, 32%, 10%); // #221A11
+$gatsby: hsl(270, 33%, 64%); // #a385c2
+$tableau: hsl(25, 100%, 50%); // #ff6d02
+$react: hsl(193, 95%, 68%); // #61dafb
+$node: hsl(98, 38%, 56%); // #84ba64
+$graphql: hsl(319, 100%, 44%); // #e10098
+$bulma: hsl(171, 100%, 41%); // #00d1b2
+$mdx: hsl(39, 97%, 58%); // #fcb42d
+$md: hsl(209, 79%, 60%); // #499bea
+$undraw: hsl(244, 88%, 66%); // #665df5
+
+
+///////////// ** MODIFY SITE THEMES HERE! ** /////////////
+
+// brand color scheme
+$darkTheme: $night;
+$lightTheme: $milk;
+$accentMain: $greenlight;
+$background: $night;
+$accentSecondary: $milk;
+$text: $overcast;
+$accentLight: $grey-dark;
+$accentDark: $grey-darker;
+
+///////////// ** SITE THEMING ENDS HERE! ** /////////////
+
+// variables declared before importing Bulma to override their values (set to one of the above variables or add your own)
+// full list of Bulma variables are described here: https://bulma.io/documentation/customize/variables/
+
+// Left & Right gap on the app
+$gap: 32px;
+
+// Main Color Schemes
+$primary: $accentMain;
+$white: $milk;
+$light: $overcast;
+
+// Background Colors
+$background: $background;
+$scheme-main: $background;
+$scheme-main-bis: $background;
+
+// Text
+$text-strong: inherit;
+$scheme-invert: $accentMain;
+
+// Code Blocks
+$code: $masago;
+$code-background: $nori;
+
+// Links
+$link: $accentMain;
+$link-hover: $grey-light;
+$link-visited: $grey-lighter;
+$link-focus-border: $accentMain;
+
+// Inputs (for forms and search bars)
+$input-color: $accentSecondary;
+$input-icon-color: $accentSecondary;
+$input-border-color: $grey;
+
+// Navbar
+$navbar-divider-background-color: $accentDark;
+
+// Horizontal Rules (thematic breaklines)
+$hr-background-color: $accentLight;
+
+// Tables
+$table-row-hover-background-color: $accentDark;
+$table-striped-row-even-background-color: $sombre;
+$table-striped-row-even-hover-background-color: $accentDark;
+$table-cell-heading-color: $accentMain;
+$table-head-cell-color: $accentMain;
+$table-foot-cell-color: $accentMain;
+$table-row-active-color: $black;
+$table-row-active-background-color: $accentMain;
+
+// Panels
+$panel-block-color: $accentSecondary;
+$panel-icon-color: $accentSecondary;
+$panel-block-hover-background-color: $accentDark;
+$panel-block-active-color: $accentMain;
+$panel-block-active-icon-color: $accentMain;
+$panel-block-active-border-left-color: $accentMain;
+$panel-tab-active-color: $accentSecondary;
+$panel-item-border: $accentDark;
+
+// Modal
+$modal-background-background-color: bulmaRgba($background, 0.86);
+$modal-card-title-color: $accentMain;
+
+// Content <p>, <h1>...<h6>, <ul>, <ol>, <blockquote>, <table>, <strong>
+$content-blockquote-background-color: $sombre;
+
+@import "~bulma/sass/utilities/derived-variables";

@@ -2,14 +2,20 @@
   margin: 0;
 }
 
+@media screen and (min-width: 769px) {
+  .navBtn {
+    min-width: 150px;
+  }
+}
+
 @media screen and (max-width: 768px) {
   .navBtn {
     min-width: 100px;
   }
 }
 
-@media screen and (min-width: 769px) {
+@media screen and (max-width: 375px) {
   .navBtn {
-    min-width: 150px;
+    min-width: 80px;
   }
 }

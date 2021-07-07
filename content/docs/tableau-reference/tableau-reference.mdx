@@ -1,0 +1,152 @@
+---
+title: Tableau Reference
+date: "2021-04-17"
+description: "How to easily embed Tableau data visualizations"
+---
+
+<ExtLink to="https://www.tableau.com/" color="has-text-tableau">Tableau</ExtLink> is likely the most customizable platform 
+for building data visualizations that does not require programming (except for calculations). Content is created by connecting 
+Tableau Desktop to databases or files containing data. This content is then hosted on a Tableau Server.
+
+<br/>
+<br/>
+
+As a result embeddeable 
+content can be highly varied and creative. The platform truly shines when users with valuable domain knowledge are
+empowered to build complex and interactive visualizations that would otherwise be beyond their reach if it required 
+experience with visualization packages for languages such as [Python](https://www.python.org/), [R](https://www.r-project.org/),
+or [JavaScript](https://www.javascript.com/).
+
+
+As a result, [Greenlight](https://api-guild.github.io/greenlight) seeks to make the embedding process as 
+straightforward as possible. Although important implementation details such as sizing and layouts can be 
+addressed by the <ExtLink to="https://www.tableau.com/" color="has-text-tableau">Tableau</ExtLink> developer, this component aims to solve 
+those issues out of the box. Users are always welcome to modify their 
+workbooks to fit an embedded usecase, however we wouldn't want a potential disconnect between dashboard and site developers 
+to slowdown the delivery of content.
+
+In other words, you should be able to _**plug and go**_.
+
+The first example demonstrates the component's default behavior. 
+The only `prop` that is required is either a single URL (string) or multiple URLs in the form of an array. 
+To clarify, the following are examples of string and arrays in [JavaScript](https://www.javascript.com/):
+
+```js
+// this is a string
+singleURL = "https://{YOUR-VIZ-URL}";
+
+// this is an array
+arrayOfURLs = [
+  "https://{YOUR-VIZ-URL-#1}",
+  "https://{YOUR-VIZ-URL-#2}",
+  "https://{YOUR-VIZ-URL-#3}",
+];
+```
+<br/>
+
+## Basic Usage
+
+Notice that this example only declares an array of URLs. By default the buttons available on the toolbar
+are styled using the primary colors of your website's theme. They are also rounded and outlined. You can learn more at 
+[Bulma's documentation for buttons](https://bulma.io/documentation/elements/button/). By default, all buttons and capabilities
+provided by the toolbar are made available.
+
+```js {numberLines}
+<Tableau
+  viz={[
+    "https://public.tableau.com/views/Greenlight/GreenlightProfitDashboard",
+    "https://public.tableau.com/views/Greenlight/SummaryofProfitAnalysisrange",
+    "https://public.tableau.com/views/Greenlight/WeeklyMetrics",
+  ]}
+/>
+```
+
+<Tableau
+  viz={[
+    "https://public.tableau.com/views/Greenlight/GreenlightProfitDashboard",
+    "https://public.tableau.com/views/Greenlight/SummaryofProfitAnalysisrange",
+    "https://public.tableau.com/views/Greenlight/WeeklyMetrics",
+  ]}
+/>
+
+The toolbar can be removed entirely by setting this prop to false in the component:
+
+```js
+customToolbar={false}
+```
+<br/>
+
+### Props
+Here is a list of `props` that can customize the <ExtLink to="https://www.tableau.com/" color="has-text-tableau">Tableau</ExtLink> component:
+
+| Prop           | Type                                                                                                | Description                                                                            | Values                                                                                           |
+| :---           | :-------------------------------------------------------------------------------------------------- | :------------------------------------------------------------------------------------- | :----------------------------------------------------------------------------------------------- |
+| viz            | <span className="has-text-success">string</span> or <span className="has-text-warning">array</span> | obtained from the share link on a viz                                                  | URL                                                                                              |
+| customToolbar  | <span className="has-text-undraw">boolean</span>                                                    | controls toolbar visibility, default is <span className="has-text-success">true</span> | <span className="has-text-success">true</span> or <span className="has-text-danger">false</span> |
+| toolbarOptions | <span className="has-text-info">object</span>                                                       | object for customizing the toolbar                                                     | described below                                                                                  |
+
+#### toolbarOptions
+
+The toolbarOptions `prop` is the most complex, however every option has safe defaults in case you miss declaring any of them.
+
+| Option    | Type                                             | Description                                                                                 | Values                                                                                           |
+| :-------- | :----------------------------------------------- | :------------------------------------------------------------------------------------------ | :----------------------------------------------------------------------------------------------- |
+| buttons   | <span className="has-text-warning">array</span>  | lists buttons added to the toolbar, default shows all of them. Empty arrays removes them    | undo, redo, reset, refresh, details, share                                                       |
+| color     | <span className="has-text-success">string</span> | sets the color scheme for buttons, default uses the primary site color                      | primary, warning, info, success, danger, link                                                    |
+| outline   | <span className="has-text-undraw">boolean</span> | sets the type of button, default is <span className="has-text-success">true</span>          | <span className="has-text-success">true</span> or <span className="has-text-danger">false</span> |
+| rounded   | <span className="has-text-undraw">boolean</span> | sets the border type for buttons, default is <span className="has-text-success">true</span> | <span className="has-text-success">true</span> or <span className="has-text-danger">false</span> |
+| downloads | <span className="has-text-warning">array</span>  | lists download options, default shows all of them. Empty arrays removes them                | pdf, image, data, crosstab, powerpoint, workbook                                                 |
+
+Refer to the next example for guidance on customizing this component.
+
+<br/>
+
+## Custom Usage
+
+This example demonstrates the usage of each of the props available for the <ExtLink to="https://www.tableau.com/" color="has-text-tableau">Tableau</ExtLink> component.
+Notice the changes in available buttons and download options, as well as colors, borders and overall styling.
+
+```js
+<Tableau
+  viz="https://public.tableau.com/views/OilGasProduction_16207892650600/AssetProductionReport"
+  customToolbar={true}
+  toolbarOptions={{
+    buttons: [
+      'undo',
+      'redo',
+      'reset',
+      'share'
+    ],
+    color: 'warning',
+    outline: false,
+    rounded: false,
+    downloads: [
+      'pdf',
+      'image',
+      'powerpoint'
+    ],
+  }}
+/>
+```
+
+<Tableau
+  viz="https://public.tableau.com/views/OilGasProduction_16207892650600/AssetProductionReport"
+  customToolbar={true}
+  toolbarOptions={{
+    buttons: [
+      'undo',
+      'redo',
+      'reset',
+      'share'
+    ],
+    color: 'warning',
+    outline: false,
+    rounded: false,
+    downloads: [
+      'pdf',
+      'image',
+      'powerpoint'
+    ],
+  }}
+/>
+

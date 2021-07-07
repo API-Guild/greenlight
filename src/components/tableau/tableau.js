@@ -5,8 +5,9 @@ import VizToolbar from "../vizToolbar/vizToolbar"
 
 export default function Tableau(props) {
   // shared viz object updated by the <Viz/> component but required by functions in <VizToolbar/>
-  const [vizObj, setVizObj] = useState(null);
-
+  const [vizObj, setVizObj] = useState(undefined);
+  // lets components know if the viz has been loaded to obtain useful metadata and enable buttons
+  const [loaded, setLoaded] = useState(false);
   // index used to navigate through an array of viz URLs
   const [vizIndex, setVizIndex] = useState(0);
 
@@ -42,6 +43,8 @@ export default function Tableau(props) {
       <Viz
         vizObj={vizObj}
         setVizObj={setVizObj}
+        loaded={loaded}
+        setLoaded={setLoaded}
         vizUrl={props.viz}
         vizArray={vizArray}
         vizIndex={vizIndex}
@@ -55,7 +58,9 @@ export default function Tableau(props) {
       {!customToolbar ? null : (
         <VizToolbar 
           toolbarOptions={props.toolbarOptions} 
-          vizObj={vizObj} 
+          vizObj={vizObj}
+          loaded={loaded}
+          vizUrl={props.viz} 
           vizArray={vizArray} 
           vizIndex={vizIndex}
           handleVizIndex={handleVizIndex}

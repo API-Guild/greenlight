@@ -8,8 +8,10 @@ description: "How to use and deploy Greenlight"
 
 ## Getting Started With Greenlight
 
-Greenlight is a starter template for deploying a very fast and slick website for posting Data Visualizations built with Tableau.
-Use Greenlight to setup a data portal at your company or use it to build a personal data blog. This application is designed to be fast and easy to deploy, without relying on servers - thus freeing you from having to maintain them!
+Greenlight is a starter template for deploying a very fast and slick website for posting Data Visualizations built with 
+<a className="has-text-tableau" href="https://www.tableau.com/" target="_blank" rel="noreferrer"> Tableau </a>. Use 
+Greenlight to setup a data portal at your company or use it to build a personal data blog. This application is designed 
+to be fast and easy to deploy, without relying on servers - thus freeing you from having to maintain them!
 
 The starter accomplishes this by using Gatsby as the framework. However you don’t
 need to be an expert on Gatsby or React to use this starter but if you would like
@@ -59,7 +61,7 @@ When you open `http://localhost:8000` you will see this sample site. Take a minu
    <br />
 5. Inside this file you first need to add your title, description and date of the post in the format below.
 
-```yaml
+```yaml {numberLines}
 ---
 title: Quick Start
 date: "2021-04-27"
@@ -69,7 +71,7 @@ description: "A quick start guide on using Greenlight starter."
 
 6. For the most part you can write your post using normal Markdown syntax as you would any normal blog post. Where MDX comes into play is bringing in your data visualizations. For this example we are using our Tableau component which comes with Greenlight.
 
-```javascript
+```js {numberLines}
 <Tableau
    viz="https://public.tableau.com/views/Greenlight/GreenlightProfitDashboard"
 />

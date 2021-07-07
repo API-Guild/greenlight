@@ -5,6 +5,8 @@ import { navBtn, vizNav } from "./vizNav.module.css"
 
 export default function VizNav(props) {
   const btnStyles = `${props.color} ${props.outline} ${props.rounded} ${navBtn}`;
+  const indexBtn = `${props.color} ${props.outline} ${props.rounded}`;
+  const vizzes = props.vizUrl.length;
 
   // props.handleVizIndex() is defined in the <Tableau/> component
   // it allows for navigation within an array of URLs
@@ -27,6 +29,8 @@ export default function VizNav(props) {
           <span><strong>Previous</strong></span>
         </button>
 
+        <button className={`button ${indexBtn}`}>{props.vizIndex + 1}/{vizzes}</button>
+
         <button className={`button ${btnStyles}`} onClick={Next}>
           <span><strong>Next</strong></span>
           <span className="icon">
@@ -42,6 +46,8 @@ export default function VizNav(props) {
           </span>
           <span><strong>Previous</strong></span>
         </button>
+
+        <button className={`button ${indexBtn}`}>{props.vizIndex + 1}/{vizzes}</button>
 
         <button className={`button ${btnStyles}`} onClick={Next}>
           <span><strong>Next</strong></span>
