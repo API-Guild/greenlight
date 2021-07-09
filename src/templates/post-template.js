@@ -20,8 +20,8 @@ import {
 } from "../components/bulmaElements/bulmaElements"
 
 export default function Article({ data }) {
-  const post = data.mdx
-  const meta = post.frontmatter
+  const post = data.mdx;
+  const meta = post.frontmatter;
 
   // Applying Bulma classes to markup generated from markdown
   const components = {
@@ -37,7 +37,7 @@ export default function Article({ data }) {
     blockquote: blockquote,
     ol: ol,
     a: a,
-  }
+  };
 
   return (
     <>
