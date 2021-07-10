@@ -1,4 +1,5 @@
 import React from "react"
+import { Link } from "gatsby"
 import { ReactComponent as AnchorLink } from "../../assets/svg/anchorLink.svg"
 
 
@@ -103,8 +104,24 @@ export const ol = props => (
   </div>
 )
 
-export const a = props => (
-  <a target="_blank" rel="noreferrer" {...props}>
-    {props.children}
-  </a>
-)
+export const a = props => {
+  // regex to determine if href starts with exactly one slash (/*), anything else is external.
+  const internal = /^\/(?!\/)/.test(props.href);
+  // links to static content (/static/*) should be routed as external
+  const imageLink = /^\/(?!\/)static\//.test(props.href);
+
+  // if the URL is internal and not an image link (/static/*) use <Link>
+  if(internal && !imageLink) {
+    return (
+      <Link to={props.href} {...props}>
+        {props.children}
+      </Link>
+    )
+  } else {
+    return (
+      <a href={props.href} target="_blank" rel="noreferrer">
+        {props.children}
+      </a>
+    )
+  }
+}

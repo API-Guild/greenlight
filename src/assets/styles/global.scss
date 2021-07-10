@@ -115,6 +115,11 @@ li::marker {
   color: $accentMain;
 }
 
+// removes the ::marker from markdown checklists
+li.task-list-item {
+  list-style-type: none;
+}
+
 // controls visibility of heading anchors
 h1 .anchor svg, h2 .anchor svg, h3 .anchor svg {
   visibility: hidden;

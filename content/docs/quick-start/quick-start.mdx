@@ -6,85 +6,127 @@ description: "How to use and deploy Greenlight"
 
 ![Greenlight](./greenlight-sideways.png)
 
-## Getting Started With Greenlight
+<br/>
 
-Greenlight is a starter template for deploying a very fast and slick website for posting Data Visualizations built with 
-<a className="has-text-tableau" href="https://www.tableau.com/" target="_blank" rel="noreferrer"> Tableau </a>. Use 
-Greenlight to setup a data portal at your company or use it to build a personal data blog. This application is designed 
-to be fast and easy to deploy, without relying on servers - thus freeing you from having to maintain them!
+[Greenlight](/) is a starter template for deploying websites 
+built for data visualization using the most advanced techniques in modern web development.
+This template is a great choice for people who want to setup a data driven blog or website and its 
+also a great option for companies looking to build a data portal for an embedded analytics use case.
+ 
+It relies on the <Ext to="https://www.gatsbyjs.com/" color="has-text-gatsby">Gatsby</Ext>
+frontend framework to generate static files, thus freeing you from server maintenance and deployment
+while giving you multiple hosting options to fit any budget. In most cases you should be able to host
+and deploy your [Greenlight](/) site for free.
 
-The starter accomplishes this by using Gatsby as the framework. However you don’t
-need to be an expert on Gatsby or React to use this starter but if you would like
-to learn more you can find info on Gatsby [here](https://www.gatsbyjs.com/).
+Follow this guide to go from zero to hero within minutes, and you'll have a running site in no time!
 
-You can write posts with Markdown (`.md`). Posts that will embed Tableau data visualizations will use MDX (`.mdx`) files. 
-MDX files are Markdown files that also support **JSX** (a JavaScript syntax extension used by [React](https://reactjs.org/)). This means that you can extend Markdown with **JSX components** that we have made available for you to use.
-You don’t need to be an expert on MDX either, you can learn more about it [here](https://mdxjs.com/).
+<br/>
 
-<br />
+
+## Development Environment
+
+If you are completely new to web development and tools such as [Node.js](https://nodejs.dev/learn), don't sweat it. There is a fantastic tutorial 
+available in the <Ext to="https://www.gatsbyjs.com/docs/tutorial/part-0/" color="has-text-gatsby">Gatsby documentation</Ext> 
+covering all of the tools you will need to get started. At this point, only section _**0. Set Up Your Development Environment**_ 
+is required to continue, however feel free to complete this brief tutorial at your own pace it will certainly come in handy when you
+start customizing your own site. 
+
+Make sure that you at least have the following installed on your computer:
+
+- [ ] [Command Line](https://www.gatsbyjs.com/docs/tutorial/part-0/#background-knowledge)
+- [ ] [Node.js](https://nodejs.dev/learn)
+- [ ] [Git](https://git-scm.com/)
+- [ ] [Gatsby CLI](https://www.gatsbyjs.com/docs/reference/gatsby-cli/)
+- [ ] [Visual Studio Code](https://code.visualstudio.com/) (or a similar IDE such as [Sublime](https://www.sublimetext.com/) or [Atom](https://atom.io/))
+- [ ] [Github Account](https://github.com/) (save your work on the cloud and it can also host your site for free!)
+
+<br/>
 
 ## First Steps
 
-1. If you don't already have the Gatsby CLI installed then you can do so by using this command to install it globally to your machine.
+1. If you don't already have the [Gatsby CLI](https://www.gatsbyjs.com/docs/reference/gatsby-cli/) installed, 
+then you can do so by using this command to install it globally to your machine.
 
-   ```bash
-   npm install -g gatsby-cli
-   ```
-
-2. Next you will install the Greenlight Gatsby Starter.
-
-   ```bash
-   gatsby new {your-project-name} https://github.com/API-Guild/greenlight
-   ```
-
-3. Then start the site in `develop` mode.
-
-   - First `cd your-project-name`.
-   - Then run `gatsby develop` in the command line.
-
-4. Open your site in the browser at `http://localhost:8000`
-   <br />
-
-## Lets break it down further.
-
-When you open `http://localhost:8000` you will see this sample site. Take a minute to navigate around and get a feel for the site. This is your template that you can change as little or as much as you would like to. If you just want to move on to posting a blog post or some data visualizations we’ll go over those steps now.
-
-### Making a post
-
-1. There are many files and folders in the directory but to make a post you only need to use the `/content/blog` directory.
-   <br />
-2. Once you have navigated to the `/content/blog` directory make a new folder called `my-first-post`
-   <br />
-3. Inside that folder you can make a file that will be your post. You can use either Markdown or MDX files but for this example we will use MDX. _Please note that Greenlight is setup only to render Markdown and MDX files from this directory so you must put your files here for them to render properly._
-   <br />
-4. Inside your `my-first-post` folder make a file called `my-first-post.mdx`.
-   <br />
-5. Inside this file you first need to add your title, description and date of the post in the format below.
-
-```yaml {numberLines}
----
-title: Quick Start
-date: "2021-04-27"
-description: "A quick start guide on using Greenlight starter."
----
+```bash
+npm install -g gatsby-cli
 ```
 
-6. For the most part you can write your post using normal Markdown syntax as you would any normal blog post. Where MDX comes into play is bringing in your data visualizations. For this example we are using our Tableau component which comes with Greenlight.
+2. Next you will install the [Greenlight](/) starter. Make sure to add your own project name.
 
-```js {numberLines}
-<Tableau
-   viz="https://public.tableau.com/views/Greenlight/GreenlightProfitDashboard"
-/>
+```bash
+gatsby new {your-project-name} https://github.com/API-Guild/greenlight
 ```
 
-Using the `viz={your-url}` you can plug in your own URL's.
+3. The template should be ready as soon as you install it. Change directory to your project's folder:
 
-#### When it renders it will look like this.
+```bash
+cd {your-project-name}
+```
 
-<Tableau
-   viz="https://public.tableau.com/views/Greenlight/GreenlightProfitDashboard"
-/>
+4. Run the site with the `development server` which simulates a live site that previews any changes you may make.
 
-## Conclusion
+```bash
+npm start
+# or
+npm run develop
+```
 
-I hope this quick start guide is able to help you see the ease of which you can have a very fast website to host your data up and running in no time.
+5. Open your browser and enter `http://localhost:8000` in the URL bar.
+
+<br />
+
+## Lets break it down further
+
+The `development server` will serve up a site locally on your computer and it will perform updates as you change any of the files in
+your new project.
+
+When you open `http://localhost:8000` you will see this development preview. Take a minute to navigate around and get a feel for the site. 
+This is your template and you can change as little or as much as you would like to. 
+
+Take a look at a file called `package.json`. The first section describes the template and its licensing. Feel free to change the name, 
+description and license to suit you. Right below that you will find a section called `scripts`. It should look like this:
+
+```json{2,3,4,6,7,9}
+"scripts": {
+    "start": "npm run develop",
+    "develop": "gatsby develop",
+    "clean": "gatsby clean",
+    "format": "prettier --write \"**/*.{js,jsx,ts,tsx,json,md,mdx}\"",
+    "build": "gatsby build --prefix-paths",
+    "serve": "gatsby serve --prefix-paths",
+    "test": "echo \"Write tests! -> https://gatsby.dev/unit-testing\" && exit 1",
+    "deploy": "gatsby build --prefix-paths && gh-pages -d public"
+  },
+```
+
+You started the `development server` by typing one of these commands in your terminal:
+
+```bash
+npm start
+# or
+npm run develop
+```
+
+The other scripts work in the same way. Here is how and when you will use them:
+
+```bash
+# clears the cache, sometimes you may want to start the development server 
+# or a build from scratch because you ran into an error
+npm run clean
+# once you are satisfied with any changes you have made, you can 'build'
+# the final static files that can be shared with the internet
+npm run build
+# you can preview how the static files generated from 'build' will look by running 
+# 'serve' this will make them available on http://localhost:9000/{pathPrefix}
+# since you have not yet changed the value of pathPrefix, for now it will be
+# http://localhost:9000/greenlight
+npm run serve
+# the 'deploy' command, runs 'build' and then pushes the static files to your
+# Github repository so that they may be hosted for free via Github Pages
+npm run deploy
+```
+
+We will cover customizing your site and deployments in more detail further along this guide.
+
+If you just want to move on to learning how to write a blog post and embed a data visualization
+we’ll go over those steps in the next chapter: [Blog Posts](/docs/blog-posts)
