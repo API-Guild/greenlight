@@ -27,18 +27,20 @@ Follow this guide to go from zero to hero within minutes, and you'll have a runn
 
 If you are completely new to web development and tools such as [Node.js](https://nodejs.dev/learn), don't sweat it. There is a fantastic tutorial 
 available in the <Ext to="https://www.gatsbyjs.com/docs/tutorial/part-0/" color="has-text-gatsby">Gatsby documentation</Ext> 
-covering all of the tools you will need to get started. At this point, only section _**0. Set Up Your Development Environment**_ 
+covering all of the tools you will need to get started. At this point, only section ***0. Set Up Your Development Environment*** 
 is required to continue, however feel free to complete this brief tutorial at your own pace it will certainly come in handy when you
 start customizing your own site. 
 
-Make sure that you at least have the following installed on your computer:
+Before moving on, make sure that you have at least done the following:
 
-- [ ] [Command Line](https://www.gatsbyjs.com/docs/tutorial/part-0/#background-knowledge)
-- [ ] [Node.js](https://nodejs.dev/learn)
-- [ ] [Git](https://git-scm.com/)
-- [ ] [Gatsby CLI](https://www.gatsbyjs.com/docs/reference/gatsby-cli/)
-- [ ] [Visual Studio Code](https://code.visualstudio.com/) (or a similar IDE such as [Sublime](https://www.sublimetext.com/) or [Atom](https://atom.io/))
-- [ ] [Github Account](https://github.com/) (save your work on the cloud and it can also host your site for free!)
+- [ ] Read [0. Set Up Your Development Environment](https://www.gatsbyjs.com/docs/tutorial/part-0/) from the tutorial
+- [ ] Installed a [Command Line](https://www.gatsbyjs.com/docs/tutorial/part-0/#background-knowledge) application
+- [ ] Installed [Node.js](https://nodejs.dev/learn)
+- [ ] Installed [Git](https://git-scm.com/)
+- [ ] Installed [Gatsby CLI](https://www.gatsbyjs.com/docs/reference/gatsby-cli/)
+- [ ] Installed [Visual Studio Code](https://code.visualstudio.com/) (or a similar IDE such as [Sublime](https://www.sublimetext.com/) or [Atom](https://atom.io/))
+- [ ] Obtained a [Github Account](https://github.com/) (saves your work on the cloud and it can also host your site for free!)
+- [ ] **Optional** - obtained a [Gatsby Cloud Account](https://www.gatsbyjs.com/dashboard/signup/) (also provides free hosting and better suited for more complex sites)
 
 <br/>
 
@@ -75,7 +77,7 @@ npm run develop
 
 <br />
 
-## Lets break it down further
+## Scripts
 
 The `development server` will serve up a site locally on your computer and it will perform updates as you change any of the files in
 your new project.
@@ -129,4 +131,4 @@ npm run deploy
 We will cover customizing your site and deployments in more detail further along this guide.
 
 If you just want to move on to learning how to write a blog post and embed a data visualization
-we’ll go over those steps in the next chapter: [Blog Posts](/docs/blog-posts)
+we’ll go over those steps in the next chapter: [Blog Posts](/docs/blog-posts).

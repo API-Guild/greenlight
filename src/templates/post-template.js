@@ -17,6 +17,8 @@ import {
   blockquote,
   ol,
   a,
+  Checkbox,
+  Strong,
 } from "../components/bulmaElements/bulmaElements"
 
 export default function Article({ data }) {
@@ -37,6 +39,8 @@ export default function Article({ data }) {
     blockquote: blockquote,
     ol: ol,
     a: a,
+    input: Checkbox,
+    strong: Strong,
   };
 
   return (

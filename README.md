@@ -62,7 +62,7 @@ After installation you can add your markdown or MDX files to the `/content/blog`
 
 Here is a diagram of the basic file structure of Greenlight.
 
-```
+```bash
 .
 |-.cache
 |-content/blog/{your-files-here}
