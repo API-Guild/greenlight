@@ -1,6 +1,6 @@
 ---
 title: Data Viz Gallery
-date: "2021-04-17"
+date: "2021-04-20"
 description: "A showcase of our favorite Tableau Public vizzes"
 ---
 

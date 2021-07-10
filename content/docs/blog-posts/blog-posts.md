@@ -61,6 +61,8 @@ description: "A quick start guide on using Greenlight starter."
 7. Once you are done creating your first blog post, make sure that the `development server` is running (see the [Quick Start](/docs/quick-start/#scripts) for more information).
 8. Go to `http://localhost:8000/docs/my-first-post` to find your new blog post.
 
+That's all you need to do to write your first blog post or article. There is still much to learn regarding <Ext color="has-text-md" to="https://www.markdownguide.org/">Markdown</Ext> syntax, for a deep dive into this subject please review the [Markdown Reference](/docs/markdown-reference) chapter of the documentation.
+
 <br/>
 
 ## Tableau Visualizations
