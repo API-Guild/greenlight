@@ -61,13 +61,17 @@ description: "A quick start guide on using Greenlight starter."
 7. Once you are done creating your first blog post, make sure that the `development server` is running (see the [Quick Start](/docs/quick-start/#scripts) for more information).
 8. Go to `http://localhost:8000/docs/my-first-post` to find your new blog post.
 
-That's all you need to do to write your first blog post or article. There is still much to learn regarding <Ext color="has-text-md" to="https://www.markdownguide.org/">Markdown</Ext> syntax, for a deep dive into this subject please review the [Markdown Reference](/docs/markdown-reference) chapter of the documentation.
+That's all you need to do to write your first blog post or article. There is still much to learn regarding <Ext color="has-text-md" to="https://www.markdownguide.org/">Markdown syntax</Ext>, for a deep dive into this subject please review the [Markdown Reference](/docs/markdown-reference) chapter of the documentation.
 
 <br/>
 
 ## Tableau Visualizations
 
-For the most part you can write your post using normal Markdown syntax as you would any normal blog post. Where MDX comes into play is bringing in your data visualizations. For this example we are using our Tableau component which comes with Greenlight.
+You're likely trying out [Greenlight](/) for its <Ext color="has-text-tableau" to="https://www.tableau.com/">Tableau</Ext> embedding capabilities. The <Ext color="has-text-md" to="https://www.markdownguide.org/">Markdown</Ext> + <Ext color="has-text-tableau" to="https://www.tableau.com/">Tableau</Ext> viz combo that get's transformed into a website is pretty sweet. Under the hood this works because [Greenlight](/) leverages <Ext color="has-text-mdx" to="https://mdxjs.com/getting-started/">MDX</Ext> to allow users to add <Ext color="has-text-react" to="https://reactjs.org/">React</Ext> components to <Ext color="has-text-md" to="https://www.markdownguide.org/">Markdown</Ext> files.
+
+[Greenlight](/) was designed to bring the modern web to your finger tips. There is a lot that goes on without you noticing and you are free keep those details as magical or make them as familiar to you as you are comfortable with. While it is not necessary for you to become a <Ext color="has-text-react" to="https://reactjs.org/">React</Ext> expert to use this site template, we would definitely encourage you to try the [tutorial](https://reactjs.org/tutorial/tutorial.html) and become familiar with the [documentation](https://reactjs.org/docs/getting-started.html) at your own pace.
+
+We have taken care to make components that you would frequently use while writing blog posts as minimalist as possible, removing much of the complexity. The <Ext color="has-text-tableau" to="https://www.tableau.com/">Tableau</Ext> component is a great example as it only needs three lines of code and a URL, let's have a look:
 
 ```js {numberLines}
 <Tableau
@@ -75,9 +79,7 @@ For the most part you can write your post using normal Markdown syntax as you wo
 />
 ```
 
-Using the `viz={your-url}` you can plug in your own URL's.
-
-#### When it renders it will look like this.
+#### When the component renders it will look like this:
 
 <Tableau
    viz="https://public.tableau.com/views/Greenlight/GreenlightProfitDashboard"

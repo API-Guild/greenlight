@@ -137,25 +137,16 @@ export const a = props => {
   }
 }
 
-export const Checkbox = props => {
-  const [check, setCheck] = useState(false);
+export const Checkbox = props => (  
+  <input 
+    type="checkbox"  
+    style={{cursor: "pointer"}}
+  >
+    {props.children}
+  </input>
+)
 
-  const handleClick = () => {
-    setCheck(!check);
-  }
-
-  return (  
-    <input 
-      type="checkbox" 
-      checked={check} 
-      onClick={handleClick}
-      style={{cursor: "pointer"}}
-    >
-      {props.children}
-    </input>
-  )
-}
 
 export const Strong = props => (
-  <strong className="has-text-grey-light">{props.children}</strong>
+  <strong className="has-text-white-bis">{props.children}</strong>
 )

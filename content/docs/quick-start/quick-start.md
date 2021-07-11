@@ -27,20 +27,24 @@ Follow this guide to go from zero to hero within minutes, and you'll have a runn
 
 If you are completely new to web development and tools such as [Node.js](https://nodejs.dev/learn), don't sweat it. There is a fantastic tutorial 
 available in the <Ext to="https://www.gatsbyjs.com/docs/tutorial/part-0/" color="has-text-gatsby">Gatsby documentation</Ext> 
-covering all of the tools you will need to get started. At this point, only section ***0. Set Up Your Development Environment*** 
-is required to continue, however feel free to complete this brief tutorial at your own pace it will certainly come in handy when you
+covering all of the tools you will need to get started. To be proficient using this template you will need a basic understanding of [HTML](https://www.w3schools.com/html/), [CSS](https://www.w3schools.com/Css/), and [JavaScript](https://www.w3schools.com/js/DEFAULT.asp) - either that or a willingness to learn which beats anything.
+
+At this point, only section [0. Set Up Your Development Environment](https://www.gatsbyjs.com/docs/tutorial/part-0/) 
+is required to continue, however feel free to complete this brief tutorial at your own pace as it will certainly come in handy when you
 start customizing your own site. 
 
 Before moving on, make sure that you have at least done the following:
 
 - [ ] Read [0. Set Up Your Development Environment](https://www.gatsbyjs.com/docs/tutorial/part-0/) from the tutorial
 - [ ] Installed a [Command Line](https://www.gatsbyjs.com/docs/tutorial/part-0/#background-knowledge) application
-- [ ] Installed [Node.js](https://nodejs.dev/learn)
-- [ ] Installed [Git](https://git-scm.com/)
-- [ ] Installed [Gatsby CLI](https://www.gatsbyjs.com/docs/reference/gatsby-cli/)
+- [ ] Installed [Node.js](https://www.gatsbyjs.com/docs/tutorial/part-0/#nodejs)
+- [ ] Installed [Git](https://www.gatsbyjs.com/docs/tutorial/part-0/#git)
+- [ ] Installed [Gatsby CLI](https://www.gatsbyjs.com/docs/tutorial/part-0/#gatsby-cli)
 - [ ] Installed [Visual Studio Code](https://code.visualstudio.com/) (or a similar IDE such as [Sublime](https://www.sublimetext.com/) or [Atom](https://atom.io/))
 - [ ] Obtained a [Github Account](https://github.com/) (saves your work on the cloud and it can also host your site for free!)
 - [ ] **Optional** - obtained a [Gatsby Cloud Account](https://www.gatsbyjs.com/dashboard/signup/) (also provides free hosting and better suited for more complex sites)
+
+If you are new to all of this, keep in mind that everything you will learn here will be useful to you outside of using [Greenlight](/) to build a website. You may find that you enjoy working with these technologies and it can lead you down quite a rewarding path.
 
 <br/>
 
@@ -50,24 +54,29 @@ Before moving on, make sure that you have at least done the following:
 then you can do so by using this command to install it globally to your machine.
 
 ```bash
+# npm is bundled with nodejs
+# it serves as a 'package manager' that can install programs on your computer
 npm install -g gatsby-cli
 ```
 
 2. Next you will install the [Greenlight](/) starter. Make sure to add your own project name.
 
 ```bash
+# this uses the gatsby-cli
 gatsby new {your-project-name} https://github.com/API-Guild/greenlight
 ```
 
 3. The template should be ready as soon as you install it. Change directory to your project's folder:
 
 ```bash
+# navigates the terminal to enter your project's folder
 cd {your-project-name}
 ```
 
 4. Run the site with the `development server` which simulates a live site that previews any changes you may make.
 
 ```bash
+# npm can also run scripts besides installing packages
 npm start
 # or
 npm run develop
@@ -109,20 +118,23 @@ npm start
 npm run develop
 ```
 
-The other scripts work in the same way. Here is how and when you will use them:
+The other scripts work in the same way. Here is why and how you would use them:
 
 ```bash
 # clears the cache, sometimes you may want to start the development server 
 # or a build from scratch because you ran into an error
 npm run clean
+
 # once you are satisfied with any changes you have made, you can 'build'
 # the final static files that can be shared with the internet
 npm run build
+
 # you can preview how the static files generated from 'build' will look by running 
 # 'serve' this will make them available on http://localhost:9000/{pathPrefix}
 # since you have not yet changed the value of pathPrefix, for now it will be
 # http://localhost:9000/greenlight
 npm run serve
+
 # the 'deploy' command, runs 'build' and then pushes the static files to your
 # Github repository so that they may be hosted for free via Github Pages
 npm run deploy
