@@ -1,6 +1,6 @@
 import React from 'react'
 
-export default function ExtLink(props) {
+export default function Ext(props) {
   const color = props.color ? props.color : "";
 
   return (

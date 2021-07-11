@@ -1,13 +1,13 @@
 import React from "react"
 import Title from "../title/title"
-import * as calloutStyles from "./callout.module.css"
+import { callout, notification } from "./callout.module.css"
 
 export default function Callout(props) {
   const calloutColor = setColor(props.color);
 
   return (
-    <div className={`container ${calloutStyles.callout}`}>
-      <div className={`notification ${calloutColor}`}>
+    <div className={`container ${callout}`}>
+      <div className={`notification ${calloutColor} ${notification}`}>
         <Title 
           title={props.title}
           titleSize={props.titleSize}

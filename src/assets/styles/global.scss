@@ -114,3 +114,30 @@ figure.image.cartoon {
 li::marker {
   color: $accentMain;
 }
+
+// removes the ::marker from markdown checklists
+li.task-list-item {
+  list-style-type: none;
+}
+
+// controls visibility of heading anchors
+h1 .anchor svg, h2 .anchor svg, h3 .anchor svg {
+  visibility: hidden;
+}
+
+h1:hover .anchor svg, h2:hover .anchor svg, h3:hover .anchor svg,
+h1 .anchor:focus svg, h2 .anchor:focus svg, h3 .anchor:focus svg {
+  visibility: visible;
+}
+
+/* Offsetting an html anchor to adjust for fixed header */
+h1[id], h2[id], h3[id] {
+  scroll-margin-top: 2.75em;
+}
+
+// base styles for heading anchors
+a.anchor svg {
+  margin-right: 5px;
+  fill: $accentMain;
+  vertical-align: middle;
+}
