@@ -18,7 +18,6 @@ import {
   ol,
   a,
   Checkbox,
-  Strong,
 } from "../components/bulmaElements/bulmaElements"
 
 export default function Article({ data }) {
@@ -40,7 +39,6 @@ export default function Article({ data }) {
     ol: ol,
     a: a,
     input: Checkbox,
-    strong: Strong,
   };
 
   return (

@@ -145,8 +145,3 @@ export const Checkbox = props => (
     {props.children}
   </input>
 )
-
-
-export const Strong = props => (
-  <strong className="has-text-white-bis">{props.children}</strong>
-)
