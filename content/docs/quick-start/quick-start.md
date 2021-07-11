@@ -44,9 +44,10 @@ Before moving on, make sure that you have at least done the following:
 - [ ] Obtained a [Github Account](https://github.com/) (saves your work on the cloud and it can also host your site for free!)
 - [ ] **Optional** - obtained a [Gatsby Cloud Account](https://www.gatsbyjs.com/dashboard/signup/) (also provides free hosting and better suited for more complex sites)
 
-If you are new to all of this, keep in mind that everything you will learn here will be useful to you outside of using [Greenlight](/) to build a website. You may find that you enjoy working with these technologies and it can lead you down quite a rewarding path.
-
-<br/>
+<Callout
+  title="You can do it!"
+  subtitle={<p>If you are new to all of this, keep in mind that everything you will learn here will be useful to you outside of using <strong>Greenlight</strong> to build a website. You may find that you enjoy working with these technologies and it can lead you down quite a rewarding path.</p>}
+/>
 
 ## First Steps
 
@@ -84,7 +85,11 @@ npm run develop
 
 5. Open your browser and enter `http://localhost:8000` in the URL bar.
 
-<br />
+<Callout
+  color="success"
+  title="Success!"
+  subtitle="Congratulations on completing the first step in this journey. Kudos to you if this was the first time you setup a development environment."
+/>
 
 ## Scripts
 
