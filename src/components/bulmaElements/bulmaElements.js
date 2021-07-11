@@ -1,5 +1,5 @@
-import React, { useState } from "react"
-import { Link } from "gatsby"
+import React from "react"
+import { useStaticQuery, graphql, Link } from "gatsby"
 import { ReactComponent as AnchorLink } from "../../assets/svg/anchorLink.svg"
 
 // mapped to <h1> or # in markdown
@@ -115,22 +115,37 @@ export const ol = props => (
 )
 
 // mapped to <a> or <Link> depending on URL or [text](url) in markdown
-export const a = props => {
+export const A = props => {
+  // get the prefix defined for the site to make sure it is not duplicated below
+  const data = useStaticQuery(graphql`
+    {
+      site {
+        pathPrefix
+      }
+    }
+  `);
+
+  const href = props.href;
+  const pathPrefix = data.site.pathPrefix;
+
   // regex to determine if href starts with exactly one slash (/*), anything else is external.
-  const internal = /^\/(?!\/)/.test(props.href);
+  const internal = /^\/(?!\/)/.test(href);
   // links to static content (/static/*) should be routed as external
-  const imageLink = /^\/(?!\/)static\//.test(props.href);
+  const imageLink = /^\/(?!\/)static\//.test(href);
+
+  console.log('link props', props)
 
   // if the URL is internal and not an image link (/static/*) use <Link>
   if(internal && !imageLink) {
+    const to = href.replace(pathPrefix, '');
     return (
-      <Link to={props.href} {...props}>
+      <Link to={to} {...props}>
         {props.children}
       </Link>
     )
   } else {
     return (
-      <a href={props.href} target="_blank" rel="noreferrer">
+      <a href={href} target="_blank" rel="noreferrer">
         {props.children}
       </a>
     )
