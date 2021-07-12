@@ -58,7 +58,7 @@ description: "A quick start guide on using Greenlight starter."
 <!-- the "./" is a relative path to a file on the same folder -->
 ![image name](./image.jpg)
 ```
-7. Once you are done creating your first blog post, make sure that the `development server` is running (see the [Quick Start](/docs/quick-start/#scripts) for more information).
+7. Once you are done creating your first blog post, make sure that the `development server` is running (see the [Scripts](/docs/quick-start/#scripts) for more information).
 8. Go to `http://localhost:8000/docs/my-first-post` to find your new blog post.
 
 That's all you need to do to write your first blog post or article.

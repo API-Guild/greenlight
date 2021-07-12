@@ -131,19 +131,21 @@ export const A = props => {
   // regex to determine if href starts with exactly one slash (/*), anything else is external.
   const internal = /^\/(?!\/)/.test(href);
   // links to static content (/static/*) should be routed as external
-  const imageLink = /^\/(?!\/)static\//.test(href);
-
-  console.log('link props', props)
+  const imageLink = new RegExp('static');
 
   // if the URL is internal and not an image link (/static/*) use <Link>
-  if(internal && !imageLink) {
+  if(internal && !imageLink.test(href)) {
     const to = href.replace(pathPrefix, '');
+
+    console.log('internal && !imageLink', props)
+
     return (
       <Link to={to} {...props}>
         {props.children}
       </Link>
     )
   } else {
+    console.log('!internal || imagelink', props)
     return (
       <a href={href} target="_blank" rel="noreferrer">
         {props.children}
@@ -160,3 +162,9 @@ export const Checkbox = props => (
     {props.children}
   </input>
 )
+
+// 404
+// https://api-guild.github.io/greenlight/static/1c64d26f341c597cab3359cbe5f6bf0d/e17e5/greenlight-sideways.png
+
+// working
+// https://api-guild.github.io/greenlight/static/1c64d26f341c597cab3359cbe5f6bf0d/e17e5/greenlight-sideways.png
