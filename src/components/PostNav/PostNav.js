@@ -8,24 +8,28 @@ export default function PostNav(props) {
   const subtitleClass = "is-size-5 is-size-6-mobile";
 
   return (
-    <div className={`buttons ${navBar}`}>
+    <div className={`columns is-variable is-8 is-mobile ${navBar}`}>
       {props.previous && props.toPrev ? (
-        <a className={`button is-primary is-outlined is-large ${postNav}`}>
-          <p>
-            <FontAwesomeIcon icon={faDirections} flip="both"/>
-            <strong className={titleClass}> Previous</strong>
-          </p>
-          <p className={subtitleClass}><em>{props.previous}</em></p>
-        </a>
+        <div className='column'>
+          <a className={`button is-primary is-outlined is-large ${postNav}`} style={{textAlign: "left"}}>
+            <p>
+              <FontAwesomeIcon icon={faDirections} flip="both"/>
+              <strong className={titleClass}> Previous</strong>
+            </p>
+            <p className={subtitleClass}><em>{props.previous}</em></p>
+          </a>
+        </div>
       ) : null}
       {props.next && props.toNext ? (
-        <a className={`button is-primary is-outlined is-large ${postNav}`} style={{marginLeft: "auto"}}>
-          <p>
-            <strong className={titleClass}>Next </strong>
-            <FontAwesomeIcon icon={faDirections}/>
-          </p>
-          <p className={subtitleClass}><em>{props.next}</em></p>
-        </a>
+        <div className='column'>
+          <a className={`button is-primary is-outlined is-large ${postNav}`} style={{marginLeft: "auto", textAlign: "right"}}>
+            <p>
+              <strong className={titleClass}>Next </strong>
+              <FontAwesomeIcon icon={faDirections}/>
+            </p>
+            <p className={subtitleClass}><em>{props.next}</em></p>
+          </a>
+        </div>
       ) : null}
     </div>
   )

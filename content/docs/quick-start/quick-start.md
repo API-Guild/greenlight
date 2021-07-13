@@ -150,8 +150,8 @@ If you just want to move on to learning how to write a blog post and embed a dat
 we’ll go over those steps in the next chapter: [Blog Posts](/docs/blog-posts).
 
 <PostNav
-  next="Blog Posts"
+  next="Blog Posts and another very large title post"
   toNext="/docs/blog-posts"
-  previous="Quick Start"
+  previous="Quick Start and another very large title post"
   toPrev="/docs/quick-start"
 />
