@@ -2,8 +2,8 @@ import React from "react";
 
 const SizeContext = React.createContext({
   width: null,
-  getWidth: () => {},
   layout: null,
+  device: null,
 });
 
 export default SizeContext;

@@ -1,19 +1,30 @@
 import React, { useContext } from 'react'
+import classNames from 'classnames'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faDirections } from '@fortawesome/free-solid-svg-icons'
 import LayoutContext from '../../context/LayoutContext'
 import { postNav, navBar } from './postNav.module.scss'
 
 export default function PostNav(props) {
-  const titleClass = "is-size-3 is-size-4-mobile";
-  const subtitleClass = "is-size-5 is-size-6-mobile";
-
   const { width } = useContext(LayoutContext);
 
-  console.log('context width:', width)
+  const navBarClass = classNames({
+    'columns': true,
+    'is-variable': true,
+    'is-8': width > 425,
+    'is-mobile': width > 455,
+  });
+  const titleClass = classNames({
+    'is-size-3': true,
+    'is-size-4-mobile': width <= 530,
+  });
+  const subtitleClass = classNames({
+    'is-size-5': true,
+    'is-size-6-mobile': width <= 530,
+  });
 
   return (
-    <div className={`columns is-variable is-8 is-mobile ${navBar}`}>
+    <div className={`${navBarClass} ${navBar}`}>
       {props.previous && props.toPrev ? (
         <div className='column'>
           <a className={`button is-primary is-outlined is-large ${postNav}`} style={{textAlign: "left"}}>
