@@ -18,7 +18,7 @@ import {
   ol,
   A,
   Checkbox,
-} from "../components/bulmaElements/bulmaElements"
+} from "../components/MarkdownElements/MarkdownElements"
 
 export default function Article({ data }) {
   const post = data.mdx;
