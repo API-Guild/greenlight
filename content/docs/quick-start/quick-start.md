@@ -22,7 +22,6 @@ Follow this guide to go from zero to hero within minutes, and you'll have a runn
 
 <br/>
 
-
 ## Development Environment
 
 If you are completely new to web development and tools such as [Node.js](https://nodejs.dev/learn), don't sweat it. There is a fantastic tutorial 
@@ -46,7 +45,7 @@ Before moving on, make sure that you have at least done the following:
 
 <Callout
   title="You can do it!"
-  subtitle={<p>If you are new to all of this, keep in mind that everything you will learn here will be useful to you outside of using <strong>Greenlight</strong> to build a website. You may find that you enjoy working with these technologies and it can lead you down quite a rewarding path.</p>}
+  subtitle={<p>If you are new to all of this, keep in mind that everything you will learn here will be useful to you outside of using <strong>Greenlight</strong> to build a website. You may find that you enjoy working with these technologies, leading you down a new and rewarding path.</p>}
 />
 
 ## First Steps
@@ -149,3 +148,10 @@ We will cover customizing your site and deployments in more detail further along
 
 If you just want to move on to learning how to write a blog post and embed a data visualization
 we’ll go over those steps in the next chapter: [Blog Posts](/docs/blog-posts).
+
+<PostNav
+  next="Blog Posts"
+  toNext="/docs/blog-posts"
+  previous="Quick Start"
+  toPrev="/docs/quick-start"
+/>
