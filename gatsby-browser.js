@@ -73,7 +73,7 @@ const windowSizer = () => {
   });
 }
 
-export const LayoutProvider = (props) => {
+const LayoutProvider = (props) => {
   const [width, setWidth] = useState(undefined);
   const [layout, setLayout] = useState(undefined);
   const [device, setDevice] = useState(undefined);
