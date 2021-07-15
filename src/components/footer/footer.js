@@ -11,8 +11,6 @@ import Title from "../title/title"
 export default function Footer() {
   const { width } = useContext(LayoutContext);
 
-  console.log('width:', width, width < 425 ? true : false)
-
   const columnsClass = classNames({
     'columns': true,
     'is-mobile': true,
