@@ -66,8 +66,8 @@ const windowSizer = () => {
   // breakpoints as defined by Tableau desktop's device layout designer 
   // & chrome's devtools, null values indicate window width
   const breakpoints = [
-    {layout: 'mobile-s', device: 'phone', min: 0, max: 424},
-    {layout: 'mobile-m', device: 'phone', min: 425, max: 767},
+    {layout: 'mobile-s', device: 'phone', min: 0, max: 425},
+    {layout: 'mobile-m', device: 'phone', min: 426, max: 767},
     {layout: 'mobile-l', device: 'phone', min: 768, max: 1023},
     {layout: 'tablet', device: 'tablet', min: 1024, max: 1279},
     {layout: 'desktop-s', device: 'tablet', min: 1280, max: 1365},
