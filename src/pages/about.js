@@ -1,5 +1,8 @@
-import React from "react"
+import React, { useContext } from "react"
 import { Link } from "gatsby"
+import classNames from "classnames"
+import LayoutContext from "../context/LayoutContext"
+import { columns } from "./about.module.scss"
 import Layout from "../components/layout/layout"
 import Hero from "../components/hero/hero"
 import Cartoon from "../components/cartoon/cartoon"
@@ -7,6 +10,21 @@ import { ReactComponent as Stakeholder } from "../assets/svg/stakeholder.svg"
 
 
 export default function About() {
+  const { width } = useContext(LayoutContext);
+
+  // console.log('width > 900', width, width > 900 ? true : false)
+
+  const threeFifths = classNames({
+    'column': true,
+    'is-three-fifths': width > 900,
+  });
+
+  const twoFifths = classNames({
+    'column': true,
+    'is-two-fifths': width > 900,
+  });
+
+
   return (
     <Layout>
       <Hero 
@@ -16,10 +34,10 @@ export default function About() {
         subtitle={<span><strong>Why</strong> and <strong>how</strong> it was built</span>}
         subtitleSize={4} 
       />
-      <div className="container">
-        <div className="columns">
-          <div className="column is-three-fifths-tablet">
-            <div className="container is-fluid">
+      <div className="section">
+        <div className={`columns ${columns}`}>
+          <div className={threeFifths}>
+            <div className="container">
               <p>
                 Solving a business's needs for insights and analysis can be a Sisyphean task. 
                 Multiple solutions ranging from low-code, no-code, artificial intelligence, and 
@@ -46,20 +64,20 @@ export default function About() {
               </div>       
             </div>
           </div>
-          <div className="column is-two-fifths-tablet">
+          <div className={twoFifths}>
             <Cartoon>
               <Stakeholder/>
             </Cartoon>
           </div>
         </div>
-        <div className="container is-fluid content is-hidden-mobile is-hidden-widescreen">
+        <div className="container content is-hidden-mobile is-hidden-widescreen">
           <blockquote>
             Gatsby believed in the green light, the orgiastic future that year by year recedes before us. 
             It eluded us then, but that’s no matter—tomorrow we will run faster, stretch out our arms farther…. 
             And one fine morning— So we beat on, boats against the current, borne back ceaselessly into the past.
           </blockquote>
         </div>
-        <div className="container is-fluid"> 
+        <div className="container"> 
           <p>
             <strong><a href="https://api-guild.github.io/greenlight/" target="_blank" rel="noreferrer">Greenlight </a></strong> 
             is a template to jumpstart <a className="has-text-tableau" href="https://www.tableau.com/" target="_blank" rel="noreferrer"> Tableau </a> 

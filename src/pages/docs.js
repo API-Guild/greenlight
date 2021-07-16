@@ -22,7 +22,7 @@ export default function Docs({ data }) {
         }
         subtitleSize={4} 
       />
-      <div className="container">
+      <div className="section">
         <div className="column is-hidden-desktop">
           <Cartoon>
             <Posts/>

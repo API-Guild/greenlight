@@ -24,7 +24,7 @@ export default function Footer() {
 
   const linksColClass = classNames({
     'column': true,
-    'is-two-fifth': width > 540,
+    'is-two-fifths': width > 540,
   });
 
   const linkClass = classNames({
