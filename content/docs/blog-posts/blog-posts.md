@@ -105,3 +105,10 @@ Every <Ext color="has-text-react" to="https://reactjs.org/">React</Ext> componen
 <br/>
 
 You can learn more by checking out [Gatsby's article on MDX](https://www.gatsbyjs.com/docs/glossary/mdx/). All of the components that have been built into [Greenlight](/) are described within the [MDX Reference](/docs/mdx-reference) article of the documentation.
+
+<PostNav
+  next="Markdown Reference"
+  toNext="/docs/markdown-reference"
+  previous="Quick Start"
+  toPrev="/docs/quick-start"
+/>
