@@ -2,7 +2,6 @@ import React, { useContext } from "react"
 import { Link } from "gatsby"
 import classNames from "classnames"
 import LayoutContext from "../context/LayoutContext"
-import { columns } from "./about.module.scss"
 import Layout from "../components/layout/layout"
 import Hero from "../components/hero/hero"
 import Cartoon from "../components/cartoon/cartoon"
@@ -11,8 +10,6 @@ import { ReactComponent as Stakeholder } from "../assets/svg/stakeholder.svg"
 
 export default function About() {
   const { width } = useContext(LayoutContext);
-
-  // console.log('width > 900', width, width > 900 ? true : false)
 
   const threeFifths = classNames({
     'column': true,
@@ -35,7 +32,7 @@ export default function About() {
         subtitleSize={4} 
       />
       <div className="section">
-        <div className={`columns ${columns}`}>
+        <div className={`columns`}>
           <div className={threeFifths}>
             <div className="container">
               <p>
@@ -50,18 +47,11 @@ export default function About() {
               <br/>
               <p>
                 As an organization succeeds at answering long-held questions, new inquiries inevitably arise. One is 
-                reminded of the unreachable green light motif found in the 
+                reminded of the unreachable <em>green light motif</em> found in the 
                 <a href="https://gutenberg.org/ebooks/64317" target="_blank" rel="noreferrer"> <cite>Great Gatsby</cite></a>, 
-                by F. Scott Fitzgerald:
+                by <strong>F. Scott Fitzgerald</strong>:
               </p>
-              <br/>
-              <div className="content is-hidden-tablet-only is-hidden-desktop-only">
-                <blockquote>
-                  "Gatsby believed in the green light, the orgiastic future that year by year recedes before us. 
-                  It eluded us then, but that’s no matter — tomorrow we will run faster, stretch out our arms farther... 
-                  And one fine morning — So we beat on, boats against the current, borne back ceaselessly into the past."
-                </blockquote>
-              </div>       
+              <br/>      
             </div>
           </div>
           <div className={twoFifths}>
@@ -70,7 +60,7 @@ export default function About() {
             </Cartoon>
           </div>
         </div>
-        <div className="container content is-hidden-mobile is-hidden-widescreen">
+        <div className="content">
           <blockquote>
             Gatsby believed in the green light, the orgiastic future that year by year recedes before us. 
             It eluded us then, but that’s no matter—tomorrow we will run faster, stretch out our arms farther…. 
