@@ -3,10 +3,12 @@ import classNames from 'classnames'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faDirections } from '@fortawesome/free-solid-svg-icons'
 import LayoutContext from '../../context/LayoutContext'
-import { postNav, navBar } from './postNav.module.scss'
+import { postNav, navBar, singleBtn } from './postNav.module.scss'
 
 export default function PostNav(props) {
   const { width } = useContext(LayoutContext);
+  const double = props.previous && props.next && props.toPrev && props.toNext;
+
 
   const navBarClass = classNames({
     'columns': true,
@@ -14,21 +16,34 @@ export default function PostNav(props) {
     'is-8': width > 425,
     'is-mobile': width > 455,
   });
+
   const titleClass = classNames({
     'is-size-3': true,
     'is-size-4-mobile': width <= 530,
   });
+
   const subtitleClass = classNames({
     'is-size-5': true,
     'is-size-6-mobile': width <= 530,
   });
 
+  const columnClass = classNames({
+    'column': true,
+    'is-half': double,
+  });
+
+  const btnClass = classNames({
+    'button is-primary is-outlined is-large': true,
+    [`${postNav}`]: true,
+    [`${singleBtn}`]: !double,
+  });
+
   return (
     <div className={`${navBarClass} ${navBar}`}>
       {props.previous && props.toPrev ? (
-        <div className='column'>
+        <div className={columnClass}>
           <a 
-            className={`button is-primary is-outlined is-large ${postNav}`} 
+            className={btnClass} 
             style={{textAlign: "left"}}
             href={props.toPrev}
           >
@@ -41,9 +56,9 @@ export default function PostNav(props) {
         </div>
       ) : null}
       {props.next && props.toNext ? (
-        <div className='column'>
+        <div className={columnClass} style={{marginLeft: "auto"}}>
           <a 
-            className={`button is-primary is-outlined is-large ${postNav}`} 
+            className={btnClass} 
             style={{marginLeft: "auto", textAlign: "right"}}
             href={props.toNext}
           >
