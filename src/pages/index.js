@@ -1,8 +1,10 @@
-import React from "react"
+import React, { useContext } from "react"
 import { Link, navigate } from "gatsby"
+import classNames from "classnames"
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faRocket } from '@fortawesome/free-solid-svg-icons'
 import Layout from "../components/layout/layout"
+import LayoutContext from "../context/LayoutContext"
 import Hero from "../components/hero/hero"
 import Cartoon from "../components/cartoon/cartoon"
 import Box from "../components/box/box"
@@ -14,8 +16,16 @@ import { ReactComponent as Builds } from "../assets/svg/builds.svg"
 import { ReactComponent as Security } from "../assets/svg/security.svg"
 import { ReactComponent as Pwa } from "../assets/svg/pwa.svg"
 import { ReactComponent as Chilling } from "../assets/svg/chilling.svg"
+import { features } from "./pages.module.scss"
 
 export default function Home() {
+  const { width } = useContext(LayoutContext); 
+
+  const columnClass = classNames({
+    'columns': true,
+    'is-mobile': width > 540,
+  });
+
   return (
     <Layout>
       <Hero
@@ -50,12 +60,12 @@ export default function Home() {
         </strong>
       </button>
 
-      <section className="section">
+      <section className={`section ${features}`}>
         {/* columns for tablets and above */}
-        <div className="columns">
+        <div className={columnClass}>
           <div className="column is-half is-flex">
             <Box hoverBox={true}>
-              <div className="columns">
+              <div className="columns is-desktop">
                 <div className="column is-flex is-align-self-center">
                   <Cartoon>
                     <StackedAreaChart/>
@@ -82,7 +92,7 @@ export default function Home() {
           </div>
           <div className="column is-half is-flex">
             <Box hoverBox={true}>
-              <div className="columns">
+              <div className="columns is-desktop">
                 <div className="column is-flex is-align-self-center">
                   <Cartoon>
                     <Articles/>
@@ -108,11 +118,11 @@ export default function Home() {
           </div>
         </div>
 
-        <div className="columns">
+        <div className={columnClass}>
           <div className="column is-half is-flex">
             <Box hoverBox={true}>
-              <div className="columns">
-                <div className="column is-flex is-hidden-tablet is-align-self-center">
+              <div className="columns is-desktop">
+                <div className="column is-flex is-align-self-center">
                   <Cartoon>
                     <Builds/>
                   </Cartoon>
@@ -132,18 +142,13 @@ export default function Home() {
                     subtitleSize={6}
                   />
                 </div>
-                <div className="column is-flex is-hidden-mobile is-align-self-center">
-                  <Cartoon>
-                    <Builds/>
-                  </Cartoon>
-                </div>
               </div>
             </Box>
           </div>
           <div className="column is-half is-flex">
             <Box hoverBox={true}>
-              <div className="columns">
-                <div className="column is-flex is-hidden-tablet is-align-self-center">
+              <div className="columns is-desktop">
+                <div className="column is-flex is-align-self-center">
                   <Cartoon>
                     <Security/>
                   </Cartoon>
@@ -163,20 +168,15 @@ export default function Home() {
                     subtitleSize={6}
                   />
                 </div>
-                <div className="column is-flex is-hidden-mobile is-align-self-center">
-                  <Cartoon>
-                    <Security/>
-                  </Cartoon>
-                </div>
               </div>
             </Box>
           </div>
         </div>
 
-        <div className="columns">
+        <div className={columnClass}>
           <div className="column is-half is-flex">
             <Box hoverBox={true}>
-              <div className="columns">
+              <div className="columns is-desktop">
                 <div className="column is-flex is-align-self-center">
                   <Cartoon>
                     <Pwa/>
@@ -202,7 +202,7 @@ export default function Home() {
           </div>
           <div className="column is-half is-flex">
             <Box hoverBox={true}>
-              <div className="columns">
+              <div className="columns is-desktop">
                 <div className="column is-flex is-align-self-center">
                   <Cartoon>
                     <Chilling/>

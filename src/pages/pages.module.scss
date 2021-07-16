@@ -1,3 +1,21 @@
+//styles for index page
+.features figure {
+  max-height: 22vw !important;
+}
+
+@media screen and (max-width: 768px) {
+  .features figure {
+    max-height: 14vw !important;
+  }
+}
+
+@media screen and (max-width: 540px) {
+  .features figure {
+    max-height: none !important;
+  }
+}
+
+// styles for docs page
 .docsColumns {
   display: flex;
   flex-direction: row;
