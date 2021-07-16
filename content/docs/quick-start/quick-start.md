@@ -148,3 +148,10 @@ We will cover customizing your site and deployments in more detail further along
 
 If you just want to move on to learning how to write a blog post and embed a data visualization
 we’ll go over those steps in the next chapter: [Blog Posts](/docs/blog-posts).
+
+<PostNav
+  next="Blog Posts and another very large title post"
+  toNext="/docs/blog-posts"
+  previous="Quick Start sdfsdf dfsdf dsfs dfds"
+  toPrev="/docs/quick-start"
+/>

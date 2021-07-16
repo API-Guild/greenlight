@@ -27,7 +27,11 @@ export default function PostNav(props) {
     <div className={`${navBarClass} ${navBar}`}>
       {props.previous && props.toPrev ? (
         <div className='column'>
-          <a className={`button is-primary is-outlined is-large ${postNav}`} style={{textAlign: "left"}}>
+          <a 
+            className={`button is-primary is-outlined is-large ${postNav}`} 
+            style={{textAlign: "left"}}
+            href={props.toPrev}
+          >
             <p>
               <FontAwesomeIcon icon={faDirections} flip="both"/>
               <strong className={titleClass}> Previous</strong>
@@ -38,7 +42,11 @@ export default function PostNav(props) {
       ) : null}
       {props.next && props.toNext ? (
         <div className='column'>
-          <a className={`button is-primary is-outlined is-large ${postNav}`} style={{marginLeft: "auto", textAlign: "right"}}>
+          <a 
+            className={`button is-primary is-outlined is-large ${postNav}`} 
+            style={{marginLeft: "auto", textAlign: "right"}}
+            href={props.toNext}
+          >
             <p>
               <strong className={titleClass}>Next </strong>
               <FontAwesomeIcon icon={faDirections}/>

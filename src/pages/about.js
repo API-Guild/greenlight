@@ -1,5 +1,7 @@
-import React from "react"
+import React, { useContext } from "react"
 import { Link } from "gatsby"
+import classNames from "classnames"
+import LayoutContext from "../context/LayoutContext"
 import Layout from "../components/layout/layout"
 import Hero from "../components/hero/hero"
 import Cartoon from "../components/cartoon/cartoon"
@@ -7,6 +9,19 @@ import { ReactComponent as Stakeholder } from "../assets/svg/stakeholder.svg"
 
 
 export default function About() {
+  const { width } = useContext(LayoutContext);
+
+  const threeFifths = classNames({
+    'column': true,
+    'is-three-fifths': width > 900,
+  });
+
+  const twoFifths = classNames({
+    'column': true,
+    'is-two-fifths': width > 900,
+  });
+
+
   return (
     <Layout>
       <Hero 
@@ -16,10 +31,10 @@ export default function About() {
         subtitle={<span><strong>Why</strong> and <strong>how</strong> it was built</span>}
         subtitleSize={4} 
       />
-      <div className="container">
-        <div className="columns">
-          <div className="column is-three-fifths-tablet">
-            <div className="container is-fluid">
+      <div className="section">
+        <div className={`columns`}>
+          <div className={threeFifths}>
+            <div className="container">
               <p>
                 Solving a business's needs for insights and analysis can be a Sisyphean task. 
                 Multiple solutions ranging from low-code, no-code, artificial intelligence, and 
@@ -32,34 +47,27 @@ export default function About() {
               <br/>
               <p>
                 As an organization succeeds at answering long-held questions, new inquiries inevitably arise. One is 
-                reminded of the unreachable green light motif found in the 
+                reminded of the unreachable <em>green light motif</em> found in the 
                 <a href="https://gutenberg.org/ebooks/64317" target="_blank" rel="noreferrer"> <cite>Great Gatsby</cite></a>, 
-                by F. Scott Fitzgerald:
+                by <strong>F. Scott Fitzgerald</strong>:
               </p>
-              <br/>
-              <div className="content is-hidden-tablet-only is-hidden-desktop-only">
-                <blockquote>
-                  "Gatsby believed in the green light, the orgiastic future that year by year recedes before us. 
-                  It eluded us then, but that’s no matter — tomorrow we will run faster, stretch out our arms farther... 
-                  And one fine morning — So we beat on, boats against the current, borne back ceaselessly into the past."
-                </blockquote>
-              </div>       
+              <br/>      
             </div>
           </div>
-          <div className="column is-two-fifths-tablet">
+          <div className={twoFifths}>
             <Cartoon>
               <Stakeholder/>
             </Cartoon>
           </div>
         </div>
-        <div className="container is-fluid content is-hidden-mobile is-hidden-widescreen">
+        <div className="content">
           <blockquote>
             Gatsby believed in the green light, the orgiastic future that year by year recedes before us. 
             It eluded us then, but that’s no matter—tomorrow we will run faster, stretch out our arms farther…. 
             And one fine morning— So we beat on, boats against the current, borne back ceaselessly into the past.
           </blockquote>
         </div>
-        <div className="container is-fluid"> 
+        <div className="container"> 
           <p>
             <strong><a href="https://api-guild.github.io/greenlight/" target="_blank" rel="noreferrer">Greenlight </a></strong> 
             is a template to jumpstart <a className="has-text-tableau" href="https://www.tableau.com/" target="_blank" rel="noreferrer"> Tableau </a> 

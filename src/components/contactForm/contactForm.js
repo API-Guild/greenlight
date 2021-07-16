@@ -37,7 +37,7 @@ export default function ContactForm(props) {
   };
 
   return (
-    <div className="container is-fluid">
+    <div className="container" style={{marginBottom: "4rem"}}>
       <div className="field">
         <label className="label has-text-primary" htmlFor="firstNameInput">First Name</label>
         <div className="control has-icons-left has-icons-right">

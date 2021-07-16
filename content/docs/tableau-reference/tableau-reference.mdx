@@ -97,9 +97,132 @@ The toolbarOptions `prop` is the most complex, however every option has safe def
 | rounded   | <span className="has-text-undraw">boolean</span> | sets the border type for buttons, default is <span className="has-text-success">true</span> | <span className="has-text-success">true</span> or <span className="has-text-danger">false</span> |
 | downloads | <span className="has-text-warning">array</span>  | lists download options, default shows all of them. Empty arrays removes them                | pdf, image, data, crosstab, powerpoint, workbook                                                 |
 
-Refer to the next example for guidance on customizing this component.
+Here are a few different styles of custom toolbars, remember that by default the toolbars will use the primary color 
+set for your website. You will never need to add a custom toolbar component on it's as this is just a demonstration:
+
+##### Warning Style
+
+```js {numberLines, 5-20}
+// 'warning' color without outlines and not rounded
+// shows a subset of buttons and download options
+// only has one viz URL, no navigation required
+<VizToolbar
+  toolbarOptions={{
+    color: 'warning',
+    outline: false,
+    rounded: false,
+    buttons: [
+      'undo',
+      'redo',
+      'reset',
+      'share'
+    ], 
+    downloads: [
+      'pdf',
+      'image',
+      'powerpoint'
+    ],
+  }}
+  loaded={true}
+  vizArray={true}
+  vizIndex={0}
+  vizUrl='one-single-viz'
+  handleVizIndex={()=>{}}
+/>
+```
+<VizToolbar
+  toolbarOptions={{
+    color: 'warning',
+    outline: false,
+    rounded: false,
+    buttons: [
+      'undo',
+      'redo',
+      'reset',
+      'share'
+    ], 
+    downloads: [
+      'pdf',
+      'image',
+      'powerpoint'
+    ],
+  }}
+  loaded={true}
+  vizIndex={0}
+  vizUrl='one-single-viz'
+  handleVizIndex={()=>{}}
+/>
 
 <br/>
+
+##### Danger Style
+
+```js {numberLines, 5-18}
+// 'danger' color and not rounded
+// shows a subset of buttons and download options
+// has two vizzes which allows for navigation
+<VizToolbar
+  toolbarOptions={{
+    color: 'danger',
+    rounded: false,
+    buttons: [
+      'refresh',
+      'details',
+      'share',
+    ],
+    downloads: [
+      'data',
+      'crosstab',
+      'workbook'
+    ],
+  }}
+  loaded={true}
+  vizArray={true}
+  vizIndex={0}
+  vizUrl={['first-viz','second-viz']}
+  handleVizIndex={()=>{}}
+/>
+```
+<VizToolbar
+  toolbarOptions={{
+    color: 'danger',
+    rounded: false,
+    buttons: [
+      'refresh',
+      'details',
+      'share',
+    ],
+    downloads: [
+      'data',
+      'crosstab',
+      'workbook'
+    ],
+  }}
+  loaded={true}
+  vizArray={true}
+  vizIndex={0}
+  vizUrl={['first-viz','second-viz']}
+  handleVizIndex={()=>{}}
+/>
+
+<Callout
+  color="info"
+  title="Note:"
+  subtitle={
+    <div>
+      <p>
+        The "<strong>loaded</strong>" prop is an internal mechanism of the toolbar.
+        Enabling interaction only once a viz has been loaded.
+        It has been added here in order to demonstrate button styles and will not be required for users to define.
+      </p>
+      <p>
+        The "<strong>vizArray</strong>" prop is an internal mechanism of the toolbar. 
+        Navigation buttons are displayed automatically whenever this prop is set to true, however this is handled automatically
+        by the component and will not be required for users to define. 
+      </p>
+    </div>
+  }
+/>
 
 ## Custom Usage
 

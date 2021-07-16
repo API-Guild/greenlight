@@ -19,13 +19,12 @@ export default function Contact() {
         } 
         subtitleSize={4}
       />
-      <div className="container">
+      <div className="section">
         <div className="columns">
           <div className="column">
             <ContactForm/>
           </div>
           <div className="column is-two-fifths">
-            <br/>
             <Cartoon>
               <NewIdea/>
             </Cartoon>
