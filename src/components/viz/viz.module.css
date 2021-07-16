@@ -7,3 +7,7 @@
 .vizDiv iframe {
   margin: auto;
 }
+
+.placeholder {
+  min-height: 750px;
+}

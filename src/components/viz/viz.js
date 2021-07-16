@@ -1,5 +1,6 @@
 import React from "react"
-import * as vizStyles from "./viz.module.css"
+import classNames from "classnames"
+import { vizDiv, placeholder } from "./viz.module.css"
 import vizLayout from "./vizLayout/vizLayout.js"
 // eslint-disable-next-line no-unused-vars
 const apiTableau = typeof window !== 'undefined' ? require("./tableauApi/tableau-2.7.0.min.js") : null;
@@ -143,8 +144,13 @@ export default class Viz extends React.Component {
   }
 
   render() {
+    const vizDivClass = classNames({
+      [`${vizDiv}`]: true,
+      [`${placeholder}`]: !this.props.loaded,
+    });
+
     return (
-        <div className={vizStyles.vizDiv} ref={this.vizRef}/>
+        <div className={vizDivClass} ref={this.vizRef}/>
     );
   }
 }
