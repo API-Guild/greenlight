@@ -5,6 +5,7 @@ import Hero from "../components/hero/hero"
 import ContentIndex from "../components/contentIndex/contentIndex"
 import Cartoon from "../components/cartoon/cartoon"
 import { ReactComponent as Posts} from "../assets/svg/posts.svg"
+import { docsColumns } from "./pages.module.scss"
 
 export default function Docs({ data }) {
   const docs = data.allMdx.nodes;
@@ -23,19 +24,14 @@ export default function Docs({ data }) {
         subtitleSize={4} 
       />
       <div className="section">
-        <div className="column is-hidden-desktop">
-          <Cartoon>
-            <Posts/>
-          </Cartoon>
-        </div>
-        <div className="columns">
-          <div className="column">
+        <div className={`columns ${docsColumns}`}>
+          <div className="column is-three-fifths">
             <ContentIndex
               title="Articles"
               content={docs}
             />
           </div>
-          <div className="column is-hidden-touch is-two-fifths">
+          <div className="column is-two-fifths">
             <Cartoon>
               <Posts/>
             </Cartoon>

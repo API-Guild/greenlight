@@ -1,0 +1,10 @@
+.docsColumns {
+  display: flex;
+  flex-direction: row;
+}
+
+@media screen and (max-width: 768px) {
+  .docsColumns {
+    flex-direction: column-reverse;
+  }
+}

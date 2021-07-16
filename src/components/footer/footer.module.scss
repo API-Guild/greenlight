@@ -1,6 +1,6 @@
 .footer {
   padding-bottom: 3rem;
-  padding-top: 4rem;
+  padding-top: 3rem;
 }
 
 .columns {
@@ -32,5 +32,8 @@
   }
   .columns {
     flex-direction: column-reverse;
+  }
+  .footer {
+    padding-top: 0rem;
   }
 }
