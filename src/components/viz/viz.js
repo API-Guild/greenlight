@@ -83,10 +83,10 @@ export default class Viz extends React.Component {
 
     // handles URLs for single strings and arrays of URLs
     if (!this.props.vizArray) {
-      embedUrl = this.state.vizUrl;
+      embedUrl = this.state.vizUrl[0].url;
     }
     else {
-      embedUrl = this.state.vizUrl[vizIndex];
+      embedUrl = this.state.vizUrl[vizIndex].url;
     }
 
     const vizOptions = {
