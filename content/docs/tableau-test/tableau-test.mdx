@@ -1,0 +1,57 @@
+---
+title: Tableau Testing Page
+date: "2021-04-15"
+description: "Testing embedding techniques for the Tableau Component"
+---
+
+<Tableau
+  viz={[
+    "https://public.tableau.com/views/Greenlight/GreenlightProfitDashboard",
+    "https://public.tableau.com/views/Greenlight/GreenlightProfitDashboardfixed",
+    "https://public.tableau.com/views/Greenlight/GreenlightProfitDashboardautomatic",
+    "https://public.tableau.com/views/Greenlight/GreenlightProfitDashboardrange",
+    "https://public.tableau.com/views/Greenlight/SummaryofProfitAnalysisfixed",
+    "https://public.tableau.com/views/Greenlight/SummaryofProfitAnalysisautomatic",
+    "https://public.tableau.com/views/Greenlight/SummaryofProfitAnalysisrange",
+    "https://public.tableau.com/views/Greenlight/WeeklyMetricsentireview",
+    "https://public.tableau.com/views/Greenlight/WeeklyMetricsstandard",
+    "https://public.tableau.com/views/Greenlight/WeeklyMetricsfitwidth",
+    "https://public.tableau.com/views/Greenlight/WeeklyMetricsfitheight"
+  ]}
+/>
+
+## Code
+
+```js {numberLines}
+<Tableau
+  viz={[
+    "https://public.tableau.com/views/Greenlight/GreenlightProfitDashboard",
+    "https://public.tableau.com/views/Greenlight/GreenlightProfitDashboardfixed",
+    "https://public.tableau.com/views/Greenlight/GreenlightProfitDashboardautomatic",
+    "https://public.tableau.com/views/Greenlight/GreenlightProfitDashboardrange",
+    "https://public.tableau.com/views/Greenlight/SummaryofProfitAnalysisfixed",
+    "https://public.tableau.com/views/Greenlight/SummaryofProfitAnalysisautomatic",
+    "https://public.tableau.com/views/Greenlight/SummaryofProfitAnalysisrange",
+    "https://public.tableau.com/views/Greenlight/WeeklyMetricsentireview",
+    "https://public.tableau.com/views/Greenlight/WeeklyMetricsstandard",
+    "https://public.tableau.com/views/Greenlight/WeeklyMetricsfitwidth",
+    "https://public.tableau.com/views/Greenlight/WeeklyMetricsfitheight"
+  ]}
+/>
+```
+
+### Key
+
+| Index | Type      |  Behavior   | Options? |
+| :---- | :-------- | :---------- | :------- | 
+|   1   | Dashboard |    fixed    |   true   |
+|   2   | Dashboard |    fixed    |   false  |
+|   3   | Dashboard |  automatic  |   false  |
+|   4   | Dashboard |    range    |   false  |
+|   5   |   Story   |    fixed    |   false  |
+|   6   |   Story   |  automatic  |   false  |
+|   7   |   Story   |    range    |   false  |
+|   8   | Worksheet | entire view |   false  |
+|   9   | Worksheet |    fixed    |   false  |
+|   10  | Worksheet |  automatic  |   false  |
+|   11  | Worksheet |    range    |   false  |

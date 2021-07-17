@@ -1,4 +1,5 @@
 import React, { useState } from "react"
+import { breakpoints } from "../../utils/layoutUtils"
 import Box from "../box/box"
 import Viz from "../viz/viz"
 import VizToolbar from "../vizToolbar/vizToolbar"
@@ -38,6 +39,13 @@ export default function Tableau(props) {
     vizArray = true;
   } 
 
+  // default height for placeholder and vizDiv
+  const defaultHeight = {
+    desktop: 800,
+    tablet: 1000,
+    phone: 1200,
+  };
+
   return (
     <Box vizBox={true}>
       <Viz
@@ -50,6 +58,7 @@ export default function Tableau(props) {
         vizIndex={vizIndex}
         height={props.height}
         width={props.width}
+        defaultHeight={defaultHeight}
         hideTabs={props.hideTabs}
         hideToolbar={props.hideToolbar}
         device={props.device}

@@ -12,8 +12,6 @@ export default class Viz extends React.Component {
 
     this.state = {
       vizUrl: props.vizUrl,
-      height: props.height,
-      width: props.width,
       hideTabs: props.hideTabs === false ? false : true,
       hideToolbar: !props.hideToolbar ? false : true,
       device: !props.device ? vizLayout().device : props.device,
@@ -91,8 +89,8 @@ export default class Viz extends React.Component {
 
     const vizOptions = {
       device: this.state.device,
-      width: this.state.width,
-      height: this.state.height,
+      width: this.props.width,
+      height: this.props.height,
       hideTabs: this.state.hideTabs,
       hideToolbar: this.state.hideToolbar,
       onFirstVizSizeKnown: (event) => {
