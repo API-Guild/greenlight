@@ -15,6 +15,8 @@ export default class Viz extends React.Component {
       hideTabs: props.hideTabs === false ? false : true,
       hideToolbar: !props.hideToolbar ? false : true,
       device: !props.device ? vizLayout().device : props.device,
+      width: props.width,
+      height: props.height,
       windowWidth: vizLayout().width,
       layout: vizLayout().layout,
       fixedLayout: !props.fixedLayout ? false : true,
@@ -89,14 +91,15 @@ export default class Viz extends React.Component {
 
     const vizOptions = {
       device: this.state.device,
-      width: this.props.width,
-      height: this.props.height,
+      width: this.state.width,
+      height: this.state.height,
       hideTabs: this.state.hideTabs,
       hideToolbar: this.state.hideToolbar,
       onFirstVizSizeKnown: (event) => {
+        console.log(event)
       },
       onFirstInteractive: (event) => {
-        // enables <VizToolbar> buttons that depend on an initialized viz
+        // removes disabled property from <VizToolbar> buttons that depend on an initialized viz
         this.props.setLoaded(true);
       }
     };
@@ -148,7 +151,7 @@ export default class Viz extends React.Component {
     });
 
     return (
-        <div className={vizDivClass} ref={this.vizRef}/>
+        <div className={vizDivClass} ref={this.vizRef} />
     );
   }
 }

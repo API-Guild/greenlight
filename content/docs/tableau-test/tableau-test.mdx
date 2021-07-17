@@ -18,6 +18,7 @@ description: "Testing embedding techniques for the Tableau Component"
     "https://public.tableau.com/views/Greenlight/WeeklyMetricsfitwidth",
     "https://public.tableau.com/views/Greenlight/WeeklyMetricsfitheight"
   ]}
+  device="phone"
 />
 
 ## Code
@@ -42,7 +43,7 @@ description: "Testing embedding techniques for the Tableau Component"
 
 ### Key
 
-| Index | Type      |  Behavior   | Options? |
+| Index | Type      |  Behavior   | Layouts? |
 | :---- | :-------- | :---------- | :------- | 
 |   1   | Dashboard |    fixed    |   true   |
 |   2   | Dashboard |    fixed    |   false  |
@@ -55,3 +56,133 @@ description: "Testing embedding techniques for the Tableau Component"
 |   9   | Worksheet |    fixed    |   false  |
 |   10  | Worksheet |  automatic  |   false  |
 |   11  | Worksheet |    range    |   false  |
+
+## New Prop Structure
+
+To fully handle [CLS](https://nitropack.io/blog/post/fix-cls), every viz would need a declared set of height, width
+and device properties via a layouts prop. In that case, wouldn't it make sense to let the Tableau component handle
+a deep level of customization at the individual viz level or let selected properties be shared globally?
+
+This way components can be as simple as a single viz URL or as complex as a carrousel of vizzes, each with their own
+specific sets of behavior. 
+
+At a minimum, developers should leverage Tableau server user roles such that production workbooks cannot be updated until 
+they have passed a review process by a project leader. A minimal setup that addresses quality control for embedded content
+would require a project folder or even better a partitioned site for production assets that is kept seperate from development
+or sandbox environments. That way further iterations on data visualizations can be developed seperately and made available on
+production as the development team is involved to correct for any adjustments needed on the code base, such as a change in sizing.
+
+We recommend providing different production and development Tableau environments to test new features. Tableau Server supports 
+up to three different environments per license, which can be deployed as production, development and testing/staging. 
+Greenlight itself can be tested on individual feature branches while embedding content from the different servers. 
+
+Here is a rough sketch of the idea:
+
+###### Tableau components should...
+
+- [ ] allow for global and local props
+- [ ] work with arrays of size 1 and larger
+- [ ] have local props supersede global props
+- [ ] all props have reasonable fallback settings in case they are undefined
+
+
+```js {numberLines}
+// single viz with global options
+<Tableau 
+  viz={[{
+    url: 'https://public.tableau.com/views/Greenlight/GreenlightProfitDashboard',
+  }]}
+  layout={
+    default: {width: 1366, height: 800},
+    desktop: {width: 1366, height: 800},
+    tablet: {width: 1024, height: 768},
+    phone: {width: 375, height: 667},
+  }
+  hideTabs={true}
+  hideToolbar={true}
+  customToolbar={true}
+  fixedLayout={false}
+  toolbarOptions={{
+    buttons: [
+      'undo',
+      'redo',
+      'reset',
+      'share'
+    ],
+    color: 'warning',
+    outline: false,
+    rounded: false,
+    downloads: [
+      'pdf',
+      'image',
+      'powerpoint'
+    ],
+  }}
+/>
+```
+
+```js {numberLines}
+// two vizzes with global and local options
+<Tableau 
+  viz={[
+    {
+      url: 'https://public.tableau.com/views/Greenlight/GreenlightProfitDashboard',
+      layout: {
+        default: {width: 1366, height: 800},
+        desktop: {width: 1366, height: 800},
+        tablet: {width: 1024, height: 768},
+        phone: {width: 375, height: 667},
+      },
+      hideTabs: true,
+      hideToolbar: true,
+      customToolbar: true,
+      fixedLayout: false,
+      toolbarOptions: {{
+        buttons: [
+          'undo',
+          'redo',
+          'reset',
+          'share'
+        ],
+        color: 'warning',
+        outline: false,
+        rounded: false,
+        downloads: [
+          'pdf',
+          'image',
+          'powerpoint'
+        ],
+      }}
+    }
+    {
+      url: 'https://public.tableau.com/views/Greenlight/GreenlightProfitDashboard',
+      layout: {
+        default: {width: 1366, height: 800},
+        desktop: {width: 1366, height: 800},
+        tablet: {width: 1024, height: 768},
+        phone: {width: 375, height: 667},
+      },
+      fixedLayout: false,
+      toolbarOptions: {{
+        buttons: [
+          'undo',
+          'redo',
+          'reset',
+          'share'
+        ],
+        color: 'warning',
+        outline: false,
+        rounded: false,
+        downloads: [
+          'pdf',
+          'image',
+          'powerpoint'
+        ],
+      }}
+    }
+  ]}
+  hideTabs={false}
+  hideToolbar={false}
+  customToolbar={false}
+/>
+```
