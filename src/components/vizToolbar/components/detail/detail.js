@@ -148,7 +148,7 @@ export default function Detail(props) {
         }
         footer={
           <>
-            {!props.vizArray ? null : (
+            {!props.vizNav ? null : (
               <VizNav
                 color={props.color}
                 outline={props.outline}

@@ -107,11 +107,11 @@ export default function VizToolbar(props) {
   }
 
   // controls rendering of navigation in toolbar and detail modal
-  const [vizArray, setVizArray] = useState(false);
+  const [vizNav, setVizNav] = useState(false);
 
   useEffect(() => {
     if(props.viz) {
-      setVizArray(props.viz.length > 1 ? true : false);
+      setVizNav(props.viz.length > 1 ? true : false);
     }
   },[props.viz])
 
@@ -141,7 +141,7 @@ export default function VizToolbar(props) {
 
   return (
     <div className={vizTbStyles.toolbar}>
-      {!vizArray ? null : (
+      {!vizNav ? null : (
         <VizNav
           color={color}
           outline={outline}
@@ -161,7 +161,7 @@ export default function VizToolbar(props) {
           vizObj={props.vizObj}
           disabled={disabled}
           loaded={props.loaded}
-          vizArray={vizArray}
+          vizNav={vizNav}
           handleVizIndex={props.handleVizIndex}
           viz={props.viz} 
           vizIndex={props.vizIndex}

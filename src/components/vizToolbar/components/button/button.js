@@ -99,7 +99,7 @@ export default function Button(props) {
         vizObj={props.vizObj}
         loaded={props.loaded}
         disabled={props.disabled}
-        vizArray={props.vizArray}
+        vizNav={props.vizNav}
         color={props.color}
         outline={props.outline}
         rounded={props.rounded}
