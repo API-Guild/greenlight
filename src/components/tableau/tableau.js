@@ -68,7 +68,7 @@ export default function Tableau(props) {
           toolbarOptions={props.toolbarOptions} 
           vizObj={vizObj}
           loaded={loaded}
-          vizUrl={props.viz} 
+          viz={props.viz} 
           vizArray={vizArray} 
           vizIndex={vizIndex}
           handleVizIndex={handleVizIndex}

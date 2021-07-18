@@ -10,7 +10,7 @@ export default function VizNav(props) {
 
   const btnStyles = `${props.color} ${props.outline} ${props.rounded} ${navBtn}`;
   const indexBtn = `${props.color} ${props.outline} ${props.rounded}`;
-  const vizzes = props.vizUrl.length;
+  const vizzes = props.viz.length;
 
   // props.handleVizIndex() is defined in the <Tableau/> component
   // it allows for navigation within an array of URLs

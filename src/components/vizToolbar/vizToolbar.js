@@ -138,7 +138,7 @@ export default function VizToolbar(props) {
           outline={outline}
           rounded={rounded}
           handleVizIndex={props.handleVizIndex}
-          vizUrl={props.vizUrl} 
+          viz={props.viz} 
           vizIndex={props.vizIndex}
         />
       )}
@@ -154,7 +154,7 @@ export default function VizToolbar(props) {
           loaded={props.loaded}
           vizArray={props.vizArray}
           handleVizIndex={props.handleVizIndex}
-          vizUrl={props.vizUrl} 
+          viz={props.viz} 
           vizIndex={props.vizIndex}
         />
         {!downloadFlag ? null : (
