@@ -1,5 +1,4 @@
 import React, { useState } from "react"
-import { breakpoints } from "../../utils/layoutUtils"
 import Box from "../box/box"
 import Viz from "../viz/viz"
 import VizToolbar from "../vizToolbar/vizToolbar"
@@ -53,7 +52,7 @@ export default function Tableau(props) {
         setVizObj={setVizObj}
         loaded={loaded}
         setLoaded={setLoaded}
-        vizUrl={props.viz}
+        viz={props.viz}
         vizArray={vizArray}
         vizIndex={vizIndex}
         height={props.height}

@@ -11,7 +11,8 @@ export default class Viz extends React.Component {
     this.vizRef = React.createRef();
 
     this.state = {
-      vizUrl: props.vizUrl,
+      viz: props.viz,
+      vizIndex: props.vizIndex,
       hideTabs: props.hideTabs === false ? false : true,
       hideToolbar: !props.hideToolbar ? false : true,
       device: !props.device ? vizLayout().device : props.device,
@@ -79,16 +80,7 @@ export default class Viz extends React.Component {
 
   // Initializes the Tableau visualization
   initViz(vizIndex) {
-    let embedUrl;
-
-    // handles URLs for single strings and arrays of URLs
-    if (!this.props.vizArray) {
-      embedUrl = this.state.vizUrl[0].url;
-    }
-    else {
-      embedUrl = this.state.vizUrl[vizIndex].url;
-    }
-
+    const url = this.state.viz[vizIndex].url;
     const vizOptions = {
       device: this.state.device,
       width: this.state.width,
@@ -113,7 +105,7 @@ export default class Viz extends React.Component {
       // Create a new viz object and embed it in the container div.
       try {
         // eslint-disable-next-line no-undef
-        viz = new tableau.Viz(this.vizRef.current, embedUrl, vizOptions);
+        viz = new tableau.Viz(this.vizRef.current, url, vizOptions);
       }
       catch(err) {
         // reference: https://help.tableau.com/current/api/js_api/en-us/JavaScriptAPI/js_api_ref.htm#tableauexception_class
