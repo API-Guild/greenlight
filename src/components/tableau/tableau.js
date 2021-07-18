@@ -38,13 +38,6 @@ export default function Tableau(props) {
     vizArray = true;
   } 
 
-  // default height for placeholder and vizDiv
-  const defaultHeight = {
-    desktop: 800,
-    tablet: 1000,
-    phone: 1200,
-  };
-
   return (
     <Box vizBox={true}>
       <Viz
@@ -53,14 +46,12 @@ export default function Tableau(props) {
         loaded={loaded}
         setLoaded={setLoaded}
         viz={props.viz}
-        vizArray={vizArray}
         vizIndex={vizIndex}
+        device={props.device}
         height={props.height}
         width={props.width}
-        defaultHeight={defaultHeight}
         hideTabs={props.hideTabs}
         hideToolbar={props.hideToolbar}
-        device={props.device}
         fixedLayout={props.fixedLayout}
       />
       {!customToolbar ? null : (

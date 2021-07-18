@@ -83,7 +83,7 @@ We have taken care to make <Ext color="has-text-react" to="https://reactjs.org/"
 
 ```js {numberLines}
 <Tableau
-   viz="https://public.tableau.com/views/Greenlight/GreenlightProfitDashboard"
+   viz={[{url: "https://public.tableau.com/views/Greenlight/GreenlightProfitDashboard"}]}
 />
 ```
 
@@ -92,7 +92,7 @@ Every <Ext color="has-text-react" to="https://reactjs.org/">React</Ext> componen
 #### When the component renders it will look like this:
 
 <Tableau
-   viz="https://public.tableau.com/views/Greenlight/GreenlightProfitDashboard"
+   viz={[{url: "https://public.tableau.com/views/Greenlight/GreenlightProfitDashboard"}]}
 />
 
 <br/>

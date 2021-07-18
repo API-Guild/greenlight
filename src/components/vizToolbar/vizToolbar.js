@@ -106,6 +106,15 @@ export default function VizToolbar(props) {
     setDownload('Download');
   }
 
+  // controls rendering of navigation in toolbar and detail modal
+  const [vizArray, setVizArray] = useState(false);
+
+  useEffect(() => {
+    if(props.viz) {
+      setVizArray(props.viz.length > 1 ? true : false);
+    }
+  },[props.viz])
+
   // toolbar settings and styles, the set methods help standardize 
   // these options beyond what is supported by the Bulma framework
   const color = set.colorSet(options.color);
@@ -132,7 +141,7 @@ export default function VizToolbar(props) {
 
   return (
     <div className={vizTbStyles.toolbar}>
-      {!props.vizArray ? null : (
+      {!vizArray ? null : (
         <VizNav
           color={color}
           outline={outline}
@@ -152,7 +161,7 @@ export default function VizToolbar(props) {
           vizObj={props.vizObj}
           disabled={disabled}
           loaded={props.loaded}
-          vizArray={props.vizArray}
+          vizArray={vizArray}
           handleVizIndex={props.handleVizIndex}
           viz={props.viz} 
           vizIndex={props.vizIndex}
