@@ -12,7 +12,7 @@ export default class Viz extends React.Component {
 
     this.state = {
       viz: props.viz,
-      vizIndex: props.vizIndex,
+      url: props.viz[this.props.vizIndex].url,
       hideTabs: props.hideTabs === false ? false : true,
       hideToolbar: !props.hideToolbar ? false : true,
       device: !props.device ? vizLayout().device : props.device,
@@ -40,7 +40,7 @@ export default class Viz extends React.Component {
       windowWidth: vizLayout().width,
       layout: vizLayout().layout,
     });
-    this.initViz(this.props.vizIndex);
+    this.initViz();
   }
 
   // determines if a new viz object should be reloaded given changes to state
@@ -48,16 +48,19 @@ export default class Viz extends React.Component {
     // server side rendering means that window layouts cannot be determined at build time
     // therefore it is necessary to reinitialize the viz in this scenario
     if (this.state.layout === undefined) {
-      this.initViz(this.props.vizIndex);
+      this.initViz();
     }
     // reload the viz with a new device layout if it does not match the previous setting 
     // and the fixedLayout prop is false -> resizes on different window sizes 
     if(!this.state.fixedLayout && (this.state.layout !== prevState.layout)) {
-      this.initViz(this.props.vizIndex);
+      this.initViz();
     }
     // reload the viz whenever vizIndex has changed to allow for navigation within an array of URLs
     if(this.props.vizIndex !== prevProps.vizIndex) {
-      this.initViz(this.props.vizIndex);
+      this.setState({
+        url: this.props.viz[this.props.vizIndex].url,
+      });
+      this.initViz();
     }
   }
 
@@ -73,14 +76,13 @@ export default class Viz extends React.Component {
     this.disposeViz();
     
     // fix Warning: Can't perform a React state update on an unmounted component
-    this.setState = (state, callback) => {
+    this.setState = () => {
       return;
     };
   }
 
   // Initializes the Tableau visualization
-  initViz(vizIndex) {
-    const url = this.state.viz[vizIndex].url;
+  initViz() {
     const vizOptions = {
       device: this.state.device,
       width: this.state.width,
@@ -105,7 +107,7 @@ export default class Viz extends React.Component {
       // Create a new viz object and embed it in the container div.
       try {
         // eslint-disable-next-line no-undef
-        viz = new tableau.Viz(this.vizRef.current, url, vizOptions);
+        viz = new tableau.Viz(this.vizRef.current, this.state.url, vizOptions);
       }
       catch(err) {
         // reference: https://help.tableau.com/current/api/js_api/en-us/JavaScriptAPI/js_api_ref.htm#tableauexception_class
