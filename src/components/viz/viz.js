@@ -10,17 +10,37 @@ export default class Viz extends React.Component {
     super(props);
     this.vizRef = React.createRef();
 
+    // get object at current vizIndex of props.viz to facilitate prop scoping
+    const localProps = props.viz[props.vizIndex];
+
+    // check for 'local' props [in viz array] first, if none found then
+    // check 'global' props, if none found use a default value as fallback
+    const scopeProps = (localProp, globalProp, defaultValue) => {
+      if(localProp === undefined) {
+        if(globalProp === undefined) {
+          return defaultValue
+        } else {
+          return globalProp;
+        }
+      } else {
+        return localProp;
+      }
+    }
+
     this.state = {
       viz: props.viz,
       url: props.viz[this.props.vizIndex].url,
-      hideTabs: props.hideTabs === false ? false : true,
-      hideToolbar: !props.hideToolbar ? false : true,
+      hideTabs: scopeProps(localProps.hideTabs, props.hideTabs, false),
+      hideToolbar: scopeProps(localProps.hideToolbar, props.hideToolbar, true),
       device: !props.device ? vizLayout().device : props.device,
       width: props.width,
       height: props.height,
+      // width: scopeProps(localProps.width, props.width, undefined),
+      // height: scopeProps(localProps.height, props.height, undefined),
       windowWidth: vizLayout().width,
       layout: vizLayout().layout,
       fixedLayout: !props.fixedLayout ? false : true,
+      hasMounted: false,
     };
   }
 
@@ -39,12 +59,15 @@ export default class Viz extends React.Component {
       device: vizLayout().device, 
       windowWidth: vizLayout().width,
       layout: vizLayout().layout,
+      mounted: true,
     });
-    this.initViz();
   }
 
   // determines if a new viz object should be reloaded given changes to state
   componentDidUpdate(prevProps, prevState, snapshot) {
+    if(this.state.mounted !== prevState.mounted) {
+      this.initViz();
+    }
     // server side rendering means that window layouts cannot be determined at build time
     // therefore it is necessary to reinitialize the viz in this scenario
     if (this.state.layout === undefined) {
@@ -104,6 +127,8 @@ export default class Viz extends React.Component {
     let viz;
     // promise is used to chain operations upon success or error
     const embed = new Promise((resolve, reject) => {
+      console.log('vizOptions', vizOptions)
+      console.log('windowWidth', this.state.windowWidth)
       // Create a new viz object and embed it in the container div.
       try {
         // eslint-disable-next-line no-undef
