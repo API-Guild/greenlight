@@ -10,31 +10,14 @@ export default class Viz extends React.Component {
     super(props);
     this.vizRef = React.createRef();
 
-    // get object at current vizIndex of props.viz to facilitate prop scoping
-    const localProps = props.viz[props.vizIndex];
-
-    // check for 'local' props [in viz array] first, if none found then
-    // check 'global' props, if none found use a default value as fallback
-    const scopeProps = (localProp, globalProp, defaultValue) => {
-      if(localProp === undefined) {
-        if(globalProp === undefined) {
-          return defaultValue
-        } else {
-          return globalProp;
-        }
-      } else {
-        return localProp;
-      }
-    }
-
     this.state = {
       viz: props.viz,
       url: props.viz[this.props.vizIndex].url,
-      hideTabs: scopeProps(localProps.hideTabs, props.hideTabs, false),
-      hideToolbar: scopeProps(localProps.hideToolbar, props.hideToolbar, true),
-      device: !props.device ? vizLayout().device : props.device,
-      width: props.width,
-      height: props.height,
+      // hideTabs: scopeProps(localProps.hideTabs, props.hideTabs, true),
+      // hideToolbar: scopeProps(localProps.hideToolbar, props.hideToolbar, false),
+      // device: !props.device ? vizLayout().device : props.device,
+      // width: props.width,
+      // height: props.height,
       // width: scopeProps(localProps.width, props.width, undefined),
       // height: scopeProps(localProps.height, props.height, undefined),
       windowWidth: vizLayout().width,
@@ -106,12 +89,29 @@ export default class Viz extends React.Component {
 
   // Initializes the Tableau visualization
   initViz() {
+    // get object at current vizIndex of props.viz to facilitate prop scoping
+    const device = this.state.device;
+    const globalDevice = this.props.layout ? this.props.layout[device] : undefined;
+    const localProps = this.props.viz[this.props.vizIndex];
+    const localDevice = localProps.layout ? localProps.layout[device] : undefined;
+
+    console.log('props', this.props)
+    // console.log('localLayout[device].width', localLayout[device].width)
+    // globalLayout[device].width
+    // globalLayout[device].height
+    console.log('scopeOptions', scopeOptions(localProps, this.props, this.props.defaultOptions))
+    const scopedOptions = scopeOptions(localProps, this.props, this.props.defaultOptions);
+
     const vizOptions = {
-      device: this.state.device,
-      width: this.state.width,
-      height: this.state.height,
-      hideTabs: this.state.hideTabs,
-      hideToolbar: this.state.hideToolbar,
+      device: device,
+      width: scopedOptions.layout[device].width,
+      height: scopedOptions.layout[device].height,
+      hideTabs: scopedOptions.hideTabs,
+      hideToolbar: scopedOptions.hideToolbar,
+      // width: scopeProps(localDevice.width, globalDevice.width, undefined),
+      // height: scopeProps(localDevice.height, globalDevice.height, undefined),
+      // hideTabs: scopeProps(localProps.hideTabs, this.props.hideTabs, true),
+      // hideToolbar: scopeProps(localProps.hideToolbar, this.props.hideToolbar, false),
       onFirstVizSizeKnown: (event) => {
         console.log(event)
       },
@@ -132,7 +132,7 @@ export default class Viz extends React.Component {
       // Create a new viz object and embed it in the container div.
       try {
         // eslint-disable-next-line no-undef
-        viz = new tableau.Viz(this.vizRef.current, this.state.url, vizOptions);
+        viz = new tableau.Viz(this.vizRef.current, this.props.viz[this.props.vizIndex].url, vizOptions);
       }
       catch(err) {
         // reference: https://help.tableau.com/current/api/js_api/en-us/JavaScriptAPI/js_api_ref.htm#tableauexception_class
@@ -173,4 +173,58 @@ export default class Viz extends React.Component {
         <div className={vizDivClass} ref={this.vizRef} />
     );
   }
+}
+
+// check for 'local' props [in viz array] first, if none found then
+// check 'global' props, if none found use a default value as fallback
+const scopeProps = (localProp, globalProp, defaultValue) => {
+  if(localProp === undefined) {
+    if(globalProp === undefined) {
+      return defaultValue
+    } else {
+      return globalProp;
+    }
+  } else {
+    return localProp;
+  }
+}
+
+// defines embed options with highest priority given to local props,
+// then global props and if none are declared it uses default values
+const scopeOptions = (locals, globals, defaults) => {
+  // used to cycle through supported options via bracket notation
+  const optionsList = [
+    'layout', 
+    'hideTabs', 
+    'hideToolbar', 
+    'customToolbar',
+    'fixedLayout',
+  ];
+
+  let embedOptions = {};
+
+  // check for props, if none declared return early with default values
+  if (!locals) {
+    if (!globals) {
+      return defaults;
+    }
+  } else {
+    for (let i = 0; i < optionsList.length; i++) {
+      // check local prop
+      if (!locals[optionsList[i]]) {
+        // if local prop not declared check global prop
+        if (!globals[optionsList[i]]) {
+          // if global prop not declared use default value
+          embedOptions[optionsList[i]] = defaults[optionsList[i]];
+        } else {
+          // use global prop
+          embedOptions[optionsList[i]] = globals[optionsList[i]];
+        }
+      } else {
+        // use local prop
+        embedOptions[optionsList[i]] = locals[optionsList[i]];
+      }
+    }
+  }
+  return embedOptions;
 }
