@@ -49,7 +49,6 @@ export default function Tableau(props) {
     },
     hideTabs: true,
     hideToolbar: true,
-    customToolbar: true,
     fixedLayout: false,
   }
 

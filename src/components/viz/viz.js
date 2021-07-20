@@ -11,15 +11,6 @@ export default class Viz extends React.Component {
     this.vizRef = React.createRef();
 
     this.state = {
-      viz: props.viz,
-      url: props.viz[this.props.vizIndex].url,
-      // hideTabs: scopeProps(localProps.hideTabs, props.hideTabs, true),
-      // hideToolbar: scopeProps(localProps.hideToolbar, props.hideToolbar, false),
-      // device: !props.device ? vizLayout().device : props.device,
-      // width: props.width,
-      // height: props.height,
-      // width: scopeProps(localProps.width, props.width, undefined),
-      // height: scopeProps(localProps.height, props.height, undefined),
       windowWidth: vizLayout().width,
       layout: vizLayout().layout,
       fixedLayout: !props.fixedLayout ? false : true,
@@ -91,15 +82,9 @@ export default class Viz extends React.Component {
   initViz() {
     // get object at current vizIndex of props.viz to facilitate prop scoping
     const device = this.state.device;
-    const globalDevice = this.props.layout ? this.props.layout[device] : undefined;
     const localProps = this.props.viz[this.props.vizIndex];
-    const localDevice = localProps.layout ? localProps.layout[device] : undefined;
 
-    console.log('props', this.props)
-    // console.log('localLayout[device].width', localLayout[device].width)
-    // globalLayout[device].width
-    // globalLayout[device].height
-    console.log('scopeOptions', scopeOptions(localProps, this.props, this.props.defaultOptions))
+    console.log('scopeOptions result', scopeOptions(localProps, this.props, this.props.defaultOptions))
     const scopedOptions = scopeOptions(localProps, this.props, this.props.defaultOptions);
 
     const vizOptions = {
@@ -108,12 +93,7 @@ export default class Viz extends React.Component {
       height: scopedOptions.layout[device].height,
       hideTabs: scopedOptions.hideTabs,
       hideToolbar: scopedOptions.hideToolbar,
-      // width: scopeProps(localDevice.width, globalDevice.width, undefined),
-      // height: scopeProps(localDevice.height, globalDevice.height, undefined),
-      // hideTabs: scopeProps(localProps.hideTabs, this.props.hideTabs, true),
-      // hideToolbar: scopeProps(localProps.hideToolbar, this.props.hideToolbar, false),
       onFirstVizSizeKnown: (event) => {
-        console.log(event)
       },
       onFirstInteractive: (event) => {
         // removes disabled property from <VizToolbar> buttons that depend on an initialized viz
@@ -128,7 +108,6 @@ export default class Viz extends React.Component {
     // promise is used to chain operations upon success or error
     const embed = new Promise((resolve, reject) => {
       console.log('vizOptions', vizOptions)
-      console.log('windowWidth', this.state.windowWidth)
       // Create a new viz object and embed it in the container div.
       try {
         // eslint-disable-next-line no-undef
@@ -175,20 +154,6 @@ export default class Viz extends React.Component {
   }
 }
 
-// check for 'local' props [in viz array] first, if none found then
-// check 'global' props, if none found use a default value as fallback
-const scopeProps = (localProp, globalProp, defaultValue) => {
-  if(localProp === undefined) {
-    if(globalProp === undefined) {
-      return defaultValue
-    } else {
-      return globalProp;
-    }
-  } else {
-    return localProp;
-  }
-}
-
 // defines embed options with highest priority given to local props,
 // then global props and if none are declared it uses default values
 const scopeOptions = (locals, globals, defaults) => {
@@ -197,7 +162,6 @@ const scopeOptions = (locals, globals, defaults) => {
     'layout', 
     'hideTabs', 
     'hideToolbar', 
-    'customToolbar',
     'fixedLayout',
   ];
 
@@ -206,23 +170,28 @@ const scopeOptions = (locals, globals, defaults) => {
   // check for props, if none declared return early with default values
   if (!locals) {
     if (!globals) {
+      console.log('no locals or globals declared!')
       return defaults;
     }
   } else {
     for (let i = 0; i < optionsList.length; i++) {
+      let property = optionsList[i];
       // check local prop
-      if (!locals[optionsList[i]]) {
+      if (!locals.hasOwnProperty(property) || locals[property] === undefined) {
         // if local prop not declared check global prop
-        if (!globals[optionsList[i]]) {
+        if (!globals.hasOwnProperty(property) || globals[property] === undefined) {
+          console.log('no local or global prop for: ', property, defaults[property])
           // if global prop not declared use default value
-          embedOptions[optionsList[i]] = defaults[optionsList[i]];
+          embedOptions[property] = defaults[property];
         } else {
+          console.log('global prop for: ', property, globals[property])
           // use global prop
-          embedOptions[optionsList[i]] = globals[optionsList[i]];
+          embedOptions[property] = globals[property];
         }
       } else {
+        console.log('local prop for: ', property, locals[property])
         // use local prop
-        embedOptions[optionsList[i]] = locals[optionsList[i]];
+        embedOptions[property] = locals[property];
       }
     }
   }
