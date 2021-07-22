@@ -42,10 +42,10 @@ export default function Tableau(props) {
   // they are not declared as props by users
   const defaultOptions = {
     layout: {
-      default: {width: 1366, height: 768},
-      desktop: {width: 1366, height: 768},
-      tablet: {width: 1024, height: 768},
-      phone: {width: 375, height: 667},
+      default: {width: undefined, height: undefined},
+      desktop: {width: undefined, height: undefined},
+      tablet: {width: undefined, height: undefined},
+      phone: {width: undefined, height: undefined},
     },
     hideTabs: true,
     hideToolbar: true,

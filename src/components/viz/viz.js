@@ -89,8 +89,8 @@ export default class Viz extends React.Component {
 
     const vizOptions = {
       device: device,
-      width: scopedOptions.layout[device].width,
-      height: scopedOptions.layout[device].height,
+      width: scopedOptions.layout[device].width || this.props.defaultOptions.layout[device].width,
+      height: scopedOptions.layout[device].height || this.props.defaultOptions.layout[device].height,
       hideTabs: scopedOptions.hideTabs,
       hideToolbar: scopedOptions.hideToolbar,
       onFirstVizSizeKnown: (event) => {
