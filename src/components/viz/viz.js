@@ -1,7 +1,8 @@
 import React from "react"
 import classNames from "classnames"
-import { vizDiv, placeholder } from "./viz.module.css"
-import vizLayout from "./vizLayout/vizLayout.js"
+import { vizDiv } from "./viz.module.css"
+import vizLayout from "./utils/vizLayout.js"
+import scopeOptions from "./utils/scopeOptions.js"
 // eslint-disable-next-line no-unused-vars
 const apiTableau = typeof window !== 'undefined' ? require("./tableauApi/tableau-2.7.0.min.js") : null;
 
@@ -33,13 +34,13 @@ export default class Viz extends React.Component {
       device: vizLayout().device, 
       windowWidth: vizLayout().width,
       layout: vizLayout().layout,
-      mounted: true,
+      hasMounted: true,
     });
   }
 
   // determines if a new viz object should be reloaded given changes to state
   componentDidUpdate(prevProps, prevState, snapshot) {
-    if(this.state.mounted !== prevState.mounted) {
+    if(this.state.hasMounted === true && prevState.hasMounted === false) {
       this.initViz();
     }
     // server side rendering means that window layouts cannot be determined at build time
@@ -83,14 +84,13 @@ export default class Viz extends React.Component {
     // get object at current vizIndex of props.viz to facilitate prop scoping
     const device = this.state.device;
     const localProps = this.props.viz[this.props.vizIndex];
-
-    console.log('scopeOptions result', scopeOptions(localProps, this.props, this.props.defaultOptions))
+    
     const scopedOptions = scopeOptions(localProps, this.props, this.props.defaultOptions);
 
     const vizOptions = {
       device: device,
-      width: scopedOptions.layout[device].width || this.props.defaultOptions.layout[device].width,
-      height: scopedOptions.layout[device].height || this.props.defaultOptions.layout[device].height,
+      width: scopedOptions.layout[device].width,
+      height: scopedOptions.layout[device].height,
       hideTabs: scopedOptions.hideTabs,
       hideToolbar: scopedOptions.hideToolbar,
       onFirstVizSizeKnown: (event) => {
@@ -145,55 +145,10 @@ export default class Viz extends React.Component {
   render() {
     const vizDivClass = classNames({
       [`${vizDiv}`]: true,
-      [`${placeholder}`]: !this.props.loaded,
     });
 
     return (
         <div className={vizDivClass} ref={this.vizRef} />
     );
   }
-}
-
-// defines embed options with highest priority given to local props,
-// then global props and if none are declared it uses default values
-const scopeOptions = (locals, globals, defaults) => {
-  // used to cycle through supported options via bracket notation
-  const optionsList = [
-    'layout', 
-    'hideTabs', 
-    'hideToolbar', 
-    'fixedLayout',
-  ];
-
-  let embedOptions = {};
-
-  // check for props, if none declared return early with default values
-  if (!locals) {
-    if (!globals) {
-      console.log('no locals or globals declared!')
-      return defaults;
-    }
-  } else {
-    for (let i = 0; i < optionsList.length; i++) {
-      let property = optionsList[i];
-      // check local prop
-      if (!locals.hasOwnProperty(property) || locals[property] === undefined) {
-        // if local prop not declared check global prop
-        if (!globals.hasOwnProperty(property) || globals[property] === undefined) {
-          console.log('no local or global prop for: ', property, defaults[property])
-          // if global prop not declared use default value
-          embedOptions[property] = defaults[property];
-        } else {
-          console.log('global prop for: ', property, globals[property])
-          // use global prop
-          embedOptions[property] = globals[property];
-        }
-      } else {
-        console.log('local prop for: ', property, locals[property])
-        // use local prop
-        embedOptions[property] = locals[property];
-      }
-    }
-  }
-  return embedOptions;
 }
