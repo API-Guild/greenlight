@@ -13,6 +13,12 @@
   transition: top ease 0.5s;
 }
 
+.hoverBox {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
 .hoverBox:hover {
   top: -10px;
   box-shadow: inset 0 0 100px 100px rgba(255, 255, 255, 0.05);
