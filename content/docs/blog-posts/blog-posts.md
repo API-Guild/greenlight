@@ -92,7 +92,16 @@ Every <Ext color="has-text-react" to="https://reactjs.org/">React</Ext> componen
 #### When the component renders it will look like this:
 
 <Tableau
-   viz={[{url: "https://public.tableau.com/views/Greenlight/GreenlightProfitDashboard"}]}
+   viz={[
+      {
+         url: "https://public.tableau.com/views/Greenlight/GreenlightProfitDashboard",
+         layout: {
+            desktop: {width: 1000, height: 800},
+            tablet: {width: 800, height: 768},
+            phone: {width: undefined, height: undefined},
+         },
+      }
+   ]}
 />
 
 <br/>

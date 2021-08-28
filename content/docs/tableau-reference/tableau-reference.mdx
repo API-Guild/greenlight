@@ -54,19 +54,29 @@ provided by the toolbar are made available.
 ```js {numberLines}
 <Tableau
   viz={[
-    "https://public.tableau.com/views/Greenlight/GreenlightProfitDashboard",
-    "https://public.tableau.com/views/Greenlight/SummaryofProfitAnalysisrange",
-    "https://public.tableau.com/views/Greenlight/WeeklyMetrics",
-  ]}
+      {
+         url: "https://public.tableau.com/views/Greenlight/GreenlightProfitDashboard",
+         layout: {
+            desktop: {width: 1000, height: 800},
+            tablet: {width: 800, height: 768},
+            phone: {width: undefined, height: undefined},
+         },
+      }
+   ]}
 />
 ```
 
 <Tableau
   viz={[
-    "https://public.tableau.com/views/Greenlight/GreenlightProfitDashboard",
-    "https://public.tableau.com/views/Greenlight/SummaryofProfitAnalysisrange",
-    "https://public.tableau.com/views/Greenlight/WeeklyMetrics",
-  ]}
+      {
+         url: "https://public.tableau.com/views/Greenlight/GreenlightProfitDashboard",
+         layout: {
+            desktop: {width: 1000, height: 800},
+            tablet: {width: 800, height: 768},
+            phone: {width: undefined, height: undefined},
+         },
+      }
+   ]}
 />
 
 The toolbar can be removed entirely by setting this `prop` to false in the component:
@@ -231,7 +241,16 @@ Notice the changes in available buttons and download options, as well as colors,
 
 ```js {numberLines}
 <Tableau
-  viz="https://public.tableau.com/views/OilGasProduction_16207892650600/AssetProductionReport"
+  viz={[
+      {
+         url: "https://public.tableau.com/views/Greenlight/GreenlightProfitDashboard",
+         layout: {
+            desktop: {width: 1000, height: 800},
+            tablet: {width: 800, height: 768},
+            phone: {width: undefined, height: undefined},
+         },
+      }
+   ]}
   customToolbar={true}
   toolbarOptions={{
     buttons: [

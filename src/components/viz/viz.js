@@ -4,7 +4,7 @@ import { vizDiv } from "./viz.module.css"
 import vizLayout from "./utils/vizLayout.js"
 import scopeOptions from "./utils/scopeOptions.js"
 // eslint-disable-next-line no-unused-vars
-const apiTableau = typeof window !== 'undefined' ? require("./tableauApi/tableau-2.7.0.min.js") : null;
+const apiTableau = typeof window !== 'undefined' ? require("./tableauApi/tableau-2.8.0.min.js") : null;
 
 export default class Viz extends React.Component {
   constructor(props) {
@@ -81,28 +81,10 @@ export default class Viz extends React.Component {
 
   // Initializes the Tableau visualization
   initViz() {
-    // get object at current vizIndex of props.viz to facilitate prop scoping
-    const device = this.state.device;
-    const localProps = this.props.viz[this.props.vizIndex];
-    
-    const scopedOptions = scopeOptions(localProps, this.props, this.props.defaultOptions);
-
-    const vizOptions = {
-      device: device,
-      width: scopedOptions.layout[device].width,
-      height: scopedOptions.layout[device].height,
-      hideTabs: scopedOptions.hideTabs,
-      hideToolbar: scopedOptions.hideToolbar,
-      onFirstVizSizeKnown: (event) => {
-      },
-      onFirstInteractive: (event) => {
-        // removes disabled property from <VizToolbar> buttons that depend on an initialized viz
-        this.props.setLoaded(true);
-      }
-    };
-
     // If a previous viz object exists, delete it.
     this.disposeViz();
+
+    const vizOptions = this.createVizOptions();
 
     let viz;
     // promise is used to chain operations upon success or error
@@ -131,6 +113,43 @@ export default class Viz extends React.Component {
     )
 
     console.count('initViz()')
+  }
+
+  // isolates logic for creating embed options and dealing with viz sizing from initialization
+  createVizOptions() {
+    // get object at current vizIndex of props.viz to facilitate prop scoping
+    const device = this.state.device;
+    const localProps = this.props.viz[this.props.vizIndex];
+    
+    const scopedOptions = scopeOptions(localProps, this.props, this.props.defaultOptions);
+
+    const widthProp = scopedOptions.layout[device].width;
+    const heightProp = scopedOptions.layout[device].height;
+    const ratio = widthProp/heightProp;
+
+    console.log('width: ', widthProp, 'height: ', heightProp, 'ratio: ', ratio);
+
+    const divWidth = this.vizRef.current.clientWidth;
+    const divHeight = this.vizRef.current.clientHeight;
+
+    console.log('vizRef', this.vizRef.current, 'width: ', divWidth, 'height: ', divHeight);
+
+
+    const vizOptions = {
+      device: device,
+      width: scopedOptions.layout[device].width,
+      height: scopedOptions.layout[device].height,
+      hideTabs: scopedOptions.hideTabs,
+      hideToolbar: scopedOptions.hideToolbar,
+      onFirstVizSizeKnown: (event) => {
+      },
+      onFirstInteractive: (event) => {
+        // removes disabled property from <VizToolbar> buttons that depend on an initialized viz
+        this.props.setLoaded(true);
+      }
+    };
+
+    return vizOptions;
   }
 
   // Clears the vizObj if it previously was assigned to a different object
