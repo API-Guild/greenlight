@@ -96,18 +96,6 @@ blockquote {
   }
 }
 
-figure.image.cartoon {
-  margin: auto;
-  color: $accentMain;
-  max-height: 66vh;
-}
-
-@media screen and (max-width: 768px) {
-  figure.image.cartoon {
-    width: 80%;
-  }
-}
-
 // vscode highlighting plugin 
 // https://www.gatsbyjs.com/plugins/gatsby-remark-vscode/?=syntax-highlighting#styles
 .grvsc-container {
