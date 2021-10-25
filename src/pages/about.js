@@ -1,26 +1,11 @@
-import React, { useContext } from "react"
+import React from "react"
 import { Link } from "gatsby"
-import classNames from "classnames"
-import LayoutContext from "../context/LayoutContext"
 import Layout from "../components/layout/layout"
 import Hero from "../components/hero/hero"
 import Cartoon from "../components/cartoon/cartoon"
 import { ReactComponent as Stakeholder } from "../assets/svg/stakeholder.svg"
 
-
 export default function About() {
-  const { width } = useContext(LayoutContext);
-
-  const threeFifths = classNames({
-    'column': true,
-    'is-three-fifths': width > 900,
-  });
-
-  const twoFifths = classNames({
-    'column': true,
-    'is-two-fifths': width > 900,
-  });
-
 
   return (
     <Layout>
@@ -32,42 +17,47 @@ export default function About() {
         subtitleSize={4} 
       />
       <div className="section">
-        <div className={`columns`}>
-          <div className={threeFifths}>
-            <div className="container">
-              <p>
-                Solving a business's needs for insights and analysis can be a Sisyphean task. 
-                Multiple solutions ranging from low-code, no-code, artificial intelligence, and 
-                NLP are all gaining traction as they allow business users to bridge the gap between 
-                technology and value. However, the demand is always ongoing and never entirely satisfied.
-                Technologies that scale are the best positioned to make an impact, especially if they allow
-                a large user base to complement their domain knowledge with the ability to visualize and understand 
-                data.
-              </p>
-              <br/>
-              <p>
-                As an organization succeeds at answering long-held questions, new inquiries inevitably arise. One is 
-                reminded of the unreachable <em>green light motif</em> found in the 
-                <a href="https://gutenberg.org/ebooks/64317" target="_blank" rel="noreferrer"> <cite>Great Gatsby</cite></a>, 
-                by <strong>F. Scott Fitzgerald</strong>:
-              </p>
-              <br/>      
-            </div>
+        <div className="container">
+          <Cartoon 
+            float="right"
+            width="48%"
+            margin="1.5em"
+            classes="is-hidden-touch"
+          >
+            <Stakeholder/>
+          </Cartoon>
+          <p>
+            Solving a business's needs for insights and analysis can be a Sisyphean task. 
+            Multiple solutions ranging from low-code, no-code, artificial intelligence, and 
+            NLP are all gaining traction as they allow business users to bridge the gap between 
+            technology and value. However, the demand is always ongoing and never entirely satisfied.
+            Technologies that scale are the best positioned to make an impact, especially if they allow
+            a large user base to complement their domain knowledge with the ability to visualize and understand 
+            data.
+          </p>
+          <br/>
+          <p>
+            As an organization succeeds at answering long-held questions, new inquiries inevitably arise. One is 
+            reminded of the unreachable <em>green light motif</em> found in the 
+            <a href="https://gutenberg.org/ebooks/64317" target="_blank" rel="noreferrer"> <cite>Great Gatsby</cite></a>, 
+            by <strong>F. Scott Fitzgerald</strong>:
+          </p>
+          <br/>
+          <div className="content">
+            <blockquote className="is-flex">
+              <span>
+                Gatsby believed in the green light, the orgiastic future that year by year recedes before us. 
+                It eluded us then, but that’s no matter—tomorrow we will run faster, stretch out our arms farther…. 
+                And one fine morning— So we beat on, boats against the current, borne back ceaselessly into the past.
+              </span>
+            </blockquote>
           </div>
-          <div className={twoFifths}>
-            <Cartoon>
-              <Stakeholder/>
-            </Cartoon>
-          </div>
-        </div>
-        <div className="content">
-          <blockquote>
-            Gatsby believed in the green light, the orgiastic future that year by year recedes before us. 
-            It eluded us then, but that’s no matter—tomorrow we will run faster, stretch out our arms farther…. 
-            And one fine morning— So we beat on, boats against the current, borne back ceaselessly into the past.
-          </blockquote>
-        </div>
-        <div className="container"> 
+          <Cartoon 
+          classes="is-hidden-desktop"
+          margin="1.5em 1em"
+          >
+            <Stakeholder/>
+          </Cartoon>
           <p>
             <strong><a href="https://api-guild.github.io/greenlight/" target="_blank" rel="noreferrer">Greenlight </a></strong> 
             is a template to jumpstart <a className="has-text-tableau" href="https://www.tableau.com/" target="_blank" rel="noreferrer"> Tableau </a> 
@@ -98,7 +88,7 @@ export default function About() {
           <p>
             Check out the <Link to="/docs/quick-start"> Quick Start</Link> guide. 
             You will have a working site in no time.
-          </p>
+          </p>    
         </div>
       </div>
     </Layout>
