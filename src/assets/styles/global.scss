@@ -24,11 +24,6 @@ blockquote {
   font-style: italic;
 }
 
-// fixes addition of 12px to screenwidth when below 1024px
-.container {
-  // padding: 0px 12px;
-}
-
 .navbar-dropdown {
   border-top: 1px solid;
   border-top-color: $grey-dark;
@@ -93,18 +88,6 @@ blockquote {
   }
   .is-danger {
     color: $danger;
-  }
-}
-
-figure.image.cartoon {
-  margin: auto;
-  color: $accentMain;
-  max-height: 66vh;
-}
-
-@media screen and (max-width: 768px) {
-  figure.image.cartoon {
-    width: 80%;
   }
 }
 

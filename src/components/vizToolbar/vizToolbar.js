@@ -66,19 +66,27 @@ export default function VizToolbar(props) {
       try {
         switch (downloadSelect) {
           case 'Download':
-            return;
+            // this method only works for the JS API version 2021.1
+            if (typeof props.vizObj.showDownloadDialog === 'function') {
+              props.vizObj.showDownloadDialog();
+            }
+            else {
+              throw new Error('The general download option is only supported on the' + 
+              ' API version 2021.1, please select a different option from the download menu.');
+            }
+            break;
           case 'PDF':
-            props.vizObj.showExportPDFDialog()
+            props.vizObj.showExportPDFDialog();
             break;
           case 'Image':
-            props.vizObj.showExportImageDialog()
+            props.vizObj.showExportImageDialog();
             break;
           case 'Data':
             if (props.vizObj.getWorkbook().getActiveSheet() === undefined) {
               alert('select a chart or sheet to download data');
             }
             else {
-              props.vizObj.showExportDataDialog()
+              props.vizObj.showExportDataDialog();
             }
             break;
           case 'CrossTab':
@@ -86,25 +94,40 @@ export default function VizToolbar(props) {
               alert('select a chart or sheet to download crosstab data');
             }
             else {
-              props.vizObj.showExportCrossTabDialog()
+              props.vizObj.showExportCrossTabDialog();
             }
             break;
           case 'PowerPoint':
-            props.vizObj.showExportPowerPointDialog()
+            props.vizObj.showExportPowerPointDialog();
             break;
           case 'Workbook':
-            props.vizObj.showDownloadWorkbookDialog()
+            props.vizObj.showDownloadWorkbookDialog();
             break;
           default:
-            return;
+            // this method only works for the JS API version 2021.1
+            if (typeof props.vizObj.showDownloadDialog === 'function') {
+              props.vizObj.showDownloadDialog();
+            }
+            else {
+              return;
+            }
         }
       }
       catch(err) {
-        console.error('Tableau error: ', err);
+        console.error('Tableau', err);
       }
     }
     setDownload('Download');
   }
+
+  // controls rendering of navigation in toolbar and detail modal
+  const [vizNav, setVizNav] = useState(false);
+
+  useEffect(() => {
+    if(props.viz) {
+      setVizNav(props.viz.length > 1 ? true : false);
+    }
+  },[props.viz])
 
   // toolbar settings and styles, the set methods help standardize 
   // these options beyond what is supported by the Bulma framework
@@ -132,13 +155,13 @@ export default function VizToolbar(props) {
 
   return (
     <div className={vizTbStyles.toolbar}>
-      {!props.vizArray ? null : (
+      {!vizNav ? null : (
         <VizNav
           color={color}
           outline={outline}
           rounded={rounded}
           handleVizIndex={props.handleVizIndex}
-          vizUrl={props.vizUrl} 
+          viz={props.viz} 
           vizIndex={props.vizIndex}
         />
       )}
@@ -152,9 +175,9 @@ export default function VizToolbar(props) {
           vizObj={props.vizObj}
           disabled={disabled}
           loaded={props.loaded}
-          vizArray={props.vizArray}
+          vizNav={vizNav}
           handleVizIndex={props.handleVizIndex}
-          vizUrl={props.vizUrl} 
+          viz={props.viz} 
           vizIndex={props.vizIndex}
         />
         {!downloadFlag ? null : (
@@ -168,7 +191,7 @@ export default function VizToolbar(props) {
                   onChange={handledownloadSelect} 
                   disabled={disabled}
                 >
-                  <option disabled hidden>Download</option>
+                  <option>Download</option>
                   <DownloadOptions
                     downloads={options.downloads}
                     vizObj={props.vizObj}

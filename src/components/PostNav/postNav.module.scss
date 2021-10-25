@@ -7,7 +7,26 @@
   padding-right: 0.75em;
 }
 
-
 .navBar {
   margin-top: 5rem;
+}
+
+.singleBtn {
+  width: fit-content;
+  max-width: 33%;
+  min-width: 25%;
+}
+
+@media screen and (max-width: 900px) {
+  .singleBtn {
+    max-width: 55%;
+    width: 33%;
+  }
+}
+
+@media screen and (max-width: 455px) {
+  .singleBtn {
+    max-width: 100%;
+    width: 100%;
+  }
 }

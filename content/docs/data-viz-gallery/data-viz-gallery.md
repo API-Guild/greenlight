@@ -1,6 +1,6 @@
 ---
 title: Data Viz Gallery
-date: "2021-04-20"
+date: "2021-04-16"
 description: "A showcase of our favorite Tableau Public vizzes"
 ---
 
@@ -22,3 +22,8 @@ The original workbook can be found [here](https://public.tableau.com/profile/kas
 Built by [Stephen Price](https://public.tableau.com/profile/stprice#!/), this is his [original work](https://public.tableau.com/profile/stprice#!/vizhome/OilGasProductionwmobilelayouts/WellReport).
 
 Built by [Stephen Price](https://public.tableau.com/profile/stprice#!/), this is his [original work](https://public.tableau.com/profile/stprice#!/vizhome/QuarterlyCashflow/QUARTERLYCASHFLOW).
+
+<PostNav
+  previous="Tableau Reference"
+  toPrev="/docs/tableau-reference"
+/>

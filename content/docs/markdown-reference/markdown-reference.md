@@ -282,3 +282,10 @@ This paragraph has some `code` in it.
 ```markdown
 This paragraph has some `code` in it.
 ```
+
+<PostNav
+  next="MDX Reference"
+  toNext="/docs/mdx-reference"
+  previous="Blog Posts"
+  toPrev="/docs/blog-posts"
+/>

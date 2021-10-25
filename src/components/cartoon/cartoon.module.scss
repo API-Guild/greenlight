@@ -1,0 +1,41 @@
+@import "../../assets/styles/themes.scss";
+
+.cartoon {
+  margin: auto;
+  color: $accentMain;
+  padding-bottom: 1%;
+  height: 100%;
+  width: 100%;
+}
+
+.cartoon svg {
+  height: 100%;
+  width: 100%;
+  // max-height: fit-content;
+  max-height: 66vh;
+}
+
+// float classes
+.left {
+  float: left;
+  // overflow: auto;
+}
+
+.right {
+  float: right;
+  // overflow: auto;
+}
+
+.left::after, .right::after {
+  content: "";
+  clear: both;
+  visibility: hidden;
+  display: block;
+  height: 0;
+}
+
+@media screen and (max-width: 768px) {
+  .cartoon {
+    width: 80%;
+  }
+}

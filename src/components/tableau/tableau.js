@@ -36,7 +36,21 @@ export default function Tableau(props) {
   let vizArray = false;
   if (Array.isArray(props.viz)) {
     vizArray = true;
-  } 
+  }
+
+  // define default embed options here in case 
+  // they are not declared as props by users
+  const defaultOptions = {
+    layout: {
+      default: {width: undefined, height: undefined},
+      desktop: {width: undefined, height: undefined},
+      tablet: {width: undefined, height: undefined},
+      phone: {width: undefined, height: undefined},
+    },
+    hideTabs: true,
+    hideToolbar: true,
+    fixedLayout: false,
+  }
 
   return (
     <Box vizBox={true}>
@@ -45,22 +59,20 @@ export default function Tableau(props) {
         setVizObj={setVizObj}
         loaded={loaded}
         setLoaded={setLoaded}
-        vizUrl={props.viz}
-        vizArray={vizArray}
+        viz={props.viz}
         vizIndex={vizIndex}
-        height={props.height}
-        width={props.width}
+        layout={props.layout}
         hideTabs={props.hideTabs}
         hideToolbar={props.hideToolbar}
-        device={props.device}
         fixedLayout={props.fixedLayout}
+        defaultOptions={defaultOptions}
       />
       {!customToolbar ? null : (
         <VizToolbar 
           toolbarOptions={props.toolbarOptions} 
           vizObj={vizObj}
           loaded={loaded}
-          vizUrl={props.viz} 
+          viz={props.viz} 
           vizArray={vizArray} 
           vizIndex={vizIndex}
           handleVizIndex={handleVizIndex}

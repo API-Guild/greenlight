@@ -1,6 +1,7 @@
 /* the viz container <div> */
 .vizDiv {
   margin: 0 auto 1rem auto;
+  width: 100%;
 }
 
 /* styles the viz (embedded via an iframe) */

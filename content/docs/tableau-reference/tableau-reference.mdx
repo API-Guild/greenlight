@@ -54,19 +54,29 @@ provided by the toolbar are made available.
 ```js {numberLines}
 <Tableau
   viz={[
-    "https://public.tableau.com/views/Greenlight/GreenlightProfitDashboard",
-    "https://public.tableau.com/views/Greenlight/SummaryofProfitAnalysisrange",
-    "https://public.tableau.com/views/Greenlight/WeeklyMetrics",
-  ]}
+      {
+         url: "https://public.tableau.com/views/Greenlight/GreenlightProfitDashboard",
+         layout: {
+            desktop: {width: 1000, height: 800},
+            tablet: {width: 800, height: 768},
+            phone: {width: undefined, height: undefined},
+         },
+      }
+   ]}
 />
 ```
 
 <Tableau
   viz={[
-    "https://public.tableau.com/views/Greenlight/GreenlightProfitDashboard",
-    "https://public.tableau.com/views/Greenlight/SummaryofProfitAnalysisrange",
-    "https://public.tableau.com/views/Greenlight/WeeklyMetrics",
-  ]}
+      {
+         url: "https://public.tableau.com/views/Greenlight/GreenlightProfitDashboard",
+         layout: {
+            desktop: {width: 1000, height: 800},
+            tablet: {width: 800, height: 768},
+            phone: {width: undefined, height: undefined},
+         },
+      }
+   ]}
 />
 
 The toolbar can be removed entirely by setting this `prop` to false in the component:
@@ -229,9 +239,18 @@ set for your website. You will never need to add a custom toolbar component on i
 This example demonstrates the usage of each of the `props` available for the <Ext to="https://www.tableau.com/" color="has-text-tableau">Tableau</Ext> component.
 Notice the changes in available buttons and download options, as well as colors, borders and overall styling.
 
-```js
+```js {numberLines}
 <Tableau
-  viz="https://public.tableau.com/views/OilGasProduction_16207892650600/AssetProductionReport"
+  viz={[
+      {
+         url: "https://public.tableau.com/views/Greenlight/GreenlightProfitDashboard",
+         layout: {
+            desktop: {width: 1000, height: 800},
+            tablet: {width: 800, height: 768},
+            phone: {width: undefined, height: undefined},
+         },
+      }
+   ]}
   customToolbar={true}
   toolbarOptions={{
     buttons: [
@@ -273,3 +292,9 @@ Notice the changes in available buttons and download options, as well as colors,
   }}
 />
 
+<PostNav
+  next="Data Viz Gallery"
+  toNext="/docs/data-viz-gallery"
+  previous="MDX Reference"
+  toPrev="/docs/mdx-reference"
+/>

@@ -1,8 +1,10 @@
 import React from "react"
-import * as vizStyles from "./viz.module.css"
-import vizLayout from "./vizLayout/vizLayout.js"
+import classNames from "classnames"
+import { vizDiv } from "./viz.module.css"
+import vizLayout from "./utils/vizLayout.js"
+import scopeOptions from "./utils/scopeOptions.js"
 // eslint-disable-next-line no-unused-vars
-const apiTableau = typeof window !== 'undefined' ? require("./tableauApi/tableau-2.7.0.min.js") : null;
+const apiTableau = typeof window !== 'undefined' ? require("./tableauApi/tableau-2.8.0.min.js") : null;
 
 export default class Viz extends React.Component {
   constructor(props) {
@@ -10,15 +12,10 @@ export default class Viz extends React.Component {
     this.vizRef = React.createRef();
 
     this.state = {
-      vizUrl: props.vizUrl,
-      height: props.height,
-      width: props.width,
-      hideTabs: props.hideTabs === false ? false : true,
-      hideToolbar: !props.hideToolbar ? false : true,
-      device: !props.device ? vizLayout().device : props.device,
       windowWidth: vizLayout().width,
       layout: vizLayout().layout,
       fixedLayout: !props.fixedLayout ? false : true,
+      hasMounted: false,
     };
   }
 
@@ -37,25 +34,31 @@ export default class Viz extends React.Component {
       device: vizLayout().device, 
       windowWidth: vizLayout().width,
       layout: vizLayout().layout,
+      hasMounted: true,
     });
-    this.initViz(this.props.vizIndex);
   }
 
   // determines if a new viz object should be reloaded given changes to state
   componentDidUpdate(prevProps, prevState, snapshot) {
+    if(this.state.hasMounted === true && prevState.hasMounted === false) {
+      this.initViz();
+    }
     // server side rendering means that window layouts cannot be determined at build time
     // therefore it is necessary to reinitialize the viz in this scenario
     if (this.state.layout === undefined) {
-      this.initViz(this.props.vizIndex);
+      this.initViz();
     }
     // reload the viz with a new device layout if it does not match the previous setting 
     // and the fixedLayout prop is false -> resizes on different window sizes 
     if(!this.state.fixedLayout && (this.state.layout !== prevState.layout)) {
-      this.initViz(this.props.vizIndex);
+      this.initViz();
     }
     // reload the viz whenever vizIndex has changed to allow for navigation within an array of URLs
     if(this.props.vizIndex !== prevProps.vizIndex) {
-      this.initViz(this.props.vizIndex);
+      this.setState({
+        url: this.props.viz[this.props.vizIndex].url,
+      });
+      this.initViz();
     }
   }
 
@@ -71,47 +74,26 @@ export default class Viz extends React.Component {
     this.disposeViz();
     
     // fix Warning: Can't perform a React state update on an unmounted component
-    this.setState = (state, callback) => {
+    this.setState = () => {
       return;
     };
   }
 
   // Initializes the Tableau visualization
-  initViz(vizIndex) {
-    let embedUrl;
-
-    // handles URLs for single strings and arrays of URLs
-    if (!this.props.vizArray) {
-      embedUrl = this.state.vizUrl;
-    }
-    else {
-      embedUrl = this.state.vizUrl[vizIndex];
-    }
-
-    const vizOptions = {
-      device: this.state.device,
-      width: this.state.width,
-      height: this.state.height,
-      hideTabs: this.state.hideTabs,
-      hideToolbar: this.state.hideToolbar,
-      onFirstVizSizeKnown: (event) => {
-      },
-      onFirstInteractive: (event) => {
-        // enables <VizToolbar> buttons that depend on an initialized viz
-        this.props.setLoaded(true);
-      }
-    };
-
+  initViz() {
     // If a previous viz object exists, delete it.
     this.disposeViz();
+
+    const vizOptions = this.createVizOptions();
 
     let viz;
     // promise is used to chain operations upon success or error
     const embed = new Promise((resolve, reject) => {
+      console.log('vizOptions', vizOptions)
       // Create a new viz object and embed it in the container div.
       try {
         // eslint-disable-next-line no-undef
-        viz = new tableau.Viz(this.vizRef.current, embedUrl, vizOptions);
+        viz = new tableau.Viz(this.vizRef.current, this.props.viz[this.props.vizIndex].url, vizOptions);
       }
       catch(err) {
         // reference: https://help.tableau.com/current/api/js_api/en-us/JavaScriptAPI/js_api_ref.htm#tableauexception_class
@@ -133,6 +115,43 @@ export default class Viz extends React.Component {
     console.count('initViz()')
   }
 
+  // isolates logic for creating embed options and dealing with viz sizing from initialization
+  createVizOptions() {
+    // get object at current vizIndex of props.viz to facilitate prop scoping
+    const device = this.state.device;
+    const localProps = this.props.viz[this.props.vizIndex];
+    
+    const scopedOptions = scopeOptions(localProps, this.props, this.props.defaultOptions);
+
+    const widthProp = scopedOptions.layout[device].width;
+    const heightProp = scopedOptions.layout[device].height;
+    const ratio = widthProp/heightProp;
+
+    console.log('width: ', widthProp, 'height: ', heightProp, 'ratio: ', ratio);
+
+    const divWidth = this.vizRef.current.clientWidth;
+    const divHeight = this.vizRef.current.clientHeight;
+
+    console.log('vizRef', this.vizRef.current, 'width: ', divWidth, 'height: ', divHeight);
+
+
+    const vizOptions = {
+      device: device,
+      width: scopedOptions.layout[device].width,
+      height: scopedOptions.layout[device].height,
+      hideTabs: scopedOptions.hideTabs,
+      hideToolbar: scopedOptions.hideToolbar,
+      onFirstVizSizeKnown: (event) => {
+      },
+      onFirstInteractive: (event) => {
+        // removes disabled property from <VizToolbar> buttons that depend on an initialized viz
+        this.props.setLoaded(true);
+      }
+    };
+
+    return vizOptions;
+  }
+
   // Clears the vizObj if it previously was assigned to a different object
   disposeViz() {
     this.props.setLoaded(false);
@@ -143,8 +162,12 @@ export default class Viz extends React.Component {
   }
 
   render() {
+    const vizDivClass = classNames({
+      [`${vizDiv}`]: true,
+    });
+
     return (
-        <div className={vizStyles.vizDiv} ref={this.vizRef}/>
+        <div className={vizDivClass} ref={this.vizRef} />
     );
   }
 }

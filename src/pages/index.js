@@ -21,7 +21,7 @@ import { features } from "./pages.module.scss"
 export default function Home() {
   const { width } = useContext(LayoutContext); 
 
-  const columnClass = classNames({
+  const columnsClass = classNames({
     'columns': true,
     'is-mobile': width > 540,
   });
@@ -62,7 +62,7 @@ export default function Home() {
 
       <section className={`section ${features}`}>
         {/* columns for tablets and above */}
-        <div className={columnClass}>
+        <div className={columnsClass}>
           <div className="column is-half is-flex">
             <Box hoverBox={true}>
               <div className="columns is-desktop">
@@ -118,7 +118,7 @@ export default function Home() {
           </div>
         </div>
 
-        <div className={columnClass}>
+        <div className={columnsClass}>
           <div className="column is-half is-flex">
             <Box hoverBox={true}>
               <div className="columns is-desktop">
@@ -173,7 +173,7 @@ export default function Home() {
           </div>
         </div>
 
-        <div className={columnClass}>
+        <div className={columnsClass}>
           <div className="column is-half is-flex">
             <Box hoverBox={true}>
               <div className="columns is-desktop">
