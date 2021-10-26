@@ -57,8 +57,8 @@ provided by the toolbar are made available.
       {
          url: "https://public.tableau.com/views/Greenlight/GreenlightProfitDashboard",
          layout: {
-            desktop: {width: 1000, height: 800},
-            tablet: {width: 800, height: 768},
+            desktop: {width: 1000, height: 1052},
+            tablet: {width: 800, height: 795},
             phone: {width: undefined, height: undefined},
          },
       }
@@ -71,8 +71,8 @@ provided by the toolbar are made available.
       {
          url: "https://public.tableau.com/views/Greenlight/GreenlightProfitDashboard",
          layout: {
-            desktop: {width: 1000, height: 800},
-            tablet: {width: 800, height: 768},
+            desktop: {width: 1000, height: 1052},
+            tablet: {width: 800, height: 795},
             phone: {width: undefined, height: undefined},
          },
       }
@@ -243,10 +243,10 @@ Notice the changes in available buttons and download options, as well as colors,
 <Tableau
   viz={[
       {
-         url: "https://public.tableau.com/views/Greenlight/GreenlightProfitDashboard",
+         url: "https://public.tableau.com/views/OilGasProduction_16207892650600/AssetProductionReport",
          layout: {
-            desktop: {width: 1000, height: 800},
-            tablet: {width: 800, height: 768},
+            desktop: {width: 1000, height: 1727},
+            tablet: {width: 800, height: 1727},
             phone: {width: undefined, height: undefined},
          },
       }
@@ -272,7 +272,16 @@ Notice the changes in available buttons and download options, as well as colors,
 ```
 
 <Tableau
-  viz="https://public.tableau.com/views/OilGasProduction_16207892650600/AssetProductionReport"
+  viz={[
+      {
+         url: "https://public.tableau.com/views/OilGasProduction_16207892650600/AssetProductionReport",
+         layout: {
+            desktop: {width: 1000, height: 1727},
+            tablet: {width: 800, height: 1727},
+            phone: {width: undefined, height: undefined},
+         },
+      }
+   ]}
   customToolbar={true}
   toolbarOptions={{
     buttons: [
