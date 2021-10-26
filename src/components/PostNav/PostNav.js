@@ -1,4 +1,5 @@
 import React, { useContext } from 'react'
+import { Link } from "gatsby"
 import classNames from 'classnames'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faDirections } from '@fortawesome/free-solid-svg-icons'
@@ -42,32 +43,35 @@ export default function PostNav(props) {
     <div className={`${navBarClass} ${navBar}`}>
       {props.previous && props.toPrev ? (
         <div className={columnClass}>
-          <a 
-            className={btnClass} 
-            style={{textAlign: "left"}}
-            href={props.toPrev}
-          >
-            <p>
-              <FontAwesomeIcon icon={faDirections} flip="both"/>
-              <strong className={titleClass}> Previous</strong>
-            </p>
-            <p className={subtitleClass}><em>{props.previous}</em></p>
-          </a>
+          <Link to={props.toPrev}>
+            <span 
+              className={btnClass} 
+              style={{textAlign: "left"}}
+              // href={props.toPrev}
+            >
+              <p>
+                <FontAwesomeIcon icon={faDirections} flip="both"/>
+                <strong className={titleClass}> Previous</strong>
+              </p>
+              <p className={subtitleClass}><em>{props.previous}</em></p>
+            </span>
+          </Link>
         </div>
       ) : null}
       {props.next && props.toNext ? (
         <div className={columnClass} style={{marginLeft: "auto"}}>
-          <a 
-            className={btnClass} 
-            style={{marginLeft: "auto", textAlign: "right"}}
-            href={props.toNext}
-          >
-            <p>
-              <strong className={titleClass}>Next </strong>
-              <FontAwesomeIcon icon={faDirections}/>
-            </p>
-            <p className={subtitleClass}><em>{props.next}</em></p>
-          </a>
+          <Link to={props.toNext}>
+            <span 
+              className={btnClass} 
+              style={{marginLeft: "auto", textAlign: "right"}}
+            >
+              <p>
+                <strong className={titleClass}>Next </strong>
+                <FontAwesomeIcon icon={faDirections}/>
+              </p>
+              <p className={subtitleClass}><em>{props.next}</em></p>
+            </span>
+          </Link>
         </div>
       ) : null}
     </div>
