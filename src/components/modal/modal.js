@@ -12,9 +12,19 @@ export default function Modal(props) {
   const [clipFlag, setClipFlag] = useState(false);
 
   useEffect(() => {
-    // a parent component should decide when to display the Modal (i.e. OnClick)
+    // adds the event listener to the entire page to handle 'esc' on modals
+    document.addEventListener("keydown", handleEscKey);
+    // remove the event listener to avoid memory leaks and bugs
+    return () => {
+      document.removeEventListener("keydown", handleEscKey);
+    }
+  });
+
+  useEffect(() => {
+    // a parent component should decide when to display the Modal via 'display' and 'setDisplay' props
     if (props.display) {
       setActive('is-active');
+      // comes from modal context to clip the entire document (stops scrolling)
       handleClip('is-clipped');
       setClipFlag(true);
     }
@@ -26,15 +36,23 @@ export default function Modal(props) {
         setClipFlag(false);
       }
     }
-  }, [props.display, handleClip, clipFlag])
+  }, [props.display, handleClip, clipFlag]);
+
+  const handleEscKey = (event) => {
+    if (event.keyCode === 27) {
+      props.setDisplay();
+    }
+  };
 
   return (
     <>
-      <div className={`modal ${active} ${modal}`}>
+      <div 
+        className={`modal ${active} ${modal}`} 
+      >
         <div 
           className="modal-background" 
           onClick={props.setDisplay} 
-          onKeyDown={props.setDisplay} 
+          onKeyDown={handleEscKey} 
           role="button"
           aria-label="close modal"
           tabIndex={0}

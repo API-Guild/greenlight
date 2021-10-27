@@ -4,17 +4,17 @@ import classNames from 'classnames'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faDirections } from '@fortawesome/free-solid-svg-icons'
 import LayoutContext from '../../context/LayoutContext'
-import { postNav, navBar, singleBtn } from './postNav.module.scss'
+import { postNav, navBar, singleBtn } from './PostNav.module.scss'
 
 export default function PostNav(props) {
   const { width } = useContext(LayoutContext);
-  const double = props.previous && props.next && props.toPrev && props.toNext;
 
+  // get's called a double if it has 2 titles and 2 links
+  const double = props.previous && props.next && props.toPrev && props.toNext;
 
   const navBarClass = classNames({
     'columns': true,
     'is-variable': true,
-    'is-8': width > 425,
     'is-mobile': width > 455,
   });
 
@@ -30,7 +30,8 @@ export default function PostNav(props) {
 
   const columnClass = classNames({
     'column': true,
-    'is-half': double,
+    'is-one-third': double && width > 768,
+    'is-half': double && width < 768,
   });
 
   const btnClass = classNames({
@@ -47,7 +48,6 @@ export default function PostNav(props) {
             <span 
               className={btnClass} 
               style={{textAlign: "left"}}
-              // href={props.toPrev}
             >
               <p>
                 <FontAwesomeIcon icon={faDirections} flip="both"/>
