@@ -10,6 +10,27 @@ import DownloadOptions from "./components/downloadOptions/downloadOptions"
 import Button from "./components/button/button"
 
 export default function VizToolbar(props) {
+
+  const logObject = () => {
+    const vizObj = props.vizObj;
+    console.log('vizObj:', vizObj);
+
+    const workbook = vizObj.getWorkbook();
+    console.log('workbook:', workbook);
+
+    const activeSheet = workbook.getActiveSheet();
+    console.log('activeSheet:', activeSheet);
+
+    const sheetType = activeSheet.getSheetType();
+    console.log('sheetType:', sheetType);
+
+    activeSheet.getFiltersAsync().then((filters) => {
+      for (let i = 0; i < filters.length; i++) {
+        console.log(`${filters[i].$4}:`, filters[i]);
+      }
+    });
+  }
+  
   const { width } = useContext(LayoutContext);
 
   // by default a full <VizToolbar/> get's mounted unless props are explicitly set to false or empty arrays
@@ -51,6 +72,11 @@ export default function VizToolbar(props) {
 
   useEffect(() => {
     setDisabled(props.loaded ? false : true);
+    if (props.loaded && props.viz) {
+      logObject();
+    } else {
+      console.log("not loaded");
+    }
   },[props.loaded])
 
   // sets download options for the select control

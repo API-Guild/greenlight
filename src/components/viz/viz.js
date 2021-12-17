@@ -112,7 +112,7 @@ export default class Viz extends React.Component {
       }
     )
 
-    console.count('initViz()')
+    console.count(`initViz(${this.props.viz[this.props.vizIndex].url})`)
   }
 
   // isolates logic for creating embed options and dealing with viz sizing from initialization
